@@ -8,6 +8,7 @@ public class BaseProjectile : MonoBehaviour, IProjectile, IMover {
     [SerializeField] protected float lifeTime;
     [SerializeField] protected int lifeInBounce;
     [SerializeField] protected int damage;
+    [SerializeField] protected int bounces;
 
     public float MoveSpeed
     {
@@ -48,4 +49,16 @@ public class BaseProjectile : MonoBehaviour, IProjectile, IMover {
         }
     }
 
+    public virtual int Bounces
+    {
+        get
+        {
+            return bounces;
+        }
+
+        set
+        {
+            bounces = value;
+        }
+    }
 }

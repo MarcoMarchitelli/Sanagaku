@@ -2,15 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestBullet : BaseProjectile {
+public class TestBullet : BaseProjectile
+{
 
-    public enum Type{ FirstPerson, TopDown};
+    public enum Type { FirstPerson, TopDown };
     public Type ProjectileBehaviour;
     public LayerMask collisionMask;
     public bool DeathByTime = true;
     public bool DeathByBounces = false;
+    public GameObject HitSmoke;
+    public TrailRenderer Trail;
+
     float timer;
-    int bounceCount;
+    Material material;
+
+    public override int Bounces
+    {
+        get
+        {
+            return base.Bounces;
+        }
+
+        set
+        {
+            base.Bounces = value;
+            switch (value)
+            {
+                case 1: material.color = ColorContainer.Instance.Colors[value];
+                    Trail.startColor = ColorContainer.Instance.Colors[value];
+                    break;
+                case 2:
+                    Trail.startColor = ColorContainer.Instance.Colors[value];
+                    material.color = ColorContainer.Instance.Colors[value];
+                    break;
+                case 3:
+                    material.color = ColorContainer.Instance.Colors[value];
+                    Trail.startColor = ColorContainer.Instance.Colors[value];
+                    break;
+                default:
+                    material.color = ColorContainer.Instance.Colors[ColorContainer.Instance.Colors.Length - 1];
+                    Trail.startColor = ColorContainer.Instance.Colors[ColorContainer.Instance.Colors.Length - 1];
+                    break;
+            }
+        }
+    }
+
+    private void Awake()
+    {
+        material = GetComponent<MeshRenderer>().material;
+    }
 
     private void Update()
     {
@@ -37,8 +77,9 @@ public class TestBullet : BaseProjectile {
                 transform.eulerAngles = new Vector3(0, rot, 0);
                 if (DeathByBounces)
                 {
-                    bounceCount++;
-                    if (bounceCount >= lifeInBounce)
+                    Bounces++;
+                    Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
+                    if (Bounces >= lifeInBounce)
                         Die();
                 }
             }
@@ -47,17 +88,20 @@ public class TestBullet : BaseProjectile {
 
     void Die()
     {
+        Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
         Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(ProjectileBehaviour == Type.FirstPerson)
+        if (ProjectileBehaviour == Type.FirstPerson)
         {
             //if(collision.collider.gameObject.layer == collisionMask)
             //{
-                Vector3 bounceDirection = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
-                transform.forward = bounceDirection;
+            Vector3 bounceDirection = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
+            Bounces++;
+            Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
+            transform.forward = bounceDirection;
             //}
         }
     }
