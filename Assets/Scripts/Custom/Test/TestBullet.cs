@@ -15,6 +15,7 @@ public class TestBullet : BaseProjectile
 
     float timer;
     Material material;
+    //Material trailMaterial;
 
     public override int Bounces
     {
@@ -28,16 +29,16 @@ public class TestBullet : BaseProjectile
             base.Bounces = value;
             switch (value)
             {
-                case 1: material.color = ColorContainer.Instance.Colors[value];
-                    Trail.startColor = ColorContainer.Instance.Colors[value];
+                case 1: material.color = ColorContainer.Instance.Colors[value - 1];
+                    Trail.startColor = ColorContainer.Instance.Colors[value - 1];
                     break;
                 case 2:
-                    Trail.startColor = ColorContainer.Instance.Colors[value];
-                    material.color = ColorContainer.Instance.Colors[value];
+                    Trail.startColor = ColorContainer.Instance.Colors[value - 1];
+                    material.color = ColorContainer.Instance.Colors[value - 1];
                     break;
                 case 3:
-                    material.color = ColorContainer.Instance.Colors[value];
-                    Trail.startColor = ColorContainer.Instance.Colors[value];
+                    material.color = ColorContainer.Instance.Colors[value - 1];
+                    Trail.startColor = ColorContainer.Instance.Colors[value - 1];
                     break;
                 default:
                     material.color = ColorContainer.Instance.Colors[ColorContainer.Instance.Colors.Length - 1];
@@ -50,6 +51,8 @@ public class TestBullet : BaseProjectile
     private void Awake()
     {
         material = GetComponent<MeshRenderer>().material;
+        //if(Trail)
+        //    trailMaterial = Trail.GetComponent<Material>();
     }
 
     private void Update()
