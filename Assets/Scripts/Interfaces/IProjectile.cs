@@ -7,4 +7,5 @@ public interface IProjectile {
     float LifeTime { get; set; }
     int Damage { get; set; }
     int Bounces { get; set; }
+    void Die();
 }

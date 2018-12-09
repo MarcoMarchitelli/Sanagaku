@@ -98,15 +98,16 @@ public class PlayerController : BaseUnit, IShooter {
         //firstperson behaviour
         if(PlayerBehaviour == Type.FirstPerson)
         {
+            EquippedGun.transform.forward = Camera.main.transform.forward;
             //EquippedGun.transform.LookAt(Camera.main.transform.forward * 1000f);
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, MaskToIgnore))
-            {
-                print(":)");
-                Debug.DrawLine(ray.origin, hit.point);
-                EquippedGun.transform.LookAt(hit.point);
-            }
+            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //RaycastHit hit;
+            //if (Physics.Raycast(ray, out hit, Mathf.Infinity, MaskToIgnore))
+            //{
+            //    print(":)");
+            //    Debug.DrawLine(ray.origin, hit.point);
+            //    EquippedGun.transform.LookAt(hit.point);
+            //}
         }
 
         //Shoot Input

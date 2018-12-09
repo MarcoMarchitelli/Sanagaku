@@ -91,7 +91,7 @@ public class TestEnemy : BaseUnit
     private void OnCollisionEnter(Collision collision)
     {
         IProjectile bullet = collision.collider.GetComponent<IProjectile>();
-        print("hit");
+        print("hit by:" +bullet.Bounces);
 
         if (bullet != null)
         {
@@ -103,6 +103,9 @@ public class TestEnemy : BaseUnit
             {
                 print("level: " + BouncesNeededToDie + "/ hit by: " + bullet.Bounces);
                 Die();
+            } else if (DiesFromBounces && bullet.Bounces < BouncesNeededToDie)
+            {
+                bullet.Die();
             }
 
         }

@@ -61,4 +61,10 @@ public class BaseProjectile : MonoBehaviour, IProjectile, IMover {
             bounces = value;
         }
     }
+
+    public virtual void Die()
+    {
+        Destroy(gameObject);
+    }
+
 }

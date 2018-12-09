@@ -90,23 +90,20 @@ public class TestBullet : BaseProjectile
         }
     }
 
-    void Die()
+    public override void Die()
     {
         Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
-        Destroy(gameObject);
+        base.Die();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (ProjectileBehaviour == Type.FirstPerson)
         {
-            //if (collision.collider.gameObject.layer == collisionMask)
-            //{
-                Vector3 bounceDirection = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
-                Bounces++;
-                Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
-                transform.forward = bounceDirection;
-            //}
+            Vector3 bounceDirection = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
+            Bounces++;
+            Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
+            transform.forward = bounceDirection;
         }
     }
 }
