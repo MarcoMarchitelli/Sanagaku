@@ -88,28 +88,29 @@ public class TestEnemy : BaseUnit
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        IProjectile bullet = collision.collider.GetComponent<IProjectile>();
-        print("hit by:" +bullet.Bounces);
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    IProjectile bullet = other.GetComponent<IProjectile>();
 
-        if (bullet != null)
-        {
-            if (DiesFromDamage)
-            {
-                TakeDamage(bullet.Damage);
-            }
-            else if (DiesFromBounces && bullet.Bounces == BouncesNeededToDie)
-            {
-                print("level: " + BouncesNeededToDie + "/ hit by: " + bullet.Bounces);
-                Die();
-            } else if (DiesFromBounces && bullet.Bounces < BouncesNeededToDie)
-            {
-                bullet.Die();
-            }
+    //    if (bullet != null)
+    //    {
+    //        print("hit by:" + bullet.Bounces);
+    //        if (DiesFromDamage)
+    //        {
+    //            TakeDamage(bullet.Damage);
+    //        }
+    //        else if (DiesFromBounces && bullet.Bounces == BouncesNeededToDie)
+    //        {
+    //            print("level: " + BouncesNeededToDie + "/ hit by: " + bullet.Bounces);
+    //            Die();
+    //        }
+    //        else if (DiesFromBounces && bullet.Bounces < BouncesNeededToDie)
+    //        {
+    //            bullet.Die();
+    //        }
 
-        }
-    }
+    //    }
+    //}
 
     public override void Die()
     {

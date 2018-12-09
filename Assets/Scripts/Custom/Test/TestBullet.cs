@@ -76,8 +76,26 @@ public class TestBullet : BaseProjectile
         {
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Time.deltaTime * MoveSpeed + .1f, collisionMask))
+            if (Physics.Raycast(ray, out hit, Time.deltaTime * MoveSpeed + .2f, collisionMask))
             {
+                TestEnemy enemyHit = hit.collider.GetComponent<TestEnemy>();
+                if (enemyHit)
+                {
+                    if (enemyHit.DiesFromBounces && enemyHit.BouncesNeededToDie == Bounces)
+                    {
+                        enemyHit.Die();
+                    }
+                    else 
+                    if(enemyHit.DiesFromBounces && enemyHit.BouncesNeededToDie > Bounces)
+                    {
+                        Die();
+                    }
+                    else
+                    if (enemyHit.DiesFromDamage)
+                    {
+                        enemyHit.TakeDamage(Damage);
+                    }
+                }
                 Vector3 bounceDirection = Vector3.Reflect(ray.direction, hit.normal);
                 float rot = 90 - Mathf.Atan2(bounceDirection.z, bounceDirection.x) * Mathf.Rad2Deg;
                 transform.eulerAngles = new Vector3(0, rot, 0);
@@ -100,6 +118,24 @@ public class TestBullet : BaseProjectile
     {
         if (ProjectileBehaviour == Type.FirstPerson)
         {
+            TestEnemy enemyHit = collision.collider.GetComponent<TestEnemy>();
+            if (enemyHit)
+            {
+                if (enemyHit.DiesFromBounces && enemyHit.BouncesNeededToDie == Bounces)
+                {
+                    enemyHit.Die();
+                }
+                else
+                if (enemyHit.DiesFromBounces && enemyHit.BouncesNeededToDie > Bounces)
+                {
+                    Die();
+                }
+                else
+                if (enemyHit.DiesFromDamage)
+                {
+                    enemyHit.TakeDamage(Damage);
+                }
+            }
             Vector3 bounceDirection = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
             Bounces++;
             Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
