@@ -8,6 +8,7 @@ public class BaseGun : MonoBehaviour, IGun {
     [SerializeField] protected int magazineSize;
     [SerializeField] protected BaseProjectile projectileToShoot;
     [SerializeField] protected Transform projectileSpawnPoint;
+    [SerializeField] protected ParticleSystem MuzzleFlash;
 
     protected float timer = 0;
     protected int bulletShotCount = 0;
@@ -65,6 +66,8 @@ public class BaseGun : MonoBehaviour, IGun {
             BaseProjectile bulletShot = Instantiate(projectileToShoot, ProjectileSpawnPoint.position, ProjectileSpawnPoint.rotation);
             //Destroy(bulletShot.gameObject, bulletShot.LifeTime);
             bulletShotCount++;
+            if (MuzzleFlash)
+                MuzzleFlash.Play();
         }
     }
 	
