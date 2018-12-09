@@ -18,6 +18,9 @@ public class PlayerController : BaseUnit, IShooter {
     [Header("VFX References")]
     public ParticleSystem walkSmoke;
 
+    [Header("Other Stuff :)")]
+    public LayerMask MaskToIgnore;
+
     #endregion
 
     #region Private Vars
@@ -66,7 +69,9 @@ public class PlayerController : BaseUnit, IShooter {
     void Awake () {
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
-	}
+        if(PlayerBehaviour == Type.FirstPerson)
+            MaskToIgnore = ~MaskToIgnore;
+    }
 	
 	void Update () {
 
@@ -90,10 +95,23 @@ public class PlayerController : BaseUnit, IShooter {
             }
         }
 
+        //firstperson behaviour
+        if(PlayerBehaviour == Type.FirstPerson)
+        {
+            //EquippedGun.transform.LookAt(Camera.main.transform.forward * 1000f);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, MaskToIgnore))
+            {
+                print(":)");
+                Debug.DrawLine(ray.origin, hit.point);
+                EquippedGun.transform.LookAt(hit.point);
+            }
+        }
+
         //Shoot Input
         if (Input.GetKeyDown(shootInput) && EquippedGun)
         {
-            print("Shoot Input");
             EquippedGun.Shoot();
         }
 

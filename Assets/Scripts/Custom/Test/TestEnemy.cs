@@ -5,10 +5,9 @@ using UnityEngine;
 public class TestEnemy : BaseUnit
 {
     [Range(1,3)]
-    public int Level;
+    public int BouncesNeededToDie;
     public bool DiesFromBounces = false;
     public bool DiesFromDamage = false;
-    public int bouncesNeededToDie = 2;
     public float waitTime;
     public Transform path;
     public GameObject deathParticles;
@@ -59,7 +58,7 @@ public class TestEnemy : BaseUnit
     {
         if (path)
             StartCoroutine(FollowPathAnim(MoveSpeed, waitTime));
-        material.color = ColorContainer.Instance.Colors[Level - 1];
+        material.color = ColorContainer.Instance.Colors[BouncesNeededToDie - 1];
     }
 
     IEnumerator FollowPathAnim(float speed, float waitTime)
@@ -92,13 +91,19 @@ public class TestEnemy : BaseUnit
     private void OnCollisionEnter(Collision collision)
     {
         IProjectile bullet = collision.collider.GetComponent<IProjectile>();
+        print("hit");
 
         if (bullet != null)
         {
             if (DiesFromDamage)
+            {
                 TakeDamage(bullet.Damage);
-            else if (DiesFromBounces && bullet.Bounces >= bouncesNeededToDie)
+            }
+            else if (DiesFromBounces && bullet.Bounces == BouncesNeededToDie)
+            {
+                print("level: " + BouncesNeededToDie + "/ hit by: " + bullet.Bounces);
                 Die();
+            }
 
         }
     }

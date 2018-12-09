@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1309607616309362}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0011041164, y: 0.50407493, z: 52.75}
+  m_LocalPosition: {x: -7, y: 0.50407493, z: 58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4751338644088486}
@@ -131,7 +131,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &65858610555260106
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -157,9 +157,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   health: 1
+  BouncesNeededToDie: 1
   DiesFromBounces: 1
   DiesFromDamage: 0
-  bouncesNeededToDie: 1
   waitTime: 0.5
   path: {fileID: 0}
   deathParticles: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}

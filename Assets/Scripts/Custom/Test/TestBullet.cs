@@ -27,9 +27,12 @@ public class TestBullet : BaseProjectile
         set
         {
             base.Bounces = value;
+            if (Bounces >= lifeInBounce)
+                Die();
             switch (value)
             {
-                case 1: material.color = ColorContainer.Instance.Colors[value - 1];
+                case 1:
+                    material.color = ColorContainer.Instance.Colors[value - 1];
                     Trail.startColor = ColorContainer.Instance.Colors[value - 1];
                     break;
                 case 2:
@@ -82,8 +85,6 @@ public class TestBullet : BaseProjectile
                 {
                     Bounces++;
                     Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
-                    if (Bounces >= lifeInBounce)
-                        Die();
                 }
             }
         }
@@ -99,12 +100,12 @@ public class TestBullet : BaseProjectile
     {
         if (ProjectileBehaviour == Type.FirstPerson)
         {
-            //if(collision.collider.gameObject.layer == collisionMask)
+            //if (collision.collider.gameObject.layer == collisionMask)
             //{
-            Vector3 bounceDirection = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
-            Bounces++;
-            Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
-            transform.forward = bounceDirection;
+                Vector3 bounceDirection = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
+                Bounces++;
+                Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
+                transform.forward = bounceDirection;
             //}
         }
     }
