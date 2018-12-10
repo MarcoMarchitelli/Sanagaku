@@ -91,9 +91,10 @@ public class TestBullet : BaseProjectile
                         Die();
                     }
                     else
-                    if (enemyHit.DiesFromDamage)
+                    if (enemyHit.DiesFromDamage && enemyHit.Health == Damage)
                     {
                         enemyHit.TakeDamage(Damage);
+                        return;
                     }
                 }
                 Vector3 bounceDirection = Vector3.Reflect(ray.direction, hit.normal);
