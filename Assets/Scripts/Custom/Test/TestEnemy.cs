@@ -58,7 +58,8 @@ public class TestEnemy : BaseUnit
     {
         if (path)
             StartCoroutine(FollowPathAnim(MoveSpeed, waitTime));
-        material.color = ColorContainer.Instance.Colors[BouncesNeededToDie - 1];
+        if(DiesFromBounces)
+            material.color = ColorContainer.Instance.Colors[BouncesNeededToDie - 1];
     }
 
     IEnumerator FollowPathAnim(float speed, float waitTime)
