@@ -11,6 +11,7 @@ public class cameraSelection_script : MonoBehaviour {
     public GameObject buttonV1;
     public GameObject buttonV2;
     public GameObject buttonV3;
+    public PlayerController player;
 
     void Start () {
         camera_selection_camera.SetActive(true);
@@ -24,6 +25,13 @@ public class cameraSelection_script : MonoBehaviour {
     public void pressButtonV1()
     {
         camera_selection_camera.SetActive(false);
+        //change player input direction
+        if (player)
+        {
+            player.InputDirection = PlayerController.DirectionType.Global;
+        }
+        //change camera projection
+        Camera.main.orthographic = false;
         CameraV1.SetActive(true);
         //CameraV2.SetActive(false);
         //CameraV3.SetActive(false);
@@ -37,6 +45,11 @@ public class cameraSelection_script : MonoBehaviour {
     {
         camera_selection_camera.SetActive(false);
         //CameraV1.SetActive(false);
+        if (player)
+        {
+            player.InputDirection = PlayerController.DirectionType.Global;
+        }
+        Camera.main.orthographic = false;
         CameraV2.SetActive(true);
         //CameraV3.SetActive(false);
         //turn off buttons
@@ -50,6 +63,11 @@ public class cameraSelection_script : MonoBehaviour {
         camera_selection_camera.SetActive(false);
         //CameraV1.SetActive(false);
         //CameraV2.SetActive(false);
+        if (player)
+        {
+            player.InputDirection = PlayerController.DirectionType.Camera;
+        }
+        Camera.main.orthographic = true;
         CameraV3.SetActive(true);
         //turn off buttons
         buttonV1.SetActive(false);

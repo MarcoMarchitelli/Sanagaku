@@ -6,11 +6,15 @@ using UnityEngine;
 public class PlayerController : BaseUnit, IShooter {
 
     public enum Type { FirstPerson, TopDown };
+    public enum DirectionType { Global, Camera };
 
     #region Public Vars
 
-    [Header("Gameplay Parameters")]
+    [Header("Player Behaviours")]
     public Type PlayerBehaviour;
+    public DirectionType InputDirection;
+
+    [Header("Gameplay Parameters")]   
     public Transform gunPoint;
     [SerializeField] BaseGun equippedGun;
     [SerializeField] KeyCode shootInput = KeyCode.Mouse0;
@@ -79,9 +83,18 @@ public class PlayerController : BaseUnit, IShooter {
         if (PlayerBehaviour == Type.TopDown)
         {
             //Move Input
-            moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
-            //cameraBasedDirection = cam.transform.TransformDirection(globalDirection);
-            //playerDirection = new Vector3(cameraBasedDirection.x, globalDirection.y, cameraBasedDirection.z);
+            if (InputDirection == DirectionType.Global)
+            {
+                moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+            }
+            else 
+            if (InputDirection == DirectionType.Camera)
+            {
+                moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+                cameraBasedDirection = cam.transform.TransformDirection(moveDirection);
+                moveDirection = new Vector3(cameraBasedDirection.x, moveDirection.y, cameraBasedDirection.z);
+            }
+
 
             //Aim Input
             float distance;
