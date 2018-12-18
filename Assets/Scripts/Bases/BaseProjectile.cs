@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BaseProjectile : MonoBehaviour, IProjectile, IMover {
 
@@ -8,7 +6,7 @@ public class BaseProjectile : MonoBehaviour, IProjectile, IMover {
     [SerializeField] protected float lifeTime;
     [SerializeField] protected int lifeInBounce;
     [SerializeField] protected int damage;
-    [SerializeField] protected int bounces;
+    protected int bounces;
 
     public float MoveSpeed
     {
