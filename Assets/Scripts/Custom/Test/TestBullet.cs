@@ -75,22 +75,22 @@ public class TestBullet : BaseProjectile
         #region Movement
         //movement
         transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
-        if (cam.WorldToViewportPoint(new Vector3(transform.position.x - transform.localScale.x * .5f, transform.position.y, transform.position.z )).x <= 0)
-        {
-            Bounce(transform.forward, Vector3.right);
-        }
-        else if (cam.WorldToViewportPoint(new Vector3(transform.position.x + transform.localScale.x * .5f, transform.position.y, transform.position.z)).x >= 1)
-        {
-            Bounce(transform.forward, Vector3.left);
-        }
-        else if (cam.WorldToViewportPoint(new Vector3(transform.position.x, transform.position.y - transform.localScale.z * .5f, transform.position.z)).y <= 0)
-        {
-            Die();
-        }
-        else if (cam.WorldToViewportPoint(new Vector3(transform.position.x, transform.position.y + transform.localScale.z * .5f, transform.position.z)).y >= 1)
-        {
-            Bounce(transform.forward, Vector3.back);
-        }
+        //if (cam.WorldToViewportPoint(new Vector3(transform.position.x - transform.localScale.x * .5f, transform.position.y, transform.position.z )).x <= 0)
+        //{
+        //    Bounce(transform.forward, Vector3.right);
+        //}
+        //else if (cam.WorldToViewportPoint(new Vector3(transform.position.x + transform.localScale.x * .5f, transform.position.y, transform.position.z)).x >= 1)
+        //{
+        //    Bounce(transform.forward, Vector3.left);
+        //}
+        //else if (cam.WorldToViewportPoint(new Vector3(transform.position.x, transform.position.y - transform.localScale.z * .5f, transform.position.z)).y <= 0)
+        //{
+        //    Die();
+        //}
+        //else if (cam.WorldToViewportPoint(new Vector3(transform.position.x, transform.position.y + transform.localScale.z * .5f, transform.position.z)).y >= 1)
+        //{
+        //    Bounce(transform.forward, Vector3.back);
+        //}
         #endregion
 
         #region Raycasting
