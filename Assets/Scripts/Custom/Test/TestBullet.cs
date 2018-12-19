@@ -12,6 +12,7 @@ public class TestBullet : BaseProjectile
 
     float timer;
     Material material;
+    Camera cam;
 
     #endregion
 
@@ -57,6 +58,7 @@ public class TestBullet : BaseProjectile
     private void Awake()
     {
         material = GetComponent<MeshRenderer>().material;
+        cam = Camera.main;
     }
 
     private void Update()
@@ -73,6 +75,22 @@ public class TestBullet : BaseProjectile
         #region Movement
         //movement
         transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
+        //if (cam.WorldToViewportPoint(new Vector3(transform.position.x - transform.localScale.x * .5f, transform.position.y, transform.position.z )).x <= 0)
+        //{
+        //    Bounce(transform.forward, Vector3.right);
+        //}
+        //else if (cam.WorldToViewportPoint(new Vector3(transform.position.x + transform.localScale.x * .5f, transform.position.y, transform.position.z)).x >= 1)
+        //{
+        //    Bounce(transform.forward, Vector3.left);
+        //}
+        //else if (cam.WorldToViewportPoint(new Vector3(transform.position.x, transform.position.y - transform.localScale.z * .5f, transform.position.z)).y <= 0)
+        //{
+        //    Die();
+        //}
+        //else if (cam.WorldToViewportPoint(new Vector3(transform.position.x, transform.position.y + transform.localScale.z * .5f, transform.position.z)).y >= 1)
+        //{
+        //    Bounce(transform.forward, Vector3.back);
+        //}
         #endregion
 
         #region Raycasting
@@ -114,6 +132,11 @@ public class TestBullet : BaseProjectile
                         break;
                     case BounceBehaviour.Type.shield:
                         transform.forward = bounceBehaviour.transform.forward;
+                        if (DeathByBounces)
+                        {
+                            Bounces++;
+                            Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
+                        }
                         break;
                     case BounceBehaviour.Type.goThrough:
                         break;
