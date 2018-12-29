@@ -16,7 +16,7 @@ public class Spawn1 : MonoBehaviour {
 
 	}
 	
-	// Update is called once per frame
+	// Trigger condition and execution
 	void OnTriggerEnter (Collider other)
     {
 		if  (other.gameObject.tag == "Player" && isTriggered == false)
