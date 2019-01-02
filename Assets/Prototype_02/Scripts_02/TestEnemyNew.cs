@@ -58,7 +58,7 @@ public class TestEnemyNew : BaseUnit
     {
         if (path)
             StartCoroutine(FollowPathAnim(MoveSpeed, waitTime));
-        if(DiesFromBounces)
+        if(DiesFromBounces && BouncesNeededToDie > 0)
             material.color = ColorContainer.Instance.Colors[BouncesNeededToDie - 1];
     }
 
