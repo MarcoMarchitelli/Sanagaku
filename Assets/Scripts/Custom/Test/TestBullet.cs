@@ -102,18 +102,18 @@ public class TestBullet : BaseProjectile
             TestEnemy enemyHit = hit.collider.GetComponent<TestEnemy>();
             if (enemyHit)
             {
-                if (enemyHit.DiesFromBounces && enemyHit.BouncesNeededToDie == Bounces)
+                if (enemyHit.deathBehaviour == TestEnemy.DeathBeahviour.diesFromBounces && enemyHit.BouncesNeededToDie == Bounces)
                 {
                     enemyHit.Die();
                     Bounce(ray.direction, hit.normal);
                 }
                 else
-                if (enemyHit.DiesFromBounces && enemyHit.BouncesNeededToDie > Bounces)
+                if (enemyHit.deathBehaviour == TestEnemy.DeathBeahviour.diesFromBounces && enemyHit.BouncesNeededToDie > Bounces)
                 {
                     Bounce(ray.direction, hit.normal);
                 }
                 else
-                if (enemyHit.DiesFromDamage && enemyHit.Health == Damage)
+                if (enemyHit.deathBehaviour == TestEnemy.DeathBeahviour.diesFromDamage && enemyHit.health == Damage)
                 {
                     enemyHit.TakeDamage(Damage);
                     return;
