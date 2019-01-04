@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 114847695443130754}
   - component: {fileID: 54114723742473160}
   - component: {fileID: 114934234599034784}
+  - component: {fileID: 114281618998030712}
   m_Layer: 9
   m_Name: TopDownPlayer
   m_TagString: Untagged
@@ -607,7 +608,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1851613005431614}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4ada008da8ebb042af5e5117f6f2436, type: 3}
   m_Name: 
@@ -629,6 +630,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BehaviourType: 1
+--- !u!114 &114281618998030712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1180134953666474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303e20efdbb24f24baff91bd953415bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114847695443130754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -642,14 +654,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 18
   health: 3
+  walkSmoke: {fileID: 198043023491289220}
   InputDirection: 0
   gunPoint: {fileID: 4963972090606040}
   equippedGun: {fileID: 114999305790876884}
   shootInput: 323
-  walkSmoke: {fileID: 198043023491289220}
   MaskToIgnore:
     serializedVersion: 2
     m_Bits: 0
+  aimLayer:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!114 &114934234599034784
 MonoBehaviour:
   m_ObjectHideFlags: 1

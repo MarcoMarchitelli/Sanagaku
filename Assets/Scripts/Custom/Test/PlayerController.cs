@@ -7,19 +7,18 @@ public class PlayerController : BaseUnit, IShooter
 
     #region Public Vars
 
-    [Header("Player Behaviours")]
+    [Header("References")]
+    public ParticleSystem walkSmoke;
+
+    [Header("Behaviours")]
     public DirectionType InputDirection;
 
-    [Header("Gameplay Parameters")]
+    [Header("Parameters")]
     public Transform gunPoint;
     [SerializeField] BaseGun equippedGun;
     [SerializeField] KeyCode shootInput = KeyCode.Mouse0;
-
-    [Header("VFX References")]
-    public ParticleSystem walkSmoke;
-
-    [Header("Other Stuff :)")]
     public LayerMask MaskToIgnore;
+    public LayerMask aimLayer;
 
     #endregion
 
@@ -97,16 +96,15 @@ public class PlayerController : BaseUnit, IShooter
         #endregion
 
         #region Aim
+
         //Aim Input
-        float distance;
-        Plane aimPlane = new Plane(Vector3.up, Vector3.zero);
+        RaycastHit hitInfo;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        if (aimPlane.Raycast(ray, out distance))
+        if (Physics.Raycast(ray, out hitInfo, int.MaxValue, aimLayer))
         {
-            Vector3 hitPoint = ray.origin + ray.direction * distance;
-            Debug.DrawLine(cam.transform.position, hitPoint);
-            transform.LookAt(new Vector3(hitPoint.x, transform.position.y, hitPoint.z));
+            transform.LookAt(new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z));
         }
+
         #endregion
 
         if (moveDirection == Vector3.zero)
