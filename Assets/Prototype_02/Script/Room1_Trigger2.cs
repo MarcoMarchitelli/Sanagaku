@@ -23,7 +23,6 @@ public class Room1_Trigger2 : MonoBehaviour {
         if (other.tag == "PlayerBullet" && triggerManager.GetComponent<Room1_triggerManager>().trigger_b0 == true && triggerManager.GetComponent<Room1_triggerManager>().trigger_b1 == true)
         {
             TriggerLight.color = colorOn;
-            Debug.Log("THREEEEEEEE");
             triggerManager.GetComponent<Room1_triggerManager>().trigger_b2 = true;
         }
         else { }

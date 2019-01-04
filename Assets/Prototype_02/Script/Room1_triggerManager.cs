@@ -4,7 +4,6 @@ using UnityEngine;
 
 
 //this class name is a joke.
-//also, it's not as accurate as the "Door1Manager" script system, with arrays and stuff, but it's a prototype, not the definitive switch system.
 #region quick instructions
 //if we want more switches we must create a new object, create a new Room1_triggerN" script (copied from Room1_trigger0.cs), and modify a bit THIS script:
 //#1 create the new gameObjet and attach to it the the NEW "Room1_triggerN" script; ALSO add a NEW gameobject variable in THIS script, and then drag the new gameObject to this script in inspector;
@@ -36,7 +35,6 @@ public class Room1_triggerManager : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine(SwitchTriggers());
         StartCoroutine(OpenDoorCoroutine());
     }
 

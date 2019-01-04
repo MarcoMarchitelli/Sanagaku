@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorCloser_script : MonoBehaviour {
+public class DoorOpen_script : MonoBehaviour {
 
-    public GameObject Door;
+    public GameObject lastDoor;
 
 	// Use this for initialization
 	void Start ()
     {
-        Door.gameObject.SetActive(false);	
+        lastDoor.gameObject.SetActive(true);	
 	}
 
     public void OnTriggerEnter(Collider other)
     {
        if (other.tag == "Player")
        {
-            Door.gameObject.SetActive(true);
+            lastDoor.gameObject.SetActive(false);
        }
     }
 
