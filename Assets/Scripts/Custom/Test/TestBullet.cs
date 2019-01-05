@@ -105,12 +105,20 @@ public class TestBullet : BaseProjectile
                 if (enemyHit.deathBehaviour == TestEnemy.DeathBeahviour.diesFromBounces && enemyHit.BouncesNeededToDie == Bounces)
                 {
                     enemyHit.Die();
+                    Bounce(ray.direction, hit.normal);
                 }
                 else
-                if (enemyHit.deathBehaviour == TestEnemy.DeathBeahviour.diesFromDamage)
+                if (enemyHit.deathBehaviour == TestEnemy.DeathBeahviour.diesFromBounces && enemyHit.BouncesNeededToDie > Bounces)
+                {
+                    Bounce(ray.direction, hit.normal);
+                }
+                else
+                if (enemyHit.deathBehaviour == TestEnemy.DeathBeahviour.diesFromDamage && enemyHit.health == Damage)
                 {
                     enemyHit.TakeDamage(Damage);
+                    return;
                 }
+                return;
             }
 
             //check for other obj hit behaviours

@@ -119,17 +119,9 @@ public class PlayerController : BaseUnit, IShooter
         rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        TestEnemy t = collision.collider.GetComponent<TestEnemy>();
-        if (t && t.dealsDamageOnContact)
-            TakeDamage(t.damage);
-    }
-
     #endregion
 
     #region PlayeController methods
-
     public void EquipGun(BaseGun gunToEquip)
     {
         if (EquippedGun)
@@ -139,12 +131,6 @@ public class PlayerController : BaseUnit, IShooter
         EquippedGun.transform.position = gunPoint.position;
         EquippedGun.transform.rotation = gunPoint.rotation;
     }
-
     #endregion
-
-    public override void TakeDamage(int amount)
-    {
-        Counters.instance.UpdateHits(amount);
-    }
 
 }

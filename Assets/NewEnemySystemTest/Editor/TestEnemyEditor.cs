@@ -6,7 +6,7 @@ using UnityEditor;
 [CustomEditor(typeof(TestEnemy))]
 public class TestEnemyEditor : Editor {
 
-    SerializedProperty deathParticles, deathBehaviour, BouncesNeededToDie, health, OnDeath, dealsDamageOnContact, damage;
+    SerializedProperty deathParticles, deathBehaviour, BouncesNeededToDie, health, OnDeath;
 
     bool showReferences, showBehaviours, showParameters, showEvents;
 
@@ -17,8 +17,6 @@ public class TestEnemyEditor : Editor {
         BouncesNeededToDie = serializedObject.FindProperty("BouncesNeededToDie");
         health = serializedObject.FindProperty("health");
         OnDeath = serializedObject.FindProperty("OnDeath");
-        dealsDamageOnContact = serializedObject.FindProperty("dealsDamageOnContact");
-        damage = serializedObject.FindProperty("damage");
     }
 
     public override void OnInspectorGUI()
@@ -39,7 +37,6 @@ public class TestEnemyEditor : Editor {
         if (showBehaviours)
         {
             EditorGUILayout.PropertyField(deathBehaviour);
-            EditorGUILayout.PropertyField(dealsDamageOnContact);
         }
 
         EditorGUILayout.Space();
@@ -51,8 +48,6 @@ public class TestEnemyEditor : Editor {
                 EditorGUILayout.PropertyField(BouncesNeededToDie);
             else if (deathBehaviour.enumValueIndex == (int)TestEnemy.DeathBeahviour.diesFromDamage)
                 EditorGUILayout.PropertyField(health);
-            if(dealsDamageOnContact.boolValue)
-                EditorGUILayout.PropertyField(damage);
         }
 
         EditorGUILayout.Space();

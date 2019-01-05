@@ -26,7 +26,6 @@ namespace Deirin.AI
         [Range(0.1f, 360f)]
         public float turnRateAnglesPerSecond = 90;
         public LayerMask obstacleLayer;
-        public int damage = 1;
 
         public UnityEvent OnProjectileShoot;
 
