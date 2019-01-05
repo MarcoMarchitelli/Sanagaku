@@ -10,11 +10,13 @@ public class TestEnemy : MonoBehaviour
 
     //behaviours
     public DeathBeahviour deathBehaviour;
+    public bool dealsDamageOnContact = true;
 
     //parameters
     [Range(1,3)]
     public int BouncesNeededToDie;
     public int health;
+    public int damage = 1;
 
     //events
     public UnityEvent OnDeath;
@@ -39,6 +41,8 @@ public class TestEnemy : MonoBehaviour
             GameObject instantiatedParticles = Instantiate(deathParticles, transform.position, Random.rotation);
             Destroy(instantiatedParticles, 2.5f);
         }
+        OnDeath.Invoke();
+        Counters.instance.UpdateKills(1);
         Destroy(gameObject);
     }
 
