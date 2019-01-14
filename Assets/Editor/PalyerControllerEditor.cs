@@ -8,13 +8,13 @@ public class PalyerControllerEditor : Editor
     SerializedProperty walkSmoke, equippedGun, gunPoint;
 
     //behaviours
-    SerializedProperty InputDirection, parry, dash;
+    SerializedProperty InputDirection, parry, automaticParry, dash;
 
     //parameters
-    SerializedProperty shootInput, dashInput, parryInput, MaskToIgnore, aimLayer, parryRadious, parryTime, parryCooldown, dashDistance, dashTime, dashCooldown;
+    SerializedProperty health, moveSpeed, shootInput, dashInput, parryInput, MaskToIgnore, aimLayer, parryRadius, parryTime, parryCooldown, dashDistance, dashTime, dashCooldown;
 
     //events
-    SerializedProperty OnShoot;
+    SerializedProperty OnShoot, OnParryStart, OnParryEnd;
 
     bool showReferences = true, showBehaviours = true, showParameters = true, showEvents = true;
 
@@ -26,14 +26,17 @@ public class PalyerControllerEditor : Editor
 
         InputDirection = serializedObject.FindProperty("InputDirection");
         parry = serializedObject.FindProperty("parry");
+        automaticParry = serializedObject.FindProperty("automaticParry");
         dash = serializedObject.FindProperty("dash");
 
+        health = serializedObject.FindProperty("health");
+        moveSpeed = serializedObject.FindProperty("moveSpeed");
         shootInput = serializedObject.FindProperty("shootInput");
         parryInput = serializedObject.FindProperty("parryInput");
         dashInput = serializedObject.FindProperty("dashInput");
         MaskToIgnore = serializedObject.FindProperty("MaskToIgnore");
         aimLayer = serializedObject.FindProperty("aimLayer");
-        parryRadious = serializedObject.FindProperty("parryRadious");
+        parryRadius = serializedObject.FindProperty("parryRadius");
         parryTime = serializedObject.FindProperty("parryTime");
         parryCooldown = serializedObject.FindProperty("parryCooldown");
         dashDistance = serializedObject.FindProperty("dashDistance");
@@ -41,6 +44,8 @@ public class PalyerControllerEditor : Editor
         dashCooldown = serializedObject.FindProperty("dashCooldown");
 
         OnShoot = serializedObject.FindProperty("OnShoot");
+        OnParryStart = serializedObject.FindProperty("OnParryStart");
+        OnParryEnd = serializedObject.FindProperty("OnParryEnd");
     }
 
     public override void OnInspectorGUI()
@@ -65,6 +70,8 @@ public class PalyerControllerEditor : Editor
         {
             EditorGUILayout.PropertyField(InputDirection);
             EditorGUILayout.PropertyField(parry);
+            if(parry.boolValue)
+                EditorGUILayout.PropertyField(automaticParry);
             EditorGUILayout.PropertyField(dash);
         }
 
@@ -73,6 +80,8 @@ public class PalyerControllerEditor : Editor
         showParameters = EditorGUILayout.Foldout(showParameters, "Parameters", true, EditorStyles.foldout);
         if (showParameters)
         {
+            EditorGUILayout.PropertyField(health);
+            EditorGUILayout.PropertyField(moveSpeed);
             EditorGUILayout.PropertyField(MaskToIgnore);
             EditorGUILayout.PropertyField(aimLayer);
             EditorGUILayout.PropertyField(shootInput);
@@ -80,8 +89,9 @@ public class PalyerControllerEditor : Editor
             {
                 EditorGUILayout.Space();
                 EditorGUILayout.LabelField("Parry", EditorStyles.boldLabel);
-                EditorGUILayout.PropertyField(parryInput);
-                EditorGUILayout.PropertyField(parryRadious);
+                if(!automaticParry.boolValue)
+                    EditorGUILayout.PropertyField(parryInput);
+                EditorGUILayout.PropertyField(parryRadius);
                 EditorGUILayout.PropertyField(parryTime);
                 EditorGUILayout.PropertyField(parryCooldown);
             }
@@ -102,6 +112,8 @@ public class PalyerControllerEditor : Editor
         if (showEvents)
         {
             EditorGUILayout.PropertyField(OnShoot);
+            EditorGUILayout.PropertyField(OnParryStart);
+            EditorGUILayout.PropertyField(OnParryEnd);
         }
 
         EditorGUILayout.Space();

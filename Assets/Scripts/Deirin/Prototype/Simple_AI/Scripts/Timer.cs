@@ -5,8 +5,9 @@ namespace Deirin.Utility
 {
     public class Timer : MonoBehaviour
     {
+        [Multiline] public string description;
         public float time;
-        public bool startCountinOnAwake = false;
+        public bool startCountingOnAwake = false;
         public bool repeat = true;
 
         public UnityEvent OnTimerEnd;
@@ -30,7 +31,7 @@ namespace Deirin.Utility
 
         private void Awake()
         {
-            if (startCountinOnAwake)
+            if (startCountingOnAwake)
                 StartTimer(time);
         }
 

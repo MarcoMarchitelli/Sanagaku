@@ -5,7 +5,12 @@
 /// </summary>
 public class BounceBehaviour : MonoBehaviour {
 
-    public enum Type { realistic, catchAndFire, goThrough, destroy}
+    public enum Type { realistic =1, catchAndFire =2, goThrough=3, destroy=4}
 
-    public Type BehaviourType;
+    [Tooltip("1 = realistic, 2 = CNF, 3 = goThrough, 4 = destroy")] public Type BehaviourType;
+
+    public void SetBehaviour(int typeIndex)
+    {
+        BehaviourType = (Type)typeIndex;
+    }
 }

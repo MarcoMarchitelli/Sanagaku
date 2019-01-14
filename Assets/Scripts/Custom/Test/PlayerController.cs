@@ -16,6 +16,7 @@ public class PlayerController : BaseUnit, IShooter
     //Behaviours
     public DirectionType InputDirection;
     public bool parry = true;
+    public bool automaticParry = false;
     public bool dash = true;
 
     //Parameters
@@ -26,7 +27,7 @@ public class PlayerController : BaseUnit, IShooter
     [SerializeField] KeyCode dashInput = KeyCode.Space;
     public LayerMask MaskToIgnore;
     public LayerMask aimLayer;
-    public float parryRadious = 2f;
+    [Tooltip("Changes apply at game start")] public float parryRadius = 2f;
     public float parryTime = .5f;
     public float parryCooldown = 2f;
     public float dashDistance = 10f;
@@ -35,6 +36,7 @@ public class PlayerController : BaseUnit, IShooter
 
     //events
     public UnityEvent OnShoot;
+    public FloatEvent OnParryStart, OnParryEnd;
 
     #endregion
 
@@ -46,6 +48,8 @@ public class PlayerController : BaseUnit, IShooter
     Camera cam;
     Rigidbody rb;
     bool isMoving = false;
+    bool canParry = true;
+    bool isParrying = false;
     SphereCollider catchNFireArea;
 
     #endregion
@@ -94,8 +98,10 @@ public class PlayerController : BaseUnit, IShooter
         }
         else
         {
-            catchNFireArea.radius = parryRadious;
+            catchNFireArea.radius = parryRadius;
         }
+        if (parry && automaticParry)
+            isParrying = true;
         cam = Camera.main;
     }
 
@@ -123,9 +129,9 @@ public class PlayerController : BaseUnit, IShooter
         }
 
         //ParryInput
-        if(parry && Input.GetKeyDown(parryInput))
+        if(parry && !automaticParry && canParry && Input.GetKeyDown(parryInput))
         {
-            Parry();
+            StartParry();
         }
 
         #endregion
@@ -161,6 +167,15 @@ public class PlayerController : BaseUnit, IShooter
             TakeDamage(t.damage);
     }
 
+    private void OnDrawGizmos()
+    {
+        if (parry)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, parryRadius);
+        }
+    }
+
     #endregion
 
     #region PlayeController methods
@@ -181,13 +196,32 @@ public class PlayerController : BaseUnit, IShooter
         base.TakeDamage(amount);
     }
 
-    void Parry()
+    public void ToggleParryDoability(bool f)
     {
+        canParry = f;
+    }
 
+    public void StartParry()
+    {
+        isParrying = true;
+        canParry = false;
+        OnParryStart.Invoke(parryTime);
+    }
+
+    public void StopParry()
+    {
+        isParrying = false;
+        OnParryEnd.Invoke(parryCooldown);
     }
 
     //BaseUnit.Die();
     
     #endregion
+
+}
+
+[System.Serializable]
+public class FloatEvent : UnityEvent<float>
+{
 
 }
