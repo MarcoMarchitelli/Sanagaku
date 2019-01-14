@@ -208,7 +208,8 @@ public class PlayerController : BaseUnit, IShooter
 
     public override void TakeDamage(int amount)
     {
-        Counters.instance.UpdateHits(amount);
+        if(Counters.instance)
+            Counters.instance.UpdateHits(amount);
         base.TakeDamage(amount);
     }
 

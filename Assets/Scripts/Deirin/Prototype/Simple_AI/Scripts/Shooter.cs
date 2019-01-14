@@ -65,6 +65,12 @@ namespace Deirin.AI
 
         private void Update()
         {
+            if(targets.Count > 0 && targets[0] == null)
+            {
+                Debug.LogWarning(name + " has lost targets!");
+                return;
+            }
+
             if (hasTargets && targets.Count > 0)
             {
                 shorterTargetDistance = Vector3.Distance(transform.position, targets[0].position);

@@ -35,6 +35,7 @@ public class TestBullet : MonoBehaviour
     int bounces;
     float timer;
     Material material;
+    bool inHand = false;
 
     #endregion
 
@@ -97,11 +98,9 @@ public class TestBullet : MonoBehaviour
         #endregion
 
         #region Movement
-        
-        if(deathBehaviour == DeathBehaviour.byTime)
-            transform.Translate(Vector3.forward * speedOverLifeTimeCurve.Evaluate(timer / lifeTime) * moveSpeed * Time.deltaTime);
-        else
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+
+        if (!inHand)
+            Move();       
 
         #endregion
 
@@ -182,6 +181,14 @@ public class TestBullet : MonoBehaviour
             Bounces++;
             Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
         }
+    }
+
+    private void Move()
+    {
+        if (deathBehaviour == DeathBehaviour.byTime)
+            transform.Translate(Vector3.forward * speedOverLifeTimeCurve.Evaluate(timer / lifeTime) * moveSpeed * Time.deltaTime);
+        else
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
     }
 
     public void Die()
