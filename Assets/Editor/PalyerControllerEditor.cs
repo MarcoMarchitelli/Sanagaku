@@ -11,10 +11,10 @@ public class PalyerControllerEditor : Editor
     SerializedProperty InputDirection, parry, automaticParry, dash;
 
     //parameters
-    SerializedProperty health, moveSpeed, shootInput, dashInput, parryInput, MaskToIgnore, aimLayer, parryRadius, parryTime, parryCooldown, dashDistance, dashTime, dashCooldown;
+    SerializedProperty health, moveSpeed, shootInput, dashInput, parryInput, MaskToIgnore, aimLayer, parryRadius, parryTime, parryCooldown, dashDistance, dashSpeed, dashCooldown;
 
     //events
-    SerializedProperty OnShoot, OnParryStart, OnParryEnd;
+    SerializedProperty OnShoot, OnParryStart, OnParryEnd, OnDashStart, OnDashEnd;
 
     bool showReferences = true, showBehaviours = true, showParameters = true, showEvents = true;
 
@@ -40,12 +40,14 @@ public class PalyerControllerEditor : Editor
         parryTime = serializedObject.FindProperty("parryTime");
         parryCooldown = serializedObject.FindProperty("parryCooldown");
         dashDistance = serializedObject.FindProperty("dashDistance");
-        dashTime = serializedObject.FindProperty("dashTime");
+        dashSpeed = serializedObject.FindProperty("dashSpeed");
         dashCooldown = serializedObject.FindProperty("dashCooldown");
 
         OnShoot = serializedObject.FindProperty("OnShoot");
         OnParryStart = serializedObject.FindProperty("OnParryStart");
         OnParryEnd = serializedObject.FindProperty("OnParryEnd");
+        OnDashStart = serializedObject.FindProperty("OnDashStart");
+        OnDashEnd = serializedObject.FindProperty("OnDashEnd");
     }
 
     public override void OnInspectorGUI()
@@ -101,7 +103,7 @@ public class PalyerControllerEditor : Editor
                 EditorGUILayout.LabelField("Dash", EditorStyles.boldLabel);
                 EditorGUILayout.PropertyField(dashInput);
                 EditorGUILayout.PropertyField(dashDistance);
-                EditorGUILayout.PropertyField(dashTime);
+                EditorGUILayout.PropertyField(dashSpeed);
                 EditorGUILayout.PropertyField(dashCooldown);
             }
         }
@@ -112,8 +114,16 @@ public class PalyerControllerEditor : Editor
         if (showEvents)
         {
             EditorGUILayout.PropertyField(OnShoot);
-            EditorGUILayout.PropertyField(OnParryStart);
-            EditorGUILayout.PropertyField(OnParryEnd);
+            if (parry.boolValue)
+            {
+                EditorGUILayout.PropertyField(OnParryStart);
+                EditorGUILayout.PropertyField(OnParryEnd);
+            }
+            if (dash.boolValue)
+            {
+                EditorGUILayout.PropertyField(OnDashStart);
+                EditorGUILayout.PropertyField(OnDashEnd);
+            }
         }
 
         EditorGUILayout.Space();

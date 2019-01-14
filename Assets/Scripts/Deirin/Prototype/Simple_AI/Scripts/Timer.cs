@@ -10,7 +10,7 @@ namespace Deirin.Utility
         public bool startCountingOnAwake = false;
         public bool repeat = true;
 
-        public UnityEvent OnTimerEnd;
+        public UnityEvent OnTimerStart, OnTimerEnd;
 
         bool countTime = false;
         float timer;
@@ -39,8 +39,10 @@ namespace Deirin.Utility
         {
             if (countTime)
                 timer += Time.deltaTime;
-            if (timer >= time)
+            if (timer >= time && countTime)
+            {
                 OnTimerEnd.Invoke();
+            }
         }
 
         #endregion
@@ -73,7 +75,10 @@ namespace Deirin.Utility
         public void ResetTimer()
         {
             timer = 0;
-            countTime = true;
+            if (repeat)
+                countTime = true;
+            else
+                countTime = false;
         }
 
         #endregion

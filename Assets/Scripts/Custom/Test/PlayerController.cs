@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : BaseUnit, IShooter
@@ -31,12 +32,12 @@ public class PlayerController : BaseUnit, IShooter
     public float parryTime = .5f;
     public float parryCooldown = 2f;
     public float dashDistance = 10f;
-    public float dashTime = 1.5f;
+    [Tooltip("Measured in meters per second")] public float dashSpeed = 5f;
     public float dashCooldown = 3f;
 
     //events
     public UnityEvent OnShoot;
-    public FloatEvent OnParryStart, OnParryEnd;
+    public FloatEvent OnParryStart, OnParryEnd, OnDashStart, OnDashEnd;
 
     #endregion
 
@@ -45,12 +46,16 @@ public class PlayerController : BaseUnit, IShooter
     Vector3 moveDirection;
     Vector3 cameraBasedDirection;
     Vector3 playerDirection;
+
+    SphereCollider catchNFireArea;
     Camera cam;
     Rigidbody rb;
+
     bool isMoving = false;
     bool canParry = true;
     bool isParrying = false;
-    SphereCollider catchNFireArea;
+    bool canDash = true;
+    bool canMove = true;
 
     #endregion
 
@@ -110,16 +115,19 @@ public class PlayerController : BaseUnit, IShooter
         #region Input
 
         //Move Input
-        if (InputDirection == DirectionType.Global)
+        if (canMove)
         {
-            moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
-        }
-        else
-        if (InputDirection == DirectionType.Camera)
-        {
-            moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
-            cameraBasedDirection = cam.transform.TransformDirection(moveDirection);
-            moveDirection = new Vector3(cameraBasedDirection.x, moveDirection.y, cameraBasedDirection.z);
+            if (InputDirection == DirectionType.Global)
+            {
+                moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+            }
+            else
+            if (InputDirection == DirectionType.Camera)
+            {
+                moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+                cameraBasedDirection = cam.transform.TransformDirection(moveDirection);
+                moveDirection = new Vector3(cameraBasedDirection.x, moveDirection.y, cameraBasedDirection.z);
+            }
         }
 
         //Shoot Input
@@ -129,9 +137,16 @@ public class PlayerController : BaseUnit, IShooter
         }
 
         //ParryInput
-        if(parry && !automaticParry && canParry && Input.GetKeyDown(parryInput))
+        if (parry && !automaticParry && canParry && Input.GetKeyDown(parryInput))
         {
             StartParry();
+        }
+
+        //DashInput
+        if (dash && canDash && Input.GetKeyDown(dashInput))
+        {
+            print(canDash);
+            StartDash();
         }
 
         #endregion
@@ -156,7 +171,8 @@ public class PlayerController : BaseUnit, IShooter
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
+        if(canMove)
+            rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -196,7 +212,7 @@ public class PlayerController : BaseUnit, IShooter
         base.TakeDamage(amount);
     }
 
-    public void ToggleParryDoability(bool f)
+    public void SetParryDoability(bool f)
     {
         canParry = f;
     }
@@ -214,8 +230,40 @@ public class PlayerController : BaseUnit, IShooter
         OnParryEnd.Invoke(parryCooldown);
     }
 
+    public void StartDash()
+    {
+        canDash = false;
+        canMove = false;
+        StartCoroutine(DashRoutine());
+    }
+
+    public void EndDash()
+    {
+        canMove = true;
+        OnDashEnd.Invoke(dashCooldown);
+    }
+
+    public void SetDashDoability(bool f)
+    {
+        canDash = f;
+    }
+
+    IEnumerator DashRoutine()
+    {
+        Vector3 targetPos = rb.position + transform.forward * dashDistance;
+
+        //perform the dash
+        while (rb.position != targetPos)
+        {
+            rb.position = Vector3.MoveTowards(rb.position, targetPos, dashSpeed * Time.deltaTime); // --> remember we use fixed bcause we are moving a rigidbody
+            yield return null;
+        }
+
+        EndDash();
+    }
+
     //BaseUnit.Die();
-    
+
     #endregion
 
 }
