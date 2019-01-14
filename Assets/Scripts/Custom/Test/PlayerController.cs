@@ -1,28 +1,44 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : BaseUnit, IShooter
 {
     public enum DirectionType { Global, Camera };
 
-    #region Public Vars
+    #region Serialized Fields
 
-    [Header("References")]
+    //References
     public ParticleSystem walkSmoke;
-
-    [Header("Behaviours")]
-    public DirectionType InputDirection;
-
-    [Header("Parameters")]
-    public Transform gunPoint;
     [SerializeField] BaseGun equippedGun;
+    public Transform gunPoint;
+
+    //Behaviours
+    public DirectionType InputDirection;
+    public bool parry = true;
+    public bool dash = true;
+
+    //Parameters
+    // --BaseUnit.Health
+    // --BaseUnit.MoveSpeed
     [SerializeField] KeyCode shootInput = KeyCode.Mouse0;
+    [SerializeField] KeyCode parryInput = KeyCode.Mouse1;
+    [SerializeField] KeyCode dashInput = KeyCode.Space;
     public LayerMask MaskToIgnore;
     public LayerMask aimLayer;
+    public float parryRadious = 2f;
+    public float parryTime = .5f;
+    public float parryCooldown = 2f;
+    public float dashDistance = 10f;
+    public float dashTime = 1.5f;
+    public float dashCooldown = 3f;
+
+    //events
+    public UnityEvent OnShoot;
 
     #endregion
 
-    #region Private Vars
+    #region Other Vars
 
     Vector3 moveDirection;
     Vector3 cameraBasedDirection;
@@ -30,6 +46,7 @@ public class PlayerController : BaseUnit, IShooter
     Camera cam;
     Rigidbody rb;
     bool isMoving = false;
+    SphereCollider catchNFireArea;
 
     #endregion
 
@@ -70,12 +87,22 @@ public class PlayerController : BaseUnit, IShooter
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        catchNFireArea = GetComponentInChildren<SphereCollider>();
+        if (!catchNFireArea)
+        {
+            Debug.LogWarning(name + " did not find a catchAndFire collider!");
+        }
+        else
+        {
+            catchNFireArea.radius = parryRadious;
+        }
         cam = Camera.main;
     }
 
     void Update()
     {
         #region Input
+
         //Move Input
         if (InputDirection == DirectionType.Global)
         {
@@ -88,11 +115,19 @@ public class PlayerController : BaseUnit, IShooter
             cameraBasedDirection = cam.transform.TransformDirection(moveDirection);
             moveDirection = new Vector3(cameraBasedDirection.x, moveDirection.y, cameraBasedDirection.z);
         }
+
         //Shoot Input
         if (Input.GetKeyDown(shootInput) && EquippedGun)
         {
             EquippedGun.Shoot();
         }
+
+        //ParryInput
+        if(parry && Input.GetKeyDown(parryInput))
+        {
+            Parry();
+        }
+
         #endregion
 
         #region Aim
@@ -115,12 +150,12 @@ public class PlayerController : BaseUnit, IShooter
 
     private void FixedUpdate()
     {
-        //Movement
         rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        //check for enemy contact damage
         TestEnemy t = collision.collider.GetComponent<TestEnemy>();
         if (t && t.dealsDamageOnContact)
             TakeDamage(t.damage);
@@ -140,11 +175,19 @@ public class PlayerController : BaseUnit, IShooter
         EquippedGun.transform.rotation = gunPoint.rotation;
     }
 
-    #endregion
-
     public override void TakeDamage(int amount)
     {
         Counters.instance.UpdateHits(amount);
+        base.TakeDamage(amount);
     }
+
+    void Parry()
+    {
+
+    }
+
+    //BaseUnit.Die();
+    
+    #endregion
 
 }

@@ -122,7 +122,7 @@ public class TestBullet : BaseProjectile
                     case BounceBehaviour.Type.realistic:
                         Bounce(ray.direction, hit.normal);
                         break;
-                    case BounceBehaviour.Type.shield:
+                    case BounceBehaviour.Type.catchAndFire:
                         transform.forward = bounceBehaviour.transform.forward;
                         if (DeathByBounces)
                         {

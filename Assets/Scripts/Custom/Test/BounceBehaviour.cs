@@ -5,7 +5,7 @@
 /// </summary>
 public class BounceBehaviour : MonoBehaviour {
 
-    public enum Type { realistic, shield, goThrough, destroy}
+    public enum Type { realistic, catchAndFire, goThrough, destroy}
 
     public Type BehaviourType;
 }
