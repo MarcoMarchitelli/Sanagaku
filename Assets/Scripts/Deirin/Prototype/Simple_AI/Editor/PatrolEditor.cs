@@ -7,7 +7,7 @@ public class PatrolEditor : Editor
 {
     SerializedProperty path, speed, waitTime, rotationAnglePerSecond, rotatesToWaypoint, OnMovementStart, OnMovementEnd, OnWaypointReached, OnPathFinished, startOnAwake;
 
-    bool showReferences, showBehaviours, showParameters, showEvents;
+    bool showReferences = true, showBehaviours = true, showParameters = true, showEvents = true;
 
     private void OnEnable()
     {

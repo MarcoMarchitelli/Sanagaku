@@ -14,7 +14,6 @@ public class CanvasBouncer : MonoBehaviour {
     //data
     RectTransform rt;
     Vector3 direction;
-    Vector2 contactPoint;
     Vector2 topRight, botLeft;
 
     #region MonoBehaviour Methods
@@ -52,25 +51,21 @@ public class CanvasBouncer : MonoBehaviour {
         //hit right wall
         if (rt.position.x + rt.rect.xMax * .5f>= topRight.x)
         {
-            contactPoint = rt.anchoredPosition;
             Bounce(Vector2.left);
         }
         //hit left wall
         if (rt.position.x - rt.rect.xMax * .5f <= botLeft.x)
         {
-            contactPoint = rt.anchoredPosition;
             Bounce(Vector2.right);
         }
         //hit bottom wall
         if (rt.position.y - rt.rect.yMax * .5f <= botLeft.y)
         {
-            contactPoint = rt.anchoredPosition;
             Bounce(Vector2.up);
         }
         //hit top wall
         if (rt.position.y + rt.rect.yMax * .5f >= topRight.y)
         {
-            contactPoint = rt.anchoredPosition;
             Bounce(Vector2.down);
         }
     }

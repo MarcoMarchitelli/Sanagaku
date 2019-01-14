@@ -1,33 +1,56 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
-public class TestBullet : BaseProjectile
+public class TestBullet : MonoBehaviour
 {
-    #region Variables
+    public enum DeathBehaviour { byTime, byBounces};
 
-    public LayerMask collisionMask;
-    public bool DeathByTime = true;
-    public bool DeathByBounces = false;
+    #region Serialized Fields
+
+    //references
     public GameObject HitSmoke;
     public TrailRenderer Trail;
 
+    //behaviours
+    public DeathBehaviour deathBehaviour = DeathBehaviour.byTime;
+    public bool speedOverLifeTime = true;
+
+    //parameters
+    public LayerMask collisionLayer;
+    public AnimationCurve speedOverLifeTimeCurve;
+    public float deathTime;
+    [Range(1,3)]
+    public int bouncesToDie;
+    public float moveSpeed;
+    public float lifeTime;
+    public int damage;
+
+    //events
+    public FloatEvent OnLifeEnd;
+
+    #endregion
+
+    #region Other Vars
+
+    int bounces;
     float timer;
     Material material;
-    Camera cam;
 
     #endregion
 
     #region Properties
-    public override int Bounces
+
+    public int Bounces
     {
         get
         {
-            return base.Bounces;
+            return bounces;
         }
 
         set
         {
-            base.Bounces = value;
-            if (Bounces >= lifeInBounce)
+            bounces = value;
+            if (Bounces >= bouncesToDie)
                 Die();
             switch (value)
             {
@@ -58,45 +81,35 @@ public class TestBullet : BaseProjectile
     private void Awake()
     {
         material = GetComponent<MeshRenderer>().material;
-        cam = Camera.main;
     }
 
     private void Update()
     {
         #region Timer
-        if (DeathByTime)
+
+        if (deathBehaviour == DeathBehaviour.byTime)
         {
             timer += Time.deltaTime;
-            if (timer >= LifeTime)
-                Die();
+            if (timer >= lifeTime)
+                OnLifeEnd.Invoke(deathTime);
         }
+
         #endregion
 
         #region Movement
-        //movement
-        transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime);
-        //if (cam.WorldToViewportPoint(new Vector3(transform.position.x - transform.localScale.x * .5f, transform.position.y, transform.position.z )).x <= 0)
-        //{
-        //    Bounce(transform.forward, Vector3.right);
-        //}
-        //else if (cam.WorldToViewportPoint(new Vector3(transform.position.x + transform.localScale.x * .5f, transform.position.y, transform.position.z)).x >= 1)
-        //{
-        //    Bounce(transform.forward, Vector3.left);
-        //}
-        //else if (cam.WorldToViewportPoint(new Vector3(transform.position.x, transform.position.y - transform.localScale.z * .5f, transform.position.z)).y <= 0)
-        //{
-        //    Die();
-        //}
-        //else if (cam.WorldToViewportPoint(new Vector3(transform.position.x, transform.position.y + transform.localScale.z * .5f, transform.position.z)).y >= 1)
-        //{
-        //    Bounce(transform.forward, Vector3.back);
-        //}
+        
+        if(deathBehaviour == DeathBehaviour.byTime)
+            transform.Translate(Vector3.forward * speedOverLifeTimeCurve.Evaluate(timer / lifeTime) * moveSpeed * Time.deltaTime);
+        else
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+
         #endregion
 
         #region Raycasting
+
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Time.deltaTime * MoveSpeed + .2f, collisionMask))
+        if (Physics.Raycast(ray, out hit, Time.deltaTime * moveSpeed + .2f, collisionLayer))
         {
             //check in case enemy hit
             TestEnemy enemyHit = hit.collider.GetComponent<TestEnemy>();
@@ -109,7 +122,7 @@ public class TestBullet : BaseProjectile
                 else
                 if (enemyHit.deathBehaviour == TestEnemy.DeathBeahviour.diesFromDamage)
                 {
-                    enemyHit.TakeDamage(Damage);
+                    enemyHit.TakeDamage(damage);
                 }
             }
 
@@ -124,7 +137,7 @@ public class TestBullet : BaseProjectile
                         break;
                     case BounceBehaviour.Type.catchAndFire:
                         transform.forward = bounceBehaviour.transform.forward;
-                        if (DeathByBounces)
+                        if (deathBehaviour == DeathBehaviour.byBounces)
                         {
                             Bounces++;
                             Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
@@ -141,10 +154,12 @@ public class TestBullet : BaseProjectile
                 return;
             }
 
-            //normal bounce behaviour
+            //if this doesn't find a bounce behaviour component
             Bounce(ray.direction, hit.normal);
         }
+
         #endregion
+
     }
 
     #endregion
@@ -162,17 +177,17 @@ public class TestBullet : BaseProjectile
         Vector3 bounceDirection = Vector3.Reflect(_direction, _normal);
         float rot = 90 - Mathf.Atan2(bounceDirection.z, bounceDirection.x) * Mathf.Rad2Deg;
         transform.eulerAngles = new Vector3(0, rot, 0);
-        if (DeathByBounces)
+        if (deathBehaviour == DeathBehaviour.byBounces)
         {
             Bounces++;
             Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
         }
     }
 
-    public override void Die()
+    public void Die()
     {
         Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
-        base.Die();
+        Destroy(gameObject);
     }
 
     #endregion

@@ -8,7 +8,7 @@ public class ScannerEditor : Editor
     SerializedProperty timeToScan, fovAngle, scanAreaLenght, obstacleLayer, OnTargetSpotted, 
         OnTargetLost, scanType, spotLightColor, detectedSpotlightColor, scanAreaRadius, canSeeThroughObstacles;
 
-    bool showParameters, showEvents, showBehaviours;
+    bool showParameters = true, showEvents = true, showBehaviours = true;
 
     private void OnEnable()
     {

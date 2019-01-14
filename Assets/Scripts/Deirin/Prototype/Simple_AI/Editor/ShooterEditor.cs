@@ -9,7 +9,7 @@ public class ShooterEditor : Editor
     SerializedProperty projectile, projectileSpawnPoint, hasTargets, projectilesIgnoreObstacles, searchForTargetsOnAwake, startsShootingOnAwake, fireRate,
         projectileSpeed, projectileLifeTime, turnRateAnglesPerSecond, obstacleLayer, OnProjectileShoot;
 
-    bool showReferences, showBehaviours, showParameters, showEvents;
+    bool showReferences = true, showBehaviours = true, showParameters = true, showEvents = true;
 
     private void OnEnable()
     {
@@ -30,6 +30,7 @@ public class ShooterEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+        EditorStyles.foldout.fontStyle = FontStyle.Bold;
 
         EditorGUILayout.Space();
 
@@ -42,7 +43,7 @@ public class ShooterEditor : Editor
 
         EditorGUILayout.Space();
 
-        showBehaviours = EditorGUILayout.Foldout(showBehaviours, "showBehaviours", true, EditorStyles.foldout);
+        showBehaviours = EditorGUILayout.Foldout(showBehaviours, "Behaviours", true, EditorStyles.foldout);
         if (showBehaviours)
         {
             EditorGUILayout.PropertyField(hasTargets);
@@ -53,7 +54,7 @@ public class ShooterEditor : Editor
 
         EditorGUILayout.Space();
 
-        showParameters = EditorGUILayout.Foldout(showParameters, "showParameters", true, EditorStyles.foldout);
+        showParameters = EditorGUILayout.Foldout(showParameters, "Parameters", true, EditorStyles.foldout);
         if (showParameters)
         {
             EditorGUILayout.PropertyField(fireRate);
@@ -67,7 +68,7 @@ public class ShooterEditor : Editor
 
         EditorGUILayout.Space();
 
-        showEvents = EditorGUILayout.Foldout(showEvents, "showEvents", true, EditorStyles.foldout);
+        showEvents = EditorGUILayout.Foldout(showEvents, "Events", true, EditorStyles.foldout);
         if (showEvents)
         {
             EditorGUILayout.PropertyField(OnProjectileShoot);

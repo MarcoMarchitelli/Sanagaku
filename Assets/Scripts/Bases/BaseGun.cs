@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseGun : MonoBehaviour, IGun {
+public class BaseGun : MonoBehaviour {
 
     [SerializeField] protected float timeBetweenShots;
     [SerializeField] protected int magazineSize;
-    [SerializeField] protected BaseProjectile projectileToShoot;
+    [SerializeField] protected Transform projectileToShoot;
     [SerializeField] protected Transform projectileSpawnPoint;
     [SerializeField] protected ParticleSystem MuzzleFlash;
 
@@ -32,7 +32,7 @@ public class BaseGun : MonoBehaviour, IGun {
         set { magazineSize = value; }
     }
 
-    public BaseProjectile ProjectileToShoot
+    public Transform ProjectileToShoot
     {
         get
         {
@@ -63,7 +63,7 @@ public class BaseGun : MonoBehaviour, IGun {
         if(timer >= TimeBetweenShots && bulletShotCount < MagazineSize)
         {
             timer = 0f;
-            BaseProjectile bulletShot = Instantiate(projectileToShoot, ProjectileSpawnPoint.position, ProjectileSpawnPoint.rotation);
+            Instantiate(projectileToShoot, ProjectileSpawnPoint.position, ProjectileSpawnPoint.rotation);
             //Destroy(bulletShot.gameObject, bulletShot.LifeTime);
             bulletShotCount++;
             if (MuzzleFlash)

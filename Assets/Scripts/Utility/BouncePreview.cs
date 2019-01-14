@@ -25,7 +25,7 @@ public class BouncePreview : MonoBehaviour
         linePoints.Clear();
         linePoints.Add(ray.origin);
 
-        for (int i = 0, j = 0; i <= Bounces; i++)
+        for (int i = 0; i <= Bounces; i++)
         {
             if (Physics.Raycast(ray, out hit, RayLenght, BounceLayer))
             {

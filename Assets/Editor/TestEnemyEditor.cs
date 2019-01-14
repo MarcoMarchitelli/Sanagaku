@@ -5,7 +5,7 @@ public class TestEnemyEditor : Editor {
 
     SerializedProperty deathParticles, deathBehaviour, BouncesNeededToDie, health, OnDeath, dealsDamageOnContact, damage;
 
-    bool showReferences, showBehaviours, showParameters, showEvents;
+    bool showReferences = true, showBehaviours = true, showParameters = true, showEvents = true;
 
     private void OnEnable()
     {

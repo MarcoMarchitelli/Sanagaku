@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4086910959150678}
   - component: {fileID: 114759568437561450}
+  - component: {fileID: 364268554467195431}
   - component: {fileID: 33201089753337646}
   - component: {fileID: 23608381718043272}
   - component: {fileID: 135275295454462712}
@@ -47,17 +48,99 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ccb02886fb20f24fa5044b8c7c22bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 16
-  lifeTime: 5
-  lifeInBounce: 30
-  damage: 1
-  collisionMask:
-    serializedVersion: 2
-    m_Bits: 512
-  DeathByTime: 0
-  DeathByBounces: 1
   HitSmoke: {fileID: 1350466065396174, guid: 0a57fd39362a9bd43a72753bac3c4bf7, type: 3}
   Trail: {fileID: 96688543450186600}
+  deathBehaviour: 0
+  speedOverLifeTime: 1
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  speedOverLifeTimeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1
+      outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  deathTime: 2
+  bouncesToDie: 0
+  moveSpeed: 15
+  lifeTime: 5
+  damage: 1
+  OnLifeEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 364268554467195431}
+        m_MethodName: StartTimer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: FloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &364268554467195431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221382952581314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258aa1563c6032246b37e316d4926e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 'Counts death time of the bullet.
+
+    Starts when bullet speed gets to 0.
+
+    Makes bullet die on end.'
+  time: 0
+  startCountingOnAwake: 0
+  repeat: 0
+  OnTimerStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnTimerEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114759568437561450}
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  timer: 0
 --- !u!33 &33201089753337646
 MeshFilter:
   m_ObjectHideFlags: 0
