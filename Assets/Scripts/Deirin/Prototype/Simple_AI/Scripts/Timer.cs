@@ -13,20 +13,18 @@ namespace Deirin.Utility
         public UnityEvent OnTimerStart, OnTimerEnd;
 
         bool countTime = false;
-        float timer;
+        [HideInInspector] public float timer;
 
         #region MonoBehaviour methods
 
         private void OnEnable()
         {
-            if(repeat)
-                OnTimerEnd.AddListener(ResetTimer);
+            OnTimerEnd.AddListener(ResetTimer);
         }
 
         private void OnDisable()
         {
-            if(repeat)
-                OnTimerEnd.RemoveListener(ResetTimer);
+            OnTimerEnd.RemoveListener(ResetTimer);
         }
 
         private void Awake()
