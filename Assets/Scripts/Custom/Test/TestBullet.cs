@@ -35,7 +35,21 @@ public class TestBullet : MonoBehaviour
     int bounces;
     float timer;
     Material material;
-    bool inHand = false;
+    // ---------------------------- NO
+    public enum State { inMovement, inHands};
+    protected State _currentState;
+    public State CurrentState
+    {
+        set {
+            ResetLifeTime();
+            _currentState = value;
+            print(name + " SONO IN STATE " + value.ToString());
+        }
+        get {
+            return _currentState;
+        }
+    }
+    // ---------------------------- NO
 
     #endregion
 
@@ -88,7 +102,7 @@ public class TestBullet : MonoBehaviour
     {
         #region Timer
 
-        if (deathBehaviour == DeathBehaviour.byTime)
+        if (deathBehaviour == DeathBehaviour.byTime && CurrentState == State.inMovement)
         {
             timer += Time.deltaTime;
             if (timer >= lifeTime)
@@ -99,7 +113,7 @@ public class TestBullet : MonoBehaviour
 
         #region Movement
 
-        if (!inHand)
+        if (CurrentState == State.inMovement)
             Move();       
 
         #endregion
@@ -136,6 +150,11 @@ public class TestBullet : MonoBehaviour
                         break;
                     case BounceBehaviour.Type.catchAndFire:
                         transform.forward = bounceBehaviour.transform.forward;
+                        PlayerController p = bounceBehaviour.GetComponentInParent<PlayerController>();
+                        if (p)
+                        {
+                            p.CatchBullet(this);
+                        }
                         if (deathBehaviour == DeathBehaviour.byBounces)
                         {
                             Bounces++;
@@ -195,6 +214,11 @@ public class TestBullet : MonoBehaviour
     {
         Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
         Destroy(gameObject);
+    }
+
+    protected void ResetLifeTime()
+    {
+        timer = 0f;
     }
 
     #endregion

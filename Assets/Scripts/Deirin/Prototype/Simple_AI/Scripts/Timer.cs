@@ -57,6 +57,7 @@ namespace Deirin.Utility
         {
             timer = 0;
             countTime = true;
+            OnTimerStart.Invoke();
         }
 
         public void StopTimer()
@@ -77,6 +78,11 @@ namespace Deirin.Utility
                 countTime = true;
             else
                 countTime = false;
+        }
+
+        public void Say(string _msg)
+        {
+            Debug.Log(_msg);
         }
 
         #endregion

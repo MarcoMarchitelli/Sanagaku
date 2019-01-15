@@ -5,16 +5,16 @@
 public class PalyerControllerEditor : Editor
 {
     //references
-    SerializedProperty walkSmoke, equippedGun, gunPoint;
+    SerializedProperty walkSmoke, equippedGun, gunPoint, projectileSpawnPoint;
 
     //behaviours
     SerializedProperty InputDirection, parry, automaticParry, dash;
 
     //parameters
-    SerializedProperty health, moveSpeed, shootInput, dashInput, parryInput, MaskToIgnore, aimLayer, parryRadius, parryTime, parryCooldown, dashDistance, dashSpeed, dashCooldown;
+    SerializedProperty health, moveSpeed, shootInput, dashInput, parryInput, MaskToIgnore, aimLayer, parryRadius, parryTime, parryCooldown, dashDistance, dashSpeed, dashCooldown, catchHoldTime;
 
     //events
-    SerializedProperty OnShoot, OnParryStart, OnParryEnd, OnDashStart, OnDashEnd;
+    SerializedProperty OnShoot, OnParryStart, OnParryEnd, OnDashStart, OnDashEnd, OnBulletCatch, OnBulletParry;
 
     bool showReferences = true, showBehaviours = true, showParameters = true, showEvents = true;
 
@@ -23,6 +23,7 @@ public class PalyerControllerEditor : Editor
         walkSmoke = serializedObject.FindProperty("walkSmoke");
         equippedGun = serializedObject.FindProperty("equippedGun");
         gunPoint = serializedObject.FindProperty("gunPoint");
+        projectileSpawnPoint = serializedObject.FindProperty("projectileSpawnPoint");
 
         InputDirection = serializedObject.FindProperty("InputDirection");
         parry = serializedObject.FindProperty("parry");
@@ -42,12 +43,15 @@ public class PalyerControllerEditor : Editor
         dashDistance = serializedObject.FindProperty("dashDistance");
         dashSpeed = serializedObject.FindProperty("dashSpeed");
         dashCooldown = serializedObject.FindProperty("dashCooldown");
+        catchHoldTime = serializedObject.FindProperty("catchHoldTime");
 
         OnShoot = serializedObject.FindProperty("OnShoot");
         OnParryStart = serializedObject.FindProperty("OnParryStart");
         OnParryEnd = serializedObject.FindProperty("OnParryEnd");
         OnDashStart = serializedObject.FindProperty("OnDashStart");
         OnDashEnd = serializedObject.FindProperty("OnDashEnd");
+        OnBulletCatch = serializedObject.FindProperty("OnBulletCatch");
+        OnBulletParry = serializedObject.FindProperty("OnBulletParry");
     }
 
     public override void OnInspectorGUI()
@@ -63,6 +67,7 @@ public class PalyerControllerEditor : Editor
             EditorGUILayout.PropertyField(gunPoint);
             EditorGUILayout.PropertyField(equippedGun);
             EditorGUILayout.PropertyField(walkSmoke);
+            EditorGUILayout.PropertyField(projectileSpawnPoint);
         }
 
         EditorGUILayout.Space();
@@ -96,6 +101,7 @@ public class PalyerControllerEditor : Editor
                 EditorGUILayout.PropertyField(parryRadius);
                 EditorGUILayout.PropertyField(parryTime);
                 EditorGUILayout.PropertyField(parryCooldown);
+                EditorGUILayout.PropertyField(catchHoldTime);
             }
             if (dash.boolValue)
             {
@@ -118,6 +124,8 @@ public class PalyerControllerEditor : Editor
             {
                 EditorGUILayout.PropertyField(OnParryStart);
                 EditorGUILayout.PropertyField(OnParryEnd);
+                EditorGUILayout.PropertyField(OnBulletCatch);
+                EditorGUILayout.PropertyField(OnBulletParry);
             }
             if (dash.boolValue)
             {

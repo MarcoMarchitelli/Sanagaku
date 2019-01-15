@@ -13,6 +13,7 @@ public class PlayerController : BaseUnit, IShooter
     public ParticleSystem walkSmoke;
     [SerializeField] BaseGun equippedGun;
     public Transform gunPoint;
+    public Transform projectileSpawnPoint;
 
     //Behaviours
     public DirectionType InputDirection;
@@ -30,6 +31,7 @@ public class PlayerController : BaseUnit, IShooter
     public LayerMask aimLayer;
     [Tooltip("Changes apply at game start")] public float parryRadius = 2f;
     public float parryTime = .5f;
+    public float catchHoldTime = 2f;
     public float parryCooldown = 2f;
     public float dashDistance = 10f;
     [Tooltip("Measured in meters per second")] public float dashSpeed = 5f;
@@ -37,7 +39,7 @@ public class PlayerController : BaseUnit, IShooter
 
     //events
     public UnityEvent OnShoot;
-    public FloatEvent OnParryStart, OnParryEnd, OnDashStart, OnDashEnd;
+    public FloatEvent OnParryStart, OnParryEnd, OnDashStart, OnDashEnd, OnBulletCatch, OnBulletParry;
 
     #endregion
 
@@ -56,6 +58,8 @@ public class PlayerController : BaseUnit, IShooter
     bool isParrying = false;
     bool canDash = true;
     bool canMove = true;
+
+    TestBullet bulletInHands;
 
     #endregion
 
@@ -106,7 +110,14 @@ public class PlayerController : BaseUnit, IShooter
             catchNFireArea.radius = parryRadius;
         }
         if (parry && automaticParry)
+        {
             isParrying = true;
+            BounceBehaviour bb = catchNFireArea.GetComponent<BounceBehaviour>();
+            if (bb)
+            {
+                bb.BehaviourType = BounceBehaviour.Type.catchAndFire;
+            }
+        }
         cam = Camera.main;
     }
 
@@ -144,8 +155,7 @@ public class PlayerController : BaseUnit, IShooter
 
         //DashInput
         if (dash && canDash && Input.GetKeyDown(dashInput))
-        {
-            print(canDash);
+        { 
             StartDash();
         }
 
@@ -162,6 +172,12 @@ public class PlayerController : BaseUnit, IShooter
         }
 
         #endregion
+
+        if (bulletInHands)
+        {
+            bulletInHands.transform.position = projectileSpawnPoint.transform.position;
+            bulletInHands.transform.rotation = projectileSpawnPoint.rotation;
+        }
 
         if (moveDirection == Vector3.zero)
             IsMoving = false;
@@ -261,6 +277,32 @@ public class PlayerController : BaseUnit, IShooter
         }
 
         EndDash();
+    }
+
+    public void CatchBullet(TestBullet _b)
+    {
+        if (!bulletInHands)
+        {
+            bulletInHands = _b;
+            bulletInHands.CurrentState = TestBullet.State.inHands;
+            bulletInHands.transform.position = projectileSpawnPoint.transform.position;
+            bulletInHands.transform.rotation = projectileSpawnPoint.rotation;
+            print("HO PRESO UN BULLET");
+            OnBulletCatch.Invoke(catchHoldTime);
+        }
+    }
+
+    public void ParryBullet()
+    {
+        if (!bulletInHands)
+        {
+            Debug.LogWarning(name + " has no bullet to parry!");
+            return;
+        }
+
+        bulletInHands.CurrentState = TestBullet.State.inMovement;
+        bulletInHands = null;
+        print("ORA QUEL BULLET LO PARRYO");
     }
 
     //BaseUnit.Die();
