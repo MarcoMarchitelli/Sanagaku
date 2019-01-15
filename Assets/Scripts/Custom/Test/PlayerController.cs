@@ -279,6 +279,7 @@ public class PlayerController : BaseUnit, IShooter
         EndDash();
     }
 
+    //------------------- ITS SHIT
     public void CatchBullet(TestBullet _b)
     {
         if (!bulletInHands)
@@ -304,6 +305,7 @@ public class PlayerController : BaseUnit, IShooter
         bulletInHands = null;
         print("ORA QUEL BULLET LO PARRYO");
     }
+    //----------------------ENT
 
     //BaseUnit.Die();
 

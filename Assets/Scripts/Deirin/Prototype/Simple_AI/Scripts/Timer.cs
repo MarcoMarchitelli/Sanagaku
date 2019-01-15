@@ -88,5 +88,4 @@ namespace Deirin.Utility
         #endregion
 
     }
-
 }
