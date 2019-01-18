@@ -2,268 +2,257 @@
 using UnityEngine.Events;
 using System.Collections;
 
-[RequireComponent(typeof(Rigidbody))]
-public class PlayerController : BaseUnit, IShooter
+namespace  Sangaku
 {
-    
-    #region Serialized Fields
-
-    //References
-    public ParticleSystem walkSmoke;
-    [SerializeField] BaseGun equippedGun;
-    public Transform gunPoint;
-    public Transform projectileSpawnPoint;
-
-    //Behaviours
-    
-    public bool parry = true;
-    public bool automaticParry = false;
-    public bool dash = true;
-
-    //Parameters
-    // --BaseUnit.Health
-    // --BaseUnit.MoveSpeed
-
-    public LayerMask MaskToIgnore;
-    public LayerMask aimLayer;
-    [Tooltip("Changes apply at game start")] public float parryRadius = 2f;
-    public float parryTime = .5f;
-    public float catchHoldTime = 2f;
-    public float parryCooldown = 2f;
-    public float dashDistance = 10f;
-    [Tooltip("Measured in meters per second")] public float dashSpeed = 5f;
-    public float dashCooldown = 3f;
-
-    //events
-    public UnityEvent OnShoot;
-    public FloatEvent OnParryStart, OnParryEnd, OnDashStart, OnDashEnd, OnBulletCatch, OnBulletParry;
-
-    #endregion
-
-    #region Other Vars
-
-    
-    
-    Vector3 playerDirection;
-
-    SphereCollider catchNFireArea;
-    
-    Rigidbody rb;
-
-    bool isMoving = false;
-    bool canParry = true;
-    bool isParrying = false;
-    bool canDash = true;
-    
-
-    TestBullet bulletInHands;
-
-    #endregion
-
-    #region Properties
-
-    public BaseGun EquippedGun
+    [RequireComponent(typeof(Rigidbody))]
+    public class PlayerController : BaseUnit, IShooter
     {
-        get
-        {
-            return equippedGun;
-        }
+        #region Serialized Fields
 
-        set
-        {
-            equippedGun = value;
-        }
-    }
+        //References
+        public ParticleSystem walkSmoke;
+        [SerializeField] BaseGun equippedGun;
+        public Transform gunPoint;
+        public Transform projectileSpawnPoint;
 
-    public bool IsMoving
-    {
-        get { return isMoving; }
-        private set
-        {
-            isMoving = value;
-            if (!walkSmoke)
-                return;
-            if (isMoving)
-                walkSmoke.Play();
-            else
-                walkSmoke.Stop();
-        }
-    }
+        //Behaviours
 
-    #endregion
+        public bool parry = true;
+        public bool automaticParry = false;
+        public bool dash = true;
 
-    #region MonoBehaviour methods
+        //Parameters
+        // --BaseUnit.Health
+        // --BaseUnit.MoveSpeed
 
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-        catchNFireArea = GetComponentInChildren<SphereCollider>();
-        if (!catchNFireArea)
+        public LayerMask MaskToIgnore;
+        public LayerMask aimLayer;
+        [Tooltip("Changes apply at game start")] public float parryRadius = 2f;
+        public float parryTime = .5f;
+        public float catchHoldTime = 2f;
+        public float parryCooldown = 2f;
+        public float dashDistance = 10f;
+        [Tooltip("Measured in meters per second")] public float dashSpeed = 5f;
+        public float dashCooldown = 3f;
+
+        //events
+        public UnityEvent OnShoot;
+        public FloatEvent OnParryStart, OnParryEnd, OnDashStart, OnDashEnd, OnBulletCatch, OnBulletParry;
+
+        #endregion
+
+        #region Other Vars
+
+
+
+        Vector3 playerDirection;
+
+        SphereCollider catchNFireArea;
+
+        Rigidbody rb;
+
+        bool isMoving = false;
+        bool canParry = true;
+        bool isParrying = false;
+        bool canDash = true;
+
+
+        TestBullet bulletInHands;
+
+        #endregion
+
+        #region Properties
+
+        public BaseGun EquippedGun
         {
-            Debug.LogWarning(name + " did not find a catchAndFire collider!");
-        }
-        else
-        {
-            catchNFireArea.radius = parryRadius;
-        }
-        if (parry && automaticParry)
-        {
-            isParrying = true;
-            BounceBehaviour bb = catchNFireArea.GetComponent<BounceBehaviour>();
-            if (bb)
+            get
             {
-                bb.BehaviourType = BounceBehaviour.Type.catchAndFire;
+                return equippedGun;
+            }
+
+            set
+            {
+                equippedGun = value;
             }
         }
-        cam = Camera.main;
-    }
 
-    void Update()
-    {
-        #region Aim
-
-        //Aim Input
-        RaycastHit hitInfo;
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hitInfo, int.MaxValue, aimLayer))
+        public bool IsMoving
         {
-            transform.LookAt(new Vector3(hitInfo.point.x, transform.position.y, hitInfo.point.z));
+            get { return isMoving; }
+            private set
+            {
+                isMoving = value;
+                if (!walkSmoke)
+                    return;
+                if (isMoving)
+                    walkSmoke.Play();
+                else
+                    walkSmoke.Stop();
+            }
         }
 
         #endregion
 
-        if (bulletInHands)
+        #region MonoBehaviour methods
+
+        void Awake()
         {
-            bulletInHands.transform.position = projectileSpawnPoint.transform.position;
-            bulletInHands.transform.rotation = projectileSpawnPoint.rotation;
+            rb = GetComponent<Rigidbody>();
+            catchNFireArea = GetComponentInChildren<SphereCollider>();
+            if (!catchNFireArea)
+            {
+                Debug.LogWarning(name + " did not find a catchAndFire collider!");
+            }
+            else
+            {
+                catchNFireArea.radius = parryRadius;
+            }
+            if (parry && automaticParry)
+            {
+                isParrying = true;
+                BounceBehaviour bb = catchNFireArea.GetComponent<BounceBehaviour>();
+                if (bb)
+                {
+                    bb.BehaviourType = BounceBehaviour.Type.catchAndFire;
+                }
+            }
+            cam = Camera.main;
         }
 
-        if (moveDirection == Vector3.zero)
-            IsMoving = false;
-        else
-            IsMoving = true;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        //check for enemy contact damage
-        TestEnemy t = collision.collider.GetComponent<TestEnemy>();
-        if (t && t.dealsDamageOnContact)
-            TakeDamage(t.damage);
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (parry)
+        void Update()
         {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, parryRadius);
-        }
-    }
+            if (bulletInHands)
+            {
+                bulletInHands.transform.position = projectileSpawnPoint.transform.position;
+                bulletInHands.transform.rotation = projectileSpawnPoint.rotation;
+            }
 
-    #endregion
-
-    #region PlayeController methods
-
-    public void EquipGun(BaseGun gunToEquip)
-    {
-        if (EquippedGun)
-            Destroy(EquippedGun.gameObject);
-        EquippedGun = gunToEquip;
-        EquippedGun.transform.parent = gunPoint;
-        EquippedGun.transform.position = gunPoint.position;
-        EquippedGun.transform.rotation = gunPoint.rotation;
-    }
-
-    public override void TakeDamage(int amount)
-    {
-        if(Counters.instance)
-            Counters.instance.UpdateHits(amount);
-        base.TakeDamage(amount);
-    }
-
-    public void SetParryDoability(bool f)
-    {
-        canParry = f;
-    }
-
-    public void StartParry()
-    {
-        isParrying = true;
-        canParry = false;
-        OnParryStart.Invoke(parryTime);
-    }
-
-    public void StopParry()
-    {
-        isParrying = false;
-        OnParryEnd.Invoke(parryCooldown);
-    }
-
-    public void StartDash()
-    {
-        canDash = false;
-        canMove = false;
-        StartCoroutine(DashRoutine());
-    }
-
-    public void EndDash()
-    {
-        canMove = true;
-        OnDashEnd.Invoke(dashCooldown);
-    }
-
-    public void SetDashDoability(bool f)
-    {
-        canDash = f;
-    }
-
-    IEnumerator DashRoutine()
-    {
-        Vector3 targetPos = rb.position + transform.forward * dashDistance;
-
-        //perform the dash
-        while (rb.position != targetPos)
-        {
-            rb.position = Vector3.MoveTowards(rb.position, targetPos, dashSpeed * Time.deltaTime); // --> remember we use fixed bcause we are moving a rigidbody
-            yield return null;
+            if (moveDirection == Vector3.zero)
+                IsMoving = false;
+            else
+                IsMoving = true;
         }
 
-        EndDash();
-    }
-
-    //------------------- ITS SHIT
-    public void CatchBullet(TestBullet _b)
-    {
-        if (!bulletInHands)
+        private void OnCollisionEnter(Collision collision)
         {
-            bulletInHands = _b;
-            bulletInHands.CurrentState = TestBullet.State.inHands;
-            bulletInHands.transform.position = projectileSpawnPoint.transform.position;
-            bulletInHands.transform.rotation = projectileSpawnPoint.rotation;
-            print("HO PRESO UN BULLET");
-            OnBulletCatch.Invoke(catchHoldTime);
-        }
-    }
-
-    public void ParryBullet()
-    {
-        if (!bulletInHands)
-        {
-            Debug.LogWarning(name + " has no bullet to parry!");
-            return;
+            //check for enemy contact damage
+            TestEnemy t = collision.collider.GetComponent<TestEnemy>();
+            if (t && t.dealsDamageOnContact)
+                TakeDamage(t.damage);
         }
 
-        bulletInHands.CurrentState = TestBullet.State.inMovement;
-        bulletInHands = null;
-        print("ORA QUEL BULLET LO PARRYO");
-    }
-    //----------------------ENT
+        private void OnDrawGizmos()
+        {
+            if (parry)
+            {
+                Gizmos.color = Color.green;
+                Gizmos.DrawWireSphere(transform.position, parryRadius);
+            }
+        }
 
-    //BaseUnit.Die();
+        #endregion
 
-    #endregion
+        #region PlayeController methods
 
+        public void EquipGun(BaseGun gunToEquip)
+        {
+            if (EquippedGun)
+                Destroy(EquippedGun.gameObject);
+            EquippedGun = gunToEquip;
+            EquippedGun.transform.parent = gunPoint;
+            EquippedGun.transform.position = gunPoint.position;
+            EquippedGun.transform.rotation = gunPoint.rotation;
+        }
+
+        public override void TakeDamage(int amount)
+        {
+            if (Counters.instance)
+                Counters.instance.UpdateHits(amount);
+            base.TakeDamage(amount);
+        }
+
+        public void SetParryDoability(bool f)
+        {
+            canParry = f;
+        }
+
+        public void StartParry()
+        {
+            isParrying = true;
+            canParry = false;
+            OnParryStart.Invoke(parryTime);
+        }
+
+        public void StopParry()
+        {
+            isParrying = false;
+            OnParryEnd.Invoke(parryCooldown);
+        }
+
+        public void StartDash()
+        {
+            canDash = false;
+            canMove = false;
+            StartCoroutine(DashRoutine());
+        }
+
+        public void EndDash()
+        {
+            canMove = true;
+            OnDashEnd.Invoke(dashCooldown);
+        }
+
+        public void SetDashDoability(bool f)
+        {
+            canDash = f;
+        }
+
+        IEnumerator DashRoutine()
+        {
+            Vector3 targetPos = rb.position + transform.forward * dashDistance;
+
+            //perform the dash
+            while (rb.position != targetPos)
+            {
+                rb.position = Vector3.MoveTowards(rb.position, targetPos, dashSpeed * Time.deltaTime); // --> remember we use fixed bcause we are moving a rigidbody
+                yield return null;
+            }
+
+            EndDash();
+        }
+
+        //------------------- ITS SHIT
+        public void CatchBullet(TestBullet _b)
+        {
+            if (!bulletInHands)
+            {
+                bulletInHands = _b;
+                bulletInHands.CurrentState = TestBullet.State.inHands;
+                bulletInHands.transform.position = projectileSpawnPoint.transform.position;
+                bulletInHands.transform.rotation = projectileSpawnPoint.rotation;
+                print("HO PRESO UN BULLET");
+                OnBulletCatch.Invoke(catchHoldTime);
+            }
+        }
+
+        public void ParryBullet()
+        {
+            if (!bulletInHands)
+            {
+                Debug.LogWarning(name + " has no bullet to parry!");
+                return;
+            }
+
+            bulletInHands.CurrentState = TestBullet.State.inMovement;
+            bulletInHands = null;
+            print("ORA QUEL BULLET LO PARRYO");
+        }
+        //----------------------ENT
+
+        //BaseUnit.Die();
+
+        #endregion
+    } 
 }
 
 

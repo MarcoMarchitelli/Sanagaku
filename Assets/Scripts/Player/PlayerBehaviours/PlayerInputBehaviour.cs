@@ -118,7 +118,7 @@ namespace Sangaku
             {
                 MoveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
             }
-            else if (InputDirection == DirectionType.Camera)
+            else if (InputDirection == DirectionType.Camera && cam != null)
             {
                 MoveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
                 cameraBasedDirection = cam.transform.TransformDirection(MoveDirection);

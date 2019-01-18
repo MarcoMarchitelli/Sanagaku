@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Sangaku
 {
@@ -10,6 +11,17 @@ namespace Sangaku
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerMovementBehaviour : MonoBehaviour, IBehaviour
     {
+        #region Events
+        /// <summary>
+        /// Evento lanciato all'inzio del movimento
+        /// </summary>
+        [SerializeField] UnityEvent OnMovementStart;
+        /// <summary>
+        /// Evento lanciato alla fine del movimento
+        /// </summary>
+        [SerializeField] UnityEvent OnMovementStop;
+        #endregion
+
         /// <summary>
         /// Riferimento all'entitià che controlla il Behaviour
         /// </summary>
@@ -50,6 +62,11 @@ namespace Sangaku
         public void SetMoveDirection(Vector3 _moveDirection)
         {
             moveDirection = _moveDirection;
+
+            if (moveDirection == Vector3.zero)
+                OnMovementStop.Invoke();
+            else
+                OnMovementStart.Invoke();
         }
 
         /// <summary>
@@ -58,7 +75,7 @@ namespace Sangaku
         /// <param name="_moveDirection"></param>
         void Move()
         {
-            rBody.MovePosition(rBody.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
+            rBody.MovePosition(rBody.position + moveDirection * moveSpeed * Time.fixedDeltaTime);         
         }
 
         /// <summary>
