@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using Sangaku;
 
 public class TestBullet : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class TestBullet : MonoBehaviour
     public int damage;
 
     //events
-    public FloatEvent OnLifeEnd;
+    public UnityFloatEvent OnLifeEnd;
 
     #endregion
 
@@ -140,30 +141,30 @@ public class TestBullet : MonoBehaviour
             }
 
             //check for other obj hit behaviours
-            BounceBehaviour bounceBehaviour = hit.collider.GetComponent<BounceBehaviour>();
+            BounceOnBehaviour bounceBehaviour = hit.collider.GetComponent<BounceOnBehaviour>();
             if (bounceBehaviour)
             {
                 switch (bounceBehaviour.BehaviourType)
                 {
-                    case BounceBehaviour.Type.realistic:
+                    case BounceOnBehaviour.Type.realistic:
                         Bounce(ray.direction, hit.normal);
                         break;
-                    case BounceBehaviour.Type.catchAndFire:
+                    case BounceOnBehaviour.Type.catchAndFire:
                         transform.forward = bounceBehaviour.transform.forward;
-                        PlayerController p = bounceBehaviour.GetComponentInParent<PlayerController>();
-                        if (p)
-                        {
-                            p.CatchBullet(this);
-                        }
+                        //PlayerController p = bounceBehaviour.GetComponentInParent<PlayerController>();
+                        //if (p)
+                        //{
+                        //    p.CatchBullet(this);
+                        //}
                         if (deathBehaviour == DeathBehaviour.byBounces)
                         {
                             Bounces++;
                             Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
                         }
                         break;
-                    case BounceBehaviour.Type.goThrough:
+                    case BounceOnBehaviour.Type.goThrough:
                         break;
-                    case BounceBehaviour.Type.destroy:
+                    case BounceOnBehaviour.Type.destroy:
                         Die();
                         break;
                     default:

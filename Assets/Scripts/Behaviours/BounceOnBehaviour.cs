@@ -1,14 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Sangaku
 {
     /// <summary>
-    /// Behaviour che gestisce l'accumulo di mana
+    /// Tells the bullet that hits this object how to behave. Requires a collider.
     /// </summary>
-    public class PlayerManaBehaviour : MonoBehaviour, IBehaviour
+    [RequireComponent(typeof(Collider))]
+    public class BounceOnBehaviour : MonoBehaviour, IBehaviour
     {
+        public enum Type { realistic = 1, catchAndFire = 2, goThrough = 3, destroy = 4 }
+        [Tooltip("1 = realistic, 2 = CNF, 3 = goThrough, 4 = destroy")] public Type BehaviourType;
+
         /// <summary>
         /// Riferimento all'entitià che controlla il Behaviour
         /// </summary>
@@ -27,5 +29,7 @@ namespace Sangaku
             Entity = _entity;
             IsSetupped = true;
         }
+
     }
+
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Sangaku
 {
@@ -11,5 +12,7 @@ namespace Sangaku
         /// Lista di Behaviour dell'entità
         /// </summary>
         List<IBehaviour> Behaviours { get; }
+
+        Animator StateMachine { get; }
     }
 }

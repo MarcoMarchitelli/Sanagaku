@@ -1,7 +1,8 @@
 ﻿using UnityEditor;
+using Sangaku;
 
-[CustomEditor(typeof(PlayerController))]
-[CanEditMultipleObjects]
+//[CustomEditor(typeof(PlayerController))]
+//[CanEditMultipleObjects]
 public class PalyerControllerEditor : Editor
 {
     //references

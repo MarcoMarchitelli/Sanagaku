@@ -14,7 +14,7 @@ namespace Sangaku
         /// <summary>
         /// Evento lanciato alla pressione del bottone di dash
         /// </summary>
-        [SerializeField] UnityEvent OnDashPressed;
+        [SerializeField] UnityVector3Event OnDashPressed;
         /// <summary>
         /// Evento lanciato alla pressione del bottone di shot
         /// </summary>
@@ -139,7 +139,7 @@ namespace Sangaku
             //DashInput
             if (Input.GetKeyDown(dashInput))
             {
-                OnDashPressed.Invoke();
+                OnDashPressed.Invoke(MoveDirection);
             }
         }
     }

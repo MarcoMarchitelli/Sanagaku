@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Sangaku;
 
 public class CameraEdgeColliderController : MonoBehaviour {
 
@@ -8,10 +9,10 @@ public class CameraEdgeColliderController : MonoBehaviour {
     public Transform Player;
 
     [Header("Wall Behaviours")]
-    public BounceBehaviour.Type LeftWallBehaviour;
-    public BounceBehaviour.Type RightWallBehaviour;
-    public BounceBehaviour.Type BotWallBehaviour;
-    public BounceBehaviour.Type TopWallBehaviour;
+    public BounceOnBehaviour.Type LeftWallBehaviour;
+    public BounceOnBehaviour.Type RightWallBehaviour;
+    public BounceOnBehaviour.Type BotWallBehaviour;
+    public BounceOnBehaviour.Type TopWallBehaviour;
     #endregion
 
     #region Variables
@@ -65,10 +66,10 @@ public class CameraEdgeColliderController : MonoBehaviour {
         InstantiatedBotWall.localScale = new Vector3(xScreenSize, InstantiatedBotWall.localScale.y, InstantiatedBotWall.localScale.z);
 
         //get bounce behaviour components
-        BounceBehaviour leftBehaviour = InstantiatedLeftWall.GetComponent<BounceBehaviour>();
-        BounceBehaviour rightBehaviour = InstantiatedRightWall.GetComponent<BounceBehaviour>();
-        BounceBehaviour topBehaviour = InstantiatedTopWall.GetComponent<BounceBehaviour>();
-        BounceBehaviour botBehaviour = InstantiatedBotWall.GetComponent<BounceBehaviour>();
+        BounceOnBehaviour leftBehaviour = InstantiatedLeftWall.GetComponent<BounceOnBehaviour>();
+        BounceOnBehaviour rightBehaviour = InstantiatedRightWall.GetComponent<BounceOnBehaviour>();
+        BounceOnBehaviour topBehaviour = InstantiatedTopWall.GetComponent<BounceOnBehaviour>();
+        BounceOnBehaviour botBehaviour = InstantiatedBotWall.GetComponent<BounceOnBehaviour>();
 
         //sets the behaviour
         leftBehaviour.BehaviourType = LeftWallBehaviour;

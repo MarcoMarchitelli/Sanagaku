@@ -1,13 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Sangaku
 {
-    /// <summary>
-    /// Behaviour che gestisc lo sparo
-    /// </summary>
-    public class ShootBehaviour : MonoBehaviour, IBehaviour
+    public class DestroyBehaviour : MonoBehaviour, IBehaviour
     {
         /// <summary>
         /// Riferimento all'entitià che controlla il Behaviour
@@ -27,5 +22,24 @@ namespace Sangaku
             Entity = _entity;
             IsSetupped = true;
         }
-    } 
+
+        /// <summary>
+        /// Destroys the gameObject
+        /// </summary>
+        public void Destroy()
+        {
+            Destroy(gameObject);
+        }
+
+        /// <summary>
+        /// Destroys the gameObject after a given time
+        /// </summary>
+        /// <param name="_time"></param>
+        public void DestroyAfter(float _time)
+        {
+            Destroy(gameObject, _time);
+        }
+
+    }
+
 }

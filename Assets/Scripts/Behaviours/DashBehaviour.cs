@@ -23,6 +23,15 @@ namespace Sangaku
         #endregion
 
         /// <summary>
+        /// Riferimento all'entitià che controlla il Behaviour
+        /// </summary>
+        public IEntity Entity { get; private set; }
+        /// <summary>
+        /// True se il Behaviour è stato setuppato, false altrimenti
+        /// </summary>
+        public bool IsSetupped { get; private set; }
+
+        /// <summary>
         /// Distanza di dash
         /// </summary>
         [SerializeField] float dashDistance = 10f;
@@ -36,14 +45,6 @@ namespace Sangaku
         /// </summary>
         [SerializeField] float dashCooldown = 3f;
 
-        /// <summary>
-        /// Riferimento all'entitià che controlla il Behaviour
-        /// </summary>
-        public IEntity Entity { get; private set; }
-        /// <summary>
-        /// True se il Behaviour è stato setuppato, false altrimenti
-        /// </summary>
-        public bool IsSetupped { get; private set; }
 
         /// <summary>
         /// Riferimento al Rigidbody
@@ -64,21 +65,23 @@ namespace Sangaku
         /// <summary>
         /// Funzione che esegue il dash
         /// </summary>
-        public void Dash()
+        public void Dash(Vector3 _dashDirection)
         {
-            if (IsSetupped)
-                StartCoroutine(DashRoutine());
+            if (IsSetupped && _dashDirection != Vector3.zero)
+            {
+                StartCoroutine(DashRoutine(_dashDirection));
+            }
         }
 
         /// <summary>
         /// Corutine che esegue il dash in Fixed Update
         /// </summary>
         /// <returns></returns>
-        IEnumerator DashRoutine()
+        IEnumerator DashRoutine(Vector3 _direction)
         {
             OnDashStart.Invoke();
 
-            Vector3 targetPos = rBody.position + transform.forward * dashDistance;
+            Vector3 targetPos = rBody.position + _direction * dashDistance;
             WaitForFixedUpdate wfu = new WaitForFixedUpdate();
 
             //perform the dash
@@ -91,5 +94,6 @@ namespace Sangaku
 
             OnDashEnd.Invoke(dashCooldown);
         }
+
     }
 }

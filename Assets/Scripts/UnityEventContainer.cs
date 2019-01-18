@@ -22,4 +22,10 @@ namespace Sangaku
     /// </summary>
     [System.Serializable]
     public class UnityVector3Event : UnityEvent<Vector3> { }
+
+    /// <summary>
+    /// Evento di unity void
+    /// </summary>
+    [System.Serializable]
+    public class UnityVoidEvent : UnityEvent { }
 }
