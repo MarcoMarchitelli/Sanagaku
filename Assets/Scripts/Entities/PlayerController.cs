@@ -26,14 +26,12 @@ namespace  Sangaku
         // --BaseUnit.MoveSpeed
 
         public LayerMask MaskToIgnore;
-        public LayerMask aimLayer;
+        
         [Tooltip("Changes apply at game start")] public float parryRadius = 2f;
         public float parryTime = .5f;
         public float catchHoldTime = 2f;
         public float parryCooldown = 2f;
-        public float dashDistance = 10f;
-        [Tooltip("Measured in meters per second")] public float dashSpeed = 5f;
-        public float dashCooldown = 3f;
+
 
         //events
         public UnityEvent OnShoot;
@@ -207,19 +205,7 @@ namespace  Sangaku
             canDash = f;
         }
 
-        IEnumerator DashRoutine()
-        {
-            Vector3 targetPos = rb.position + transform.forward * dashDistance;
 
-            //perform the dash
-            while (rb.position != targetPos)
-            {
-                rb.position = Vector3.MoveTowards(rb.position, targetPos, dashSpeed * Time.deltaTime); // --> remember we use fixed bcause we are moving a rigidbody
-                yield return null;
-            }
-
-            EndDash();
-        }
 
         //------------------- ITS SHIT
         public void CatchBullet(TestBullet _b)

@@ -87,7 +87,6 @@ namespace Sangaku
         /// Eseguo il setup del behaviour
         /// </summary>
         /// <param name="_entity"></param>
-        /// <param name="_camera"></param>
         public void Setup(IEntity _entity)
         {
             Entity = _entity;

@@ -37,7 +37,7 @@ namespace Sangaku
         [SerializeField] float moveSpeed;
 
         /// <summary>
-        /// Rieirmento al Rigidbody
+        /// Riferimento al Rigidbody
         /// </summary>
         Rigidbody rBody;
         /// <summary>
@@ -49,10 +49,11 @@ namespace Sangaku
         /// Eseguo il setup del behaviour
         /// </summary>
         /// <param name="_entity"></param>
-        /// <param name="_camera"></param>
         public void Setup(IEntity _entity)
         {
             Entity = _entity;
+            rBody = GetComponent<Rigidbody>();
+            IsSetupped = true;
         }
 
         /// <summary>
