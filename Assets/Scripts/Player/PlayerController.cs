@@ -144,12 +144,6 @@ public class PlayerController : BaseUnit, IShooter
             IsMoving = true;
     }
 
-    private void FixedUpdate()
-    {
-        if(canMove)
-            rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         //check for enemy contact damage

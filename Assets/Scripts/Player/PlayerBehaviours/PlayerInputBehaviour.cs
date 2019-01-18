@@ -48,6 +48,10 @@ namespace Sangaku
         /// Riferimento all'entitià che controlla il Behaviour
         /// </summary>
         public IEntity Entity { get; private set; }
+        /// <summary>
+        /// True se il Behaviour è stato setuppato, false altrimenti
+        /// </summary>
+        public bool IsSetupped { get; private set; }
 
         /// <summary>
         /// Enumerativo che indica il tipo di movimento che si vuole
@@ -84,10 +88,11 @@ namespace Sangaku
         /// </summary>
         /// <param name="_entity"></param>
         /// <param name="_camera"></param>
-        public void Setup(IEntity _entity, Camera _camera)
+        public void Setup(IEntity _entity)
         {
             Entity = _entity;
-            cam = _camera;
+            cam = Camera.main;
+            IsSetupped = true;
         }
 
         /// <summary>
@@ -95,7 +100,8 @@ namespace Sangaku
         /// </summary>
         void Update()
         {
-            ReadInput();
+            if (IsSetupped)
+                ReadInput(); 
         }
 
         /// <summary>
