@@ -46,6 +46,11 @@ namespace Sangaku
         public bool IsSetupped { get; private set; }
 
         /// <summary>
+        /// Riferimento al Rigidbody
+        /// </summary>
+        Rigidbody rBody;
+
+        /// <summary>
         /// Eseguo il setup del behaviour
         /// </summary>
         /// <param name="_entity"></param>
@@ -61,13 +66,9 @@ namespace Sangaku
         /// </summary>
         public void Dash()
         {
-            StartCoroutine(DashRoutine());
+            if (IsSetupped)
+                StartCoroutine(DashRoutine());
         }
-
-        /// <summary>
-        /// Riferimento al Rigidbody
-        /// </summary>
-        Rigidbody rBody;
 
         /// <summary>
         /// Corutine che esegue il dash in Fixed Update
@@ -90,5 +91,5 @@ namespace Sangaku
 
             OnDashEnd.Invoke(dashCooldown);
         }
-    } 
+    }
 }

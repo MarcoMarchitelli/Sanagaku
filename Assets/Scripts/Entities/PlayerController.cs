@@ -191,7 +191,7 @@ namespace  Sangaku
         {
             canDash = false;
             canMove = false;
-            StartCoroutine(DashRoutine());
+            
         }
 
         public void EndDash()
@@ -204,8 +204,6 @@ namespace  Sangaku
         {
             canDash = f;
         }
-
-
 
         //------------------- ITS SHIT
         public void CatchBullet(TestBullet _b)
