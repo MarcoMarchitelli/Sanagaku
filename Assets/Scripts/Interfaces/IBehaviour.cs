@@ -5,15 +5,9 @@
     /// </summary>
     public interface IBehaviour
     {
+        /// <summary>
+        /// Entità che controlla il Behaviour
+        /// </summary>
         IEntity Entity { get; }
-
-        /// <summary>
-        /// Funzione che avvia una Behaviour
-        /// </summary>
-        void StartBehaviour();
-        /// <summary>
-        /// Funzione che ferma una Behaviour
-        /// </summary>
-        void StopBehaviour();
     } 
 }

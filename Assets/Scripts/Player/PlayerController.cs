@@ -5,8 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : BaseUnit, IShooter
 {
-    public enum DirectionType { Global, Camera };
-
+    
     #region Serialized Fields
 
     //References
@@ -16,7 +15,7 @@ public class PlayerController : BaseUnit, IShooter
     public Transform projectileSpawnPoint;
 
     //Behaviours
-    public DirectionType InputDirection;
+    
     public bool parry = true;
     public bool automaticParry = false;
     public bool dash = true;
@@ -24,9 +23,7 @@ public class PlayerController : BaseUnit, IShooter
     //Parameters
     // --BaseUnit.Health
     // --BaseUnit.MoveSpeed
-    [SerializeField] KeyCode shootInput = KeyCode.Mouse0;
-    [SerializeField] KeyCode parryInput = KeyCode.Mouse1;
-    [SerializeField] KeyCode dashInput = KeyCode.Space;
+
     public LayerMask MaskToIgnore;
     public LayerMask aimLayer;
     [Tooltip("Changes apply at game start")] public float parryRadius = 2f;
@@ -45,19 +42,19 @@ public class PlayerController : BaseUnit, IShooter
 
     #region Other Vars
 
-    Vector3 moveDirection;
-    Vector3 cameraBasedDirection;
+    
+    
     Vector3 playerDirection;
 
     SphereCollider catchNFireArea;
-    Camera cam;
+    
     Rigidbody rb;
 
     bool isMoving = false;
     bool canParry = true;
     bool isParrying = false;
     bool canDash = true;
-    bool canMove = true;
+    
 
     TestBullet bulletInHands;
 
@@ -123,44 +120,6 @@ public class PlayerController : BaseUnit, IShooter
 
     void Update()
     {
-        #region Input
-
-        //Move Input
-        if (canMove)
-        {
-            if (InputDirection == DirectionType.Global)
-            {
-                moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
-            }
-            else
-            if (InputDirection == DirectionType.Camera)
-            {
-                moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
-                cameraBasedDirection = cam.transform.TransformDirection(moveDirection);
-                moveDirection = new Vector3(cameraBasedDirection.x, moveDirection.y, cameraBasedDirection.z);
-            }
-        }
-
-        //Shoot Input
-        if (Input.GetKeyDown(shootInput) && EquippedGun)
-        {
-            EquippedGun.Shoot();
-        }
-
-        //ParryInput
-        if (parry && !automaticParry && canParry && Input.GetKeyDown(parryInput))
-        {
-            StartParry();
-        }
-
-        //DashInput
-        if (dash && canDash && Input.GetKeyDown(dashInput))
-        { 
-            StartDash();
-        }
-
-        #endregion
-
         #region Aim
 
         //Aim Input
@@ -313,8 +272,4 @@ public class PlayerController : BaseUnit, IShooter
 
 }
 
-[System.Serializable]
-public class FloatEvent : UnityEvent<float>
-{
 
-}
