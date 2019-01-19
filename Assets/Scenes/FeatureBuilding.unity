@@ -199,6 +199,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bfa1088c2fd05647859656dfd347775, type: 3}
+--- !u!114 &93197871 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 93197871, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+    type: 3}
+  m_PrefabInstance: {fileID: 81030063819828546}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258aa1563c6032246b37e316d4926e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &230792481
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,6 +833,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Parry_CD_UI
       objectReference: {fileID: 0}
+    - target: {fileID: 7052761870814663362, guid: 3e5eb4dc0cd66cb429efcfa246ba6f4e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7052761870814663363, guid: 3e5eb4dc0cd66cb429efcfa246ba6f4e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -959,12 +976,12 @@ PrefabInstance:
     - target: {fileID: 7052761869180401857, guid: 3e5eb4dc0cd66cb429efcfa246ba6f4e,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2163322144204438342, guid: 3e5eb4dc0cd66cb429efcfa246ba6f4e,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8773566029852193985, guid: 3e5eb4dc0cd66cb429efcfa246ba6f4e,
         type: 3}
@@ -1465,7 +1482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1160383222
 Transform:
   m_ObjectHideFlags: 0
@@ -2497,7 +2514,7 @@ PrefabInstance:
         type: 3}
       propertyPath: timer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 93197871}
     - target: {fileID: 8773566029852193985, guid: 3e5eb4dc0cd66cb429efcfa246ba6f4e,
         type: 3}
       propertyPath: slider

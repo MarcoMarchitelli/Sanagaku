@@ -32,7 +32,7 @@ namespace Sangaku
             IsSetupped = true;
         }
 
-        [SerializeField] protected IEntity projectilePrefab;
+        [SerializeField] protected Transform projectilePrefab;
         [SerializeField] protected Transform shootPoint;
         /// <summary>
         /// How many seconds between each shot.
@@ -46,7 +46,7 @@ namespace Sangaku
         public virtual void Shoot()
         {
             // ------- NOT FINAL
-            Instantiate(projectilePrefab as MonoBehaviour, shootPoint.position, shootPoint.rotation);
+            Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
             // ------- aaaaa
             OnShoot.Invoke(fireRate);
         }

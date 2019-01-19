@@ -82,6 +82,9 @@ namespace Sangaku
         /// Riferimento alla camera
         /// </summary>
         Camera cam;
+        bool canShoot = true;
+        bool canDash = true;
+        bool canMove = true;
 
         /// <summary>
         /// Eseguo il setup del behaviour
@@ -92,6 +95,7 @@ namespace Sangaku
             Entity = _entity;
             cam = Camera.main;
             IsSetupped = true;
+            print(name + " is setupped.");
         }
 
         /// <summary>
@@ -113,19 +117,22 @@ namespace Sangaku
         void ReadInput()
         {
             //Move Input
-            if (InputDirection == DirectionType.Global)
+            if (canMove)
             {
-                MoveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
-            }
-            else if (InputDirection == DirectionType.Camera && cam != null)
-            {
-                MoveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
-                cameraBasedDirection = cam.transform.TransformDirection(MoveDirection);
-                MoveDirection = new Vector3(cameraBasedDirection.x, MoveDirection.y, cameraBasedDirection.z);
+                if (InputDirection == DirectionType.Global)
+                {
+                    MoveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+                }
+                else if (InputDirection == DirectionType.Camera && cam != null)
+                {
+                    MoveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+                    cameraBasedDirection = cam.transform.TransformDirection(MoveDirection);
+                    MoveDirection = new Vector3(cameraBasedDirection.x, MoveDirection.y, cameraBasedDirection.z);
+                }
             }
 
             //Shoot Input
-            if (Input.GetKeyDown(shotInput))
+            if (canShoot && Input.GetKeyDown(shotInput))
             {
                 OnShotPressed.Invoke();
             }
@@ -137,10 +144,23 @@ namespace Sangaku
             }
 
             //DashInput
-            if (Input.GetKeyDown(dashInput))
+            if (canDash && Input.GetKeyDown(dashInput))
             {
                 OnDashPressed.Invoke(MoveDirection);
             }
+        }
+
+        public void ToggleShootInput(bool _value)
+        {
+            canShoot = _value;
+        }
+        public void ToggleMovementInput(bool _value)
+        {
+            canMove = _value;
+        }
+        public void ToggleDashInput(bool _value)
+        {
+            canDash = _value;
         }
     }
 }

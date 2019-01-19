@@ -50,6 +50,7 @@ namespace Sangaku
         /// Riferimento al Rigidbody
         /// </summary>
         Rigidbody rBody;
+        Coroutine dashRoutine;
 
         /// <summary>
         /// Eseguo il setup del behaviour
@@ -67,9 +68,11 @@ namespace Sangaku
         /// </summary>
         public void Dash(Vector3 _dashDirection)
         {
+            print(_dashDirection);
             if (IsSetupped && _dashDirection != Vector3.zero)
             {
-                StartCoroutine(DashRoutine(_dashDirection));
+                if(dashRoutine == null)
+                    dashRoutine = StartCoroutine(DashRoutine(_dashDirection));
             }
         }
 
@@ -79,10 +82,10 @@ namespace Sangaku
         /// <returns></returns>
         IEnumerator DashRoutine(Vector3 _direction)
         {
-            OnDashStart.Invoke();
-
             Vector3 targetPos = rBody.position + _direction * dashDistance;
             WaitForFixedUpdate wfu = new WaitForFixedUpdate();
+
+            OnDashStart.Invoke();
 
             //perform the dash
             while (rBody.position != targetPos)
