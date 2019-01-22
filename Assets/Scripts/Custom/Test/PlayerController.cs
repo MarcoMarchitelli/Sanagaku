@@ -137,7 +137,7 @@ public class PlayerController : BaseUnit, IShooter
             {
                 moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
                 cameraBasedDirection = cam.transform.TransformDirection(moveDirection);
-                moveDirection = new Vector3(cameraBasedDirection.x, moveDirection.y, cameraBasedDirection.z);
+                moveDirection = new Vector3(cameraBasedDirection.x, 0f, cameraBasedDirection.z).normalized;
             }
         }
 
@@ -154,8 +154,8 @@ public class PlayerController : BaseUnit, IShooter
         }
 
         //DashInput
-        if (dash && canDash && Input.GetKeyDown(dashInput))
-        { 
+        if (dash && canDash && Input.GetKeyDown(dashInput) && moveDirection != Vector3.zero)
+        {
             StartDash();
         }
 
@@ -187,8 +187,10 @@ public class PlayerController : BaseUnit, IShooter
 
     private void FixedUpdate()
     {
-        if(canMove)
+        if (canMove)
+        {
             rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -224,7 +226,7 @@ public class PlayerController : BaseUnit, IShooter
 
     public override void TakeDamage(int amount)
     {
-        if(Counters.instance)
+        if (Counters.instance)
             Counters.instance.UpdateHits(amount);
         base.TakeDamage(amount);
     }
@@ -267,7 +269,7 @@ public class PlayerController : BaseUnit, IShooter
 
     IEnumerator DashRoutine()
     {
-        Vector3 targetPos = rb.position + transform.forward * dashDistance;
+        Vector3 targetPos = rb.position + moveDirection * dashDistance;
 
         //perform the dash
         while (rb.position != targetPos)

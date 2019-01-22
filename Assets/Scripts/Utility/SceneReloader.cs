@@ -4,6 +4,7 @@ using UnityEngine;
 public class SceneReloader : MonoBehaviour {
 
     public KeyCode ReloadKey;
+    public string SceneToLoad;
 	
 	void Update () {
         if (Input.GetKeyDown(ReloadKey))
@@ -12,8 +13,14 @@ public class SceneReloader : MonoBehaviour {
         }
 	}
 
-    void RealoadScene()
+    public void RealoadScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Scene s = SceneManager.GetSceneByName(SceneToLoad);
+        if (s == null)
+        {
+            Debug.LogError(name + " cannot load scene named: " + SceneToLoad + ", because it doesn't exist!");
+            return;
+        }
+        SceneManager.LoadScene(SceneToLoad);
     }
 }
