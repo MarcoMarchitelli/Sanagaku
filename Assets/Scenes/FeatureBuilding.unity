@@ -2363,10 +2363,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 93197871, guid: 77b03d1e834a8b64182cabfcc5be6dcb, type: 3}
       propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ToggleMovementInput
+      value: ToggleDashInput
       objectReference: {fileID: 0}
     - target: {fileID: 93197871, guid: 77b03d1e834a8b64182cabfcc5be6dcb, type: 3}
       propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 93197871, guid: 77b03d1e834a8b64182cabfcc5be6dcb, type: 3}
+      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 93197871, guid: 77b03d1e834a8b64182cabfcc5be6dcb, type: 3}
+      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 93197871, guid: 77b03d1e834a8b64182cabfcc5be6dcb, type: 3}
+      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 93197871, guid: 77b03d1e834a8b64182cabfcc5be6dcb, type: 3}
+      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 93197871, guid: 77b03d1e834a8b64182cabfcc5be6dcb, type: 3}
+      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 93197871, guid: 77b03d1e834a8b64182cabfcc5be6dcb, type: 3}
+      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 122883729}
+    - target: {fileID: 93197871, guid: 77b03d1e834a8b64182cabfcc5be6dcb, type: 3}
+      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 93197871, guid: 77b03d1e834a8b64182cabfcc5be6dcb, type: 3}
+      propertyPath: repeat
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 76452836599106812, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
@@ -2508,11 +2540,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnDashEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 122883729}
+      objectReference: {fileID: 1701652186}
     - target: {fileID: 850753096191203397, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
       propertyPath: OnDashEnd.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ToggleMovementInput
+      value: Stop
       objectReference: {fileID: 0}
     - target: {fileID: 850753096191203397, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
@@ -2522,7 +2554,7 @@ PrefabInstance:
     - target: {fileID: 850753096191203397, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
       propertyPath: OnDashEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 850753096191203397, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
@@ -2532,7 +2564,7 @@ PrefabInstance:
     - target: {fileID: 850753096191203397, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
       propertyPath: OnDashEnd.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 850753096191203397, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
@@ -2548,20 +2580,43 @@ PrefabInstance:
         type: 3}
       propertyPath: OnDashEnd.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1701652186}
+      objectReference: {fileID: 122883729}
     - target: {fileID: 850753096191203397, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
       propertyPath: OnDashEnd.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: Stop
+      value: ToggleMovementInput
       objectReference: {fileID: 0}
     - target: {fileID: 850753096191203397, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
       propertyPath: OnDashEnd.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 850753096191203397, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: OnDashStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 850753096191203397, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: dashSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 850753096191203397, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: dashDistance
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 6327333987277507893, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 755840897, guid: 77b03d1e834a8b64182cabfcc5be6dcb, type: 3}
+      propertyPath: repeat
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023095830, guid: 77b03d1e834a8b64182cabfcc5be6dcb, type: 3}
+      propertyPath: repeat
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

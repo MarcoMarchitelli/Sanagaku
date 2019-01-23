@@ -69,6 +69,7 @@ namespace Sangaku
         {
             if (IsSetupped && _dashDirection != Vector3.zero)
             {
+                print(_dashDirection);
                 StartCoroutine(DashRoutine(_dashDirection));
             }
         }
@@ -88,8 +89,8 @@ namespace Sangaku
             while (rBody.position != targetPos)
             {
                 //remember we use fixed because we are moving a rigidbody
-                rBody.position = Vector3.MoveTowards(rBody.position, targetPos, dashSpeed * Time.fixedDeltaTime);
-                yield return new WaitForFixedUpdate();
+                rBody.position = Vector3.MoveTowards(rBody.position, targetPos, dashSpeed * Time.deltaTime);
+                yield return null;
             }
 
             OnDashEnd.Invoke(dashCooldown);

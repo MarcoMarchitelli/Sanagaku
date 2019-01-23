@@ -155,6 +155,7 @@ namespace Sangaku
         public void ToggleMovementInput(bool _value)
         {
             canMove = _value;
+            MoveDirection = Vector3.zero;
         }
         public void ToggleDashInput(bool _value)
         {
