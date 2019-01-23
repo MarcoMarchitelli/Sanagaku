@@ -110,7 +110,7 @@ public class TestBullet : MonoBehaviour
                 OnLifeEnd.Invoke(deathTime);
         }
 
-        #endregion
+        #endregion //movemnt
 
         #region Movement
 

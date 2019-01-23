@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace Sangaku
@@ -79,9 +77,6 @@ namespace Sangaku
             rBody.MovePosition(rBody.position + moveDirection * moveSpeed * Time.fixedDeltaTime);         
         }
 
-        /// <summary>
-        /// Fixed Update
-        /// </summary>
         void FixedUpdate()
         {
             if (IsSetupped)

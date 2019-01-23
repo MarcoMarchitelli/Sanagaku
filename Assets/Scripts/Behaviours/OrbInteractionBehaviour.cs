@@ -1,12 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Sangaku
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public class OrbInteractionBehaviour : MonoBehaviour, IBehaviour
     {
         /// <summary>
