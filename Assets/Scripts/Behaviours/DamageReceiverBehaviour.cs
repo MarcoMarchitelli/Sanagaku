@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Sangaku
 {
@@ -28,7 +26,7 @@ namespace Sangaku
         public void Setup(IEntity _entity)
         {
             Entity = _entity;
-            CurrentHealth = maxHealth;//TODO: we are not sure about this :)
+            //CurrentHealth = maxHealth;//TODO: we are not sure about this :)
             IsSetupped = true;
         }
 
@@ -43,6 +41,7 @@ namespace Sangaku
                 {
                     _currentHealth = value;
                     OnHealthChanged.Invoke(_currentHealth);
+                    print(name + "'s helth has changed");
                 }
             }
         }

@@ -19,12 +19,14 @@ namespace Deirin.Utility
 
         private void OnEnable()
         {
-            OnTimerEnd.AddListener(ResetTimer);
+            if(repeat)
+                OnTimerEnd.AddListener(ResetTimer);
         }
 
         private void OnDisable()
         {
-            OnTimerEnd.RemoveListener(ResetTimer);
+            if(repeat)
+                OnTimerEnd.RemoveListener(ResetTimer);
         }
 
         private void Awake()
@@ -40,6 +42,7 @@ namespace Deirin.Utility
             if (timer >= time && countTime)
             {
                 OnTimerEnd.Invoke();
+                print(name + " ha finito");
             }
         }
 
@@ -51,6 +54,7 @@ namespace Deirin.Utility
         {
             time = _time;
             countTime = true;
+            print(name + " è iniziato");
         }
 
         public void StartTimer()
