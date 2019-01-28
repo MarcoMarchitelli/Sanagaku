@@ -80,17 +80,21 @@ namespace Sangaku
         /// <returns></returns>
         IEnumerator DashRoutine(Vector3 _direction)
         {
-            Vector3 targetPos = rBody.position + _direction * dashDistance;
+            Vector3 targetPos = rBody.position + _direction;
+            float dashTime = dashDistance / dashSpeed;
+            float timer = 0f;
 
             OnDashStart.Invoke();
             print("dash partito");
 
             //perform the dash
-            while (rBody.position != targetPos)
+            while (timer < dashTime)
             {
+                timer += Time.fixedDeltaTime;
                 //remember we use fixed because we are moving a rigidbody
-                rBody.position = Vector3.MoveTowards(rBody.position, targetPos, dashSpeed * Time.deltaTime);
-                yield return null;
+                rBody.position = Vector3.MoveTowards(rBody.position, targetPos, dashSpeed * Time.fixedDeltaTime);
+                targetPos = rBody.position + _direction;
+                yield return new WaitForFixedUpdate();
             }
 
             OnDashEnd.Invoke(dashCooldown);
