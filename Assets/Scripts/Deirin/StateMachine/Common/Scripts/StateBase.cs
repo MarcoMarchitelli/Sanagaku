@@ -51,13 +51,15 @@ namespace Deirin.StateMachine {
 
         #region StateMachineBehaviour methods
 
-        public override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            base.OnStateMachineEnter(animator, stateMachinePathHash);
+            base.OnStateEnter(animator, stateInfo, layerIndex);
+            Enter();
         }
 
-        public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex, AnimatorControllerPlayable controller) {
-            base.OnStateUpdate(animator, stateInfo, layerIndex, controller);
+        public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            base.OnStateUpdate(animator, stateInfo, layerIndex);
             Tick();
         }
 

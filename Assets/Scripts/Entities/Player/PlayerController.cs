@@ -8,32 +8,37 @@ namespace Sangaku
     [RequireComponent(typeof(Animator))]
     public class PlayerController : StateMachineBase, IEntity, IContext
     {
+
+        #region SM
+
+        public override void SetUpSM()
+        {
+            context = new PlayerControllerSMContext(this);
+            base.SetUpSM();         
+        }
+
+        protected override void OnStateChange(IState _endedState)
+        {
+            GoToNext();
+        }      
+
+        public void GoToNext()
+        {
+            StateMachine.SetTrigger("GoToNext");
+        }
+
+        #endregion
+
+        #region Entity
+
         public List<IBehaviour> Behaviours
         {
             get;
             private set;
         }
 
-        private Animator stateMachine;
-        public Animator StateMachine
+        public void SetUpEntity()
         {
-            get
-            {
-                if (!stateMachine)
-                    stateMachine = GetComponent<Animator>();
-                return stateMachine;
-            }
-        }
-
-        protected override void OnStateChange(IState _endedState)
-        {
-            GoToNext();
-        }
-        
-        public override void SetUp()
-        {
-            base.SetUp();
-            context = this;
             Behaviours = GetComponentsInChildren<IBehaviour>().ToList();
             foreach (IBehaviour behaviour in Behaviours)
             {
@@ -41,15 +46,22 @@ namespace Sangaku
             }
         }
 
-        public void GoToNext()
-        {
-            StateMachine.SetTrigger("GoToNext");
-        }
+        #endregion
 
         private void Start()
         {
-            SetUp();
+            SetUpSM();
         }
 
+    }
+
+    public class PlayerControllerSMContext : IContext
+    {
+        public IEntity PlayerControllerEntity;
+
+        public PlayerControllerSMContext(IEntity _playerControllerEntity)
+        {
+            PlayerControllerEntity = _playerControllerEntity;
+        }
     }
 }

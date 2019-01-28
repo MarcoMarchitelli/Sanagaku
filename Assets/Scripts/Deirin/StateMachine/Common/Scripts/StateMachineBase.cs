@@ -8,11 +8,20 @@ namespace Deirin.StateMachine {
     public abstract class StateMachineBase : MonoBehaviour {
 
         #region Variables
-        
+
         /// <summary>
         /// The animator attached to this state machine.
         /// </summary>
-        protected Animator stateMachineAnimator;
+        protected Animator _stateMachine;
+        public Animator StateMachine
+        {
+            get
+            {
+                if (!_stateMachine)
+                    _stateMachine = GetComponent<Animator>();
+                return _stateMachine;
+            }
+        }
         protected List<IState> states;
         protected IContext context;
 
@@ -38,25 +47,17 @@ namespace Deirin.StateMachine {
         /// <summary>
         /// Fills States list. Subscribes to every state's event.
         /// </summary>
-        public virtual void SetUp()
+        public virtual void SetUpSM()
         {
             //gets all the states from the animator component as IState.
-            States = stateMachineAnimator.GetBehaviours<StateBase>().ToList<IState>();
+            States = StateMachine.GetBehaviours<StateBase>().ToList<IState>();
 
             //subscribes to every state's end event
             foreach (IState state in States)
             {
+                state.SetUp(context);
                 state.OnStateEnd += OnStateChange;
             }
-        }
-
-        #endregion
-
-        #region MonoBehaviour methods
-
-        private void Awake()
-        {
-            stateMachineAnimator = GetComponent<Animator>();
         }
 
         #endregion

@@ -9,6 +9,7 @@ namespace Sangaku
     {
 
         ManaBehaviour mana;
+
         /// <summary>
         /// Costo di un proiettile in mana
         /// </summary>
@@ -31,8 +32,13 @@ namespace Sangaku
         /// </summary>
         public override void Shoot()
         {
-            if( mana.SetMana(-cost))
-                base.Shoot();
+            if (mana.SetMana(-cost))
+            {
+                //----- NOT COOL YET
+                Orb instantiatedOrb = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation).GetComponent<Orb>();
+                instantiatedOrb.SetUpSM();
+                //----- AWFUL
+            }
         }
     }
 

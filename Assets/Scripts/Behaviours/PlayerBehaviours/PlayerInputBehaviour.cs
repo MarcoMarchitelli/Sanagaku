@@ -93,7 +93,6 @@ namespace Sangaku
             Entity = _entity;
             cam = Camera.main;
             IsSetupped = true;
-            print(name + " is setupped.");
         }
 
         /// <summary>

@@ -6,22 +6,14 @@ using Deirin.StateMachine;
 namespace Sangaku
 {
     public class Orb : StateMachineBase, IEntity, IContext
-{
-        public List<IBehaviour> Behaviours
-        {
-            get;
-            private set;
-        }
+    {
 
-        private Animator stateMachine;
-        public Animator StateMachine
+        #region SM
+
+        public override void SetUpSM()
         {
-            get
-            {
-                if (!stateMachine)
-                    stateMachine = GetComponent<Animator>();
-                return stateMachine;
-            }
+            context = new OrbSMContext(this);
+            base.SetUpSM();
         }
 
         protected override void OnStateChange(IState _endedState)
@@ -29,10 +21,23 @@ namespace Sangaku
             GoToNext();
         }
 
-        public override void SetUp()
+        public void GoToNext()
         {
-            base.SetUp();
-            context = this;
+            StateMachine.SetTrigger("GoToNext");
+        }
+
+        #endregion
+
+        #region Entity
+
+        public List<IBehaviour> Behaviours
+        {
+            get;
+            private set;
+        }
+
+        public void SetUpEntity()
+        {
             Behaviours = GetComponentsInChildren<IBehaviour>().ToList();
             foreach (IBehaviour behaviour in Behaviours)
             {
@@ -40,14 +45,17 @@ namespace Sangaku
             }
         }
 
-        public void GoToNext()
-        {
-            StateMachine.SetTrigger("GoToNext");
-        }
+        #endregion
 
-        private void Start()
+    }
+
+    public class OrbSMContext : IContext
+    {
+        public IEntity OrbEntity;
+
+        public OrbSMContext(IEntity _orbEntity)
         {
-            SetUp();
+            OrbEntity = _orbEntity;
         }
-    } 
+    }
 }

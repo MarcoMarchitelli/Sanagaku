@@ -31,26 +31,26 @@ public class ExampleStateMachine : StateMachineBase
     void HandleStartState(IContext _context)
     {
         ResetAllTriggers();
-        stateMachineAnimator.SetTrigger("GoToRun");
+        StateMachine.SetTrigger("GoToRun");
     }
 
     void HandleRunState(IContext _context)
     {
         ResetAllTriggers();
-        stateMachineAnimator.SetTrigger("GoToExit");
+        StateMachine.SetTrigger("GoToExit");
     }
 
     void HandleExitState(IContext _context)
     {
         ResetAllTriggers();
-        stateMachineAnimator.SetTrigger("CloseApplication");
+        StateMachine.SetTrigger("CloseApplication");
     }
 
     void ResetAllTriggers()
     {
-        foreach (AnimatorControllerParameter parameter in stateMachineAnimator.parameters)
+        foreach (AnimatorControllerParameter parameter in StateMachine.parameters)
         {
-            stateMachineAnimator.ResetTrigger(parameter.name);
+            StateMachine.ResetTrigger(parameter.name);
         }
     }
 
@@ -60,7 +60,7 @@ public class ExampleStateMachine : StateMachineBase
 
     private void Start()
     {
-        SetUp();
+        SetUpSM();
     }
 
     #endregion

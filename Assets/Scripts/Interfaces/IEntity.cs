@@ -13,6 +13,7 @@ namespace Sangaku
         /// </summary>
         List<IBehaviour> Behaviours { get; }
 
-        Animator StateMachine { get; }
+        void SetUpEntity();
+
     }
 }

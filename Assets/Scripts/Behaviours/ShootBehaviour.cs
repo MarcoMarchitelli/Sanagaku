@@ -43,7 +43,7 @@ namespace Sangaku
         /// </summary>
         public virtual void Shoot()
         {
-            // ------- NOT FINAL
+            // ------- //TODO objpooler
             Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
             // ------- aaaaa
             OnShoot.Invoke(fireRate);
