@@ -19,14 +19,18 @@ namespace Deirin.Utility
 
         private void OnEnable()
         {
-            if(repeat)
+            if (repeat)
                 OnTimerEnd.AddListener(ResetTimer);
+            else
+                OnTimerEnd.AddListener(StopTimer);
         }
 
         private void OnDisable()
         {
             if(repeat)
                 OnTimerEnd.RemoveListener(ResetTimer);
+            else
+                OnTimerEnd.RemoveListener(StopTimer);
         }
 
         private void Awake()
