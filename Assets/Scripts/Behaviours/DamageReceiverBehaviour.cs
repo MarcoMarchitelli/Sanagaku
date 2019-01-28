@@ -2,7 +2,6 @@
 
 namespace Sangaku
 {
-    [RequireComponent(typeof(Collider))]
     public class DamageReceiverBehaviour : MonoBehaviour, IBehaviour
     {
         #region Events

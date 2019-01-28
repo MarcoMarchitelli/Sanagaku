@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Sangaku
 {
-    [RequireComponent(typeof(Collider))]
     public class DamageDealerBehaviour : MonoBehaviour, IBehaviour
     {
         #region Events
@@ -34,6 +33,8 @@ namespace Sangaku
         /// The amount of damage to inflict
         /// </summary>
         [SerializeField] float damage;
+        [SerializeField] bool dealsOnCollision = false;
+        [SerializeField] bool dealsOnTrigger = false;
 
         /// <summary>
         /// Funzione che infligge danno al receiver rilevato
@@ -47,19 +48,25 @@ namespace Sangaku
 
         private void OnTriggerEnter(Collider other)
         {
-            DamageReceiverBehaviour receiver = other.GetComponent<DamageReceiverBehaviour>();
-            if (receiver)
+            if (dealsOnTrigger)
             {
-                DealDamage(receiver);
+                DamageReceiverBehaviour receiver = other.GetComponent<DamageReceiverBehaviour>();
+                if (receiver)
+                {
+                    DealDamage(receiver);
+                }
             }
         }
 
         private void OnCollisionEnter(Collision collision)
         {
-            DamageReceiverBehaviour receiver = collision.collider.GetComponent<DamageReceiverBehaviour>();
-            if (receiver)
+            if (dealsOnCollision)
             {
-                DealDamage(receiver);
+                DamageReceiverBehaviour receiver = collision.collider.GetComponent<DamageReceiverBehaviour>();
+                if (receiver)
+                {
+                    DealDamage(receiver);
+                }
             }
         }
 

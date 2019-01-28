@@ -4,6 +4,10 @@ namespace Sangaku
 {
     public class DestroyBehaviour : MonoBehaviour, IBehaviour
     {
+        #region Events
+        [SerializeField] UnityVoidEvent OnDestruction;
+        #endregion
+
         /// <summary>
         /// Riferimento all'entitià che controlla il Behaviour
         /// </summary>
@@ -38,6 +42,11 @@ namespace Sangaku
         public void DestroyAfter(float _time)
         {
             Destroy(gameObject, _time);
+        }
+
+        private void OnDestroy()
+        {
+            OnDestruction.Invoke();
         }
 
     }
