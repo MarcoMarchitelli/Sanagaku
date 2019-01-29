@@ -89,7 +89,6 @@ public class PalyerControllerEditor : Editor
         {
             EditorGUILayout.PropertyField(health);
             EditorGUILayout.PropertyField(moveSpeed);
-            EditorGUILayout.PropertyField(MaskToIgnore);
             EditorGUILayout.PropertyField(aimLayer);
             EditorGUILayout.PropertyField(shootInput);
             if (parry.boolValue)

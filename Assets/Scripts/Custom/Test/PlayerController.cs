@@ -27,7 +27,6 @@ public class PlayerController : BaseUnit, IShooter
     [SerializeField] KeyCode shootInput = KeyCode.Mouse0;
     [SerializeField] KeyCode parryInput = KeyCode.Mouse1;
     [SerializeField] KeyCode dashInput = KeyCode.Space;
-    public LayerMask MaskToIgnore;
     public LayerMask aimLayer;
     [Tooltip("Changes apply at game start")] public float parryRadius = 2f;
     public float parryTime = .5f;
