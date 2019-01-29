@@ -23,6 +23,17 @@ public class TestEnemy : MonoBehaviour
     
     Material material;
 
+    private void Awake()
+    {
+        material = GetComponent<MeshRenderer>().material;
+    }
+
+    private void Start()
+    {
+        if(deathBehaviour == DeathBeahviour.diesFromBounces)
+            material.color = ColorContainer.Instance.Colors[BouncesNeededToDie - 1];
+    }
+
     public void Die()
     {
         if (deathParticles)
