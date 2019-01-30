@@ -2,7 +2,7 @@
 
 namespace Sangaku
 {
-    public class EnemyControllerSMStateBase : StateBase
+    public abstract class EnemyControllerSMStateBase : StateBase
     {
 
         protected EnemyControllerSMContext context;

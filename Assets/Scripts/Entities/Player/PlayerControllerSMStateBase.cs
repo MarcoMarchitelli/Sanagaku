@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Deirin.StateMachine;
+﻿using Deirin.StateMachine;
 
 namespace Sangaku
 {

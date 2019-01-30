@@ -35,7 +35,7 @@ namespace Sangaku
             if (mana.SetMana(-cost))
             {
                 //----- NOT COOL YET
-                Orb instantiatedOrb = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation).GetComponent<Orb>();
+                Orb instantiatedOrb = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Orb>();
                 instantiatedOrb.SetUpSM();
                 //----- AWFUL
             }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Deirin.StateMachine;
 
 namespace Sangaku
 {
@@ -27,10 +28,13 @@ namespace Sangaku
         public virtual void Setup(IEntity _entity)
         {
             Entity = _entity;
+            if (firesOnStart)
+                canShoot = true;
             IsSetupped = true;
+            print(name + " entity setupped!");
         }
 
-        [SerializeField] protected Transform projectilePrefab;
+        [SerializeField] protected StateMachineBase projectilePrefab;
         [SerializeField] protected Transform shootPoint;
         /// <summary>
         /// How many seconds between each shot.
@@ -41,14 +45,6 @@ namespace Sangaku
 
         float timer = 0;
         bool canShoot = false;
-
-        private void Start()
-        {
-            if(IsSetupped && firesOnStart)
-            {
-                canShoot = true;
-            }
-        }
 
         private void Update()
         {
@@ -66,7 +62,8 @@ namespace Sangaku
         public virtual void Shoot()
         {
             // ------- //TODO objpooler
-            Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+            StateMachineBase instBullet = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<StateMachineBase>();
+            instBullet.SetUpSM();
             timer = 0;
             // ------- aaaaa
             OnShoot.Invoke(secondsBetweenShots);

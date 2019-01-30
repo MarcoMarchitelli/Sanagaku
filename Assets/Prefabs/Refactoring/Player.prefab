@@ -5202,7 +5202,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  projectilePrefab: {fileID: 2833276191514674724, guid: 0ab3ad80c4daaec47ac7ac2971274002,
+  projectilePrefab: {fileID: 2835863131274270898, guid: 0ab3ad80c4daaec47ac7ac2971274002,
     type: 3}
   shootPoint: {fileID: 2108020691}
   secondsBetweenShots: 0
@@ -5355,7 +5355,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-    m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: Sangaku.UnityIntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   OnHealthDepleated:
     m_PersistentCalls:
@@ -5400,11 +5400,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 79887467333557451}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   OnInvulnerabilityInactive:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 79887467333557451}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   invulnerabilityTime: 1
@@ -5460,8 +5482,8 @@ Rigidbody:
   m_GameObject: {fileID: 79887467333557446}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 15
-  m_AngularDrag: 15
+  m_Drag: 0
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
