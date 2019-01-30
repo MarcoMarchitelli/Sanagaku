@@ -32,9 +32,9 @@ namespace Sangaku
         /// <summary>
         /// The amount of damage to inflict
         /// </summary>
-        [SerializeField] int damage;
-        [SerializeField] bool dealsOnCollision = false;
-        [SerializeField] bool dealsOnTrigger = false;
+        [SerializeField] protected int damage;
+        [SerializeField] protected bool dealsOnCollision = false;
+        [SerializeField] protected bool dealsOnTrigger = false;
 
         /// <summary>
         /// Funzione che infligge danno al receiver rilevato
@@ -46,7 +46,7 @@ namespace Sangaku
             OnDamageDealt.Invoke(damage);
         }
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             if (dealsOnTrigger)
             {
@@ -58,7 +58,7 @@ namespace Sangaku
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
+        protected virtual void OnCollisionEnter(Collision collision)
         {
             if (dealsOnCollision)
             {

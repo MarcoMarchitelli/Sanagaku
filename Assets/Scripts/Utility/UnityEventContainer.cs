@@ -37,6 +37,12 @@ namespace Sangaku
     public class UnityTransformEvent : UnityEvent<Transform> { }
 
     /// <summary>
+    /// Unity Event passing a DamageReceiverBehaviour
+    /// </summary>
+    [System.Serializable]
+    public class UnityDamageReceiverEvent : UnityEvent<DamageReceiverBehaviour> { }
+
+    /// <summary>
     /// Evento di unity void
     /// </summary>
     [System.Serializable]

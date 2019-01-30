@@ -49,15 +49,15 @@ namespace Sangaku
         /// Funzione che aggiunge o sottrae salute
         /// </summary>
         /// <param name="_value">la salute da aggiungere o sottrarre</param>
-        /// <returns>true se l'operazione è possibile</returns>
         public void SetHealth(int _value)
         {
             int tempHealth = CurrentHealth;
             tempHealth += _value;
-            if (tempHealth < 0)
+            if (tempHealth <= 0)
             {
                 tempHealth = 0;
                 OnHealthDepleated.Invoke();
+                print(name + " fucking died.");
             }
             if (tempHealth > maxHealth)
                 tempHealth = maxHealth;

@@ -7,6 +7,7 @@ namespace Sangaku
     {
         #region Events
         [SerializeField] UnityVector3Event OnBounce;
+        [SerializeField] UnityDamageReceiverEvent OnDamageReceiverHit;
         [SerializeField] UnityEvent OnDestroyHit;
         #endregion
 
@@ -76,8 +77,14 @@ namespace Sangaku
         {
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
-            if (Physics.SphereCast(ray, .5f, out hit, Time.deltaTime * moveSpeed + .2f, bounceLayer))
+            if (Physics.SphereCast(ray, transform.localScale.x * .5f, out hit, Time.deltaTime * moveSpeed + .1f, bounceLayer))
             {
+                DamageReceiverBehaviour drHit = hit.collider.GetComponent<DamageReceiverBehaviour>();
+                if (drHit)
+                {
+                    OnDamageReceiverHit.Invoke(drHit);
+                }
+
                 BounceOnBehaviour _b = hit.collider.GetComponent<BounceOnBehaviour>();
                 if (_b)
                     HandleBounceOnBehaviour(_b, hit.normal);
