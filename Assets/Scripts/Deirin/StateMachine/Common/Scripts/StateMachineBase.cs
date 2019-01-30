@@ -45,10 +45,17 @@ namespace Deirin.StateMachine {
         protected abstract void OnStateChange(IState _endedState);
 
         /// <summary>
+        /// Sets up the context of this state machine, casting it as a specific one.
+        /// </summary>
+        protected abstract void ContextSetup();
+
+        /// <summary>
         /// Fills States list. Subscribes to every state's event.
         /// </summary>
-        public virtual void SetUpSM()
+        public void SetUpSM()
         {
+            ContextSetup();
+
             //gets all the states from the animator component as IState.
             States = StateMachine.GetBehaviours<StateBase>().ToList<IState>();
 

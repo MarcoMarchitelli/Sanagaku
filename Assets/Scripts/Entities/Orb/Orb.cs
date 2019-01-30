@@ -10,10 +10,9 @@ namespace Sangaku
 
         #region SM
 
-        public override void SetUpSM()
+        protected override void ContextSetup()
         {
             context = new OrbSMContext(this);
-            base.SetUpSM();
         }
 
         protected override void OnStateChange(IState _endedState)
