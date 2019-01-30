@@ -5,7 +5,7 @@ using Deirin.StateMachine;
 
 namespace Sangaku
 {
-    public class Orb : StateMachineBase, IEntity, IContext
+    public class Orb : StateMachineBase, IEntity
     {
 
         #region SM

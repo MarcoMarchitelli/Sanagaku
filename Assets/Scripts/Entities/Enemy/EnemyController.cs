@@ -1,25 +1,22 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Deirin.StateMachine;
+using System.Linq;
 
 namespace Sangaku
 {
-    [RequireComponent(typeof(Animator))]
-    public class PlayerController : StateMachineBase, IEntity
+    public class EnemyController : StateMachineBase, IEntity
     {
-
         #region SM
 
         protected override void ContextSetup()
         {
-            context = new PlayerControllerSMContext(this);
+            context = new EnemyControllerSMContext(this);
         }
 
         protected override void OnStateChange(IState _endedState)
         {
             GoToNext();
-        }      
+        }
 
         public void GoToNext()
         {
@@ -51,16 +48,16 @@ namespace Sangaku
         {
             SetUpSM();
         }
-
     }
 
-    public class PlayerControllerSMContext : IContext
+    public class EnemyControllerSMContext : IContext
     {
-        public IEntity PlayerControllerEntity;
+        public IEntity EnemyEntity;
 
-        public PlayerControllerSMContext(IEntity _playerControllerEntity)
+        public EnemyControllerSMContext(IEntity _enemyEntity)
         {
-            PlayerControllerEntity = _playerControllerEntity;
+            EnemyEntity = _enemyEntity;
         }
     }
+
 }

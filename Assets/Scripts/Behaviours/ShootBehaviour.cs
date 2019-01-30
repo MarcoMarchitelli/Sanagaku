@@ -36,7 +36,29 @@ namespace Sangaku
         /// How many seconds between each shot.
         /// </summary>
         [Tooltip("How many seconds between each shot.")]
-        [SerializeField] protected float fireRate;
+        [SerializeField] protected float secondsBetweenShots;
+        [SerializeField] protected bool firesOnStart = false;
+
+        float timer = 0;
+        bool canShoot = false;
+
+        private void Start()
+        {
+            if(IsSetupped && firesOnStart)
+            {
+                canShoot = true;
+            }
+        }
+
+        private void Update()
+        {
+            if (canShoot)
+            {
+                timer += Time.deltaTime;
+                if (timer >= secondsBetweenShots)
+                    Shoot();
+            }
+        }
 
         /// <summary>
         /// Funzione che instanzia un proiettile
@@ -45,8 +67,9 @@ namespace Sangaku
         {
             // ------- //TODO objpooler
             Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+            timer = 0;
             // ------- aaaaa
-            OnShoot.Invoke(fireRate);
+            OnShoot.Invoke(secondsBetweenShots);
         }
 
     } 
