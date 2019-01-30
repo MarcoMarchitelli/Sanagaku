@@ -24,6 +24,12 @@ namespace Sangaku
     public class UnityVector3Event : UnityEvent<Vector3> { }
 
     /// <summary>
+    /// Unity Event passing a Transform
+    /// </summary>
+    [System.Serializable]
+    public class UnityTransformEvent : UnityEvent<Transform> { }
+
+    /// <summary>
     /// Evento di unity void
     /// </summary>
     [System.Serializable]

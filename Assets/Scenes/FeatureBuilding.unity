@@ -208,14 +208,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 59021668}
+  - component: {fileID: 59021671}
   - component: {fileID: 59021667}
   - component: {fileID: 59021666}
   - component: {fileID: 59021665}
   - component: {fileID: 59021664}
   - component: {fileID: 59021663}
   - component: {fileID: 59021662}
-  - component: {fileID: 59021661}
   - component: {fileID: 59021660}
+  - component: {fileID: 59021669}
+  - component: {fileID: 59021670}
+  - component: {fileID: 59021661}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -384,6 +387,91 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &59021669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59021659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af35accd0e6766549b59552673b0a5cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: {fileID: 0}
+  rotatesToWaypoint: 1
+  patrolOnStart: 1
+  speed: 5
+  waitTime: 1
+  rotationAnglePerSecond: 90
+  OnMovementStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnMovementEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnWaypointReached:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnPathFinished:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &59021670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59021659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f29d6e997d7c8438687f07ef61184d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanType: 1
+  canSeeThroughObstacles: 1
+  previewWithSpotlight: 0
+  scanTarget: {fileID: 150656820}
+  timeToScan: 0
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  scanAreaLenght: 5
+  fovAngle: 45
+  spotLightColor: {r: 0, g: 0, b: 0, a: 0}
+  detectedSpotlightColor: {r: 0, g: 0, b: 0, a: 0}
+  scanAreaRadius: 8.36
+  OnTargetSpotted:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityTransformEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnTargetLost:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityTransformEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &59021671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59021659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ce52d3705feaa4684494a7ca2e37b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &93197871 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 93197871, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
@@ -394,6 +482,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 258aa1563c6032246b37e316d4926e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &150656820 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 79887467333557458, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+    type: 3}
+  m_PrefabInstance: {fileID: 81030063819828546}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db900048548bd2749b36f65e28deabe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &230792481
@@ -2569,16 +2669,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2835863131274270896, guid: 0ab3ad80c4daaec47ac7ac2971274002,
-        type: 3}
-      propertyPath: m_Name
-      value: Orb
-      objectReference: {fileID: 0}
-    - target: {fileID: 2835863131274270896, guid: 0ab3ad80c4daaec47ac7ac2971274002,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2833276191514674724, guid: 0ab3ad80c4daaec47ac7ac2971274002,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2632,6 +2722,16 @@ PrefabInstance:
     - target: {fileID: 2833276191514674724, guid: 0ab3ad80c4daaec47ac7ac2971274002,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835863131274270896, guid: 0ab3ad80c4daaec47ac7ac2971274002,
+        type: 3}
+      propertyPath: m_Name
+      value: Orb
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835863131274270896, guid: 0ab3ad80c4daaec47ac7ac2971274002,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

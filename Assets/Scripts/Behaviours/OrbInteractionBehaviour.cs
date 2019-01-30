@@ -4,6 +4,7 @@ namespace Sangaku
 {
     public class OrbInteractionBehaviour : MonoBehaviour, IBehaviour
     {
+
         /// <summary>
         /// Riferimento all'entitià che controlla il Behaviour
         /// </summary>
