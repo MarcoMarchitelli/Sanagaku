@@ -5205,7 +5205,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2833276191514674724, guid: 0ab3ad80c4daaec47ac7ac2971274002,
     type: 3}
   shootPoint: {fileID: 2108020691}
-  fireRate: 0.5
+  secondsBetweenShots: 0
+  firesOnStart: 0
   cost: 1
 --- !u!114 &850753096191203397
 MonoBehaviour:
@@ -5296,7 +5297,7 @@ MonoBehaviour:
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   dashDistance: 25
-  dashSpeed: 25
+  dashSpeed: 80
   dashCooldown: 3
 --- !u!114 &79887467333557449
 MonoBehaviour:
@@ -5419,6 +5420,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cb566263f1ded4f9a6fa8ecb8bc281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDestruction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &79887467333557447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5472,7 +5478,6 @@ GameObject:
   - component: {fileID: 81030063627979317}
   - component: {fileID: 81030063627979320}
   - component: {fileID: 81030063627979323}
-  - component: {fileID: 81030063627979322}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -5540,19 +5545,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &81030063627979322
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81030063627979316}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1470621740650661748
 GameObject:
   m_ObjectHideFlags: 0

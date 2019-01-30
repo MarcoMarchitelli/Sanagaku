@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using Deirin.StateMachine;
 using System.Linq;
+using UnityEngine;
 
 namespace Sangaku
 {
+    [RequireComponent(typeof(Animator))]
     public class EnemyController : StateMachineBase, IEntity
     {
         #region SM

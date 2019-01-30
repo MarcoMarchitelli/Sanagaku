@@ -5,7 +5,7 @@ namespace Sangaku
     public class DamageReceiverBehaviour : MonoBehaviour, IBehaviour
     {
         #region Events
-        [SerializeField] UnityFloatEvent OnHealthChanged;
+        public UnityIntEvent OnHealthChanged;
         [SerializeField] UnityVoidEvent OnHealthDepleated; 
         #endregion
 
@@ -25,13 +25,13 @@ namespace Sangaku
         public void Setup(IEntity _entity)
         {
             Entity = _entity;
-            //CurrentHealth = maxHealth;//TODO: we are not sure about this :)
+            _currentHealth = maxHealth;
             IsSetupped = true;
         }
 
-        [SerializeField] float maxHealth;
-        float _currentHealth;
-        float CurrentHealth
+        [SerializeField] int maxHealth;
+        int _currentHealth;
+        int CurrentHealth
         {
             get { return _currentHealth; }
             set
@@ -50,9 +50,9 @@ namespace Sangaku
         /// </summary>
         /// <param name="_value">la salute da aggiungere o sottrarre</param>
         /// <returns>true se l'operazione è possibile</returns>
-        public void SetHealth(float _value)
+        public void SetHealth(int _value)
         {
-            float tempHealth = CurrentHealth;
+            int tempHealth = CurrentHealth;
             tempHealth += _value;
             if (tempHealth < 0)
             {
@@ -62,6 +62,11 @@ namespace Sangaku
             if (tempHealth > maxHealth)
                 tempHealth = maxHealth;
             CurrentHealth = tempHealth;
+        }
+
+        public float GetHealth()
+        {
+            return maxHealth;
         }
     } 
 }

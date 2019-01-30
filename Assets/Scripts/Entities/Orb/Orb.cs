@@ -5,6 +5,7 @@ using Deirin.StateMachine;
 
 namespace Sangaku
 {
+    [RequireComponent(typeof(Animator))]
     public class Orb : StateMachineBase, IEntity
     {
 

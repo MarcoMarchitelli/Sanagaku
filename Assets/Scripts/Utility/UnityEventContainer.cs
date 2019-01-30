@@ -12,6 +12,13 @@ namespace Sangaku
     public class UnityFloatEvent : UnityEvent<float> { }
 
     /// <summary>
+    /// Unity Event passing an int
+    /// </summary>
+    [System.Serializable]
+    public class UnityIntEvent : UnityEvent<int> { }
+
+
+    /// <summary>
     /// Evento di unity che porta un Vector2
     /// </summary>
     [System.Serializable]

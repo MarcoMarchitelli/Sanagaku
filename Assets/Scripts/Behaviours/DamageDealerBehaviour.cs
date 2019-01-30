@@ -32,7 +32,7 @@ namespace Sangaku
         /// <summary>
         /// The amount of damage to inflict
         /// </summary>
-        [SerializeField] float damage;
+        [SerializeField] int damage;
         [SerializeField] bool dealsOnCollision = false;
         [SerializeField] bool dealsOnTrigger = false;
 
