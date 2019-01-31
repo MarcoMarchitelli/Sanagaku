@@ -7,7 +7,7 @@ namespace Sangaku
     /// </summary>
     public class ManaBehaviour : MonoBehaviour, IBehaviour
     {
-        [SerializeField] UnityFloatEvent OnManaChanged;
+        public UnityFloatEvent OnManaChanged;
 
         /// <summary>
         /// Riferimento all'entitià che controlla il Behaviour
@@ -58,6 +58,11 @@ namespace Sangaku
                 tempMana = maxMana;
             CurrentMana = tempMana;
             return true;
+        }
+
+        public float GetMana()
+        {
+            return maxMana;
         }
 
     }
