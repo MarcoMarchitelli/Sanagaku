@@ -45,11 +45,11 @@ public class ManaUI : MonoBehaviour
             {
                 manaChunk.gameObject.SetActive(true);
                 manaChunk.value = _newMana - i;
-                print(manaChunk.value);
             }
             else
             {
                 manaChunk.gameObject.SetActive(true);
+                manaChunk.value = 1;
             }
         }
     }

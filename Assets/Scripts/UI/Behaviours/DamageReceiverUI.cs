@@ -26,10 +26,15 @@ public class DamageReceiverUI : MonoBehaviour
             Instantiate(healthChunkPrefab, transform);
         }
 
-        layoutGroup.childForceExpandHeight = false;
-        layoutGroup.childForceExpandWidth = false;
+        layoutGroup.childForceExpandHeight = true;
+        layoutGroup.childForceExpandWidth = true;
+        layoutGroup.childControlHeight = true;
+        layoutGroup.childControlWidth = true;
+
         layoutGroup.childControlHeight = false;
         layoutGroup.childControlWidth = false;
+        layoutGroup.childForceExpandHeight = false;
+        layoutGroup.childForceExpandWidth = false;
     }
 
     public void UpdateUI(int _newHealth)
