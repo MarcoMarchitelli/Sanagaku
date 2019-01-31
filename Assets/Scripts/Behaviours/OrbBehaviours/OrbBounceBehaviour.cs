@@ -1,5 +1,6 @@
 ﻿using UnityEngine.Events;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Sangaku
 {
@@ -27,13 +28,20 @@ namespace Sangaku
         public void Setup(IEntity _entity)
         {
             Entity = _entity;
+            sphereCastLength = transform.localScale.x * .7f;
+            rayLength = sphereCastLength + transform.localScale.x * .6f;
+            hitObjects = new List<GameObject>();
             IsSetupped = true;
         }
 
         [SerializeField] LayerMask bounceLayer;
+        [SerializeField] int collisionDetectionRaysAmount = 8;
 
         int bounces;
         float moveSpeed;
+        float rayLength;
+        float sphereCastLength;
+        List<GameObject> hitObjects;
 
         /// <summary>
         /// Sets the transform rotation to the new rotation given by the bounce.
@@ -75,6 +83,7 @@ namespace Sangaku
 
         private void Update()
         {
+            RayCastsHandler(collisionDetectionRaysAmount);
             SphereCastingHandler();
         }
 
@@ -87,17 +96,53 @@ namespace Sangaku
         {
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
-            if (Physics.SphereCast(ray, transform.localScale.x * .5f, out hit, Time.deltaTime * moveSpeed + .2f, bounceLayer))
+            if (Physics.SphereCast(ray, transform.localScale.x * .5f, out hit, sphereCastLength, bounceLayer))
             {
-                DamageReceiverBehaviour drHit = hit.collider.GetComponent<DamageReceiverBehaviour>();
-                if (drHit)
-                {
-                    OnDamageReceiverHit.Invoke(drHit);
-                }
-
                 BounceOnBehaviour _b = hit.collider.GetComponent<BounceOnBehaviour>();
                 if (_b)
                     HandleBounceOnBehaviour(_b, hit.normal);
+            }
+        }
+
+        void RayCastsHandler(int _raysAmount)
+        {
+            float angle = 360 / _raysAmount;
+            Vector3 direction = transform.forward;
+            hitObjects.Clear();
+
+            for (int i = 0; i < _raysAmount; i++)
+            {
+                direction = Quaternion.AngleAxis(angle, transform.up) * direction;
+                Ray ray = new Ray(transform.position, direction);
+                RaycastHit hit;
+                Debug.DrawRay(ray.origin, direction * rayLength, Color.red);
+                if (Physics.Raycast(ray, out hit, rayLength, bounceLayer))
+                {
+                    if (hit.collider.gameObject && !hitObjects.Contains(hit.collider.gameObject))
+                    {
+                        hitObjects.Add(hit.collider.gameObject);
+                    }
+                }
+            }
+            CheckHitObjects(hitObjects);
+        }
+
+        void CheckHitObjects(List<GameObject> _hitObjects)
+        {
+            foreach (GameObject g in _hitObjects)
+            {
+                OrbInteractionBehaviour _oib = g.GetComponent<OrbInteractionBehaviour>();
+                if (_oib)
+                {
+                    print(name + " ha colpito il player!! che si chiama : '" + _oib.name + "'.");
+                    continue;
+                }
+
+                DamageReceiverBehaviour _drb = g.GetComponent<DamageReceiverBehaviour>();
+                if (_drb)
+                {
+                    OnDamageReceiverHit.Invoke(_drb);
+                }
             }
         }
 

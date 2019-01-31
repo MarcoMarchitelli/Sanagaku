@@ -24,11 +24,13 @@ namespace Sangaku
         public void Setup(IEntity _entity)
         {
             Entity = _entity;
-            CurrentMana = maxMana;//TODO: we are not sure about this :)
+            _currentMana = maxMana;//TODO: we are not sure about this :)
             IsSetupped = true;
         }
 
         [SerializeField] float maxMana;
+        [SerializeField] bool regeneration = false;
+        [SerializeField] float amountPerSecond = .1f;
         float _currentMana = 0;
         float CurrentMana
         {
@@ -38,6 +40,8 @@ namespace Sangaku
                 if (_currentMana != value)
                 {
                     _currentMana = value;
+                    if (_currentMana > maxMana)
+                        _currentMana = maxMana;
                     OnManaChanged.Invoke(_currentMana);
                 }
             }
@@ -63,6 +67,12 @@ namespace Sangaku
         public float GetMana()
         {
             return maxMana;
+        }
+
+        private void Update()
+        {
+            if(regeneration)
+                CurrentMana += amountPerSecond * Time.deltaTime;
         }
 
     }

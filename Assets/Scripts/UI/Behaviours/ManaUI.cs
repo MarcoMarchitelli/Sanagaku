@@ -29,22 +29,26 @@ public class ManaUI : MonoBehaviour
         layoutGroup.childControlWidth = false;
         layoutGroup.childControlHeight = false;
         layoutGroup.childForceExpandWidth = false;
-        //layoutGroup.childForceExpandHeight = false;
+        layoutGroup.childForceExpandHeight = false;
     }
 
     public void UpdateUI(float _newMana)
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            Slider healthChunk = transform.GetChild(i).GetComponent<Slider>();
-            if (i >= _newMana)
+            Slider manaChunk = transform.GetChild(i).GetComponentInChildren<Slider>();
+            if (i >= (int)_newMana)
             {
-                healthChunk.gameObject.SetActive(false);
-                healthChunk.value = _newMana % 1;
+                manaChunk.gameObject.SetActive(false);
+            }
+            else if (i == (int)_newMana)
+            {
+                manaChunk.gameObject.SetActive(true);
+                manaChunk.value = _newMana - i;
             }
             else
             {
-                healthChunk.gameObject.SetActive(true);
+                manaChunk.gameObject.SetActive(true);
             }
         }
     }
