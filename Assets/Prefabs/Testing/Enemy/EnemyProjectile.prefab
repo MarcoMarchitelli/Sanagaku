@@ -63,9 +63,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258aa1563c6032246b37e316d4926e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  description: 
   time: 0
-  startCountinOnAwake: 0
+  startCountingOnAwake: 0
   repeat: 0
+  OnTimerStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnTimerEnd:
     m_PersistentCalls:
       m_Calls:
@@ -82,6 +88,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  timer: 0
 --- !u!114 &114984041468993468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +139,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bfbae953cb2b52a4783632f8f539090a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

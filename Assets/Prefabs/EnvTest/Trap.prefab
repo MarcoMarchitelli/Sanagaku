@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2e8256606a2325645a4777d7bb0c7674, type: 2}
+  - {fileID: 2100000, guid: a291e5d5640ad1642bf2562f5864fb01, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 7696587029542081970}
   - component: {fileID: 7731247878386592162}
   - component: {fileID: 7730635202804795104}
-  - component: {fileID: 7653458474481681938}
+  - component: {fileID: 5555063507527481125}
   m_Layer: 9
   m_Name: Trap
   m_TagString: Untagged
@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BehaviourType: 1
---- !u!65 &7653458474481681938
-BoxCollider:
+--- !u!135 &5555063507527481125
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -158,5 +158,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
