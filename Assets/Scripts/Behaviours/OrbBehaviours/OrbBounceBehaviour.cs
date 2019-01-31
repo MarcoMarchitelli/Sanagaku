@@ -75,9 +75,19 @@ namespace Sangaku
 
         private void Update()
         {
+            SphereCastingHandler();
+        }
+
+        public void SetMoveSpeed(float _value)
+        {
+            moveSpeed = _value;
+        }
+
+        void SphereCastingHandler()
+        {
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
-            if (Physics.SphereCast(ray, transform.localScale.x * .5f, out hit, Time.deltaTime * moveSpeed + .1f, bounceLayer))
+            if (Physics.SphereCast(ray, transform.localScale.x * .5f, out hit, Time.deltaTime * moveSpeed + .2f, bounceLayer))
             {
                 DamageReceiverBehaviour drHit = hit.collider.GetComponent<DamageReceiverBehaviour>();
                 if (drHit)
@@ -89,11 +99,6 @@ namespace Sangaku
                 if (_b)
                     HandleBounceOnBehaviour(_b, hit.normal);
             }
-        }
-
-        public void SetMoveSpeed(float _value)
-        {
-            moveSpeed = _value;
         }
 
     }
