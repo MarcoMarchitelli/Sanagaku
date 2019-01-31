@@ -39,7 +39,8 @@ namespace Sangaku
         /// Velocitò di dash
         /// </summary>
         [Tooltip("Measured in meters per second")]
-        [SerializeField] float dashSpeed = 5f;
+        [SerializeField]
+        float dashSpeed = 5f;
         /// <summary>
         /// Cooldawn del dash
         /// </summary>
@@ -70,35 +71,47 @@ namespace Sangaku
             if (IsSetupped && _dashDirection != Vector3.zero)
             {
                 print(_dashDirection);
-                StartCoroutine(DashRoutine(_dashDirection));
+                //StartCoroutine(DashRoutine(_dashDirection));
+                StartDash(_dashDirection);
             }
         }
 
-        /// <summary>
-        /// Corutine che esegue il dash in Fixed Update
-        /// </summary>
-        /// <returns></returns>
-        IEnumerator DashRoutine(Vector3 _direction)
+        ///// <summary>
+        ///// Corutine che esegue il dash in Fixed Update
+        ///// </summary>
+        ///// <returns></returns>
+        //IEnumerator DashRoutine(Vector3 _direction)
+        //{
+        //    float dashTime = dashDistance / dashSpeed;
+        //    float timer = 0f;
+
+        //    OnDashStart.Invoke();
+        //    print("dash partito");
+
+        //    //perform the dash
+        //    while (timer < dashTime)
+        //    {
+        //        timer += Time.fixedDeltaTime;
+        //        //remember we use fixed because we are moving a rigidbody
+        //        rBody.MovePosition(transform.position + _direction * dashSpeed * Time.fixedDeltaTime);
+        //        yield return new WaitForFixedUpdate();
+        //    }
+
+        //    OnDashEnd.Invoke(dashCooldown);
+        //    print("dash finito");
+        //}
+
+        void StartDash(Vector3 _direction)
         {
-            Vector3 targetPos = rBody.position + _direction;
-            float dashTime = dashDistance / dashSpeed;
-            float timer = 0f;
-
             OnDashStart.Invoke();
-            print("dash partito");
+            rBody.AddForce(_direction * dashSpeed, ForceMode.Impulse);
+            StartCoroutine(CountDashTime(dashDistance / dashSpeed));
+        }
 
-            //perform the dash
-            while (timer < dashTime)
-            {
-                timer += Time.fixedDeltaTime;
-                //remember we use fixed because we are moving a rigidbody
-                rBody.position = Vector3.MoveTowards(rBody.position, targetPos, dashSpeed * Time.fixedDeltaTime);
-                targetPos = rBody.position + _direction;
-                yield return new WaitForFixedUpdate();
-            }
-
+        IEnumerator CountDashTime(float _time)
+        {
+            yield return new WaitForSeconds(_time);
             OnDashEnd.Invoke(dashCooldown);
-            print("dash finito");
         }
 
     }
