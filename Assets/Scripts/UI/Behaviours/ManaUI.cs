@@ -37,7 +37,7 @@ public class ManaUI : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             Slider manaChunk = transform.GetChild(i).GetComponentInChildren<Slider>();
-            if (i >= (int)_newMana)
+            if (i > (int)_newMana)
             {
                 manaChunk.gameObject.SetActive(false);
             }
@@ -45,6 +45,7 @@ public class ManaUI : MonoBehaviour
             {
                 manaChunk.gameObject.SetActive(true);
                 manaChunk.value = _newMana - i;
+                print(manaChunk.value);
             }
             else
             {
