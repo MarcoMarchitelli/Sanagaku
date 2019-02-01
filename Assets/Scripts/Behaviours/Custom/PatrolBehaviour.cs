@@ -50,11 +50,7 @@ namespace Sangaku
                 Debug.LogWarning(name + " has no path referenced!");
                 return;
             }
-        }
-
-        void Start()
-        {
-            if (IsSetupped && patrolOnStart)
+            if (patrolOnStart)
                 StartPatrol();
         }
 

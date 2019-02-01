@@ -26,11 +26,6 @@ public class DamageReceiverUI : MonoBehaviour
             Instantiate(healthChunkPrefab, transform);
         }
 
-        layoutGroup.childForceExpandHeight = true;
-        layoutGroup.childForceExpandWidth = true;
-        layoutGroup.childControlHeight = true;
-        layoutGroup.childControlWidth = true;
-
         layoutGroup.childControlHeight = false;
         layoutGroup.childControlWidth = false;
         layoutGroup.childForceExpandHeight = false;

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6940703165131019609}
   - component: {fileID: 5117720401224528502}
   m_Layer: 9
-  m_Name: Turret A
+  m_Name: Unidirectional Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,16 +64,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c3d39bedf28884dadd1b4f7d7c3b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnShoot:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   projectilePrefab: {fileID: 6217467978684711021, guid: c7146b742f965a24f9491bbfcd29b922,
     type: 3}
   shootPoint: {fileID: 6071864341289568096}
   secondsBetweenShots: 1
   firesOnStart: 1
+  OnShoot:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &5117720401224528499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.03
+  m_Radius: 0.73
   m_Center: {x: 0, y: 0.32, z: 0}
 --- !u!1 &5117720402880931373
 GameObject:

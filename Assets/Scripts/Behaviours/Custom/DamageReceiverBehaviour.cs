@@ -25,7 +25,6 @@ namespace Sangaku
                 {
                     _currentHealth = value;
                     OnHealthChanged.Invoke(_currentHealth);
-                    print(name + "'s helth has changed");
                 }
             }
         }
