@@ -14,7 +14,8 @@ namespace Sangaku
         [SerializeField] UnityVoidEvent OnCatchEnd;
 
         SphereCollider catchCollider;
-        Orb caughtOrb;
+        [HideInInspector]
+        public Orb caughtOrb;
 
         protected override void CustomSetup()
         {
@@ -41,18 +42,16 @@ namespace Sangaku
         /// <summary>
         /// Frees the current caught Orb if there is one.
         /// </summary>
-        /// <returns>Returns true if we freed a Orb.</returns>
-        public bool FreeOrb()
+        public void FreeOrb()
         {
             if (!caughtOrb)
             {
                 Debug.LogWarning(name + " has no Orb to free!");
-                return false;
+                return;
             }
             caughtOrb.SM.GoToFreeState();
             caughtOrb = null;
             OnCatchEnd.Invoke();
-            return true;
         }
 
         public Orb GetOrb()

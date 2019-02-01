@@ -9,7 +9,7 @@ namespace Sangaku
         #region Events
         [SerializeField] UnityVector3Event OnBounce;
         [SerializeField] UnityDamageReceiverEvent OnDamageReceiverHit;
-        [SerializeField] UnityEvent OnDestroyHit;
+        [SerializeField] UnityEvent OnDestroyHit, OnPlayerHit;
         #endregion
 
         protected override void CustomSetup()
@@ -119,8 +119,12 @@ namespace Sangaku
                 PlayerOrbInteractionBehaviour _oib = g.GetComponent<PlayerOrbInteractionBehaviour>();
                 if (_oib)
                 {
-                    _oib.CatchOrb(Entity as Orb);
-                    continue;
+                    if (!_oib.caughtOrb)
+                    {
+                        _oib.CatchOrb(Entity as Orb);
+                        OnPlayerHit.Invoke();
+                        continue;
+                    }
                 }
 
                 DamageReceiverBehaviour _drb = g.GetComponent<DamageReceiverBehaviour>();

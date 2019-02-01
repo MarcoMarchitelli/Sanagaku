@@ -74,6 +74,13 @@ namespace Deirin.Utility
             countTime = false;
         }
 
+        public void EndTimer()
+        {
+            timer = 0;
+            countTime = false;
+            OnTimerEnd.Invoke();
+        }
+
         public void PauseTimer()
         {
             countTime = false;

@@ -16,7 +16,6 @@ namespace Sangaku
 
         #region Events
         [SerializeField] protected UnityFloatEvent OnOrbShoot;
-        [SerializeField] protected UnityFloatEvent OnCaughtOrbShoot;
         #endregion
 
         ManaBehaviour mana;
@@ -29,16 +28,25 @@ namespace Sangaku
         }
 
         /// <summary>
-        /// Checks for any caught Orb and shoots it, if he doesn't find one it uses mana to instantiate one.
+        /// Shoot logic.
         /// </summary>
         public void Shoot()
         {
-            if(orbInteraction && orbInteraction.FreeOrb())
+            if (orbInteraction.caughtOrb)
             {
-                OnCaughtOrbShoot.Invoke(secondsBetweenShots);
-                return;
+                ShootCaughtOrb();
             }
+            else
+            {
+                ShootOrb();
+            }
+        }
 
+        /// <summary>
+        /// Instantiates a new Orb.
+        /// </summary>
+        void ShootOrb()
+        {
             if (mana.SetMana(-cost))
             {
                 //----- ObjPooler wating room
@@ -46,6 +54,15 @@ namespace Sangaku
                 instantiatedOrb.SetUpEntity();
                 OnOrbShoot.Invoke(secondsBetweenShots);
             }
+        }
+
+        /// <summary>
+        /// Frees the caught orb.
+        /// </summary>
+        public void ShootCaughtOrb()
+        {
+            orbInteraction.FreeOrb();
+            OnOrbShoot.Invoke(secondsBetweenShots);
         }
     }
 }
