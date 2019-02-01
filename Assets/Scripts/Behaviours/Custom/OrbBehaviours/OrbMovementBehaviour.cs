@@ -14,8 +14,13 @@ namespace Sangaku
         [SerializeField] AnimationCurve speedOverLifeTimeCurve;
 
         bool canMove = true;
-        float timer = 0;
+        float timer;
         float distanceToTravel;
+
+        protected override void CustomSetup()
+        {
+            timer = 0;
+        }
 
         private void Update()
         {

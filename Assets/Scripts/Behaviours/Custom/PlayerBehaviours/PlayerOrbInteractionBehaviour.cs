@@ -33,7 +33,7 @@ namespace Sangaku
             if (!caughtOrb)
             {
                 caughtOrb = _orb;
-                caughtOrb.ChangeState(Orb.State.caught, orbCatchPoint);
+                caughtOrb.SM.GoToCaughtState(orbCatchPoint);
                 OnOrbCatch.Invoke(catchDuration);
             }
         }
@@ -49,7 +49,7 @@ namespace Sangaku
                 Debug.LogWarning(name + " has no Orb to free!");
                 return false;
             }
-            caughtOrb.ChangeState(Orb.State.free);
+            caughtOrb.SM.GoToFreeState();
             caughtOrb = null;
             OnCatchEnd.Invoke();
             return true;

@@ -16,7 +16,6 @@ namespace Deirin.StateMachine {
         #region Variables
 
         [SerializeField] private string id;
-        private IContext context;
 
         #endregion
 
@@ -24,16 +23,13 @@ namespace Deirin.StateMachine {
 
         public string ID { get { return id; } }
 
-        public IContext Context { get { return context; } set { context = value; } }
+        public IContext Context { get; set; }
 
         #endregion
 
         #region Base behaviour methods
 
-        public virtual void SetUp(IContext _context)
-        {
-            context = _context;
-        }
+        public abstract void SetUp(IContext _context);
 
         public virtual void Enter() {
             

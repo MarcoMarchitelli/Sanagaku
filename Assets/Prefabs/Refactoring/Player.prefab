@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 93197870}
   - component: {fileID: 93197871}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Timer_Dash_Cooldown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   m_Component:
   - component: {fileID: 755840898}
   - component: {fileID: 755840897}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Timer_FireRate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1025301912}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Timers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,9 +179,172 @@ Transform:
   - {fileID: 93197870}
   - {fileID: 2023095831}
   - {fileID: 755840898}
+  - {fileID: 1991540772}
   m_Father: {fileID: 76452836599106812}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1592190639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1592190640}
+  - component: {fileID: 1592190642}
+  - component: {fileID: 1592190641}
+  m_Layer: 9
+  m_Name: OrbInteraction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1592190640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592190639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 76452836599106812}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1592190642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592190639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b59187db7ad23f4d94a585463e328a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawGizmos: 1
+  orbCatchPoint: {fileID: 2108020691}
+  catchDuration: 3
+  catchRadius: 1.67
+  OnOrbCatch:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1991540773}
+        m_MethodName: StartTimer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnCatchEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!135 &1592190641
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592190639}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1991540771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1991540772}
+  - component: {fileID: 1991540773}
+  m_Layer: 0
+  m_Name: Timer_Catch_Duration
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1991540772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991540771}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1025301912}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1991540773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991540771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258aa1563c6032246b37e316d4926e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Counts the duration of the Orb catch.
+  time: 0
+  startCountingOnAwake: 0
+  repeat: 0
+  OnTimerStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnTimerEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 79887467333557445}
+        m_MethodName: Shoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  timer: 0
 --- !u!1 &2023095829
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2023095831}
   - component: {fileID: 2023095830}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Timer_Invul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +423,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2108020691}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108020690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.26}
+  m_LocalPosition: {x: 0, y: 0, z: 3.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 76452836599106812}
@@ -292,7 +455,7 @@ GameObject:
   - component: {fileID: 76104651762036100}
   - component: {fileID: 261340158311140328}
   - component: {fileID: 277369075837104022}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5002,7 +5165,6 @@ GameObject:
   - component: {fileID: 79887467333557455}
   - component: {fileID: 79887467333557454}
   - component: {fileID: 79887467333557445}
-  - component: {fileID: 79887467333557449}
   - component: {fileID: 850753096191203397}
   - component: {fileID: 79887467333557448}
   - component: {fileID: 79887467333557451}
@@ -5011,7 +5173,7 @@ GameObject:
   - component: {fileID: 79887467333557447}
   - component: {fileID: 141176160611919468}
   - component: {fileID: 135003964999893156}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5032,6 +5194,7 @@ Transform:
   - {fileID: 81030063627979317}
   - {fileID: 2108020691}
   - {fileID: 1025301912}
+  - {fileID: 1592190640}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5166,7 +5329,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39fa30b4509062a4081fb85d5903d047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnShoot:
+  projectilePrefab: {fileID: 2835863131274270898, guid: 0ab3ad80c4daaec47ac7ac2971274002,
+    type: 3}
+  shootPoint: {fileID: 2108020691}
+  secondsBetweenShots: 1
+  cost: 1
+  OnOrbShoot:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 755840897}
@@ -5182,30 +5350,22 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  projectilePrefab: {fileID: 2835863131274270898, guid: 0ab3ad80c4daaec47ac7ac2971274002,
-    type: 3}
-  shootPoint: {fileID: 2108020691}
-  secondsBetweenShots: 0
-  firesOnStart: 0
-  cost: 1
---- !u!114 &79887467333557449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 79887467333557446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b59187db7ad23f4d94a585463e328a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnParryStart:
+  OnCaughtOrbShoot:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1991540773}
+        m_MethodName: StopTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  parryDuration: 0
 --- !u!114 &850753096191203397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5374,6 +5534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419da24c6fcd0b64289a86fb75442bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invulnerabilityTime: 2
   OnInvulnerabilityActive:
     m_PersistentCalls:
       m_Calls:
@@ -5417,7 +5578,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  invulnerabilityTime: 2
 --- !u!114 &79887467333557444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5488,7 +5648,7 @@ GameObject:
   - component: {fileID: 81030063627979317}
   - component: {fileID: 81030063627979320}
   - component: {fileID: 81030063627979323}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5564,7 +5724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6327333987277507893}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
