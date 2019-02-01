@@ -45,7 +45,6 @@ namespace Sangaku
             if (timer >= time && countTime)
             {
                 OnTimerEnd.Invoke();
-                print(name + " ha finito");
             }
         }
 

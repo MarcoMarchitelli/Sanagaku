@@ -51,7 +51,7 @@ namespace Sangaku
             {
                 //----- ObjPooler wating room
                 Orb instantiatedOrb = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Orb>();
-                instantiatedOrb.SetUpEntity();
+                instantiatedOrb.OrbSetUp(shootPoint);
                 OnOrbShoot.Invoke(secondsBetweenShots);
             }
         }

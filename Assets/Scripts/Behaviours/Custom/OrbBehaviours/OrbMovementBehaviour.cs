@@ -19,7 +19,8 @@ namespace Sangaku
 
         protected override void CustomSetup()
         {
-            timer = 0;
+            timer = 0.01f;
+            canMove = true;
         }
 
         private void Update()
