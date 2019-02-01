@@ -281,13 +281,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2834909684165211738}
   - component: {fileID: 2834909684165211732}
-  - component: {fileID: 2834909684165211739}
   - component: {fileID: 2834909684165211734}
   - component: {fileID: 2834909684165211733}
   - component: {fileID: 2834909684165211735}
   - component: {fileID: 556454264}
   - component: {fileID: 556454271}
-  - component: {fileID: 2834909684165211728}
+  - component: {fileID: 1356338688}
   m_Layer: 9
   m_Name: Static Trap
   m_TagString: Untagged
@@ -323,25 +322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ad0a5a4b3cbcb45a6d4354e848ecc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &2834909684165211739
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2834909684165211737}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 63341d9078b03054cb928233bfb23b07, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2834909684165211734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,8 +340,8 @@ MonoBehaviour:
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   damage: 1
-  dealsOnCollision: 0
-  dealsOnTrigger: 1
+  dealsOnCollision: 1
+  dealsOnTrigger: 0
 --- !u!114 &2834909684165211733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,21 +442,21 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
---- !u!135 &2834909684165211728
-SphereCollider:
+--- !u!65 &1356338688
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2834909684165211737}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.03
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.13, y: 2.16, z: 2.02}
+  m_Center: {x: 0, y: 1.01, z: 0}
 --- !u!1001 &2834909682853590675
 PrefabInstance:
   m_ObjectHideFlags: 0

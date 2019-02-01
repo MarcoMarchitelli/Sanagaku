@@ -36,7 +36,7 @@ namespace Sangaku
             {
                 //----- NOT COOL YET
                 Orb instantiatedOrb = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<Orb>();
-                instantiatedOrb.SetUpSM();
+                instantiatedOrb.SetUpEntity();
                 //----- AWFUL
             }
         }

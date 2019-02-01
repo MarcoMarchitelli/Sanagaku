@@ -34,7 +34,7 @@ namespace Sangaku
             print(name + " entity setupped!");
         }
 
-        [SerializeField] protected StateMachineBase projectilePrefab;
+        [SerializeField] protected BaseEntity projectilePrefab;
         [SerializeField] protected Transform shootPoint;
         /// <summary>
         /// How many seconds between each shot.
@@ -62,8 +62,8 @@ namespace Sangaku
         public virtual void Shoot()
         {
             // ------- //TODO objpooler
-            StateMachineBase instBullet = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<StateMachineBase>();
-            instBullet.SetUpSM();
+            BaseEntity instBullet = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<BaseEntity>();
+            instBullet.SetUpEntity();
             timer = 0;
             // ------- aaaaa
             OnShoot.Invoke(secondsBetweenShots);
