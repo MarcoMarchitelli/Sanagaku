@@ -2,12 +2,8 @@
 
 namespace Sangaku
 {
-    public class DestroyBehaviour : MonoBehaviour, IBehaviour
+    public abstract class BaseBehaviour : MonoBehaviour, IBehaviour
     {
-        #region Events
-        [SerializeField] UnityVoidEvent OnDestruction;
-        #endregion
-
         /// <summary>
         /// Riferimento all'entitià che controlla il Behaviour
         /// </summary>
@@ -18,37 +14,23 @@ namespace Sangaku
         public bool IsSetupped { get; private set; }
 
         /// <summary>
-        /// Eseguo il setup del behaviour
+        /// Base obligatory setup for every Behaviour.
         /// </summary>
         /// <param name="_entity"></param>
         public void Setup(IEntity _entity)
         {
             Entity = _entity;
             IsSetupped = true;
+            CustomSetup();
         }
 
         /// <summary>
-        /// Destroys the gameObject
+        /// Optional setup unique to every Behaviour that implements it.
         /// </summary>
-        public void Destroy()
+        protected virtual void CustomSetup()
         {
-            Destroy(gameObject);
-        }
 
-        /// <summary>
-        /// Destroys the gameObject after a given time
-        /// </summary>
-        /// <param name="_time"></param>
-        public void DestroyAfter(float _time)
-        {
-            Destroy(gameObject, _time);
-        }
-
-        private void OnDestroy()
-        {
-            OnDestruction.Invoke();
         }
 
     }
-
 }

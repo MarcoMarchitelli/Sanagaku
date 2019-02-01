@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,7 +8,7 @@ namespace Sangaku
     /// Behaviour che si occupa di eseguire il dash
     /// </summary>
     [RequireComponent(typeof(Rigidbody))]
-    public class DashBehaviour : MonoBehaviour, IBehaviour
+    public class DashBehaviour : BaseBehaviour
     {
         #region Events
         /// <summary>
@@ -21,15 +20,6 @@ namespace Sangaku
         /// </summary>
         [SerializeField] UnityFloatEvent OnDashEnd;
         #endregion
-
-        /// <summary>
-        /// Riferimento all'entitià che controlla il Behaviour
-        /// </summary>
-        public IEntity Entity { get; private set; }
-        /// <summary>
-        /// True se il Behaviour è stato setuppato, false altrimenti
-        /// </summary>
-        public bool IsSetupped { get; private set; }
 
         /// <summary>
         /// Distanza di dash
@@ -52,15 +42,9 @@ namespace Sangaku
         /// </summary>
         Rigidbody rBody;
 
-        /// <summary>
-        /// Eseguo il setup del behaviour
-        /// </summary>
-        /// <param name="_entity"></param>
-        public void Setup(IEntity _entity)
+        protected override void CustomSetup()
         {
-            Entity = _entity;
             rBody = GetComponent<Rigidbody>();
-            IsSetupped = true;
         }
 
         /// <summary>

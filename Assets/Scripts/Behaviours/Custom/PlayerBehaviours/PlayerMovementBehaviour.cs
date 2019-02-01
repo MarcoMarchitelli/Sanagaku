@@ -7,7 +7,7 @@ namespace Sangaku
     /// Behaviour che gestisce il movimento del player
     /// </summary>
     [RequireComponent(typeof(Rigidbody))]
-    public class PlayerMovementBehaviour : MonoBehaviour, IBehaviour
+    public class PlayerMovementBehaviour : BaseBehaviour
     {
         #region Events
         /// <summary>
@@ -19,15 +19,6 @@ namespace Sangaku
         /// </summary>
         [SerializeField] UnityEvent OnMovementStop;
         #endregion
-
-        /// <summary>
-        /// Riferimento all'entitià che controlla il Behaviour
-        /// </summary>
-        public IEntity Entity { get; private set; }
-        /// <summary>
-        /// True se il Behaviour è stato setuppato, false altrimenti
-        /// </summary>
-        public bool IsSetupped { get; private set; }
 
         /// <summary>
         /// Velocità di movimento del Behaviour
@@ -43,15 +34,9 @@ namespace Sangaku
         /// </summary>
         Vector3 moveDirection;
 
-        /// <summary>
-        /// Eseguo il setup del behaviour
-        /// </summary>
-        /// <param name="_entity"></param>
-        public void Setup(IEntity _entity)
+        protected override void CustomSetup()
         {
-            Entity = _entity;
             rBody = GetComponent<Rigidbody>();
-            IsSetupped = true;
         }
 
         /// <summary>

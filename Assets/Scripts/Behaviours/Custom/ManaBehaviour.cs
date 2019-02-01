@@ -5,27 +5,13 @@ namespace Sangaku
     /// <summary>
     /// Behaviour che gestisce l'accumulo di mana
     /// </summary>
-    public class ManaBehaviour : MonoBehaviour, IBehaviour
+    public class ManaBehaviour : BaseBehaviour
     {
         public UnityFloatEvent OnManaChanged;
 
-        /// <summary>
-        /// Riferimento all'entitià che controlla il Behaviour
-        /// </summary>
-        public IEntity Entity { get; private set; }
-        /// <summary>
-        /// True se il Behaviour è stato setuppato, false altrimenti
-        /// </summary>
-        public bool IsSetupped { get; private set; }
-        /// <summary>
-        /// Eseguo il setup del behaviour
-        /// </summary>
-        /// <param name="_entity"></param>
-        public void Setup(IEntity _entity)
+        protected override void CustomSetup()
         {
-            Entity = _entity;
-            _currentMana = maxMana;//TODO: we are not sure about this :)
-            IsSetupped = true;
+            _currentMana = maxMana;
         }
 
         [SerializeField] float maxMana;

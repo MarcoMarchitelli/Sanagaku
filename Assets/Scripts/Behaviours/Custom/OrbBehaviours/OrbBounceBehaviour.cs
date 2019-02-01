@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Sangaku
 {
-    public class OrbBounceBehaviour : MonoBehaviour, IBehaviour
+    public class OrbBounceBehaviour : BaseBehaviour
     {
         #region Events
         [SerializeField] UnityVector3Event OnBounce;
@@ -12,26 +12,11 @@ namespace Sangaku
         [SerializeField] UnityEvent OnDestroyHit;
         #endregion
 
-        /// <summary>
-        /// Riferimento all'entitià che controlla il Behaviour
-        /// </summary>
-        public IEntity Entity { get; private set; }
-        /// <summary>
-        /// True se il Behaviour è stato setuppato, false altrimenti
-        /// </summary>
-        public bool IsSetupped { get; private set; }
-
-        /// <summary>
-        /// Eseguo il setup del behaviour
-        /// </summary>
-        /// <param name="_entity"></param>
-        public void Setup(IEntity _entity)
+        protected override void CustomSetup()
         {
-            Entity = _entity;
             sphereCastLength = transform.localScale.x * .7f;
             rayLength = sphereCastLength + transform.localScale.x * .6f;
             hitObjects = new List<GameObject>();
-            IsSetupped = true;
         }
 
         [SerializeField] LayerMask bounceLayer;
@@ -131,10 +116,10 @@ namespace Sangaku
         {
             foreach (GameObject g in _hitObjects)
             {
-                OrbInteractionBehaviour _oib = g.GetComponent<OrbInteractionBehaviour>();
+                PlayerOrbInteractionBehaviour _oib = g.GetComponent<PlayerOrbInteractionBehaviour>();
                 if (_oib)
                 {
-                    print(name + " ha colpito il player!! che si chiama : '" + _oib.name + "'.");
+                    _oib.CatchOrb(Entity as Orb);
                     continue;
                 }
 

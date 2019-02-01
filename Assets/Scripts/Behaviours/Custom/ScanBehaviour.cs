@@ -2,7 +2,7 @@
 
 namespace Sangaku
 {
-    public class ScanBehaviour : MonoBehaviour, IBehaviour
+    public class ScanBehaviour : BaseBehaviour
     {
         #region Inspector Variables
 
@@ -38,22 +38,8 @@ namespace Sangaku
 
         #endregion
 
-        /// <summary>
-        /// Riferimento all'entitià che controlla il Behaviour
-        /// </summary>
-        public IEntity Entity { get; private set; }
-        /// <summary>
-        /// True se il Behaviour è stato setuppato, false altrimenti
-        /// </summary>
-        public bool IsSetupped { get; private set; }
-
-        /// <summary>
-        /// Eseguo il setup del behaviour
-        /// </summary>
-        /// <param name="_entity"></param>
-        public void Setup(IEntity _entity)
+        protected override void CustomSetup()
         {
-            Entity = _entity;
             timeToScan = Mathf.Abs(timeToScan);
             if (timeToScan == 0) timeToScan = 0.001f;
 
@@ -75,14 +61,13 @@ namespace Sangaku
                     spotLight.shadowBias = 0f;
                 }
 
-            }else if(scanType == ScanType.circularArea)
+            }
+            else if (scanType == ScanType.circularArea)
             {
                 sphereCollider = gameObject.AddComponent<SphereCollider>();
                 sphereCollider.isTrigger = true;
                 sphereCollider.radius = scanAreaRadius;
             }
-            
-            IsSetupped = true;
         }
 
         #region MonoBehaviour methods

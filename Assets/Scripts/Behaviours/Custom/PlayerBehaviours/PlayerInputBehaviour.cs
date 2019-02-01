@@ -6,7 +6,7 @@ namespace Sangaku
     /// <summary>
     /// Behaviour che gestisce l'input del player
     /// </summary>
-    public class PlayerInputBehaviour : MonoBehaviour, IBehaviour
+    public class PlayerInputBehaviour : BaseBehaviour
     {
         #region Events
         /// <summary>
@@ -43,15 +43,6 @@ namespace Sangaku
         #endregion
 
         /// <summary>
-        /// Riferimento all'entitià che controlla il Behaviour
-        /// </summary>
-        public IEntity Entity { get; private set; }
-        /// <summary>
-        /// True se il Behaviour è stato setuppato, false altrimenti
-        /// </summary>
-        public bool IsSetupped { get; private set; }
-
-        /// <summary>
         /// Enumerativo che indica il tipo di movimento che si vuole
         /// </summary>
         public enum DirectionType { Global, Camera };
@@ -84,15 +75,9 @@ namespace Sangaku
         bool canDash = true;
         bool canMove = true;
 
-        /// <summary>
-        /// Eseguo il setup del behaviour
-        /// </summary>
-        /// <param name="_entity"></param>
-        public void Setup(IEntity _entity)
+        protected override void CustomSetup()
         {
-            Entity = _entity;
             cam = Camera.main;
-            IsSetupped = true;
         }
 
         /// <summary>

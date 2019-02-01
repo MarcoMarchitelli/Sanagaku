@@ -7,17 +7,8 @@ namespace Sangaku
     /// <summary>
     /// Behaviour che si occupa di ruotare la transform dell'enità nel punto in cui si fa il raycast 
     /// </summary>
-    public class PlayerAimBehaviour : MonoBehaviour, IBehaviour
+    public class PlayerAimBehaviour : BaseBehaviour
     {
-        /// <summary>
-        /// Riferimento all'entitià che controlla il Behaviour
-        /// </summary>
-        public IEntity Entity { get; private set; }
-        /// <summary>
-        /// True se il Behaviour è stato setuppato, false altrimenti
-        /// </summary>
-        public bool IsSetupped { get; private set; }
-
         /// <summary>
         /// Riferimento alla camera
         /// </summary>
@@ -27,15 +18,9 @@ namespace Sangaku
         /// </summary>
         [SerializeField] LayerMask aimLayer;
 
-        /// <summary>
-        /// Eseguo il setup del behaviour
-        /// </summary>
-        /// <param name="_entity"></param>
-        public void Setup(IEntity _entity)
+        protected override void CustomSetup()
         {
-            Entity = _entity;
             cam = Camera.main;
-            IsSetupped = true;
         }
 
         void Update()

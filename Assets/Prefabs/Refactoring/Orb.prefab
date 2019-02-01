@@ -247,10 +247,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2833276191514674724}
   - component: {fileID: 2835863131274270898}
-  - component: {fileID: 2835863131274270899}
   - component: {fileID: 2835863131274270905}
   - component: {fileID: 2835863131274270902}
-  - component: {fileID: 8259381828518056005}
+  - component: {fileID: 6044092798920371552}
   - component: {fileID: 2835863131274270903}
   - component: {fileID: 2835863131274270901}
   - component: {fileID: 1954205545}
@@ -289,25 +288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480041476c4c46241ac9e740a695cc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &2835863131274270899
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2835863131274270896}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 67b1a5e86876033479651bba6664c23f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2835863131274270905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,7 +374,7 @@ MonoBehaviour:
   OnDamageReceiverHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8259381828518056005}
+      - m_Target: {fileID: 6044092798920371552}
         m_MethodName: DealDamage
         m_Mode: 0
         m_Arguments:
@@ -427,7 +407,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   collisionDetectionRaysAmount: 16
---- !u!114 &8259381828518056005
+--- !u!114 &6044092798920371552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -436,7 +416,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2835863131274270896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b64fec71b645ae41807611c12aa5f3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c4d9bf08c9e6a6418f16f23a6f83fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnDamageDealt:
@@ -465,6 +445,8 @@ MonoBehaviour:
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   maxMana: 0
+  regeneration: 0
+  amountPerSecond: 0.1
 --- !u!114 &2835863131274270901
 MonoBehaviour:
   m_ObjectHideFlags: 0

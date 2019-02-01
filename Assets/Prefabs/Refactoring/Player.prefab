@@ -5002,8 +5002,8 @@ GameObject:
   - component: {fileID: 79887467333557455}
   - component: {fileID: 79887467333557454}
   - component: {fileID: 79887467333557445}
-  - component: {fileID: 850753096191203397}
   - component: {fileID: 79887467333557449}
+  - component: {fileID: 850753096191203397}
   - component: {fileID: 79887467333557448}
   - component: {fileID: 79887467333557451}
   - component: {fileID: 79887467333557450}
@@ -5188,6 +5188,24 @@ MonoBehaviour:
   secondsBetweenShots: 0
   firesOnStart: 0
   cost: 1
+--- !u!114 &79887467333557449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79887467333557446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b59187db7ad23f4d94a585463e328a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnParryStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  parryDuration: 0
 --- !u!114 &850753096191203397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5279,18 +5297,6 @@ MonoBehaviour:
   dashDistance: 5
   dashSpeed: 80
   dashCooldown: 3
---- !u!114 &79887467333557449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 79887467333557446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b59187db7ad23f4d94a585463e328a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &79887467333557448
 MonoBehaviour:
   m_ObjectHideFlags: 0
