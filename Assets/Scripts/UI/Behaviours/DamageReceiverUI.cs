@@ -19,21 +19,7 @@ public class DamageReceiverUI : MonoBehaviour
         HorizontalLayoutGroup layoutGroup = GetComponent<HorizontalLayoutGroup>();
 
         StartCoroutine(LayoutSetup(layoutGroup));
-
-        //layoutGroup.childControlWidth = true;
-        //layoutGroup.childControlHeight = true;
-        //layoutGroup.childForceExpandWidth = true;
-        //layoutGroup.childForceExpandHeight = true;
-
-        //for (int i = 0; i < damageReceiver.GetHealth(); i++)
-        //{
-        //    Instantiate(healthChunkPrefab, transform);
-        //}
-
-        //layoutGroup.childControlWidth = false;
-        //layoutGroup.childControlHeight = false;
-        //layoutGroup.childForceExpandWidth = false;
-        //layoutGroup.childForceExpandHeight = false;
+        print(name + "ui setup done!");
     }
 
     public void UpdateUI(int _newHealth)
@@ -41,7 +27,7 @@ public class DamageReceiverUI : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             GameObject healthChunk = transform.GetChild(i).gameObject;
-            if (i >= _newHealth)
+            if (i > _newHealth)
             {
                 healthChunk.SetActive(false);
             }

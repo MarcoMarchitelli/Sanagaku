@@ -12,6 +12,7 @@ namespace Sangaku
         protected override void CustomSetup()
         {
             _currentHealth = maxHealth;
+            print(name + "health setup done!");
         }
 
         [SerializeField] int maxHealth;

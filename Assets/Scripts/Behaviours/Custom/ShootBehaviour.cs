@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using Deirin.AI;
 
@@ -60,29 +61,7 @@ namespace Sangaku
                 return;
             }
 
-            if (hasTargets && targets.Count > 0)
-            {
-                shorterTargetDistance = Vector3.Distance(transform.position, targets[0].position);
-                currentTarget = targets[0];
-                if (targets.Count > 1)
-                    for (int i = 1; i < targets.Count; i++)
-                    {
-                        float d = Vector3.Distance(transform.position, targets[i].position);
-                        if (d < shorterTargetDistance)
-                        {
-                            shorterTargetDistance = d;
-                            currentTarget = targets[i];
-                        }
-                    }
-                Vector3 directionToTarget = (currentTarget.position - transform.position).normalized;
-                float targetAngle = 90 - Mathf.Atan2(directionToTarget.z, directionToTarget.x) * Mathf.Rad2Deg;
-
-                while (Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle) > 0.05f || Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle) < -0.05f)
-                {
-                    float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetAngle, Time.deltaTime * turnRateAnglesPerSecond);
-                    transform.eulerAngles = Vector3.up * angle;
-                }
-            }
+            CheckTargets();
 
             if (canShoot)
             {
@@ -90,6 +69,55 @@ namespace Sangaku
                 if (timer >= secondsBetweenShots)
                     Shoot();
             }
+        }
+
+        Vector3 directionToTarget;
+        float targetAngle;
+        void CheckTargets()
+        {
+            if (hasTargets)
+            {
+                if (targets.Count == 0 && isRotating)
+                {
+                    StopCoroutine(RotateToFaceTarget());
+                    return;
+                }
+
+                if (targets.Count > 0)
+                {
+                    shorterTargetDistance = Vector3.Distance(transform.position, targets[0].position);
+                    currentTarget = targets[0];
+                    if (targets.Count > 1)
+                        for (int i = 1; i < targets.Count; i++)
+                        {
+                            float d = Vector3.Distance(transform.position, targets[i].position);
+                            if (d < shorterTargetDistance)
+                            {
+                                shorterTargetDistance = d;
+                                currentTarget = targets[i];
+                            }
+                        }
+                    directionToTarget = (currentTarget.position - transform.position).normalized;
+                    targetAngle = 90 - Mathf.Atan2(directionToTarget.z, directionToTarget.x) * Mathf.Rad2Deg;
+
+                    if (!isRotating)
+                        StartCoroutine(RotateToFaceTarget());
+                }
+            }
+        }
+
+        float angle;
+        bool isRotating = false;
+        IEnumerator RotateToFaceTarget()
+        {
+            isRotating = true;
+            while (Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle) > 0.05f || Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle) < -0.05f)
+            {
+                angle = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetAngle, Time.deltaTime * turnRateAnglesPerSecond);
+                transform.eulerAngles = Vector3.up * angle;
+                yield return null;
+            }
+            isRotating = false;
         }
 
         #region API

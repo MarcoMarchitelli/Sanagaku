@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawGizmos: 1
+  isEnabled: 1
   orbCatchPoint: {fileID: 2108020691}
   catchDuration: 3
   catchRadius: 1.67
@@ -5459,7 +5460,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  maxMana: 5
+  maxMana: 10
   regeneration: 1
   amountPerSecond: 0.1
 --- !u!114 &79887467333557451
@@ -5506,7 +5507,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  maxHealth: 5
+  maxHealth: 10
 --- !u!114 &79887467333557450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5535,7 +5536,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 79887467333557451}
-        m_MethodName: set_enabled
+        m_MethodName: Enable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5551,7 +5552,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 79887467333557451}
-        m_MethodName: set_enabled
+        m_MethodName: Enable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
