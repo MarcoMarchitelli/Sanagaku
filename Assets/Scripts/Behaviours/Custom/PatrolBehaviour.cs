@@ -66,6 +66,11 @@ namespace Sangaku
             StopCoroutine(FollowPath());
         }
 
+        public void ToggleRotationToWaypoint(bool _value)
+        {
+            rotatesToWaypoint = _value;
+        }
+
         #endregion
 
         #region Patrol mathods

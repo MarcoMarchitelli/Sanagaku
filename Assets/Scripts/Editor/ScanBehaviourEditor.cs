@@ -7,7 +7,7 @@ using Sangaku;
 public class ScanBehaviourEditor : Editor
 {
     SerializedProperty timeToScan, fovAngle, scanAreaLenght, obstacleLayer, OnTargetSpotted,
-        OnTargetLost, scanType, spotLightColor, detectedSpotlightColor, scanAreaRadius, canSeeThroughObstacles, previewWithSpotlight;
+        OnTargetLost, scanType, spotLightColor, detectedSpotlightColor, scanAreaRadius, canSeeThroughObstacles, previewWithSpotlight, scanTarget;
 
     bool showParameters = true, showEvents = true, showBehaviours = true;
 
@@ -25,6 +25,7 @@ public class ScanBehaviourEditor : Editor
         scanAreaRadius = serializedObject.FindProperty("scanAreaRadius");
         canSeeThroughObstacles = serializedObject.FindProperty("canSeeThroughObstacles");
         previewWithSpotlight = serializedObject.FindProperty("previewWithSpotlight");
+        scanTarget = serializedObject.FindProperty("scanTarget");
     }
 
     public override void OnInspectorGUI()
@@ -48,6 +49,7 @@ public class ScanBehaviourEditor : Editor
         showParameters = EditorGUILayout.Foldout(showParameters, "Parameters", true, EditorStyles.foldout);
         if (showParameters)
         {
+            EditorGUILayout.PropertyField(scanTarget);
             EditorGUILayout.PropertyField(timeToScan);
 
             if (scanType.enumValueIndex == (int)ScanBehaviour.ScanType.fieldOfView)
