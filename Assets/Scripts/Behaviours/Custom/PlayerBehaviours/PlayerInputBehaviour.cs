@@ -74,6 +74,7 @@ namespace Sangaku
         bool canShoot = true;
         bool canDash = true;
         bool canMove = true;
+        bool canParry = true;
 
         protected override void CustomSetup()
         {
@@ -120,7 +121,7 @@ namespace Sangaku
             }
 
             //ParryInput
-            if (Input.GetKeyDown(parryInput))
+            if (canParry && Input.GetKeyDown(parryInput))
             {
                 OnParryPressed.Invoke();
             }
@@ -144,6 +145,10 @@ namespace Sangaku
         public void ToggleDashInput(bool _value)
         {
             canDash = _value;
+        }
+        public void ToggleParryInput(bool _value)
+        {
+            canParry = _value;
         }
     }
 }

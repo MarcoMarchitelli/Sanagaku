@@ -249,20 +249,10 @@ MonoBehaviour:
       PublicKeyToken=null
   OnCatchEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  caughtOrb: {fileID: 0}
 --- !u!135 &1592190641
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -332,7 +322,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 79887467333557445}
-        m_MethodName: Shoot
+        m_MethodName: ShootCaughtOrb
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5348,11 +5338,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnCaughtOrbShoot:
-    m_PersistentCalls:
-      m_Calls:
       - m_Target: {fileID: 1991540773}
         m_MethodName: StopTimer
         m_Mode: 1

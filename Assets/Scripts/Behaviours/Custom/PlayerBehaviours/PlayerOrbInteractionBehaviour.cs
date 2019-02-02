@@ -6,6 +6,7 @@ namespace Sangaku
     public class PlayerOrbInteractionBehaviour : BaseBehaviour
     {
         [SerializeField] bool drawGizmos = true;
+        [SerializeField] bool isEnabled = true;
         [SerializeField] Transform orbCatchPoint;
         [SerializeField] float catchDuration;
         [SerializeField] float catchRadius;
@@ -31,6 +32,8 @@ namespace Sangaku
         /// <param name="_orb">the Orb to catch.</param>
         public void CatchOrb(Orb _orb)
         {
+            if (!isEnabled)
+                return;
             if (!caughtOrb)
             {
                 caughtOrb = _orb;
@@ -44,6 +47,8 @@ namespace Sangaku
         /// </summary>
         public void FreeOrb()
         {
+            if (!isEnabled)
+                return;
             caughtOrb.SM.GoToFreeState();
             caughtOrb = null;
             OnCatchEnd.Invoke();
@@ -51,6 +56,8 @@ namespace Sangaku
 
         public Orb GetOrb()
         {
+            if (!isEnabled)
+                return null;
             if (caughtOrb)
                 return caughtOrb;
             else
@@ -64,6 +71,11 @@ namespace Sangaku
                 Gizmos.color = Color.red;
                 Gizmos.DrawWireSphere(transform.position, catchRadius);
             }
+        }
+
+        public void Enable(bool _value)
+        {
+            isEnabled = _value;
         }
 
     } 
