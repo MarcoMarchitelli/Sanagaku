@@ -46,7 +46,6 @@ namespace Deirin.Utility
             if (timer >= time && countTime)
             {
                 OnTimerEnd.Invoke();
-                print(name + " ha finito");
             }
         }
 
@@ -58,7 +57,6 @@ namespace Deirin.Utility
         {
             time = _time;
             countTime = true;
-            print(name + " è iniziato");
         }
 
         public void StartTimer()

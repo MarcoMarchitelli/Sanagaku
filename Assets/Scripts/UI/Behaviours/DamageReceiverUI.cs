@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Sangaku;
+using System.Collections;
 
 [RequireComponent(typeof(HorizontalLayoutGroup))]
 public class DamageReceiverUI : MonoBehaviour
@@ -16,20 +17,23 @@ public class DamageReceiverUI : MonoBehaviour
         damageReceiver.OnHealthChanged.AddListener(UpdateUI);
 
         HorizontalLayoutGroup layoutGroup = GetComponent<HorizontalLayoutGroup>();
-        layoutGroup.childForceExpandHeight = true;
-        layoutGroup.childForceExpandWidth = true;
-        layoutGroup.childControlHeight = true;
-        layoutGroup.childControlWidth = true;
 
-        for (int i = 0; i < damageReceiver.GetHealth(); i++)
-        {
-            Instantiate(healthChunkPrefab, transform);
-        }
+        StartCoroutine(LayoutSetup(layoutGroup));
 
-        layoutGroup.childControlHeight = false;
-        layoutGroup.childControlWidth = false;
-        layoutGroup.childForceExpandHeight = false;
-        layoutGroup.childForceExpandWidth = false;
+        //layoutGroup.childControlWidth = true;
+        //layoutGroup.childControlHeight = true;
+        //layoutGroup.childForceExpandWidth = true;
+        //layoutGroup.childForceExpandHeight = true;
+
+        //for (int i = 0; i < damageReceiver.GetHealth(); i++)
+        //{
+        //    Instantiate(healthChunkPrefab, transform);
+        //}
+
+        //layoutGroup.childControlWidth = false;
+        //layoutGroup.childControlHeight = false;
+        //layoutGroup.childForceExpandWidth = false;
+        //layoutGroup.childForceExpandHeight = false;
     }
 
     public void UpdateUI(int _newHealth)
@@ -46,6 +50,23 @@ public class DamageReceiverUI : MonoBehaviour
                 healthChunk.SetActive(true);
             }
         }
+    }
+
+    IEnumerator LayoutSetup(HorizontalLayoutGroup _l)
+    {
+        _l.childControlWidth = true;
+        _l.childControlHeight = true;
+        _l.childForceExpandWidth = true;
+        _l.childForceExpandHeight = true;
+        for (int i = 0; i < damageReceiver.GetHealth(); i++)
+        {
+            Instantiate(healthChunkPrefab, transform);
+        }
+        yield return null;
+        _l.childControlWidth = false;
+        _l.childControlHeight = false;
+        _l.childForceExpandWidth = false;
+        _l.childForceExpandHeight = false;
     }
 
     //TEMPORARY

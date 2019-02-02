@@ -14,7 +14,7 @@ namespace Sangaku
 
         protected override void CustomSetup()
         {
-            sphereCastLength = transform.localScale.x * .7f;
+            sphereCastLength = 0.1f;
             rayLength = sphereCastLength + transform.localScale.x * .6f;
             hitObjects = new List<GameObject>();
         }
@@ -68,8 +68,11 @@ namespace Sangaku
 
         private void Update()
         {
-            RayCastsHandler(collisionDetectionRaysAmount);
-            SphereCastingHandler();
+            if (IsSetupped)
+            {
+                RayCastsHandler(collisionDetectionRaysAmount);
+                SphereCastingHandler();
+            }
         }
 
         public void SetMoveSpeed(float _value)

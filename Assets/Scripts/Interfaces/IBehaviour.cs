@@ -19,5 +19,11 @@
         /// </summary>
         /// <param name="_entity">Riferimento all'entitàche gestisce il Behaviour</param>
         void Setup(IEntity _entity);
+
+        /// <summary>
+        /// Toggles the activity of the behaviour.
+        /// </summary>
+        /// <param name="_value">if active or not.</param>
+        void Enable(bool _value);
     } 
 }

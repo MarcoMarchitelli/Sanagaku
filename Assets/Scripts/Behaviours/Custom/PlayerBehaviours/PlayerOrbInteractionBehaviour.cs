@@ -73,7 +73,7 @@ namespace Sangaku
             }
         }
 
-        public void Enable(bool _value)
+        public override void Enable(bool _value)
         {
             isEnabled = _value;
         }

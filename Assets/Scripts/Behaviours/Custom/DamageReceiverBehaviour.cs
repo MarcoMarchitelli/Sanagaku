@@ -35,6 +35,8 @@ namespace Sangaku
         /// <param name="_value">la salute da aggiungere o sottrarre</param>
         public void SetHealth(int _value)
         {
+            if (!IsSetupped)
+                return;
             int tempHealth = CurrentHealth;
             tempHealth += _value;
             if (tempHealth <= 0)

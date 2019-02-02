@@ -13,6 +13,11 @@ namespace Sangaku
         /// </summary>
         public bool IsSetupped { get; private set; }
 
+        public virtual void Enable(bool _value)
+        {
+            IsSetupped = _value;
+        }
+
         /// <summary>
         /// Base obligatory setup for every Behaviour.
         /// </summary>

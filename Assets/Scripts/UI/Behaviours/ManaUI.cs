@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Sangaku;
+using System.Collections;
 
 [RequireComponent(typeof(HorizontalLayoutGroup))]
 public class ManaUI : MonoBehaviour
@@ -16,20 +17,8 @@ public class ManaUI : MonoBehaviour
         manaBehaviour.OnManaChanged.AddListener(UpdateUI);
 
         HorizontalLayoutGroup layoutGroup = GetComponent<HorizontalLayoutGroup>();
-        layoutGroup.childControlHeight = true;
-        layoutGroup.childControlWidth = true;
-        layoutGroup.childForceExpandHeight = true;
-        layoutGroup.childForceExpandWidth = true;
 
-        for (int i = 0; i < manaBehaviour.GetMana(); i++)
-        {
-            Instantiate(manaChunkPrefab, transform);
-        }
-
-        layoutGroup.childControlWidth = false;
-        layoutGroup.childControlHeight = false;
-        layoutGroup.childForceExpandWidth = false;
-        layoutGroup.childForceExpandHeight = false;
+        StartCoroutine(LayoutSetup(layoutGroup));
     }
 
     public void UpdateUI(float _newMana)
@@ -52,6 +41,24 @@ public class ManaUI : MonoBehaviour
                 manaChunk.value = 1;
             }
         }
+    }
+
+
+    IEnumerator LayoutSetup(HorizontalLayoutGroup _l)
+    {
+        _l.childControlWidth = true;
+        _l.childControlHeight = true;
+        _l.childForceExpandWidth = true;
+        _l.childForceExpandHeight = true;
+        for (int i = 0; i < manaBehaviour.GetMana(); i++)
+        {
+            Instantiate(manaChunkPrefab, transform);
+        }
+        yield return null;
+        _l.childControlWidth = false;
+        _l.childControlHeight = false;
+        _l.childForceExpandWidth = false;
+        _l.childForceExpandHeight = false;
     }
 
     //TEMPORARY
