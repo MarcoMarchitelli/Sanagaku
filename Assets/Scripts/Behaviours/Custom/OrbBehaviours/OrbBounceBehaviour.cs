@@ -14,8 +14,9 @@ namespace Sangaku
 
         protected override void CustomSetup()
         {
-            sphereCastLength = 0.1f;
-            rayLength = sphereCastLength + transform.localScale.x * .6f;
+            orbRadius = transform.localScale.z * .5f;
+            sphereCastLength = orbRadius * .5f;
+            rayLength = sphereCastLength + orbRadius + damageRaysLengthDifference;
             hitObjects = new List<GameObject>();
         }
 
@@ -26,6 +27,8 @@ namespace Sangaku
         float moveSpeed;
         float rayLength;
         float sphereCastLength;
+        float orbRadius;
+        float damageRaysLengthDifference = .025f;
         List<GameObject> hitObjects;
 
         /// <summary>
@@ -80,10 +83,13 @@ namespace Sangaku
             moveSpeed = _value;
         }
 
+        Vector3 debuggizmoend;
         void SphereCastingHandler()
         {
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
+            Debug.DrawRay(ray.origin, ray.direction * sphereCastLength, Color.cyan);
+            debuggizmoend = ray.direction * sphereCastLength;
             if (Physics.SphereCast(ray, transform.localScale.x * .5f, out hit, sphereCastLength, bounceLayer))
             {
                 BounceOnBehaviour _b = hit.collider.GetComponent<BounceOnBehaviour>();
@@ -96,21 +102,23 @@ namespace Sangaku
         {
             float angle = 360 / _raysAmount;
             Vector3 direction = transform.forward;
+            GameObject hitObj;
             hitObjects.Clear();
 
             for (int i = 0; i < _raysAmount; i++)
             {
-                direction = Quaternion.AngleAxis(angle, transform.up) * direction;
                 Ray ray = new Ray(transform.position, direction);
                 RaycastHit hit;
                 Debug.DrawRay(ray.origin, direction * rayLength, Color.red);
                 if (Physics.Raycast(ray, out hit, rayLength, bounceLayer))
                 {
-                    if (hit.collider.gameObject && !hitObjects.Contains(hit.collider.gameObject))
+                    hitObj = hit.collider.gameObject;
+                    if (hitObj && !hitObjects.Contains(hitObj))
                     {
-                        hitObjects.Add(hit.collider.gameObject);
+                        hitObjects.Add(hitObj);
                     }
                 }
+                direction = Quaternion.AngleAxis(angle, transform.up) * direction;
             }
             CheckHitObjects(hitObjects);
         }
@@ -136,6 +144,12 @@ namespace Sangaku
                     OnDamageReceiverHit.Invoke(_drb);
                 }
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(transform.position + debuggizmoend, transform.localScale.x * .5f);
         }
 
     }
