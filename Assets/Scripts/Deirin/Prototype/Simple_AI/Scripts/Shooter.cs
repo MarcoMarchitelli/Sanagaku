@@ -25,7 +25,7 @@ namespace Deirin.AI
         public float projectileLifeTime = 3f;
         [Range(0.1f, 360f)]
         public float turnRateAnglesPerSecond = 90;
-        public LayerMask obstacleLayer;
+        public string obstacleLayer;
         public int damage = 1;
 
         public UnityEvent OnProjectileShoot;
@@ -131,8 +131,11 @@ namespace Deirin.AI
             Transform p = Instantiate(projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
             Mover m = p.GetComponent<Mover>();
             Timer t = p.GetComponent<Timer>();
+            Destroyer d = p.GetComponent<Destroyer>();
             m.speed = projectileSpeed;
             m.direction = Vector3.forward;
+            d.destroyOnCollision = !projectilesIgnoreObstacles;
+            d.DestructionLayer = obstacleLayer;
             t.time = projectileLifeTime;
             t.StartTimer();
         }
