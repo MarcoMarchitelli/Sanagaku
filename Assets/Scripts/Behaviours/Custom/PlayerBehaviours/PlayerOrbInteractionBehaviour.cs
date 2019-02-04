@@ -37,7 +37,7 @@ namespace Sangaku
             if (!caughtOrb)
             {
                 caughtOrb = _orb;
-                caughtOrb.SM.GoToCaughtState();
+                caughtOrb.SM.GoToCaughtState(orbCatchPoint);
                 OnOrbCatch.Invoke(catchDuration);
             }
         }

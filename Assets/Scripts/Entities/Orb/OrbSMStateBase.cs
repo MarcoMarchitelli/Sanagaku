@@ -4,7 +4,7 @@ namespace Sangaku
 {
     public abstract class OrbSMStateBase : StateBase
     {
-        protected OrbSMContext context;
+        public OrbSMContext context;
 
         public override void SetUp(IContext _context)
         {

@@ -7,13 +7,13 @@ namespace Sangaku
     {
         [Header("Context Data")]
         public BaseEntity OrbEntity;
-        [HideInInspector]
-        public Transform CatchPoint;
+        //[HideInInspector]
+        //public Transform CatchPoint;
 
         #region SMBase Methods
         protected override void ContextSetup()
         {
-            context = new OrbSMContext(OrbEntity, CatchPoint);
+            context = new OrbSMContext(OrbEntity, null);
         }
 
         protected override void OnStateChange(IState _endedState)
@@ -21,8 +21,16 @@ namespace Sangaku
 
         }
 
-        public void GoToCaughtState()
+        public void GoToCaughtState(Transform _catchPoint)
         {
+            foreach (OrbSMStateBase state in States)
+            {
+                if(state.ID == "Caught")
+                {
+                    state.context.CatchPoint = _catchPoint;
+                    break;
+                }
+            }
             StateMachine.SetTrigger("GoToCaughtState");
         }
 
@@ -32,11 +40,11 @@ namespace Sangaku
         }
         #endregion
 
-        public void OrbSMSetUp(Transform _catchPoint)
-        {
-            CatchPoint = _catchPoint;
-            SetUpSM();
-        }
+        //public void OrbSMSetUp(Transform _catchPoint)
+        //{
+        //    CatchPoint = _catchPoint;
+        //    SetUpSM();
+        //}
 
     }
 
