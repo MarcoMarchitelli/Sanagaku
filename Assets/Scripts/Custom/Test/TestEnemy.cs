@@ -28,7 +28,7 @@ public class TestEnemy : MonoBehaviour
             Destroy(instantiatedParticles, 2.5f);
         }
         OnDeath.Invoke();
-        Counters.instance.UpdateKills(1);
+        //Counters.instance.UpdateKills(1); -- //HACK: tolto perchè blocca il conteggio dei bounce quando il deathBehaviour è impostato su time. causa crash 
         Destroy(gameObject);
     }
 

@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class TestBullet : MonoBehaviour
 {
-    public enum DeathBehaviour { byTime, byBounces};
+    public enum DeathBehaviour { byTime, byBounces };
 
     #region Serialized Fields
 
@@ -19,7 +19,7 @@ public class TestBullet : MonoBehaviour
     public LayerMask collisionLayer;
     public AnimationCurve speedOverLifeTimeCurve;
     public float deathTime;
-    [Range(1,3)]
+    [Range(1, 3)]
     public int bouncesToDie;
     public float moveSpeed;
     public float lifeTime;
@@ -36,16 +36,18 @@ public class TestBullet : MonoBehaviour
     float timer;
     Material material;
     // ---------------------------- NO
-    public enum State { inMovement, inHands};
+    public enum State { inMovement, inHands };
     protected State _currentState;
     public State CurrentState
     {
-        set {
+        set
+        {
             ResetLifeTime();
             _currentState = value;
             print(name + " SONO IN STATE " + value.ToString());
         }
-        get {
+        get
+        {
             return _currentState;
         }
     }
@@ -65,27 +67,27 @@ public class TestBullet : MonoBehaviour
         set
         {
             bounces = value;
-            if (Bounces >= bouncesToDie)
+            if (Bounces >= bouncesToDie && deathBehaviour == DeathBehaviour.byBounces)
                 Die();
-            switch (value)
-            {
-                case 1:
-                    material.color = ColorContainer.Instance.Colors[value - 1];
-                    Trail.startColor = ColorContainer.Instance.Colors[value - 1];
-                    break;
-                case 2:
-                    Trail.startColor = ColorContainer.Instance.Colors[value - 1];
-                    material.color = ColorContainer.Instance.Colors[value - 1];
-                    break;
-                case 3:
-                    material.color = ColorContainer.Instance.Colors[value - 1];
-                    Trail.startColor = ColorContainer.Instance.Colors[value - 1];
-                    break;
-                default:
-                    material.color = ColorContainer.Instance.Colors[ColorContainer.Instance.Colors.Length - 1];
-                    Trail.startColor = ColorContainer.Instance.Colors[ColorContainer.Instance.Colors.Length - 1];
-                    break;
-            }
+            //switch (value) -- //HACK: tolto perchè blocca il conteggio dei bounce quando il deathBehaviour è impostato su time.
+            //{
+            //    case 1:
+            //        material.color = ColorContainer.Instance.Colors[value - 1];
+            //        Trail.startColor = ColorContainer.Instance.Colors[value - 1];
+            //        break;
+            //    case 2:
+            //        Trail.startColor = ColorContainer.Instance.Colors[value - 1];
+            //        material.color = ColorContainer.Instance.Colors[value - 1];
+            //        break;
+            //    case 3:
+            //        material.color = ColorContainer.Instance.Colors[value - 1];
+            //        Trail.startColor = ColorContainer.Instance.Colors[value - 1];
+            //        break;
+            //    default:
+            //        material.color = ColorContainer.Instance.Colors[ColorContainer.Instance.Colors.Length - 1];
+            //        Trail.startColor = ColorContainer.Instance.Colors[ColorContainer.Instance.Colors.Length - 1];
+            //        break;
+            //}
         }
     }
 
@@ -114,7 +116,7 @@ public class TestBullet : MonoBehaviour
         #region Movement
 
         if (CurrentState == State.inMovement)
-            Move();       
+            Move();
 
         #endregion
 
@@ -195,11 +197,11 @@ public class TestBullet : MonoBehaviour
         Vector3 bounceDirection = Vector3.Reflect(_direction, _normal);
         float rot = 90 - Mathf.Atan2(bounceDirection.z, bounceDirection.x) * Mathf.Rad2Deg;
         transform.eulerAngles = new Vector3(0, rot, 0);
-        if (deathBehaviour == DeathBehaviour.byBounces)
-        {
-            Bounces++;
-            Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
-        }
+        //if (deathBehaviour == DeathBehaviour.byBounces) -- //HACK: tolto perchè blocca il conteggio dei bounce quando il deathBehaviour è impostato su time 
+        //{
+        Bounces++;
+        Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
+        //} 
     }
 
     private void Move()
