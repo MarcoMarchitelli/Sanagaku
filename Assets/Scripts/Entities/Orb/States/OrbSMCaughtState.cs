@@ -7,10 +7,10 @@ namespace Sangaku
         Transform orbTransform;
 
         public override void Enter()
-        {
+        { 
             foreach (BaseBehaviour baseBehaviour in context.OrbEntity.Behaviours)
             {
-                baseBehaviour.enabled = false;
+                baseBehaviour.Enable(false);
             }
             orbTransform = context.OrbEntity.transform;
         }

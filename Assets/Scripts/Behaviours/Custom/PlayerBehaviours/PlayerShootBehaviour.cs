@@ -65,5 +65,11 @@ namespace Sangaku
             orbInteraction.FreeOrb();
             OnOrbShoot.Invoke(secondsBetweenShots);
         }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(shootPoint.position, 0.3f);
+        }
     }
 }
