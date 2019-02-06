@@ -57,34 +57,42 @@ namespace Sangaku
         /// </summary>
         Camera cam;
 
-        bool canShoot = true;
+        bool canShoot;
+        bool canMove;
+        bool canDash;
+        bool canParry;
+
+        #region API
         public void ToggleShootInput(bool _value)
         {
             canShoot = _value;
         }
-
-        bool canMove = true;
         public void ToggleMovementInput(bool _value)
         {
             canMove = _value;
             MoveDirection = Vector3.zero;
         }
-
-        bool canDash = true;
         public void ToggleDashInput(bool _value)
         {
             canDash = _value;
         }
-
-        bool canParry = true;
         public void ToggleParryInput(bool _value)
         {
             canParry = _value;
-        }
+        } 
+        #endregion
 
+        /// <summary>
+        /// Custom setup del Behaviour
+        /// </summary>
         protected override void CustomSetup()
         {
             cam = Camera.main;
+
+            canShoot = true;
+            canMove = true;
+            canDash = true;
+            canParry = true;
         }
 
         /// <summary>
@@ -94,56 +102,42 @@ namespace Sangaku
         {
             if (IsSetupped)
             {
-                CheckControllerConnection();
-                ReadInput();
+                if (CheckControllerConnection())
+                    ReadControllerInput();
+                else
+                    ReadKeyboardInput();
             }
-        }
-
-        bool isControllerConnected;
-        /// <summary>
-        /// Variabile temporanea per il calcolo del movimento in base alla camera
-        /// </summary>
-        Vector3 cameraBasedDirection;
-        /// <summary>
-        /// Funzione che si occupa di leggere gli input
-        /// </summary>
-        void ReadInput()
-        {
-            if (isControllerConnected)
-                ReadControllerInput();
-            else
-                ReadKeyboardInput();
         }
 
         #region Controller Inputs
         [Header("Controller")]
         /// <summary>
-        /// Tasto che corrisponde allo shot
+        /// Tasto che corrisponde allo shot per il controlller
         /// </summary>
         [SerializeField] string controllerShotInput = "ShotController";
         /// <summary>
-        /// Tasto che corrisponde al parry
+        /// Tasto che corrisponde al parry per il controlller
         /// </summary>
         [SerializeField] string controllerParryInput = "ParryController";
         /// <summary>
-        /// Tasto che corrisponde al dash
+        /// Tasto che corrisponde al dash per il controlller
         /// </summary>
         [SerializeField] string controllerDashInput = "DashController";
         /// <summary>
-        /// Tasto che corrisponde al dash
+        ///  Asse che corrisponde al movimento orizzontale per il controller
         /// </summary>
-        [SerializeField] string controllerHorizontalInput = "HorizontalController";
+        [SerializeField] string controllerHorizontalInput = "HorizontalLeftController";
         /// <summary>
-        /// Tasto che corrisponde al dash
+        /// Asse che corrisponde al movimento verticale per il controller
         /// </summary>
-        [SerializeField] string controllerVerticalInput = "VerticalController";
+        [SerializeField] string controllerVerticalInput = "VerticalLeftController";
 
         /// <summary>
         /// Variabile che salva il valore al frame precedente dell'asse di shot
         /// </summary>
         int cShotInputPrevValue;
         /// <summary>
-        /// Funzione che si occupa di leggere l'input della tastiera
+        /// Funzione che si occupa di leggere l'input del controller
         /// </summary>
         void ReadControllerInput()
         {
@@ -172,52 +166,28 @@ namespace Sangaku
             if (canDash && Input.GetButtonDown(controllerDashInput))
                 OnDashPressed.Invoke(MoveDirection);
         }
-
-        /// <summary>
-        /// Funzione che controlla se è connesso un controller
-        /// </summary>
-        void CheckControllerConnection()
-        {
-            string[] controllerNames = Input.GetJoystickNames();
-
-            if (controllerNames.Length == 0)
-            {
-                isControllerConnected = false;
-            }
-            else
-            {
-                for (int i = 0; i < controllerNames.Length; i++)
-                {
-                    if (!string.IsNullOrEmpty(controllerNames[i]))
-                    {
-                        isControllerConnected = true;
-                        return;
-                    }
-                }
-            }
-        }
         #endregion
 
         #region Keyboard Inputs
         [Header("Keyboard")]
         /// <summary>
-        /// Tasto che corrisponde allo shot
+        /// Tasto che corrisponde allo shot per la tastiera
         /// </summary>
         [SerializeField] string keyboardShotInput = "ShotKeyboard";
         /// <summary>
-        /// Tasto che corrisponde al parry
+        /// Tasto che corrisponde al parry per la tastiera
         /// </summary>
         [SerializeField] string keyboardParryInput = "ParryKeyboard";
         /// <summary>
-        /// Tasto che corrisponde al dash
+        /// Tasto che corrisponde al dash per la tastiera
         /// </summary>
         [SerializeField] string keyboardDashInput = "DashKeyboard";
         /// <summary>
-        /// Tasto che corrisponde al dash
+        /// Asse che corrisponde al movimento orizzontale per la tastiera
         /// </summary>
         [SerializeField] string keyboardHorizontalInput = "HorizontalKeyboard";
         /// <summary>
-        /// Tasto che corrisponde al dash
+        /// Asse che corrisponde al movimento verticale per la tastiera
         /// </summary>
         [SerializeField] string keyboardVerticalInput = "VerticalKeyboard";
 
@@ -244,6 +214,35 @@ namespace Sangaku
         }
         #endregion
 
+        /// <summary>
+        /// Funzione che controlla se è connesso un controller
+        /// </summary>
+        /// <returns>Ritorna true se è connesso, false altrimenti</returns>
+        bool CheckControllerConnection()
+        {
+            string[] controllerNames = Input.GetJoystickNames();
+
+            if (controllerNames.Length == 0)
+            {
+                return false;
+            }
+            else
+            {
+                for (int i = 0; i < controllerNames.Length; i++)
+                {
+                    if (!string.IsNullOrEmpty(controllerNames[i]))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Variabile temporanea per il calcolo del movimento in base alla camera
+        /// </summary>
+        Vector3 cameraBasedDirection;
         /// <summary>
         /// Funzione che calcola il vettore di movimento dati due assi di input
         /// </summary>
