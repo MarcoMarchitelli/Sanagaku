@@ -154,7 +154,9 @@ public class PlayerController : BaseUnit, IShooter
                 ParryBullet();
             }
             else
-                EquippedGun.Shoot();
+            {
+                EquippedGun.Shoot(this);
+            }
         }
 
         //ParryInput
@@ -286,7 +288,6 @@ public class PlayerController : BaseUnit, IShooter
         EndDash();
     }
 
-
     //IEnumerator DashRoutine()
     //{
     //    Vector3 targetPos = rb.position + moveDirection * dashDistance;
@@ -311,7 +312,6 @@ public class PlayerController : BaseUnit, IShooter
             bulletInHands.CurrentState = TestBullet.State.inHands;
             bulletInHands.transform.position = projectileSpawnPoint.transform.position;
             bulletInHands.transform.rotation = projectileSpawnPoint.rotation;
-            print("HO PRESO UN BULLET");
             OnBulletCatch.Invoke(catchHoldTime);
         }
     }

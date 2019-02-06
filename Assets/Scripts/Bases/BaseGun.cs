@@ -58,12 +58,13 @@ public class BaseGun : MonoBehaviour {
         }
     }
 
-    public virtual void Shoot(){
+    public virtual void Shoot(PlayerController _p){
 
         if(timer >= TimeBetweenShots && bulletShotCount < MagazineSize)
         {
             timer = 0f;
-            Instantiate(projectileToShoot, ProjectileSpawnPoint.position, ProjectileSpawnPoint.rotation);
+            TestBullet b = Instantiate(projectileToShoot, ProjectileSpawnPoint.position, ProjectileSpawnPoint.rotation).GetComponent<TestBullet>();
+            b.Init(_p);
             //Destroy(bulletShot.gameObject, bulletShot.LifeTime);
             bulletShotCount++;
             if (MuzzleFlash)

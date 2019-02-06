@@ -5,9 +5,4 @@ using UnityEngine;
 public class TestGun : BaseGun
 {
 
-    public override void Shoot()
-    {
-        base.Shoot();
-    }
-
 }

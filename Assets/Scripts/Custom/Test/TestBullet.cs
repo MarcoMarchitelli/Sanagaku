@@ -17,7 +17,7 @@ public class TestBullet : MonoBehaviour
     public bool speedOverLifeTime = true;
 
     //parameters
-    public LayerMask collisionLayer;
+    public string collisionLayer;
     public AnimationCurve speedOverLifeTimeCurve;
     public float deathTime;
     [Range(1, 3)]
@@ -33,8 +33,13 @@ public class TestBullet : MonoBehaviour
 
     #region Other Vars
 
+    [HideInInspector]
+    public PlayerController player;
     int bounces;
+    bool isDeparting = true;
     float timer;
+    float distanceFromPlayer;
+    float oldDistanceFromPlayer;
     Material material;
     // ---------------------------- NO
     public enum State { inMovement, inHands };
@@ -45,7 +50,6 @@ public class TestBullet : MonoBehaviour
         {
             ResetLifeTime();
             _currentState = value;
-            print(name + " SONO IN STATE " + value.ToString());
         }
         get
         {
@@ -96,9 +100,12 @@ public class TestBullet : MonoBehaviour
 
     #region MonoBehaviour methods
 
-    private void Awake()
+    public void Init(PlayerController _p)
     {
         material = GetComponent<MeshRenderer>().material;
+        player = _p;
+        oldDistanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
+        distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
     }
 
     private void Update()
@@ -121,39 +128,118 @@ public class TestBullet : MonoBehaviour
 
         #endregion
 
-        #region Raycasting
+        #region Player Distance
 
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Time.deltaTime * moveSpeed + .2f, collisionLayer))
+        distanceFromPlayer = Vector3.Distance(transform.position, player.transform.position);
+        if (distanceFromPlayer > oldDistanceFromPlayer)
+            isDeparting = true;
+        else if(distanceFromPlayer < oldDistanceFromPlayer)
+            isDeparting = false;
+        oldDistanceFromPlayer = distanceFromPlayer;
+
+        #endregion
+
+        //#region Raycasting
+
+        //Ray ray = new Ray(transform.position, transform.forward);
+        //RaycastHit hit;
+        //if (Physics.Raycast(ray, out hit, Time.deltaTime * moveSpeed + .2f, collisionLayer))
+        //{
+        //    //check in case enemy hit
+        //    TestEnemy enemyHit = hit.collider.GetComponent<TestEnemy>();
+        //    if (enemyHit)
+        //    {
+        //        if (enemyHit.deathBehaviour == TestEnemy.DeathBeahviour.diesFromBounces && enemyHit.BouncesNeededToDie == Bounces)
+        //        {
+        //            enemyHit.Die();
+        //        }
+        //        else
+        //        if (enemyHit.deathBehaviour == TestEnemy.DeathBeahviour.diesFromDamage)
+        //        {
+        //            enemyHit.TakeDamage(damage);
+
+        //        }
+        //    }
+
+        //    //check for other obj hit behaviours
+        //    BounceBehaviour bounceBehaviour = hit.collider.GetComponent<BounceBehaviour>();
+        //    if (bounceBehaviour)
+        //    {
+        //        switch (bounceBehaviour.BehaviourType)
+        //        {
+        //            case BounceBehaviour.Type.realistic:
+        //                Bounce(ray.direction, hit.normal);
+        //                break;
+        //            case BounceBehaviour.Type.catchAndFire:
+        //                transform.forward = bounceBehaviour.transform.forward;
+        //                PlayerController p = bounceBehaviour.GetComponentInParent<PlayerController>();
+        //                if (p)
+        //                {
+        //                    p.CatchBullet(this);
+        //                }
+        //                if (deathBehaviour == DeathBehaviour.byBounces)
+        //                {
+        //                    Bounces++;
+        //                    Instantiate(HitSmoke, transform.position + Vector3.forward * .5f, Random.rotation);
+        //                }
+        //                break;
+        //            case BounceBehaviour.Type.goThrough:
+        //                break;
+        //            case BounceBehaviour.Type.destroy:
+        //                Die();
+        //                break;
+        //            default:
+        //                break;
+        //        }
+        //        return;
+        //    }
+
+        //    //if this doesn't find a bounce behaviour component
+        //    Bounce(ray.direction, hit.normal);
+        //}
+
+        //#endregion
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject g = collision.collider.gameObject;
+
+        if (g.layer == LayerMask.NameToLayer(collisionLayer))
         {
-            //check in case enemy hit
-            TestEnemy enemyHit = hit.collider.GetComponent<TestEnemy>();
-            if (enemyHit)
-            {
-                if (enemyHit.deathBehaviour == TestEnemy.DeathBeahviour.diesFromBounces && enemyHit.BouncesNeededToDie == Bounces)
-                {
-                    enemyHit.Die();
-                }
-                else
-                if (enemyHit.deathBehaviour == TestEnemy.DeathBeahviour.diesFromDamage)
-                {
-                    enemyHit.TakeDamage(damage);
-                }
-            }
+            CheckBounceBehaviour(transform.forward, collision.contacts[0].normal, false, g.GetComponent<BounceBehaviour>());
+        }
+    }
 
-            //check for other obj hit behaviours
-            BounceBehaviour bounceBehaviour = hit.collider.GetComponent<BounceBehaviour>();
-            if (bounceBehaviour)
+    private void OnTriggerEnter(Collider other)
+    {
+        GameObject g = other.gameObject;
+
+        if(g.layer == LayerMask.NameToLayer(collisionLayer))
+        {
+            CheckBounceBehaviour(transform.forward, Vector3.zero, true, g.GetComponent<BounceBehaviour>());
+            CheckEnemyHit(g.GetComponent<TestEnemy>());
+        }
+    }
+
+    #endregion
+
+    #region Bullet methods
+
+    void CheckBounceBehaviour(Vector3 _direction, Vector3 _normal, bool _isTrigger, BounceBehaviour _b = null)
+    {
+        if (_b)
+        {
+            if (_isTrigger)
             {
-                switch (bounceBehaviour.BehaviourType)
+                switch (_b.BehaviourType)
                 {
-                    case BounceBehaviour.Type.realistic:
-                        Bounce(ray.direction, hit.normal);
-                        break;
                     case BounceBehaviour.Type.catchAndFire:
-                        transform.forward = bounceBehaviour.transform.forward;
-                        PlayerController p = bounceBehaviour.GetComponentInParent<PlayerController>();
+                        if (isDeparting)
+                            return;
+                        transform.forward = _b.transform.forward;
+                        PlayerController p = _b.GetComponentInParent<PlayerController>();
                         if (p)
                         {
                             p.CatchBullet(this);
@@ -169,23 +255,35 @@ public class TestBullet : MonoBehaviour
                     case BounceBehaviour.Type.destroy:
                         Die();
                         break;
-                    default:
-                        break;
                 }
-                return;
             }
-
-            //if this doesn't find a bounce behaviour component
-            Bounce(ray.direction, hit.normal);
+            else
+            {
+                if(_b.BehaviourType == BounceBehaviour.Type.realistic)
+                    Bounce(_direction, _normal);
+            }
         }
-
-        #endregion
-
+        else
+        {
+            Bounce(_direction, _normal);
+        }
     }
 
-    #endregion
-
-    #region Bullet methods
+    void CheckEnemyHit(TestEnemy _e = null)
+    {
+        if (_e)
+        {
+            if (_e.deathBehaviour == TestEnemy.DeathBeahviour.diesFromBounces && _e.BouncesNeededToDie == Bounces)
+            {
+                _e.Die();
+            }
+            else
+            if (_e.deathBehaviour == TestEnemy.DeathBeahviour.diesFromDamage)
+            {
+                _e.TakeDamage(damage);
+            }
+        }
+    }
 
     /// <summary>
     /// Sets the transform rotation to the new rotation given by the bounce.
