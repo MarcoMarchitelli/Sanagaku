@@ -4,16 +4,12 @@ using System.Linq;
 
 namespace Sangaku
 {
-    public abstract class BaseEntity : MonoBehaviour, IEntity
+    public abstract class BaseEntity : MonoBehaviour, IEntity  
     {
         /// <summary>
         /// List of IBehaviours that describe this Entity.
         /// </summary>
-        public List<IBehaviour> Behaviours
-        {
-            get;
-            private set;
-        }
+        public List<IBehaviour> Behaviours { get; private set; }
 
         /// <summary>
         /// Basic Entity setup. Every Entity needs to implement this to function.
@@ -31,9 +27,6 @@ namespace Sangaku
         /// <summary>
         /// Additional Entity setup. Unique to every Entity that implements it.
         /// </summary>
-        public virtual void CustomSetup()
-        {
-
-        }
+        public virtual void CustomSetup() { }
     } 
 }

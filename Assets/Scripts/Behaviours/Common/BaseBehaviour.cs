@@ -32,10 +32,6 @@ namespace Sangaku
         /// <summary>
         /// Optional setup unique to every Behaviour that implements it.
         /// </summary>
-        protected virtual void CustomSetup()
-        {
-
-        }
-
+        protected virtual void CustomSetup() { }
     }
 }
