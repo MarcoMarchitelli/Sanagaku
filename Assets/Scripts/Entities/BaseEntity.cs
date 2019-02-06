@@ -28,5 +28,17 @@ namespace Sangaku
         /// Additional Entity setup. Unique to every Entity that implements it.
         /// </summary>
         public virtual void CustomSetup() { }
+
+        /// <summary>
+        /// Enables or Disables all behaviours.
+        /// </summary>
+        /// <param name="_value"></param>
+        public void ToggleBehaviors(bool _value)
+        {
+            foreach (IBehaviour behaviour in Behaviours)
+            {
+                behaviour.Enable(_value);
+            }
+        }
     } 
 }
