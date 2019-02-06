@@ -20,6 +20,14 @@ namespace Sangaku
         /// </summary>
         List<SubObjectiveCompletition> objectives;
 
+        //HACK: andrà rimosso quando ci sarà un state machine del livello
+        private void Start()
+        {
+            CustomSetup();
+        }
+        //--------------------------------------------
+
+        #region API
         /// <summary>
         /// Setup custom del Behaviour
         /// </summary>
@@ -62,7 +70,8 @@ namespace Sangaku
                 return;
 
             objectives.Add(new SubObjectiveCompletition(_subObjective));
-        }
+        } 
+        #endregion
 
         /// <summary>
         /// Classe che gestisce lo stato di completamento di un sotto obbiettivo

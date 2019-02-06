@@ -17,7 +17,6 @@ namespace Sangaku
     [System.Serializable]
     public class UnityIntEvent : UnityEvent<int> { }
 
-
     /// <summary>
     /// Evento di unity che porta un Vector2
     /// </summary>
@@ -41,6 +40,12 @@ namespace Sangaku
     /// </summary>
     [System.Serializable]
     public class UnityDamageReceiverEvent : UnityEvent<DamageReceiverBehaviour> { }
+
+    /// <summary>
+    /// Unity Event passing a SubObjectiveBehaviour
+    /// </summary>
+    [System.Serializable]
+    public class UnitySubObjectiveEvent : UnityEvent<SubObjectiveBehaviour> { }
 
     /// <summary>
     /// Evento di unity void

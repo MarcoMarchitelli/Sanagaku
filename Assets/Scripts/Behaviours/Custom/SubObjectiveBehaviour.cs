@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 namespace Sangaku
 {
     /// <summary>
     /// Behaviour che identitifca un'entità come un sotto obbiettivo.
     /// </summary>
+    [System.Serializable]
     public class SubObjectiveBehaviour : BaseBehaviour
     {
         /// <summary>
-        /// Evento che viene lanciato al completamento di questo sotto obbiettivo
-        /// </summary>
-        [SerializeField] UnityEvent<SubObjectiveBehaviour> OnSubObjectiveCompletion;
-        /// <summary>
         /// Evento lanciato al setup del behaviour
         /// </summary>
-        [SerializeField] UnityEvent<SubObjectiveBehaviour> OnSubObjectiveSetup;
+        [SerializeField] UnitySubObjectiveEvent OnSubObjectiveSetup;
+        /// <summary>
+        /// Evento che viene lanciato al completamento di questo sotto obbiettivo
+        /// </summary>
+        [SerializeField] UnitySubObjectiveEvent OnSubObjectiveCompletion;
 
         /// <summary>
         /// Setup custom del Behaviour
