@@ -24,7 +24,7 @@ namespace Sangaku
         // per ora va lasciato se no il componente non si setuppa
         private void Start()
         {
-            CustomSetup();
+            base.SetUpEntity();
         }
         //--------------------------------------------
 
@@ -59,6 +59,8 @@ namespace Sangaku
             // se sono tutti completati l'obbiettivo è completato
             if (objectives.Where(o => o.IsCompleted == false).Count() == 0)
                 OnObjectiveCompletion.Invoke();
+
+            objectives.Clear();
         }
 
         /// <summary>
