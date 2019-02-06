@@ -70,8 +70,8 @@ public class BaseGun : MonoBehaviour {
                 MuzzleFlash.Play();
         }
     }
-	
-	protected virtual void Update () {
+
+    protected virtual void Update () {
         timer += Time.deltaTime;
 	}
 }

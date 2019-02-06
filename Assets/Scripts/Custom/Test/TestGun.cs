@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestGun : BaseGun {
+public class TestGun : BaseGun
+{
 
     public override void Shoot()
     {

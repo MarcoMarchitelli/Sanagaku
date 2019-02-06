@@ -33,8 +33,8 @@ public class PlayerController : BaseUnit, IShooter
     public float parryTime = .5f;
     public float catchHoldTime = 2f;
     public float parryCooldown = 2f;
-    public float dashDistance = 10f;
-    [Tooltip("Measured in meters per second")] public float dashSpeed = 5f;
+    public float dashDistance;
+    [Tooltip("Impulse force to player")] public float dashSpeed = 5f;
     public float dashCooldown = 3f;
 
     //events
@@ -84,12 +84,12 @@ public class PlayerController : BaseUnit, IShooter
         private set
         {
             isMoving = value;
-            if (!walkSmoke)
-                return;
-            if (isMoving)
-                walkSmoke.Play();
-            else
-                walkSmoke.Stop();
+            //if (!walkSmoke)
+            //    return;
+            //if (isMoving)
+            //    walkSmoke.Play();
+            //else
+            //    walkSmoke.Stop();
         }
     }
 
@@ -141,10 +141,20 @@ public class PlayerController : BaseUnit, IShooter
             }
         }
 
+        if (moveDirection == Vector3.zero)
+            IsMoving = false;
+        else
+            IsMoving = true;
+
         //Shoot Input
         if (Input.GetKeyDown(shootInput) && EquippedGun)
         {
-            EquippedGun.Shoot();
+            if (bulletInHands)
+            {
+                ParryBullet();
+            }
+            else
+                EquippedGun.Shoot();
         }
 
         //ParryInput
@@ -154,7 +164,7 @@ public class PlayerController : BaseUnit, IShooter
         }
 
         //DashInput
-        if (dash && canDash && Input.GetKeyDown(dashInput) && moveDirection != Vector3.zero)
+        if (dash && canDash && IsMoving && Input.GetKeyDown(dashInput))
         {
             StartDash();
         }
@@ -178,11 +188,6 @@ public class PlayerController : BaseUnit, IShooter
             bulletInHands.transform.position = projectileSpawnPoint.transform.position;
             bulletInHands.transform.rotation = projectileSpawnPoint.rotation;
         }
-
-        if (moveDirection == Vector3.zero)
-            IsMoving = false;
-        else
-            IsMoving = true;
     }
 
     private void FixedUpdate()
@@ -253,12 +258,13 @@ public class PlayerController : BaseUnit, IShooter
     {
         canDash = false;
         canMove = false;
-        StartCoroutine(DashRoutine());
+        Dash();
     }
 
     public void EndDash()
     {
         canMove = true;
+        walkSmoke.Stop();
         OnDashEnd.Invoke(dashCooldown);
     }
 
@@ -267,19 +273,33 @@ public class PlayerController : BaseUnit, IShooter
         canDash = f;
     }
 
-    IEnumerator DashRoutine()
+    void Dash()
     {
-        Vector3 targetPos = rb.position + moveDirection * dashDistance;
+        walkSmoke.Play();
+        rb.AddForce(moveDirection * dashSpeed, ForceMode.Impulse);
+        StartCoroutine(CountDashTime(dashDistance / dashSpeed));
+    }
 
-        //perform the dash
-        while (rb.position != targetPos)
-        {
-            rb.position = Vector3.MoveTowards(rb.position, targetPos, dashSpeed * Time.deltaTime); // --> remember we use fixed bcause we are moving a rigidbody
-            yield return null;
-        }
-
+    IEnumerator CountDashTime(float _time)
+    {
+        yield return new WaitForSeconds(_time);
         EndDash();
     }
+
+
+    //IEnumerator DashRoutine()
+    //{
+    //    Vector3 targetPos = rb.position + moveDirection * dashDistance;
+
+    //    //perform the dash
+    //    while (rb.position != targetPos)
+    //    {
+    //        rb.position = Vector3.MoveTowards(rb.position, targetPos, dashSpeed * Time.deltaTime); // --> remember we use fixed bcause we are moving a rigidbody
+    //        yield return null;
+    //    }
+
+    //    EndDash();
+    //}
 
     //------------------- ITS SHIT
     public void CatchBullet(TestBullet _b)
@@ -305,7 +325,7 @@ public class PlayerController : BaseUnit, IShooter
 
         bulletInHands.CurrentState = TestBullet.State.inMovement;
         bulletInHands = null;
-        print("ORA QUEL BULLET LO PARRYO");
+        OnBulletParry.Invoke(parryCooldown);
     }
     //----------------------ENT
 
