@@ -11,7 +11,6 @@ namespace Sangaku
         //public Transform CatchPoint;
 
         #region SMBase Methods
-
         protected override void ContextSetup()
         {
             context = new OrbSMContext(OrbEntity, null);
@@ -39,13 +38,13 @@ namespace Sangaku
         {
             StateMachine.SetTrigger("GoToFreeState");
         }
-
-        public void GoToIdleState()
-        {
-            StateMachine.SetTrigger("GoToIdleState");
-        }
-
         #endregion
+
+        //public void OrbSMSetUp(Transform _catchPoint)
+        //{
+        //    CatchPoint = _catchPoint;
+        //    SetUpSM();
+        //}
 
     }
 

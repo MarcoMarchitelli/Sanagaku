@@ -21,7 +21,7 @@ namespace Sangaku
         //}
 
         [SerializeField] LayerMask bounceLayer;
-        //[SerializeField] int collisionDetectionRaysAmount = 8;
+        [SerializeField] int collisionDetectionRaysAmount = 8;
 
         int bounces;
         float moveSpeed;

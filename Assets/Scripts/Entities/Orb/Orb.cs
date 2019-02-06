@@ -2,30 +2,24 @@
 
 namespace Sangaku
 {
-    public class Orb : BaseEntity, IPoolable
+    public class Orb : BaseEntity
     {
         public OrbSMController SM;
+
+        //Transform catchPoint;
+
+        //public void OrbSetUp(Transform _catchPoint)
+        //{
+        //    catchPoint = _catchPoint;
+        //    SetUpEntity();
+        //}
 
         public override void CustomSetup()
         {
             if(!SM)
                 SM = GetComponentInChildren<OrbSMController>();
+            //SM.OrbSMSetUp(catchPoint);
             SM.SetUpSM();
-        }
-
-        public void OnGetFromPool()
-        {
-            SM.GoToFreeState();
-        }
-
-        public void OnPoolCreation()
-        {
-            SetUpEntity();
-        }
-
-        public void OnPutInPool()
-        {
-            SM.GoToIdleState();
         }
     }
 }

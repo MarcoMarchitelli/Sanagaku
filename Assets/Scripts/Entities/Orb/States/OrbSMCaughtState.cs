@@ -7,8 +7,11 @@ namespace Sangaku
         Transform orbTransform;
 
         public override void Enter()
-        {
-            context.OrbEntity.ToggleBehaviors(false);
+        { 
+            foreach (BaseBehaviour baseBehaviour in context.OrbEntity.Behaviours)
+            {
+                baseBehaviour.Enable(false);
+            }
             orbTransform = context.OrbEntity.transform;
         }
 
@@ -20,7 +23,10 @@ namespace Sangaku
 
         public override void Exit()
         {
-            context.OrbEntity.ToggleBehaviors(true);
+            foreach (BaseBehaviour baseBehaviour in context.OrbEntity.Behaviours)
+            {
+                baseBehaviour.enabled = true;
+            }
             orbTransform = null;
         }
     }

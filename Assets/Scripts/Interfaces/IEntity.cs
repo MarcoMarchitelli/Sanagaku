@@ -14,6 +14,5 @@ namespace Sangaku
         List<IBehaviour> Behaviours { get; }
 
         void SetUpEntity();
-        void ToggleBehaviors(bool _value);
     }
 }
