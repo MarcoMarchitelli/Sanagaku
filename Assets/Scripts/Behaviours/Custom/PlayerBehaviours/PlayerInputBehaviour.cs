@@ -27,21 +27,6 @@ namespace Sangaku
         [SerializeField] UnityVector3Event OnDirectionUpdate;
         #endregion
 
-        #region Inputs KeyCode
-        /// <summary>
-        /// Tasto che corrisponde allo shot
-        /// </summary>
-        [SerializeField] KeyCode shotInput = KeyCode.Mouse0;
-        /// <summary>
-        /// Tasto che corrisponde al parry
-        /// </summary>
-        [SerializeField] KeyCode parryInput = KeyCode.Mouse1;
-        /// <summary>
-        /// Tasto che corrisponde al dash
-        /// </summary>
-        [SerializeField] KeyCode dashInput = KeyCode.Space;
-        #endregion
-
         /// <summary>
         /// Enumerativo che indica il tipo di movimento che si vuole
         /// </summary>
@@ -71,6 +56,7 @@ namespace Sangaku
         /// Riferimento alla camera
         /// </summary>
         Camera cam;
+
         bool canShoot = true;
         bool canDash = true;
         bool canMove = true;
@@ -99,39 +85,135 @@ namespace Sangaku
         /// </summary>
         void ReadInput()
         {
+            ReadKeyboardInput();
+            //ReadControllerInput();
+        }
+
+        #region Controller Inputs
+        [Header("Controller")]
+        /// <summary>
+        /// Tasto che corrisponde allo shot
+        /// </summary>
+        [SerializeField] string controllerShotInput = "ShotController";
+        /// <summary>
+        /// Tasto che corrisponde al parry
+        /// </summary>
+        [SerializeField] string controllerParryInput = "ParryController";
+        /// <summary>
+        /// Tasto che corrisponde al dash
+        /// </summary>
+        [SerializeField] string controllerDashInput = "DashController";
+        /// <summary>
+        /// Tasto che corrisponde al dash
+        /// </summary>
+        [SerializeField] string controllerHorizontalInput = "HorizontalController";
+        /// <summary>
+        /// Tasto che corrisponde al dash
+        /// </summary>
+        [SerializeField] string controllerVerticalInput = "VerticalController";
+
+        /// <summary>
+        /// Funzione che si occupa di leggere l'input della tastiera
+        /// </summary>
+        void ReadControllerInput()
+        {
             //Move Input
             if (canMove)
             {
                 if (InputDirection == DirectionType.Global)
                 {
-                    MoveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+                    MoveDirection = new Vector3(Input.GetAxisRaw(controllerHorizontalInput), 0f, Input.GetAxisRaw(controllerVerticalInput)).normalized;
                 }
                 else if (InputDirection == DirectionType.Camera && cam != null)
                 {
-                    MoveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
+                    MoveDirection = new Vector3(Input.GetAxisRaw(controllerHorizontalInput), 0f, Input.GetAxisRaw(controllerVerticalInput)).normalized;
                     cameraBasedDirection = cam.transform.TransformDirection(MoveDirection);
                     MoveDirection = new Vector3(cameraBasedDirection.x, MoveDirection.y, cameraBasedDirection.z).normalized;
                 }
             }
 
             //Shoot Input
-            if (canShoot && Input.GetKeyDown(shotInput))
+            if (canShoot && Input.GetAxisRaw(controllerShotInput) == 1)
             {
                 OnShotPressed.Invoke();
             }
 
             //ParryInput
-            if (canParry && Input.GetKeyDown(parryInput))
+            if (canParry && Input.GetKeyDown(controllerParryInput))
             {
                 OnParryPressed.Invoke();
             }
 
             //DashInput
-            if (canDash && Input.GetKeyDown(dashInput))
+            if (canDash && Input.GetKeyDown(controllerDashInput))
             {
                 OnDashPressed.Invoke(MoveDirection);
             }
         }
+        #endregion
+
+        #region Keyboard Inputs
+        [Header("Keyboard")]
+        /// <summary>
+        /// Tasto che corrisponde allo shot
+        /// </summary>
+        [SerializeField] string keyboardShotInput = "ShotKeyboard";
+        /// <summary>
+        /// Tasto che corrisponde al parry
+        /// </summary>
+        [SerializeField] string keyboardParryInput = "ParryKeyboard";
+        /// <summary>
+        /// Tasto che corrisponde al dash
+        /// </summary>
+        [SerializeField] string keyboardDashInput = "DashKeyboard";
+        /// <summary>
+        /// Tasto che corrisponde al dash
+        /// </summary>
+        [SerializeField] string keyboardHorizontalInput = "HorizontalKeyboard";
+        /// <summary>
+        /// Tasto che corrisponde al dash
+        /// </summary>
+        [SerializeField] string keyboardVerticalInput = "VerticalKeyboard";
+
+        /// <summary>
+        /// Funzione che si occupa di leggere l'input della tastiera
+        /// </summary>
+        void ReadKeyboardInput()
+        {
+            //Move Input
+            if (canMove)
+            {
+                if (InputDirection == DirectionType.Global)
+                {
+                    MoveDirection = new Vector3(Input.GetAxisRaw(keyboardHorizontalInput), 0f, Input.GetAxisRaw(keyboardVerticalInput)).normalized;
+                }
+                else if (InputDirection == DirectionType.Camera && cam != null)
+                {
+                    MoveDirection = new Vector3(Input.GetAxisRaw(keyboardHorizontalInput), 0f, Input.GetAxisRaw(keyboardVerticalInput)).normalized;
+                    cameraBasedDirection = cam.transform.TransformDirection(MoveDirection);
+                    MoveDirection = new Vector3(cameraBasedDirection.x, MoveDirection.y, cameraBasedDirection.z).normalized;
+                }
+            }
+
+            //Shoot Input
+            if (canShoot && Input.GetButtonDown(keyboardShotInput))
+            {
+                OnShotPressed.Invoke();
+            }
+
+            //ParryInput
+            if (canParry && Input.GetButtonDown(keyboardParryInput))
+            {
+                OnParryPressed.Invoke();
+            }
+
+            //DashInput
+            if (canDash && Input.GetButtonDown(keyboardDashInput))
+            {
+                OnDashPressed.Invoke(MoveDirection);
+            }
+        }
+        #endregion
 
         public void ToggleShootInput(bool _value)
         {

@@ -429,7 +429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108020690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.17}
+  m_LocalPosition: {x: 0, y: 0, z: 2.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 76452836599106812}
@@ -5266,10 +5266,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Sangaku.UnityVector3Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  shotInput: 323
-  parryInput: 324
-  dashInput: 32
   InputDirection: 1
+  controllerShotInput: ShotController
+  controllerParryInput: ParryController
+  controllerDashInput: DashController
+  controllerHorizontalInput: HorizontalLeftController
+  controllerVerticalInput: VerticalLeftController
+  keyboardShotInput: ShotKeyboard
+  keyboardParryInput: ParryKeyboard
+  keyboardDashInput: DashKeyboard
+  keyboardHorizontalInput: HorizontalKeyboard
+  keyboardVerticalInput: VerticalKeyboard
 --- !u!114 &79887467333557455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5460,7 +5467,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  maxMana: 10
+  maxMana: 15
   regeneration: 1
   amountPerSecond: 0.1
 --- !u!114 &79887467333557451
