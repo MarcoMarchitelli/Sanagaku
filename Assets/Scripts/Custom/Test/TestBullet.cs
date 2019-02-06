@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
+using Deirin.Utility;
 
 public class TestBullet : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class TestBullet : MonoBehaviour
     //references
     public GameObject HitSmoke;
     public TrailRenderer Trail;
+    public Timer DeathTimer;
 
     //behaviours
     public DeathBehaviour deathBehaviour = DeathBehaviour.byTime;

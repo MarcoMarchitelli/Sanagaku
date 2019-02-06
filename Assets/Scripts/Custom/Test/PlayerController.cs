@@ -307,6 +307,7 @@ public class PlayerController : BaseUnit, IShooter
         if (!bulletInHands)
         {
             bulletInHands = _b;
+            bulletInHands.DeathTimer.StopTimer();
             bulletInHands.CurrentState = TestBullet.State.inHands;
             bulletInHands.transform.position = projectileSpawnPoint.transform.position;
             bulletInHands.transform.rotation = projectileSpawnPoint.rotation;

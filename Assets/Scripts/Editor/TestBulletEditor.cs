@@ -5,7 +5,7 @@
 public class TestBulletEditor : Editor
 {
     //references
-    SerializedProperty HitSmoke, Trail;
+    SerializedProperty HitSmoke, Trail, DeathTimer;
 
     //behaviours
     SerializedProperty deathBehaviour, speedOverLifeTime;
@@ -22,6 +22,7 @@ public class TestBulletEditor : Editor
     {
         HitSmoke = serializedObject.FindProperty("HitSmoke");
         Trail = serializedObject.FindProperty("Trail");
+        DeathTimer = serializedObject.FindProperty("DeathTimer");
 
         deathBehaviour = serializedObject.FindProperty("deathBehaviour");
         speedOverLifeTime = serializedObject.FindProperty("speedOverLifeTime");
@@ -49,6 +50,7 @@ public class TestBulletEditor : Editor
         {
             EditorGUILayout.PropertyField(HitSmoke);
             EditorGUILayout.PropertyField(Trail);
+            EditorGUILayout.PropertyField(DeathTimer);
         }
 
         EditorGUILayout.Space();
