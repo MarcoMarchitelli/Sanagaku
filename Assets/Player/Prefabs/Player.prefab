@@ -193,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1592190640}
   - component: {fileID: 1592190642}
-  - component: {fileID: 1592190641}
+  - component: {fileID: 724565190762715027}
   m_Layer: 9
   m_Name: OrbInteraction
   m_TagString: Untagged
@@ -209,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592190639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.429, z: -0.103}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 76452836599106812}
@@ -231,7 +231,6 @@ MonoBehaviour:
   isEnabled: 1
   orbCatchPoint: {fileID: 2108020691}
   catchDuration: 3
-  catchRadius: 1.67
   OnOrbCatch:
     m_PersistentCalls:
       m_Calls:
@@ -254,18 +253,19 @@ MonoBehaviour:
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   caughtOrb: {fileID: 0}
---- !u!135 &1592190641
-SphereCollider:
+--- !u!136 &724565190762715027
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592190639}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.84
+  m_Height: 3.34
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1991540771
 GameObject:
@@ -429,7 +429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108020690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.75}
+  m_LocalPosition: {x: 0, y: 2.185, z: 1.753}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 76452836599106812}
@@ -5162,7 +5162,7 @@ GameObject:
   - component: {fileID: 79887467333557450}
   - component: {fileID: 79887467333557444}
   - component: {fileID: 79887467333557447}
-  - component: {fileID: 141176160611919468}
+  - component: {fileID: 8536648692734459042}
   - component: {fileID: 135003964999893156}
   m_Layer: 0
   m_Name: Player
@@ -5603,8 +5603,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BehaviourType: 3
---- !u!65 &141176160611919468
-BoxCollider:
+--- !u!136 &8536648692734459042
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5613,9 +5613,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.84
+  m_Height: 3.34
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.56, z: -0.09}
 --- !u!54 &135003964999893156
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5672,7 +5673,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81030063627979316}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 8f3f92a9737556b4582cef973a1c9f55, type: 3}
 --- !u!23 &81030063627979323
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5690,7 +5691,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bbcc499d6834b68439c98b981a3347cc, type: 2}
+  - {fileID: 2100000, guid: dabe7480d5c8327488bab20479634983, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

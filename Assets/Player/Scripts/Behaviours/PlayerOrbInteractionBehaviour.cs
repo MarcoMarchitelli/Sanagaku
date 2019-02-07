@@ -2,14 +2,13 @@
 
 namespace Sangaku
 {
-    [RequireComponent(typeof(SphereCollider))]
+    [RequireComponent(typeof(Collider))]
     public class PlayerOrbInteractionBehaviour : BaseBehaviour
     {
         [SerializeField] bool drawGizmos = true;
         [SerializeField] bool isEnabled = true;
         [SerializeField] Transform orbCatchPoint;
         [SerializeField] float catchDuration;
-        [SerializeField] float catchRadius;
 
         [SerializeField] UnityFloatEvent OnOrbCatch;
         [SerializeField] UnityVoidEvent OnCatchEnd;
@@ -21,9 +20,6 @@ namespace Sangaku
         protected override void CustomSetup()
         {
             caughtOrb = null;
-            catchCollider = GetComponent<SphereCollider>();
-            catchCollider.isTrigger = true;
-            catchCollider.radius = catchRadius;
         }
 
         /// <summary>
@@ -62,15 +58,6 @@ namespace Sangaku
                 return caughtOrb;
             else
                 return null;
-        }
-
-        private void OnDrawGizmos()
-        {
-            if (drawGizmos)
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(transform.position, catchRadius);
-            }
         }
 
         public override void Enable(bool _value)
