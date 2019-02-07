@@ -12,24 +12,20 @@ namespace Sangaku
         [SerializeField] UnityEvent OnDestroyHit, OnPlayerHit;
         #endregion
 
-        //protected override void CustomSetup()
-        //{
-        //    //orbRadius = transform.localScale.z * .5f;
-        //    //sphereCastLength = orbRadius * .5f;
-        //    //rayLength = sphereCastLength + orbRadius + damageRaysLengthDifference;
-        //    //hitObjects = new List<GameObject>();
-        //}
-
         [SerializeField] LayerMask bounceLayer;
         [SerializeField] int collisionDetectionRaysAmount = 8;
+        [SerializeField] float manaModifier = 2f;
 
         int bounces;
+        int enemyHitCount;
         float moveSpeed;
-        //float rayLength;
-        //float sphereCastLength;
-        //float orbRadius;
-        //float damageRaysLengthDifference = .025f;
-        //List<GameObject> hitObjects;
+        ManaBehaviour mana;
+
+        protected override void CustomSetup()
+        {
+            enemyHitCount = 0f;
+            mana = GetComponent<ManaBehaviour>();
+        }
 
         /// <summary>
         /// Sets the transform rotation to the new rotation given by the bounce.
@@ -69,89 +65,19 @@ namespace Sangaku
             }
         }
 
-        //private void FixedUpdate()
-        //{
-        //    if (IsSetupped)
-        //    {
-        //        RayCastsHandler(collisionDetectionRaysAmount);
-        //        SphereCastingHandler();
-        //    }
-        //}
-
         public void SetMoveSpeed(float _value)
         {
             moveSpeed = _value;
         }
 
-        //Vector3 debuggizmoend;
-        //void SphereCastingHandler()
-        //{
-        //    Ray ray = new Ray(transform.position, transform.forward);
-        //    RaycastHit hit;
-        //    Debug.DrawRay(ray.origin, ray.direction * sphereCastLength, Color.cyan);
-        //    debuggizmoend = ray.direction * sphereCastLength;
-        //    if (Physics.SphereCast(ray, transform.localScale.x * .5f, out hit, sphereCastLength, bounceLayer))
-        //    {
-        //        BounceOnBehaviour _b = hit.collider.GetComponent<BounceOnBehaviour>();
-        //        if (_b)
-        //            HandleBounceOnBehaviour(_b, hit.normal);
-        //    }
-        //}
-
-        //void RayCastsHandler(int _raysAmount)
-        //{
-        //    float angle = 360 / _raysAmount;
-        //    Vector3 direction = transform.forward;
-        //    GameObject hitObj;
-        //    hitObjects.Clear();
-
-        //    for (int i = 0; i < _raysAmount; i++)
-        //    {
-        //        Ray ray = new Ray(transform.position, direction);
-        //        RaycastHit hit;
-        //        Debug.DrawRay(ray.origin, direction * rayLength, Color.red);
-        //        if (Physics.Raycast(ray, out hit, rayLength, bounceLayer))
-        //        {
-        //            hitObj = hit.collider.gameObject;
-        //            if (hitObj && !hitObjects.Contains(hitObj))
-        //            {
-        //                hitObjects.Add(hitObj);
-        //            }
-        //        }
-        //        direction = Quaternion.AngleAxis(angle, transform.up) * direction;
-        //    }
-        //    CheckHitObjects(hitObjects);
-        //}
-
-        //void CheckHitObjects(List<GameObject> _hitObjects)
-        //{
-        //    foreach (GameObject g in _hitObjects)
-        //    {
-        //        PlayerOrbInteractionBehaviour _oib = g.GetComponent<PlayerOrbInteractionBehaviour>();
-        //        if (_oib)
-        //        {
-        //            if (!_oib.caughtOrb)
-        //            {
-        //                _oib.CatchOrb(Entity as Orb);
-        //                OnPlayerHit.Invoke();
-        //                continue;
-        //            }
-        //        }
-
-        //        DamageReceiverBehaviour _drb = g.GetComponent<DamageReceiverBehaviour>();
-        //        if (_drb)
-        //        {
-        //            OnDamageReceiverHit.Invoke(_drb);
-
-        //        }
-        //    }
-        //}
-
-        //private void OnDrawGizmos()
-        //{
-        //    Gizmos.color = Color.cyan;
-        //    Gizmos.DrawWireSphere(transform.position + debuggizmoend, transform.localScale.x * .5f);
-        //}
+        /// <summary>
+        /// Handles the mana obtained on ManaBehaviour hit.
+        /// </summary>
+        /// <param name="_manaAmount"></param>
+        public void CatchMana(float _manaAmount)
+        {
+            mana.SetMana(_manaAmount + (manaModifier * enemyHitCount));
+        }
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -184,7 +110,13 @@ namespace Sangaku
             if (_drb)
             {
                 OnDamageReceiverHit.Invoke(_drb);
+                enemyHitCount++;
+            }
 
+            ManaBehaviour _mb = other.GetComponent<ManaBehaviour>();
+            if (_mb)
+            {
+                CatchMana(_mb.GetMana());
             }
         }
 
