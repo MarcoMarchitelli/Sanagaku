@@ -321,6 +321,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
 --- !u!114 &60854350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,21 +346,26 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
   OnMovementEnd:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
   OnWaypointReached:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
   OnPathFinished:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
+  isMoving: 0
 --- !u!1 &77931326
 GameObject:
   m_ObjectHideFlags: 0
@@ -11450,6 +11456,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
 --- !u!114 &1162549952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11473,15 +11480,18 @@ MonoBehaviour:
   projectileSpeed: 12
   projectileLifeTime: 3
   turnRateAnglesPerSecond: 90
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  obstacleLayer: 
   damage: 1
   OnProjectileShoot:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
+  targets: []
+  currentTarget: {fileID: 0}
+  timer: {fileID: 0}
+  shorterTargetDistance: 0
 --- !u!114 &1162549953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11517,6 +11527,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
   OnMovementEnd:
     m_PersistentCalls:
       m_Calls:
@@ -11533,16 +11544,20 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
   OnWaypointReached:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
   OnPathFinished:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
+  isMoving: 0
 --- !u!1 &1169218727
 GameObject:
   m_ObjectHideFlags: 0
@@ -12975,6 +12990,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
 --- !u!114 &2134834369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12992,12 +13008,19 @@ MonoBehaviour:
   canSeeThroughObstacles: 1
   timeToScan: 0.07
   obstacleLayer:
-    serializedVersion: 2
     m_Bits: 0
   scanAreaLenght: 5
   fovAngle: 45
-  spotLightColor: {r: 0, g: 0, b: 0, a: 0}
-  detectedSpotlightColor: {r: 0, g: 0, b: 0, a: 0}
+  spotLightColor:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  detectedSpotlightColor:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
   scanAreaRadius: 8.6
   OnTargetSpotted:
     m_PersistentCalls:
@@ -13015,6 +13038,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Deirin.AI.TransformEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+    m_CallsDirty: 1
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
@@ -13031,6 +13055,12 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Deirin.AI.TransformEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+    m_CallsDirty: 1
+  target: {fileID: 0}
+  spotLight: {fileID: 0}
+  spotlightRangeDifference: 3
+  targetVisibleTimer: 0
+  hasSpottedTargetOnce: 0
 --- !u!114 &2134834370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13054,15 +13084,18 @@ MonoBehaviour:
   projectileSpeed: 15
   projectileLifeTime: 2
   turnRateAnglesPerSecond: 90
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  obstacleLayer: 
   damage: 1
   OnProjectileShoot:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+    m_CallsDirty: 1
+  targets: []
+  currentTarget: {fileID: 0}
+  timer: {fileID: 0}
+  shorterTargetDistance: 0
 --- !u!1 &2137230960
 GameObject:
   m_ObjectHideFlags: 0
