@@ -60,9 +60,11 @@ namespace Sangaku
 
             //HACK: va rivisto il calcolo per migliorare il feeling
             Vector3 lookDirection = new Vector3(Input.GetAxis(controllerHorizontalInput), 0f, Input.GetAxis(controllerVerticalInput)).normalized;
-            Debug.Log(lookDirection);
-            Quaternion lookRotation = Quaternion.LookRotation(lookDirection, transform.up);
-            rBody.MoveRotation(lookRotation);
+            if(lookDirection != Vector3.zero)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(lookDirection, transform.up);
+                rBody.MoveRotation(lookRotation);
+            }
         }
 
         /// <summary>
