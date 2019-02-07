@@ -14,6 +14,7 @@ namespace Sangaku
         [SerializeField] AnimationCurve speedOverLifeTimeCurve;
 
         bool canMove = true;
+        bool countTime = true;
         float timer;
         float distanceToTravel;
 
@@ -21,12 +22,14 @@ namespace Sangaku
         {
             timer = 0.01f;
             canMove = true;
+            countTime = true;
         }
 
         private void Update()
         {
-            timer += Time.deltaTime;
-            if(canMove)
+            if (countTime)
+                timer += Time.deltaTime;
+            if (canMove)
                 Move();
         }
 
@@ -36,7 +39,7 @@ namespace Sangaku
         void Move()
         {
             distanceToTravel = speedOverLifeTimeCurve.Evaluate(timer / moveTime) * moveSpeed * Time.deltaTime;
-            if(distanceToTravel <= 0)
+            if (distanceToTravel <= 0)
             {
                 OnLifeEnd.Invoke(deathTime);
                 canMove = false;
@@ -49,5 +52,11 @@ namespace Sangaku
         {
             transform.eulerAngles = _newDirection;
         }
-    } 
+
+        public void StopMoveTimer()
+        {
+            timer = 0;
+            countTime = false;
+        }
+    }
 }

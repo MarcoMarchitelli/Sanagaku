@@ -13,7 +13,7 @@ namespace Deirin.Utility
         public UnityEvent OnTimerStart, OnTimerEnd;
 
         bool countTime = false;
-        [HideInInspector] public float timer;
+        /*[HideInInspector]*/ public float timer;
 
         #region MonoBehaviour methods
 
