@@ -159,7 +159,11 @@ namespace Sangaku
                 return;
             BounceOnBehaviour _b = collision.collider.GetComponent<BounceOnBehaviour>();
             if (_b)
-                HandleBounceOnBehaviour(_b, collision.contacts[0].normal);            
+                HandleBounceOnBehaviour(_b, collision.contacts[0].normal);
+            else
+            {
+                Bounce(transform.forward, collision.contacts[0].normal);
+            }
         }
 
         private void OnTriggerEnter(Collider other)
