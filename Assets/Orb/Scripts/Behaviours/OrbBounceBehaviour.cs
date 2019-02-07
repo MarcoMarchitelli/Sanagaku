@@ -23,7 +23,7 @@ namespace Sangaku
 
         protected override void CustomSetup()
         {
-            enemyHitCount = 0f;
+            enemyHitCount = 0;
             mana = GetComponent<ManaBehaviour>();
         }
 
