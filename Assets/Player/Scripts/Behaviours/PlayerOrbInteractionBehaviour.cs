@@ -5,7 +5,6 @@ namespace Sangaku
     [RequireComponent(typeof(Collider))]
     public class PlayerOrbInteractionBehaviour : BaseBehaviour
     {
-        [SerializeField] bool drawGizmos = true;
         [SerializeField] bool isEnabled = true;
         [SerializeField] Transform orbCatchPoint;
         [SerializeField] float catchDuration;

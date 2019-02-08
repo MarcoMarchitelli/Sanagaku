@@ -1,6 +1,5 @@
 ﻿using UnityEngine.Events;
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace Sangaku
 {
@@ -13,7 +12,6 @@ namespace Sangaku
         #endregion
 
         [SerializeField] LayerMask bounceLayer;
-        [SerializeField] int collisionDetectionRaysAmount = 8;
         [SerializeField] float manaModifier = 2f;
 
         int bounces;
