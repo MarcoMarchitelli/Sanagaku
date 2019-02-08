@@ -13,6 +13,13 @@ namespace Sangaku
         /// </summary>
         List<IBehaviour> Behaviours { get; }
 
+        IEntityData Data { get; }
+
         void SetUpEntity();
+    }
+
+    public interface IEntityData
+    {
+
     }
 }

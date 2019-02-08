@@ -14,6 +14,8 @@ namespace Sangaku
         [SerializeField] LayerMask bounceLayer;
         [SerializeField] float manaModifier = 2f;
 
+        OrbControllerData data;
+
         int bounces;
         int enemyHitCount;
         float moveSpeed;
@@ -23,6 +25,9 @@ namespace Sangaku
         {
             enemyHitCount = 0;
             mana = GetComponent<ManaBehaviour>();
+            data = Entity.Data as OrbControllerData;
+            isDepartingFromPlayer = true;
+            oldDistanceFromPlayer = Vector3.Distance(transform.position, data.PlayerReference.transform.position);
         }
 
         /// <summary>
@@ -77,6 +82,16 @@ namespace Sangaku
             mana.SetMana(_manaAmount + (manaModifier * enemyHitCount));
         }
 
+        void CheckPlayerDistance(Vector3 _playerPosition)
+        {
+            distanceFromPlayer = Vector3.Distance(transform.position, _playerPosition);
+            if (distanceFromPlayer > oldDistanceFromPlayer)
+                isDepartingFromPlayer = true;
+            else
+                isDepartingFromPlayer = false;
+            oldDistanceFromPlayer = distanceFromPlayer;
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
             if (!IsSetupped)
@@ -97,7 +112,7 @@ namespace Sangaku
             PlayerOrbInteractionBehaviour _oib = other.GetComponent<PlayerOrbInteractionBehaviour>();
             if (_oib)
             {
-                if (!_oib.caughtOrb)
+                if (!_oib.caughtOrb && !isDepartingFromPlayer)
                 {
                     _oib.CatchOrb(Entity as OrbController);
                     OnPlayerHit.Invoke();
@@ -116,6 +131,14 @@ namespace Sangaku
             {
                 CatchMana(_mb.GetMana());
             }
+        }
+
+        float distanceFromPlayer;
+        float oldDistanceFromPlayer;
+        bool isDepartingFromPlayer = true;
+        private void Update()
+        {
+            CheckPlayerDistance(data.PlayerReference.transform.position);
         }
 
     }

@@ -11,17 +11,19 @@ namespace Sangaku
         /// </summary>
         public List<IBehaviour> Behaviours { get; private set; }
 
+        public IEntityData Data { get; set; }
+
         /// <summary>
         /// Basic Entity setup. Every Entity needs to implement this to function.
         /// </summary>
         public void SetUpEntity()
         {
+            CustomSetup();
             Behaviours = GetComponentsInChildren<IBehaviour>().ToList();
             foreach (IBehaviour behaviour in Behaviours)
             {
                 behaviour.Setup(this);
             }
-            CustomSetup();
         }
 
         /// <summary>
