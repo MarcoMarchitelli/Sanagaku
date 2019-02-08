@@ -16,11 +16,15 @@ namespace Sangaku
         [HideInInspector]
         public OrbController caughtOrb;
 
+        ManaBehaviour mana;
+
         protected override void CustomSetup()
         {
             caughtOrb = null;
+            mana = Entity.gameObject.GetComponent<ManaBehaviour>();
         }
 
+        ManaBehaviour orbMana;
         /// <summary>
         /// Checks if there is no Orb already, and if not catches the given one. Called by the Orb class.
         /// </summary>
@@ -32,6 +36,9 @@ namespace Sangaku
             if (!caughtOrb)
             {
                 caughtOrb = _orb;
+                orbMana = caughtOrb.GetComponent<ManaBehaviour>();
+                mana.AddMana(orbMana.GetMana());
+                print(name + " received " + orbMana.GetMana() + " mana from " + caughtOrb.name +"!");
                 caughtOrb.SM.GoToCaughtState(orbCatchPoint);
                 OnOrbCatch.Invoke(catchDuration);
             }
@@ -49,6 +56,10 @@ namespace Sangaku
             OnCatchEnd.Invoke();
         }
 
+        /// <summary>
+        /// Returns the orb caught if there is one.
+        /// </summary>
+        /// <returns></returns>
         public OrbController GetOrb()
         {
             if (!isEnabled)

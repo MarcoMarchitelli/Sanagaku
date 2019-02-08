@@ -356,6 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SM: {fileID: 7454922714828287361}
+  PlayerReference: {fileID: 0}
 --- !u!114 &2835863131274270905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +513,6 @@ MonoBehaviour:
   bounceLayer:
     serializedVersion: 2
     m_Bits: 512
-  collisionDetectionRaysAmount: 16
   manaModifier: 2
 --- !u!114 &6044092798920371552
 MonoBehaviour:
@@ -546,14 +546,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5d2565761b2ba44b33209e13ed6926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxMana: 0
+  startMana: 0
+  startAtMax: 0
+  regeneration: 0
+  canExceedMax: 1
+  amountPerSecond: 0.1
   OnManaChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  maxMana: 0
-  regeneration: 0
-  amountPerSecond: 0.1
 --- !u!114 &2835863131274270901
 MonoBehaviour:
   m_ObjectHideFlags: 0

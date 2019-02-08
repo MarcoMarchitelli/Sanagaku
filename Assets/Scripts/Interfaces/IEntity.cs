@@ -13,6 +13,8 @@ namespace Sangaku
         /// </summary>
         List<IBehaviour> Behaviours { get; }
 
+        GameObject gameObject { get; }
+
         IEntityData Data { get; }
 
         void SetUpEntity();

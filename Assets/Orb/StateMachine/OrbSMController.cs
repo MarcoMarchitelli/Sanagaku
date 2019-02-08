@@ -47,6 +47,7 @@ namespace Sangaku
         public OrbMovementBehaviour movementBehaviour;
         public OrbBounceBehaviour orbBounceBehaviour;
         public Transform CatchPoint;
+        public ManaBehaviour orbManaBehaviour;
 
         public OrbSMContext(IEntity _orbEntity, Transform _catchPoint)
         {
@@ -54,6 +55,7 @@ namespace Sangaku
             CatchPoint = _catchPoint;
             movementBehaviour = OrbEntity.GetComponentInChildren<OrbMovementBehaviour>();
             orbBounceBehaviour = OrbEntity.GetComponentInChildren<OrbBounceBehaviour>();
+            orbManaBehaviour = OrbEntity.GetComponentInChildren<ManaBehaviour>();
         }
     }
 

@@ -29,7 +29,7 @@ public class ShootBehaviourEditor : Editor
         EditorStyles.foldout.fontStyle = FontStyle.Bold;
 
         EditorGUILayout.Space();
-
+        
         showReferences = EditorGUILayout.Foldout(showReferences, "References", true, EditorStyles.foldout);
         if (showReferences)
         {

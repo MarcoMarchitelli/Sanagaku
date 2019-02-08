@@ -5,26 +5,25 @@ namespace Sangaku
 {
     public class OrbBounceBehaviour : BaseBehaviour
     {
+        [SerializeField] LayerMask bounceLayer;
+        [SerializeField] float manaModifier = 2f;
+
         #region Events
         [SerializeField] UnityVector3Event OnBounce;
         [SerializeField] UnityDamageReceiverEvent OnDamageReceiverHit;
         [SerializeField] UnityEvent OnDestroyHit, OnPlayerHit;
         #endregion
 
-        [SerializeField] LayerMask bounceLayer;
-        [SerializeField] float manaModifier = 2f;
-
         OrbControllerData data;
 
         int bounces;
         int enemyHitCount;
-        float moveSpeed;
         ManaBehaviour mana;
 
         protected override void CustomSetup()
         {
             enemyHitCount = 0;
-            mana = GetComponent<ManaBehaviour>();
+            mana = Entity.gameObject.GetComponent<ManaBehaviour>();
             data = Entity.Data as OrbControllerData;
             isDepartingFromPlayer = true;
             oldDistanceFromPlayer = Vector3.Distance(transform.position, data.PlayerReference.transform.position);
@@ -68,18 +67,19 @@ namespace Sangaku
             }
         }
 
-        public void SetMoveSpeed(float _value)
-        {
-            moveSpeed = _value;
-        }
-
         /// <summary>
         /// Handles the mana obtained on ManaBehaviour hit.
         /// </summary>
         /// <param name="_manaAmount"></param>
         public void CatchMana(float _manaAmount)
         {
-            mana.SetMana(_manaAmount + (manaModifier * enemyHitCount));
+            if (enemyHitCount <= 1)
+            {
+                mana.AddMana(_manaAmount);
+            }
+            else
+                mana.AddMana(_manaAmount + (manaModifier * enemyHitCount - 1));
+            print(name + " caught " + mana.GetMana() + " mana!");
         }
 
         void CheckPlayerDistance(Vector3 _playerPosition)
@@ -123,12 +123,12 @@ namespace Sangaku
             if (_drb && !_drb.Entity.GetType().IsAssignableFrom(typeof(PlayerController))) // controllo che non sia un player
             {
                 OnDamageReceiverHit.Invoke(_drb);
-                enemyHitCount++;
             }
 
             ManaBehaviour _mb = other.GetComponent<ManaBehaviour>();
-            if (_mb)
+            if (_mb && _mb.Entity.GetType().IsAssignableFrom(typeof(EnemyController)))
             {
+                enemyHitCount++;
                 CatchMana(_mb.GetMana());
             }
         }
@@ -139,6 +139,14 @@ namespace Sangaku
         private void Update()
         {
             CheckPlayerDistance(data.PlayerReference.transform.position);
+        }
+
+        public override void Enable(bool _value)
+        {
+            enemyHitCount = 0;
+            isDepartingFromPlayer = true;
+            oldDistanceFromPlayer = Vector3.Distance(transform.position, data.PlayerReference.transform.position);
+            base.Enable(_value);
         }
 
     }

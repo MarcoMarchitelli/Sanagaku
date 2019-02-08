@@ -47,8 +47,9 @@ namespace Sangaku
         /// </summary>
         void ShootOrb()
         {
-            if (mana.SetMana(-cost))
+            if (mana.GetMana() >= cost)
             {
+                mana.AddMana(-cost);
                 //----- ObjPooler wating room
                 OrbController instantiatedOrb = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<OrbController>();
                 instantiatedOrb.PlayerReference = Entity as PlayerController;
