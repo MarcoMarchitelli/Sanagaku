@@ -107,7 +107,7 @@ namespace Sangaku
             }
 
             DamageReceiverBehaviour _drb = other.GetComponent<DamageReceiverBehaviour>();
-            if (_drb)
+            if (_drb && !_drb.Entity.GetType().IsAssignableFrom(typeof(PlayerController))) // controllo che non sia un player
             {
                 OnDamageReceiverHit.Invoke(_drb);
                 enemyHitCount++;
