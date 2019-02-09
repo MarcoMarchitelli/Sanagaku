@@ -78,7 +78,7 @@ namespace Sangaku
                 mana.AddMana(_manaAmount);
             }
             else
-                mana.AddMana(_manaAmount + (manaModifier * enemyHitCount - 1));
+                mana.AddMana(_manaAmount + (manaModifier * (enemyHitCount - 1)));
             print(name + " caught " + mana.GetMana() + " mana!");
         }
 

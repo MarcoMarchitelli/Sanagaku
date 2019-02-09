@@ -35,7 +35,7 @@ namespace Sangaku
                 if (_currentMana != value)
                 {
                     _currentMana = value;
-                    if (_currentMana > maxMana)
+                    if (!canExceedMax && _currentMana > maxMana)
                         _currentMana = maxMana;
                     OnManaChanged.Invoke(_currentMana);
                 }

@@ -13,6 +13,7 @@ namespace Sangaku
                 baseBehaviour.Enable(false);
             }
             orbTransform = context.OrbEntity.transform;
+            context.orbManaBehaviour.ResetMana();
         }
 
         public override void Tick()
