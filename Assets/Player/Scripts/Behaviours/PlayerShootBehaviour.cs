@@ -50,10 +50,13 @@ namespace Sangaku
             if (mana.GetMana() >= cost)
             {
                 mana.AddMana(-cost);
-                //----- ObjPooler wating room
-                OrbController instantiatedOrb = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<OrbController>();
-                instantiatedOrb.PlayerReference = Entity as PlayerController;
-                instantiatedOrb.SetUpEntity();
+
+                //OrbController instantiatedOrb = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<OrbController>();
+                //instantiatedOrb.SetUpOrbEntity(Entity as PlayerController);
+
+                OrbController pooledOrb = ObjectPooler.Instance.GetPoolableFromPool("Orb", shootPoint.position, shootPoint.rotation) as OrbController;
+                pooledOrb.SetUpOrbEntity(Entity as PlayerController);
+
                 OnOrbShoot.Invoke(secondsBetweenShots);
             }
         }
