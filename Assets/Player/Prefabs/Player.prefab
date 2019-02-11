@@ -5161,6 +5161,7 @@ GameObject:
   - component: {fileID: 79887467333557450}
   - component: {fileID: 79887467333557444}
   - component: {fileID: 79887467333557447}
+  - component: {fileID: 4659636289990462211}
   - component: {fileID: 8536648692734459042}
   - component: {fileID: 135003964999893156}
   m_Layer: 0
@@ -5463,7 +5464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5d2565761b2ba44b33209e13ed6926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMana: 15
+  maxMana: 4
   startMana: 0
   startAtMax: 1
   regeneration: 1
@@ -5519,6 +5520,7 @@ MonoBehaviour:
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   maxHealth: 5
+  _currentHealth: 0
 --- !u!114 &79887467333557450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5608,6 +5610,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BehaviourType: 3
+--- !u!114 &4659636289990462211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79887467333557446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a47d0219eef66a4cbc5ad25b1a4cf51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &8536648692734459042
 CapsuleCollider:
   m_ObjectHideFlags: 0
