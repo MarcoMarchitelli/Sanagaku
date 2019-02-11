@@ -227,7 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b59187db7ad23f4d94a585463e328a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawGizmos: 1
   isEnabled: 1
   orbCatchPoint: {fileID: 2108020691}
   catchDuration: 3
@@ -5464,14 +5463,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5d2565761b2ba44b33209e13ed6926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxMana: 15
+  startMana: 0
+  startAtMax: 1
+  regeneration: 1
+  canExceedMax: 0
+  amountPerSecond: 0.1
   OnManaChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  maxMana: 15
-  regeneration: 1
-  amountPerSecond: 0.1
 --- !u!114 &79887467333557451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5516,7 +5518,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  maxHealth: 10
+  maxHealth: 5
 --- !u!114 &79887467333557450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5585,6 +5587,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cb566263f1ded4f9a6fa8ecb8bc281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usesObjectPooler: 0
+  poolTag: 
+  isIPoolable: 0
   OnDestruction:
     m_PersistentCalls:
       m_Calls: []
