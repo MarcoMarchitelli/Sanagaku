@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Sangaku
 {
-    public class DestroyBehaviour : BaseBehaviour
+    public class OrbDestroyBehaviour : BaseBehaviour
     {
         #region Serialized Fields
         [SerializeField] bool usesObjectPooler = false;
@@ -12,15 +12,20 @@ namespace Sangaku
         #endregion
 
         #region Events
-        [SerializeField] UnityVoidEvent OnDestruction;
+        [SerializeField] UnityOrbControllerEvent OnDestruction;
         #endregion
 
         ObjectPooler objPooler;
+        OrbControllerData data;
 
         protected override void CustomSetup()
         {
+            data = Entity.Data as OrbControllerData;
+
             if (usesObjectPooler)
                 objPooler = ObjectPooler.Instance;
+
+            OnDestruction.AddListener(data.PlayerShootBehaviour.RemoveOrbFromPlay);
         }
 
         /// <summary>
@@ -33,15 +38,18 @@ namespace Sangaku
                 if (isIPoolable)
                 {
                     objPooler.PutPoolableInPool(poolTag, Entity as IPoolable);
+                    OnDestruction.Invoke(Entity as OrbController);
                 }
                 else
                 {
                     objPooler.PutObjectInPool(poolTag, Entity.gameObject);
+                    OnDestruction.Invoke(Entity as OrbController);
                 }
             }
             else
             {
                 Destroy(gameObject);
+                OnDestruction.Invoke(Entity as OrbController);
             }
         }
 
@@ -58,6 +66,7 @@ namespace Sangaku
             else
             {
                 Destroy(gameObject, _time);
+                OnDestruction.Invoke(Entity as OrbController);
             }
         }
 
@@ -73,17 +82,18 @@ namespace Sangaku
             if (isIPoolable)
             {
                 objPooler.PutPoolableInPool(poolTag, Entity as IPoolable);
+                OnDestruction.Invoke(Entity as OrbController);
             }
             else
             {
                 objPooler.PutObjectInPool(poolTag, Entity.gameObject);
+                OnDestruction.Invoke(Entity as OrbController);
             }
         }
 
         private void OnDestroy()
         {
-            if(!usesObjectPooler)
-                OnDestruction.Invoke();
+            OnDestruction.Invoke(Entity as OrbController);
         }
 
     }

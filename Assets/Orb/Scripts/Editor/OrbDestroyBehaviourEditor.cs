@@ -2,9 +2,9 @@
 using UnityEditor;
 using Sangaku;
 
-[CustomEditor(typeof(DestroyBehaviour))]
+[CustomEditor(typeof(OrbDestroyBehaviour))]
 [CanEditMultipleObjects]
-public class DestroyBehaviourEditor : Editor
+public class OrbDestroyBehaviourEditor : Editor
 {
     SerializedProperty usesObjectPooler, poolTag, isIPoolable, OnDestruction;
 

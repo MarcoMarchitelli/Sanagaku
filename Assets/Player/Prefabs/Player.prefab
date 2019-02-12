@@ -5155,8 +5155,8 @@ GameObject:
   - component: {fileID: 79887467333557455}
   - component: {fileID: 79887467333557454}
   - component: {fileID: 79887467333557445}
+  - component: {fileID: 6169693431136065898}
   - component: {fileID: 850753096191203397}
-  - component: {fileID: 79887467333557448}
   - component: {fileID: 79887467333557451}
   - component: {fileID: 79887467333557450}
   - component: {fileID: 79887467333557444}
@@ -5361,6 +5361,29 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &6169693431136065898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79887467333557446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55ef98d0f2dcf74fb35153ba0d4bf87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 4
+  startMana: 0
+  startAtMax: 1
+  regeneration: 0
+  canExceedMax: 0
+  amountPerSecond: 0.1
+  OnManaChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &850753096191203397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5452,29 +5475,6 @@ MonoBehaviour:
   dashDistance: 5
   dashSpeed: 80
   dashCooldown: 3
---- !u!114 &79887467333557448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 79887467333557446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b5d2565761b2ba44b33209e13ed6926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxMana: 4
-  startMana: 0
-  startAtMax: 1
-  regeneration: 1
-  canExceedMax: 0
-  amountPerSecond: 0.1
-  OnManaChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!114 &79887467333557451
 MonoBehaviour:
   m_ObjectHideFlags: 0

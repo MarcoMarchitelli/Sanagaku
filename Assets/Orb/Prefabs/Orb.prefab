@@ -88,7 +88,7 @@ MonoBehaviour:
   OnTimerEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2835863131274270901}
+      - m_Target: {fileID: 4422905089294622160}
         m_MethodName: Destroy
         m_Mode: 1
         m_Arguments:
@@ -313,9 +313,9 @@ GameObject:
   - component: {fileID: 2835863131274270898}
   - component: {fileID: 2835863131274270905}
   - component: {fileID: 2835863131274270902}
+  - component: {fileID: 4422905089294622160}
   - component: {fileID: 6044092798920371552}
   - component: {fileID: 2835863131274270903}
-  - component: {fileID: 2835863131274270901}
   - component: {fileID: 1954205545}
   - component: {fileID: 8180793333761143363}
   - component: {fileID: 5503894381244897270}
@@ -462,7 +462,7 @@ MonoBehaviour:
   OnDestroyHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2835863131274270901}
+      - m_Target: {fileID: 4422905089294622160}
         m_MethodName: Destroy
         m_Mode: 1
         m_Arguments:
@@ -500,18 +500,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &4422905089294622160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2835863131274270896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 194e440d30f501643b67c5b1683760c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usesObjectPooler: 1
+  poolTag: Orb
+  isIPoolable: 1
+  OnDestruction:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityOrbControllerEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &6044092798920371552
 MonoBehaviour:
@@ -555,26 +564,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
---- !u!114 &2835863131274270901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2835863131274270896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6cb566263f1ded4f9a6fa8ecb8bc281, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usesObjectPooler: 1
-  poolTag: Orb
-  isIPoolable: 1
-  OnDestruction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!54 &1954205545
 Rigidbody:

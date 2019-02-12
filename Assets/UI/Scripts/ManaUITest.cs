@@ -5,16 +5,16 @@ using Sangaku;
 public class ManaUITest : MonoBehaviour
 {
     [SerializeField] Slider manaSlider;
-    [SerializeField] ManaBehaviour manaBehaviour;
+    [SerializeField] PlayerManaBehaviour playerManaBehaviour;
 
-    public void SetUp(ManaBehaviour _mb = null)
+    public void SetUp(PlayerManaBehaviour _pmb = null)
     {
-        if (!manaBehaviour && _mb)
-            manaBehaviour = _mb;
+        if (!playerManaBehaviour && _pmb)
+            playerManaBehaviour = _pmb;
 
-        manaBehaviour.OnManaChanged.AddListener(UpdateUI);
+        playerManaBehaviour.OnManaChanged.AddListener(UpdateUI);
 
-        manaSlider.maxValue = manaBehaviour.MaxMana;
+        manaSlider.maxValue = playerManaBehaviour.MaxMana;
     }
 
     public void UpdateUI(float _newMana)

@@ -3,9 +3,9 @@
 namespace Sangaku
 {
     /// <summary>
-    /// Behaviour che gestisce l'accumulo di mana
+    /// Player specific behaviour that handles all things mana related.
     /// </summary>
-    public class ManaBehaviour : BaseBehaviour
+    public class PlayerManaBehaviour : BaseBehaviour
     {
         [SerializeField] float maxMana;
         [SerializeField] float startMana;
@@ -16,13 +16,23 @@ namespace Sangaku
 
         public UnityFloatEvent OnManaChanged;
 
+        PlayerShootBehaviour playerShootBehaviour;
+
         protected override void CustomSetup()
         {
+            playerShootBehaviour = Entity.gameObject.GetComponentInChildren<PlayerShootBehaviour>();
+            if (!playerShootBehaviour)
+            {
+                Debug.Log(name + "'s PlayerManaBehaviour did not find a PlayerShootBehaviour!");
+                return;
+            }
+
             if (startAtMax)
             {
                 CurrentMana = maxMana;
                 return;
             }
+
             CurrentMana = startMana;
         }
 
@@ -37,6 +47,8 @@ namespace Sangaku
                     _currentMana = value;
                     if (!canExceedMax && _currentMana > maxMana)
                         _currentMana = maxMana;
+                    if (_currentMana > playerShootBehaviour.cost)
+                        ToggleRegen(false);
                     OnManaChanged.Invoke(_currentMana);
                 }
             }
@@ -91,7 +103,7 @@ namespace Sangaku
 
         private void Update()
         {
-            if(regeneration)
+            if (regeneration)
                 CurrentMana += amountPerSecond * Time.deltaTime;
         }
     }

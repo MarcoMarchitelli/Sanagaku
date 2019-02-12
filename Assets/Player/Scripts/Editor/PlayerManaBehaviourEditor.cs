@@ -2,9 +2,9 @@
 using UnityEditor;
 using Sangaku;
 
-[CustomEditor(typeof(ManaBehaviour))]
+[CustomEditor(typeof(PlayerManaBehaviour))]
 [CanEditMultipleObjects]
-public class ManaBehaviourEditor : Editor
+public class PlayerManaBehaviourEditor : Editor
 {
     SerializedProperty maxMana, startMana, startAtMax, regeneration, canExceedMax, amountPerSecond,
         OnManaChanged;
@@ -43,9 +43,9 @@ public class ManaBehaviourEditor : Editor
         if (showParameters)
         {
             EditorGUILayout.PropertyField(maxMana);
-            if(!startAtMax.boolValue)
+            if (!startAtMax.boolValue)
                 EditorGUILayout.PropertyField(startMana);
-            if(regeneration.boolValue)
+            if (regeneration.boolValue)
                 EditorGUILayout.PropertyField(amountPerSecond);
         }
 

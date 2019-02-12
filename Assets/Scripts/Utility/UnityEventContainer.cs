@@ -48,6 +48,12 @@ namespace Sangaku
     public class UnitySubObjectiveEvent : UnityEvent<SubObjectiveBehaviour> { }
 
     /// <summary>
+    /// Unity Event passing an OrbController
+    /// </summary>
+    [System.Serializable]
+    public class UnityOrbControllerEvent : UnityEvent<OrbController> { }
+
+    /// <summary>
     /// Evento di unity void
     /// </summary>
     [System.Serializable]

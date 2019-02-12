@@ -50,10 +50,12 @@ namespace Sangaku
     public class OrbControllerData : IEntityData
     {
         public PlayerController PlayerReference;
+        public PlayerShootBehaviour PlayerShootBehaviour;
 
         public OrbControllerData(PlayerController _p)
         {
             PlayerReference = _p;
+            PlayerShootBehaviour = PlayerReference.GetComponentInChildren<PlayerShootBehaviour>();
         }
     }
 }
