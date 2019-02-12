@@ -16,6 +16,10 @@ namespace Sangaku
         /// Evento lanciato al raggiungimento del target
         /// </summary>
         [SerializeField] UnityEvent OnTargetReached;
+        /// <summary>
+        /// Evento lanciato al raggiungimento del target
+        /// </summary>
+        [SerializeField] UnityEvent OnTargetOutOfReach;
 
         /// <summary>
         /// Riferimento al target da seguire
@@ -26,6 +30,11 @@ namespace Sangaku
         /// Se false si deve chiamare la funzione di toggle.
         /// </summary>
         [SerializeField] bool autoStart;
+
+        /// <summary>
+        /// True se il mmovimento è attivo, false altrimenti
+        /// </summary>
+        bool canNavigate;
 
         /// <summary>
         /// Riferimento al componente di unity che si occupa della navigazione
@@ -39,66 +48,80 @@ namespace Sangaku
         {
             navigation = GetComponent<NavMeshAgent>();
 
-            ToggleNavigation(autoStart);
-
             if (target == null)
-                target = FindObjectOfType<FollowerTarget>();
+                FindTarget();
+
+            ToggleNavigation(autoStart);
         }
 
-        /// <summary>
-        /// True se il mmovimento è attivo, false altrimenti
-        /// </summary>
-        bool canNavigate;
+        #region API
         /// <summary>
         /// Funzione che si occupa di spegnere o accendere il movimento 
         /// </summary>
         /// <param name="_value"></param>
         public void ToggleNavigation(bool _value)
         {
-            if (!IsSetupped)
+            if (!IsSetupped && canNavigate == _value)
                 return;
 
             canNavigate = _value;
 
-            if (target == null)
+            if (target == null && !navigation.isActiveAndEnabled)
                 return;
 
             if (canNavigate)
-            {
-                if (navigation.isActiveAndEnabled)
-                    navigation.isStopped = false;
-            }
+                navigation.isStopped = false;
             else
-            {
-                if (navigation.isActiveAndEnabled)
-                    navigation.isStopped = true;
-            }
+                navigation.isStopped = true;
         }
 
-        void UpdateDestination()
+        /// <summary>
+        /// Funzion che si occupa di cercare un target in scena
+        /// </summary>
+        public void FindTarget()
         {
-            if (canNavigate && Vector3.Distance(navigation.destination, target.TargetPosition) > navigation.stoppingDistance)
-                navigation.destination = target.TargetPosition;
+            SetTarget(FindObjectOfType<FollowerTarget>());
         }
+
+        /// <summary>
+        /// Funzione che setta il target del behaviour
+        /// </summary>
+        /// <param name="_target"></param>
+        public void SetTarget(FollowerTarget _target)
+        {
+            target = _target;
+        }
+
+        /// <summary>
+        /// Funzione che assegna come destinazione della navigazione il target del behaviour
+        /// </summary>
+        public void SetTargetAsDestination()
+        {
+            if (target != null)
+                navigation.destination = target.TargetPosition;
+        } 
+        #endregion
 
         /// <summary>
         /// Funzione che si occupa di controllare il completamento del path
         /// </summary>
-        void CheckPathCompletition()
+        void CheckPath()
         {
-            if (navigation.pathStatus == NavMeshPathStatus.PathComplete)
-            {
+            if (!canNavigate)
+                return;
+
+            if (Vector3.Distance(navigation.destination, target.TargetPosition) > navigation.stoppingDistance)
+                OnTargetOutOfReach.Invoke();
+            else if (Vector3.Distance(navigation.destination, target.TargetPosition) <= navigation.stoppingDistance)
                 OnTargetReached.Invoke();
-            }
         }
 
         void Update()
         {
-            CheckPathCompletition();
-            UpdateDestination();
+            CheckPath();
         }
 
-        private void OnDrawGizmos()
+        void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
             if (navigation != null)

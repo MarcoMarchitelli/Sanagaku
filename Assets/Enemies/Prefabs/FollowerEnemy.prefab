@@ -223,6 +223,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnTargetOutOfReach:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1935300171586170055}
+        m_MethodName: SetTargetAsDestination
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   target: {fileID: 0}
   autoStart: 1
 --- !u!195 &8905781031257708123
@@ -269,8 +285,8 @@ Rigidbody:
   m_GameObject: {fileID: 2578783115364961795}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Drag: 10
+  m_AngularDrag: 10
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
