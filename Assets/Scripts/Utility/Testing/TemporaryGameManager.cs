@@ -7,6 +7,7 @@ public class TemporaryGameManager : MonoBehaviour
     public GameObject MainMenu;
     public GameObject PauseMenu;
     public GameObject WinMenu;
+    public GameObject LossMenu;
 
     [Header("Controllers")]
     public TemporaryEnemyManager enemyManager;
@@ -40,6 +41,7 @@ public class TemporaryGameManager : MonoBehaviour
         Time.timeScale = 0;
         PauseMenu.SetActive(false);
         WinMenu.SetActive(false);
+        LossMenu.SetActive(false);
         MainMenu.SetActive(true);
         canPause = false;
     }
@@ -49,6 +51,7 @@ public class TemporaryGameManager : MonoBehaviour
         Time.timeScale = 0;
         WinMenu.SetActive(false);
         MainMenu.SetActive(false);
+        LossMenu.SetActive(false);
         PauseMenu.SetActive(true);
         canPause = false;
     }
@@ -58,6 +61,7 @@ public class TemporaryGameManager : MonoBehaviour
         WinMenu.SetActive(false);
         MainMenu.SetActive(false);
         PauseMenu.SetActive(false);
+        LossMenu.SetActive(false);
         Time.timeScale = 1;
         playerController.Enable(true);
         canPause = true;
@@ -68,6 +72,7 @@ public class TemporaryGameManager : MonoBehaviour
         Time.timeScale = 0;
         MainMenu.SetActive(false);
         PauseMenu.SetActive(false);
+        LossMenu.SetActive(false);
         WinMenu.SetActive(true);
         canPause = false;
     }
@@ -77,7 +82,8 @@ public class TemporaryGameManager : MonoBehaviour
         Time.timeScale = 0;
         MainMenu.SetActive(false);
         PauseMenu.SetActive(false);
-        WinMenu.SetActive(true);
+        WinMenu.SetActive(false);
+        LossMenu.SetActive(true);
         canPause = false;
     }
 
