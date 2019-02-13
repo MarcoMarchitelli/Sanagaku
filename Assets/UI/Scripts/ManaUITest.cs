@@ -21,11 +21,4 @@ public class ManaUITest : MonoBehaviour
     {
         manaSlider.value = _newMana;
     }
-
-    //TEMPORARY
-    private void Start()
-    {
-        SetUp();
-    }
-
 }

@@ -22,10 +22,10 @@ namespace Sangaku
 
         //HACK: andrà rimosso quando ci sarà un state machine del livello
         // per ora va lasciato se no il componente non si setuppa
-        private void Start()
-        {
-            base.SetUpEntity();
-        }
+        //private void Start()
+        //{
+        //    base.SetUpEntity();
+        //}
         //--------------------------------------------
 
         #region API
@@ -43,9 +43,6 @@ namespace Sangaku
         /// <param name="_subObjective"></param>
         public void SetSubObjectiveComplete(SubObjectiveBehaviour _subObjective)
         {
-            if (objectives == null)
-                return;
-
             // setto completato il sotto obbiettivo
             for (int i = 0; i < objectives.Count; i++)
             {
@@ -59,8 +56,6 @@ namespace Sangaku
             // se sono tutti completati l'obbiettivo è completato
             if (objectives.Where(o => o.IsCompleted == false).Count() == 0)
                 OnObjectiveCompletion.Invoke();
-
-            objectives.Clear();
         }
 
         /// <summary>
@@ -69,9 +64,6 @@ namespace Sangaku
         /// <param name="_subObjective"></param>
         public void SetupSubObjective(SubObjectiveBehaviour _subObjective)
         {
-            if (objectives == null)
-                return;
-
             objectives.Add(new SubObjectiveCompletition(_subObjective));
         } 
         #endregion
