@@ -18,10 +18,12 @@ public class TemporaryGameManager : MonoBehaviour
 
     public void Start()
     {
+        Time.timeScale = 0;
         objectiveController.SetUpEntity();
         enemyManager.SetUpEnemies();
         playerController.SetUpEntity();
         uiManager.SetupPlayerHUD();
+        playerController.Enable(false);
         GoToMainMenu();
     }
 
@@ -57,6 +59,7 @@ public class TemporaryGameManager : MonoBehaviour
         MainMenu.SetActive(false);
         PauseMenu.SetActive(false);
         Time.timeScale = 1;
+        playerController.Enable(true);
         canPause = true;
     }
 

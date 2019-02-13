@@ -15,6 +15,7 @@ public class ManaUITest : MonoBehaviour
         playerManaBehaviour.OnManaChanged.AddListener(UpdateUI);
 
         manaSlider.maxValue = playerManaBehaviour.MaxMana;
+        UpdateUI(playerManaBehaviour.GetMana());
     }
 
     public void UpdateUI(float _newMana)
