@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6217467978684711016}
   - component: {fileID: 6217467978684711021}
-  - component: {fileID: 6217467978684711020}
+  - component: {fileID: 4713880077075627570}
   - component: {fileID: 6217467978684711017}
   - component: {fileID: 6217467978684711018}
   - component: {fileID: 6217467978684711019}
@@ -128,25 +128,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 096546911fbb9ee499eb71d90729be42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &6217467978684711020
-Animator:
-  serializedVersion: 3
+--- !u!114 &4713880077075627570
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6217467978684711031}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 740cc8082d47be548b2f012d9a0145e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entitiesToIgnore:
+  - {fileID: 6217467978684711021}
+  - {fileID: 8019016104007158249, guid: 6d25c59061cd64f49a1cf855a45d8436, type: 3}
+  - {fileID: 2835863131274270898, guid: 0ab3ad80c4daaec47ac7ac2971274002, type: 3}
+  - {fileID: 7852103482168027686, guid: 6ee1bbad3aee4b54cbc8bfc83094783e, type: 3}
+  usesTrigger: 1
+  OnGenericHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6217467978684711019}
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDamageReceiverHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6217467978684711018}
+        m_MethodName: DealDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Sangaku.UnityDamageReceiverEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &6217467978684711017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +222,7 @@ MonoBehaviour:
       PublicKeyToken=null
   damage: 1
   dealsOnCollision: 0
-  dealsOnTrigger: 1
+  dealsOnTrigger: 0
 --- !u!114 &6217467978684711019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cb566263f1ded4f9a6fa8ecb8bc281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usesObjectPooler: 1
+  poolTag: EnemyBullet
+  isIPoolable: 1
   OnDestruction:
     m_PersistentCalls:
       m_Calls: []

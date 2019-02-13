@@ -67,11 +67,13 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6217467978684711021, guid: c7146b742f965a24f9491bbfcd29b922,
     type: 3}
   shootPoint: {fileID: 6071864341289568096}
+  usesObjectPooler: 1
   hasTargets: 0
   searchForTargetsOnAwake: 0
   startsShootingOnAwake: 1
   secondsBetweenShots: 1
   turnRateAnglesPerSecond: 90
+  projectilePoolTag: EnemyBullet
   OnShoot:
     m_PersistentCalls:
       m_Calls: []
@@ -133,6 +135,7 @@ MonoBehaviour:
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   maxHealth: 3
+  _currentHealth: 0
 --- !u!114 &5117720401224528497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cb566263f1ded4f9a6fa8ecb8bc281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usesObjectPooler: 0
+  poolTag: 
+  isIPoolable: 0
   OnDestruction:
     m_PersistentCalls:
       m_Calls: []

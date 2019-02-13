@@ -138,7 +138,8 @@ namespace Sangaku
         bool isDepartingFromPlayer = true;
         private void Update()
         {
-            CheckPlayerDistance(data.PlayerReference.transform.position);
+            if(data.PlayerReference)
+                CheckPlayerDistance(data.PlayerReference.transform.position);
         }
 
         public override void Enable(bool _value)
