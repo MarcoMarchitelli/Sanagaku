@@ -37,12 +37,10 @@ namespace Sangaku
             if (_drb)
             {
                 OnDamageReceiverHit.Invoke(_drb);
-                print(other.name + "'s dmg receiver hit");
             }
             else
             {
                 OnGenericHit.Invoke();
-                print(other.name +" generic hit");
             }
         }
 

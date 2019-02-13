@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using Sangaku;
+using System.Collections.Generic;
 
 public class TemporaryGameManager : MonoBehaviour
 {
@@ -10,8 +11,8 @@ public class TemporaryGameManager : MonoBehaviour
     public GameObject LossMenu;
 
     [Header("Controllers")]
+    public List<ObjectiveController> objectiveControllers;
     public TemporaryEnemyManager enemyManager;
-    public ObjectiveController objectiveController;
     public PlayerController playerController;
     public TemporaryUIManager uiManager;
 
@@ -20,11 +21,14 @@ public class TemporaryGameManager : MonoBehaviour
     public void Start()
     {
         Time.timeScale = 0;
-        objectiveController.SetUpEntity();
+        foreach (ObjectiveController objective in objectiveControllers)
+        {
+            objective.SetUpEntity();
+        }
         enemyManager.SetUpEnemies();
         playerController.SetUpEntity();
         uiManager.SetupPlayerHUD();
-        playerController.Enable(false);
+        
         GoToMainMenu();
     }
 
@@ -38,6 +42,7 @@ public class TemporaryGameManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        playerController.Enable(false);
         Time.timeScale = 0;
         PauseMenu.SetActive(false);
         WinMenu.SetActive(false);
@@ -48,6 +53,7 @@ public class TemporaryGameManager : MonoBehaviour
 
     public void GoToPauseMenu()
     {
+        playerController.Enable(false);
         Time.timeScale = 0;
         WinMenu.SetActive(false);
         MainMenu.SetActive(false);
@@ -69,6 +75,7 @@ public class TemporaryGameManager : MonoBehaviour
 
     public void GoToWinMenu()
     {
+        playerController.Enable(false);
         Time.timeScale = 0;
         MainMenu.SetActive(false);
         PauseMenu.SetActive(false);
@@ -79,6 +86,7 @@ public class TemporaryGameManager : MonoBehaviour
 
     public void GoToLossMenu()
     {
+        playerController.Enable(false);
         Time.timeScale = 0;
         MainMenu.SetActive(false);
         PauseMenu.SetActive(false);
