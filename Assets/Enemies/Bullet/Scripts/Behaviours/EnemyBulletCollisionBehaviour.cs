@@ -37,11 +37,16 @@ namespace Sangaku
             if (_drb)
             {
                 OnDamageReceiverHit.Invoke(_drb);
+                return;
             }
-            else
-            {
-                OnGenericHit.Invoke();
-            }
+
+            //HACK: non saprei come inserire lo scan behaviour nelle enitià da ingorare
+            ScanBehaviour _sb = other.GetComponent<ScanBehaviour>();
+            if (_sb)
+                return;
+            //-----------------
+
+            OnGenericHit.Invoke();
         }
 
         private void OnCollisionEnter(Collision collision)
