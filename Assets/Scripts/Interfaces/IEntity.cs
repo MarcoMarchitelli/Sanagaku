@@ -13,6 +13,18 @@ namespace Sangaku
         /// </summary>
         List<IBehaviour> Behaviours { get; }
 
+        GameObject gameObject { get; }
+
+        IEntityData Data { get; }
+
         void SetUpEntity();
+    }
+
+    /// <summary>
+    /// Data needed for the entity to work, that comes from outside the entity's behaviours or the entity itself.
+    /// </summary>
+    public interface IEntityData
+    {
+
     }
 }

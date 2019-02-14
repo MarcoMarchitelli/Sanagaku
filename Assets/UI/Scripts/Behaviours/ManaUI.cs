@@ -50,7 +50,7 @@ public class ManaUI : MonoBehaviour
         _l.childControlHeight = true;
         _l.childForceExpandWidth = true;
         _l.childForceExpandHeight = true;
-        for (int i = 0; i < manaBehaviour.GetMana(); i++)
+        for (int i = 0; i < manaBehaviour.MaxMana; i++)
         {
             Instantiate(manaChunkPrefab, transform);
         }

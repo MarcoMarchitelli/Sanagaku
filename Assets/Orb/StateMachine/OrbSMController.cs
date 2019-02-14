@@ -7,10 +7,9 @@ namespace Sangaku
     {
         [Header("Context Data")]
         public BaseEntity OrbEntity;
-        //[HideInInspector]
-        //public Transform CatchPoint;
 
         #region SMBase Methods
+
         protected override void ContextSetup()
         {
             context = new OrbSMContext(OrbEntity, null);
@@ -38,14 +37,8 @@ namespace Sangaku
         {
             StateMachine.SetTrigger("GoToFreeState");
         }
+
         #endregion
-
-        //public void OrbSMSetUp(Transform _catchPoint)
-        //{
-        //    CatchPoint = _catchPoint;
-        //    SetUpSM();
-        //}
-
     }
 
     public class OrbSMContext : IContext
@@ -54,6 +47,7 @@ namespace Sangaku
         public OrbMovementBehaviour movementBehaviour;
         public OrbBounceBehaviour orbBounceBehaviour;
         public Transform CatchPoint;
+        public ManaBehaviour orbManaBehaviour;
 
         public OrbSMContext(IEntity _orbEntity, Transform _catchPoint)
         {
@@ -61,6 +55,7 @@ namespace Sangaku
             CatchPoint = _catchPoint;
             movementBehaviour = OrbEntity.GetComponentInChildren<OrbMovementBehaviour>();
             orbBounceBehaviour = OrbEntity.GetComponentInChildren<OrbBounceBehaviour>();
+            orbManaBehaviour = OrbEntity.GetComponentInChildren<ManaBehaviour>();
         }
     }
 

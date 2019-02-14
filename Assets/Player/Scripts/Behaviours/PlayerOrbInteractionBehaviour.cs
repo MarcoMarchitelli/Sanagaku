@@ -2,14 +2,12 @@
 
 namespace Sangaku
 {
-    [RequireComponent(typeof(SphereCollider))]
+    [RequireComponent(typeof(Collider))]
     public class PlayerOrbInteractionBehaviour : BaseBehaviour
     {
-        [SerializeField] bool drawGizmos = true;
         [SerializeField] bool isEnabled = true;
         [SerializeField] Transform orbCatchPoint;
         [SerializeField] float catchDuration;
-        [SerializeField] float catchRadius;
 
         [SerializeField] UnityFloatEvent OnOrbCatch;
         [SerializeField] UnityVoidEvent OnCatchEnd;
@@ -18,14 +16,15 @@ namespace Sangaku
         [HideInInspector]
         public OrbController caughtOrb;
 
+        PlayerManaBehaviour playerMana;
+
         protected override void CustomSetup()
         {
             caughtOrb = null;
-            catchCollider = GetComponent<SphereCollider>();
-            catchCollider.isTrigger = true;
-            catchCollider.radius = catchRadius;
+            playerMana = Entity.gameObject.GetComponent<PlayerManaBehaviour>();
         }
 
+        ManaBehaviour orbMana;
         /// <summary>
         /// Checks if there is no Orb already, and if not catches the given one. Called by the Orb class.
         /// </summary>
@@ -37,6 +36,9 @@ namespace Sangaku
             if (!caughtOrb)
             {
                 caughtOrb = _orb;
+                orbMana = caughtOrb.GetComponent<ManaBehaviour>();
+                playerMana.AddMana(orbMana.GetMana());
+                print(name + " received " + orbMana.GetMana() + " mana from " + caughtOrb.name +"!");
                 caughtOrb.SM.GoToCaughtState(orbCatchPoint);
                 OnOrbCatch.Invoke(catchDuration);
             }
@@ -54,6 +56,10 @@ namespace Sangaku
             OnCatchEnd.Invoke();
         }
 
+        /// <summary>
+        /// Returns the orb caught if there is one.
+        /// </summary>
+        /// <returns></returns>
         public OrbController GetOrb()
         {
             if (!isEnabled)
@@ -62,15 +68,6 @@ namespace Sangaku
                 return caughtOrb;
             else
                 return null;
-        }
-
-        private void OnDrawGizmos()
-        {
-            if (drawGizmos)
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(transform.position, catchRadius);
-            }
         }
 
         public override void Enable(bool _value)

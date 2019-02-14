@@ -34,12 +34,16 @@ public class ObjectPooler : MonoBehaviour
 
         foreach (Pool pool in Pools)
         {
+
+            GameObject poolContainer = new GameObject(pool.tag);
+            poolContainer.transform.parent = transform;
+
             if (pool.isIPoolable)
             {
                 Queue<IPoolable> objectPool = new Queue<IPoolable>();
                 for (int i = 0; i < pool.size; i++)
                 {
-                    IPoolable instPoolable = Instantiate(pool.prefab).GetComponent<IPoolable>();
+                    IPoolable instPoolable = Instantiate(pool.prefab, poolContainer.transform).GetComponent<IPoolable>();
                     instPoolable.OnPoolCreation();
                     instPoolable.gameObject.SetActive(false);
                     objectPool.Enqueue(instPoolable);
@@ -52,7 +56,7 @@ public class ObjectPooler : MonoBehaviour
                 Queue<GameObject> objectPool = new Queue<GameObject>();
                 for (int i = 0; i < pool.size; i++)
                 {
-                    GameObject instObj = Instantiate(pool.prefab);
+                    GameObject instObj = Instantiate(pool.prefab, poolContainer.transform);
                     instObj.SetActive(false);
                     objectPool.Enqueue(instObj);
                 }
@@ -98,7 +102,7 @@ public class ObjectPooler : MonoBehaviour
         objToGet.OnGetFromPool();
 
         if (autoEnqueue)
-            PoolablePoolDictionary[tag].Enqueue(objToGet);
+            PoolablePoolDictionary[_poolTag].Enqueue(objToGet);
 
         return objToGet;
     }
@@ -114,7 +118,19 @@ public class ObjectPooler : MonoBehaviour
         _poolable.OnPutInPool();
         _poolable.gameObject.SetActive(false);
 
-        PoolablePoolDictionary[tag].Enqueue(_poolable);
+        PoolablePoolDictionary[_poolTag].Enqueue(_poolable);
     }
 
+    public void PutObjectInPool(string _poolTag, GameObject _obj)
+    {
+        if (!ObjectPoolDictionary.ContainsKey(_poolTag))
+        {
+            Debug.LogWarning("The pool with tag: " + _poolTag + " does not exist!");
+            return;
+        }
+
+        _obj.gameObject.SetActive(false);
+
+        ObjectPoolDictionary[tag].Enqueue(_obj);
+    }
 }

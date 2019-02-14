@@ -16,6 +16,7 @@ namespace Sangaku
         [SerializeField] Transform shootPoint;
 
         //behaviours
+        [SerializeField] bool usesObjectPooler = true;
         [SerializeField] bool hasTargets = true;
         [SerializeField] bool searchForTargetsOnAwake = true;
         [SerializeField] bool startsShootingOnAwake = false;
@@ -24,6 +25,7 @@ namespace Sangaku
         [SerializeField] float secondsBetweenShots = 1f;
         [Range(0.1f, 360f)]
         [SerializeField] float turnRateAnglesPerSecond = 90;
+        [SerializeField] string projectilePoolTag;
 
         [SerializeField] UnityFloatEvent OnShoot;
 
@@ -127,11 +129,17 @@ namespace Sangaku
         /// </summary>
         public virtual void Shoot()
         {
-            // ------- //TODO objpooler
-            BaseEntity instBullet = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<BaseEntity>();
-            instBullet.SetUpEntity();
+            if (usesObjectPooler)
+            {
+                ObjectPooler.Instance.GetPoolableFromPool(projectilePoolTag, shootPoint.position, shootPoint.rotation);
+            }
+            else
+            {
+                BaseEntity instBullet = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<BaseEntity>();
+                instBullet.SetUpEntity();
+            }
+
             timer = 0;
-            // ------- aaaaa
             OnShoot.Invoke(secondsBetweenShots);
         }
 
@@ -176,4 +184,4 @@ namespace Sangaku
         #endregion
 
     }
-} 
+}

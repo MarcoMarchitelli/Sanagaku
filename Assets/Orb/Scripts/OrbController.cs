@@ -2,24 +2,60 @@
 
 namespace Sangaku
 {
-    public class OrbController : BaseEntity
+    public class OrbController : BaseEntity, IPoolable
     {
+        /// <summary>
+        /// This Orb's state machine.
+        /// </summary>
         public OrbSMController SM;
 
-        //Transform catchPoint;
-
-        //public void OrbSetUp(Transform _catchPoint)
-        //{
-        //    catchPoint = _catchPoint;
-        //    SetUpEntity();
-        //}
+        PlayerController PlayerReference;
 
         public override void CustomSetup()
         {
-            if(!SM)
+            Data = new OrbControllerData(PlayerReference);
+            if (!SM)
                 SM = GetComponentInChildren<OrbSMController>();
-            //SM.OrbSMSetUp(catchPoint);
             SM.SetUpSM();
+        }
+
+        #region IPoolable
+        public void OnGetFromPool()
+        {
+
+        }
+
+        public void OnPoolCreation()
+        {
+
+        }
+
+        public void OnPutInPool()
+        {
+
+        }
+        #endregion
+
+        /// <summary>
+        /// Custom entity Setup with custom parameters.
+        /// </summary>
+        /// <param name="_p"></param>
+        public void SetUpOrbEntity(PlayerController _p)
+        {
+            PlayerReference = _p;
+            SetUpEntity();
+        }
+    }
+
+    public class OrbControllerData : IEntityData
+    {
+        public PlayerController PlayerReference;
+        public PlayerShootBehaviour PlayerShootBehaviour;
+
+        public OrbControllerData(PlayerController _p)
+        {
+            PlayerReference = _p;
+            PlayerShootBehaviour = PlayerReference.GetComponentInChildren<PlayerShootBehaviour>();
         }
     }
 }

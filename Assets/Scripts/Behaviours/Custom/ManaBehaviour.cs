@@ -7,16 +7,25 @@ namespace Sangaku
     /// </summary>
     public class ManaBehaviour : BaseBehaviour
     {
+        [SerializeField] float maxMana;
+        [SerializeField] float startMana;
+        [SerializeField] bool startAtMax = true;
+        [SerializeField] bool regeneration = false;
+        [SerializeField] bool canExceedMax = false;
+        [SerializeField] float amountPerSecond = .1f;
+
         public UnityFloatEvent OnManaChanged;
 
         protected override void CustomSetup()
         {
-            _currentMana = maxMana;
+            if (startAtMax)
+            {
+                CurrentMana = maxMana;
+                return;
+            }
+            CurrentMana = startMana;
         }
 
-        [SerializeField] float maxMana;
-        [SerializeField] bool regeneration = false;
-        [SerializeField] float amountPerSecond = .1f;
         float _currentMana = 0;
         float CurrentMana
         {
@@ -26,11 +35,16 @@ namespace Sangaku
                 if (_currentMana != value)
                 {
                     _currentMana = value;
-                    if (_currentMana > maxMana)
+                    if (!canExceedMax && _currentMana > maxMana)
                         _currentMana = maxMana;
                     OnManaChanged.Invoke(_currentMana);
                 }
             }
+        }
+
+        public float MaxMana
+        {
+            get { return maxMana; }
         }
 
         /// <summary>
@@ -38,21 +52,41 @@ namespace Sangaku
         /// </summary>
         /// <param name="_value">Il mana da aggiungere o sottrarre</param>
         /// <returns>true se l'operazione è possibile</returns>
-        public bool SetMana(float _value)
+        public void AddMana(float _value)
         {
             float tempMana = CurrentMana;
             tempMana += _value;
             if (tempMana < 0)
-                return false;
-            if (tempMana > maxMana)
+                tempMana = 0;
+            if (!canExceedMax && tempMana > maxMana)
                 tempMana = maxMana;
             CurrentMana = tempMana;
-            return true;
         }
 
+        /// <summary>
+        /// Changes the current mana to 0.
+        /// </summary>
+        public void ResetMana()
+        {
+            _currentMana = 0;
+        }
+
+        /// <summary>
+        /// Returns the current mana value.
+        /// </summary>
+        /// <returns></returns>
         public float GetMana()
         {
-            return maxMana;
+            return CurrentMana;
+        }
+
+        /// <summary>
+        /// Toggles mana regeneration.
+        /// </summary>
+        /// <param name="_value"></param>
+        public void ToggleRegen(bool _value)
+        {
+            regeneration = _value;
         }
 
         private void Update()
@@ -60,6 +94,5 @@ namespace Sangaku
             if(regeneration)
                 CurrentMana += amountPerSecond * Time.deltaTime;
         }
-
     }
 }

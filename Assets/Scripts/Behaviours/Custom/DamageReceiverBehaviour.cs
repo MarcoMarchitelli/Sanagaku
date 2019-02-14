@@ -12,11 +12,10 @@ namespace Sangaku
         protected override void CustomSetup()
         {
             _currentHealth = maxHealth;
-            print(name + "health setup done!");
         }
 
         [SerializeField] int maxHealth;
-        int _currentHealth;
+        public int _currentHealth;
         int CurrentHealth
         {
             get { return _currentHealth; }

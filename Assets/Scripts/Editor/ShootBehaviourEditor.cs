@@ -7,7 +7,7 @@ using Sangaku;
 public class ShootBehaviourEditor : Editor
 {
     SerializedProperty projectilePrefab, shootPoint, hasTargets, searchForTargetsOnAwake, startsShootingOnAwake, secondsBetweenShots,
-        turnRateAnglesPerSecond, OnShoot;
+        turnRateAnglesPerSecond, OnShoot, usesObjectPooler, projectilePoolTag;
 
     bool showReferences = true, showBehaviours = true, showParameters = true, showEvents = true;
 
@@ -21,6 +21,8 @@ public class ShootBehaviourEditor : Editor
         secondsBetweenShots = serializedObject.FindProperty("secondsBetweenShots");
         turnRateAnglesPerSecond = serializedObject.FindProperty("turnRateAnglesPerSecond");
         OnShoot = serializedObject.FindProperty("OnShoot");
+        usesObjectPooler = serializedObject.FindProperty("usesObjectPooler");
+        projectilePoolTag = serializedObject.FindProperty("projectilePoolTag");
     }
 
     public override void OnInspectorGUI()
@@ -29,11 +31,12 @@ public class ShootBehaviourEditor : Editor
         EditorStyles.foldout.fontStyle = FontStyle.Bold;
 
         EditorGUILayout.Space();
-
+        
         showReferences = EditorGUILayout.Foldout(showReferences, "References", true, EditorStyles.foldout);
         if (showReferences)
         {
-            EditorGUILayout.PropertyField(projectilePrefab);
+            if (!usesObjectPooler.boolValue)
+                EditorGUILayout.PropertyField(projectilePrefab);
             EditorGUILayout.PropertyField(shootPoint);
         }
 
@@ -42,6 +45,7 @@ public class ShootBehaviourEditor : Editor
         showBehaviours = EditorGUILayout.Foldout(showBehaviours, "Behaviours", true, EditorStyles.foldout);
         if (showBehaviours)
         {
+            EditorGUILayout.PropertyField(usesObjectPooler);
             EditorGUILayout.PropertyField(hasTargets);
             EditorGUILayout.PropertyField(searchForTargetsOnAwake);
             EditorGUILayout.PropertyField(startsShootingOnAwake);
@@ -52,6 +56,8 @@ public class ShootBehaviourEditor : Editor
         showParameters = EditorGUILayout.Foldout(showParameters, "Parameters", true, EditorStyles.foldout);
         if (showParameters)
         {
+            if (usesObjectPooler.boolValue)
+                EditorGUILayout.PropertyField(projectilePoolTag);
             EditorGUILayout.PropertyField(secondsBetweenShots);
             if (hasTargets.boolValue)
                 EditorGUILayout.PropertyField(turnRateAnglesPerSecond);

@@ -58,5 +58,13 @@ namespace Sangaku
             timer = 0;
             countTime = false;
         }
+
+        public void ResetMovement()
+        {
+            timer = 0.01f;
+            canMove = true;
+            countTime = true;
+        }
+
     }
 }

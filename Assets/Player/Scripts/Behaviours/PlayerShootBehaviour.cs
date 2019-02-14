@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace Sangaku
 {
-    [RequireComponent(typeof(ManaBehaviour))]
+    [RequireComponent(typeof(PlayerManaBehaviour))]
     public class PlayerShootBehaviour : BaseBehaviour
     {
         #region Serialized Fields
@@ -11,20 +12,25 @@ namespace Sangaku
         [Tooltip("How many seconds between each shot.")]
         [SerializeField] protected float secondsBetweenShots;
         [Tooltip("Costo di un proiettile in mana")]
-        [SerializeField] float cost;
+        public float cost;
         #endregion
 
         #region Events
         [SerializeField] protected UnityFloatEvent OnOrbShoot;
         #endregion
 
-        ManaBehaviour mana;
+        #region Data
+        PlayerManaBehaviour playerMana;
         PlayerOrbInteractionBehaviour orbInteraction;
+        #endregion
+
+        List<OrbController> orbsInPlay;
 
         protected override void CustomSetup()
         {
-            mana = GetComponent<ManaBehaviour>();
+            playerMana = GetComponent<PlayerManaBehaviour>();
             orbInteraction = GetComponentInChildren<PlayerOrbInteractionBehaviour>();
+            orbsInPlay = new List<OrbController>();
         }
 
         /// <summary>
@@ -47,12 +53,17 @@ namespace Sangaku
         /// </summary>
         void ShootOrb()
         {
-            if (mana.SetMana(-cost))
+            if (playerMana.GetMana() >= cost)
             {
-                //----- ObjPooler wating room
-                OrbController instantiatedOrb = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<OrbController>();
-                //instantiatedOrb.OrbSetUp(shootPoint);
-                instantiatedOrb.SetUpEntity();
+                playerMana.AddMana(-cost);
+
+                //OrbController instantiatedOrb = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<OrbController>();
+                //instantiatedOrb.SetUpOrbEntity(Entity as PlayerController);
+
+                OrbController pooledOrb = ObjectPooler.Instance.GetPoolableFromPool("Orb", shootPoint.position, shootPoint.rotation) as OrbController;
+                pooledOrb.SetUpOrbEntity(Entity as PlayerController);
+                AddOrbInPlay(pooledOrb);
+
                 OnOrbShoot.Invoke(secondsBetweenShots);
             }
         }
@@ -64,6 +75,48 @@ namespace Sangaku
         {
             orbInteraction.FreeOrb();
             OnOrbShoot.Invoke(secondsBetweenShots);
+        }
+
+        /// <summary>
+        /// Adds an OrbController to the list that tracks all the orbs currently in play.
+        /// </summary>
+        /// <param name="_orb"></param>
+        void AddOrbInPlay(OrbController _orb)
+        {
+            if (!orbsInPlay.Contains(_orb))
+            {
+                orbsInPlay.Add(_orb);
+                CheckOrbsInPlay();
+                print(name + " added " + _orb.name + " in play!");
+            }
+        }
+
+        /// <summary>
+        /// Removes an OrbController to the list that tracks all the orbs currently in play.
+        /// </summary>
+        /// <param name="_orb"></param>
+        public void RemoveOrbFromPlay(OrbController _orb)
+        {
+            if (orbsInPlay.Contains(_orb))
+            {
+                orbsInPlay.Remove(_orb);
+                CheckOrbsInPlay();
+                print(name + " removed " + _orb.name + " from play!");
+            }
+        }
+
+        void CheckOrbsInPlay()
+        {
+            if (orbsInPlay.Count == 0 && playerMana.GetMana() < cost)
+            {
+                playerMana.ToggleRegen(true);
+                print(playerMana.name + "'s mana regeneration activated!");
+            }
+            else
+            {
+                playerMana.ToggleRegen(false);
+                print(playerMana.name + "'s mana regeneration deactivated!");
+            }
         }
 
         private void OnDrawGizmos()
