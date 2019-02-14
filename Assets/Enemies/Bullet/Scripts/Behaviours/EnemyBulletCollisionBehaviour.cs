@@ -35,18 +35,9 @@ namespace Sangaku
 
             DamageReceiverBehaviour _drb = other.GetComponent<DamageReceiverBehaviour>();
             if (_drb)
-            {
                 OnDamageReceiverHit.Invoke(_drb);
-                return;
-            }
-
-            //HACK: non saprei come inserire lo scan behaviour nelle enitià da ingorare
-            ScanBehaviour _sb = other.GetComponent<ScanBehaviour>();
-            if (_sb)
-                return;
-            //-----------------
-
-            OnGenericHit.Invoke();
+            else
+                OnGenericHit.Invoke();
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -62,13 +53,10 @@ namespace Sangaku
 
             DamageReceiverBehaviour _drb = collision.collider.GetComponent<DamageReceiverBehaviour>();
             if (_drb && !_drb.Entity.GetType().IsAssignableFrom(typeof(EnemyController)) && !_drb.Entity.GetType().IsAssignableFrom(typeof(OrbController)))
-            {
                 OnDamageReceiverHit.Invoke(_drb);
-            }
             else
-            {
                 OnGenericHit.Invoke();
-            }
+
         }
     }
 }
