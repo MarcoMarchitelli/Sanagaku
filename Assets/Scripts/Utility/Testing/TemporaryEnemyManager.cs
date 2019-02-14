@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Sangaku;
+using System.Linq;
 
 public class TemporaryEnemyManager : MonoBehaviour
 {
-    public List<EnemyController> Enemies;
-
+    List<EnemyController> Enemies;
 
     public void SetUpEnemies()
     {
+        Enemies = FindObjectsOfType<EnemyController>().ToList();
         foreach (EnemyController enemy in Enemies)
         {
             enemy.SetUpEntity();
