@@ -10,6 +10,7 @@ public class TemporaryEnemyManager : MonoBehaviour
     public void SetUpEnemies()
     {
         Enemies = FindObjectsOfType<EnemyController>().ToList();
+
         foreach (EnemyController enemy in Enemies)
         {
             enemy.SetUpEntity();

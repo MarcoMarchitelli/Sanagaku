@@ -20,14 +20,6 @@ namespace Sangaku
         /// </summary>
         List<SubObjectiveCompletition> objectives;
 
-        //HACK: andrà rimosso quando ci sarà un state machine del livello
-        // per ora va lasciato se no il componente non si setuppa
-        //private void Start()
-        //{
-        //    base.SetUpEntity();
-        //}
-        //--------------------------------------------
-
         #region API
         /// <summary>
         /// Setup custom del Behaviour

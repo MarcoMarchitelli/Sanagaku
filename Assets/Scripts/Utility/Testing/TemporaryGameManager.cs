@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using Sangaku;
 using System.Collections.Generic;
+using System.Linq;
 
 public class TemporaryGameManager : MonoBehaviour
 {
@@ -11,20 +12,21 @@ public class TemporaryGameManager : MonoBehaviour
     public GameObject LossMenu;
 
     [Header("Controllers")]
-    public List<ObjectiveController> objectiveControllers;
     public TemporaryEnemyManager enemyManager;
     public PlayerController playerController;
     public TemporaryUIManager uiManager;
 
+    List<ObjectiveController> objectiveControllers;
     bool canPause = false;
 
     public void Start()
     {
         Time.timeScale = 0;
+        objectiveControllers = FindObjectsOfType<ObjectiveController>().ToList();
+
         foreach (ObjectiveController objective in objectiveControllers)
-        {
             objective.SetUpEntity();
-        }
+
         enemyManager.SetUpEnemies();
         playerController.SetUpEntity();
         uiManager.SetupPlayerHUD();

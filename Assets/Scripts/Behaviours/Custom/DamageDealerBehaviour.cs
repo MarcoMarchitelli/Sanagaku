@@ -2,6 +2,7 @@
 
 namespace Sangaku
 {
+    [RequireComponent(typeof(Collider))]
     public class DamageDealerBehaviour : BaseBehaviour
     {
         #region Events
@@ -31,9 +32,7 @@ namespace Sangaku
             {
                 DamageReceiverBehaviour receiver = other.GetComponent<DamageReceiverBehaviour>();
                 if (receiver)
-                {
                     DealDamage(receiver);
-                }
             }
         }
 
@@ -43,12 +42,8 @@ namespace Sangaku
             {
                 DamageReceiverBehaviour receiver = collision.collider.GetComponent<DamageReceiverBehaviour>();
                 if (receiver)
-                {
                     DealDamage(receiver);
-                }
             }
         }
-
     }
-
 }

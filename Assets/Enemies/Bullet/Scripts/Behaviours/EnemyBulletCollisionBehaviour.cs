@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System;
 
 namespace Sangaku
 {
@@ -27,12 +26,6 @@ namespace Sangaku
             if (!usesTrigger)
                 return;
 
-            foreach (MonoBehaviour mono in entitiesToIgnore)
-            {
-                if (other.GetComponent(mono.GetType()))
-                    return;
-            }
-
             DamageReceiverBehaviour _drb = other.GetComponent<DamageReceiverBehaviour>();
             if (_drb)
             {
@@ -40,11 +33,9 @@ namespace Sangaku
                 return;
             }
 
-            //HACK: non saprei come inserire lo scan behaviour nelle enitià da ingorare
-            ScanBehaviour _sb = other.GetComponent<ScanBehaviour>();
-            if (_sb)
-                return;
-            //-----------------
+            foreach (MonoBehaviour mono in entitiesToIgnore)
+                if (other.GetComponent(mono.GetType()))
+                    return;
 
             OnGenericHit.Invoke();
         }
@@ -54,21 +45,25 @@ namespace Sangaku
             if (usesTrigger)
                 return;
 
-            foreach (MonoBehaviour mono in entitiesToIgnore)
-            {
-                if (collision.collider.GetComponent(mono.GetType()))
-                    return;
-            }
-
             DamageReceiverBehaviour _drb = collision.collider.GetComponent<DamageReceiverBehaviour>();
-            if (_drb && !_drb.Entity.GetType().IsAssignableFrom(typeof(EnemyController)) && !_drb.Entity.GetType().IsAssignableFrom(typeof(OrbController)))
+            if (_drb)
             {
                 OnDamageReceiverHit.Invoke(_drb);
+                return;
             }
-            else
-            {
-                OnGenericHit.Invoke();
-            }
+
+            foreach (MonoBehaviour mono in entitiesToIgnore)
+                if (collision.collider.GetComponent(mono.GetType()))
+                    return;
+
+            OnGenericHit.Invoke();
+
+            //-- da lasciare per il momento
+            //DamageReceiverBehaviour _drb = collision.collider.GetComponent<DamageReceiverBehaviour>();
+            //if (_drb && !_drb.Entity.GetType().IsAssignableFrom(typeof(EnemyController)) && !_drb.Entity.GetType().IsAssignableFrom(typeof(OrbController)))
+            //    OnDamageReceiverHit.Invoke(_drb);
+            //else
+            //    OnGenericHit.Invoke();
         }
     }
 }

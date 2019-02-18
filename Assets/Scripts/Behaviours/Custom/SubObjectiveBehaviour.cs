@@ -9,21 +9,17 @@ namespace Sangaku
     public class SubObjectiveBehaviour : BaseBehaviour
     {
         /// <summary>
-        /// Evento lanciato al setup del behaviour
+        /// Riferimento al proprio controller
         /// </summary>
-        [SerializeField] UnitySubObjectiveEvent OnSubObjectiveSetup;
-        /// <summary>
-        /// Evento che viene lanciato al completamento di questo sotto obbiettivo
-        /// </summary>
-        [SerializeField] UnitySubObjectiveEvent OnSubObjectiveCompletion;
+        [SerializeField] ObjectiveController objectiveController;
 
         /// <summary>
         /// Setup custom del Behaviour
         /// </summary>
         protected override void CustomSetup()
         {
-            if (IsSetupped)
-                OnSubObjectiveSetup.Invoke(this);
+            if (IsSetupped && objectiveController != null)
+                objectiveController.SetupSubObjective(this);
         }
 
         /// <summary>
@@ -31,8 +27,8 @@ namespace Sangaku
         /// </summary>
         public void NotifyCompletion()
         {
-            if (IsSetupped)
-                OnSubObjectiveCompletion.Invoke(this);
+            if (IsSetupped && objectiveController != null)
+                objectiveController.SetSubObjectiveComplete(this);
         }
     }
 }
