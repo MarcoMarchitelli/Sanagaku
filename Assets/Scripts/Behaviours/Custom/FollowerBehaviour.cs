@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
@@ -12,6 +10,8 @@ namespace Sangaku
     [RequireComponent(typeof(NavMeshAgent))]
     public class FollowerBehaviour : BaseBehaviour
     {
+        #region Events
+        [Header("Events", order = 1)]
         /// <summary>
         /// Evento lanciato al raggiungimento del target
         /// </summary>
@@ -20,7 +20,10 @@ namespace Sangaku
         /// Evento lanciato al raggiungimento del target
         /// </summary>
         [SerializeField] UnityEvent OnTargetOutOfReach;
+        #endregion
 
+        #region Parameters
+        [Header("Parameters", order = 2)]
         /// <summary>
         /// Riferimento al target da seguire
         /// </summary>
@@ -29,17 +32,22 @@ namespace Sangaku
         /// Se True il behviour partirà in automatico appena il setup viene eseguito.
         /// Se false si deve chiamare la funzione di toggle.
         /// </summary>
-        [SerializeField] bool autoStart;
-
+        [SerializeField] bool autoStart = true;
         /// <summary>
-        /// True se il mmovimento è attivo, false altrimenti
+        /// Se True il behviour cercherà in automatico un target appena il setup viene eseguito.
+        /// Se false si deve chiamare la funzione di SetTarget.
         /// </summary>
-        bool canNavigate;
+        [SerializeField] bool autoFindTarget = true;
+        #endregion
 
         /// <summary>
         /// Riferimento al componente di unity che si occupa della navigazione
         /// </summary>
         NavMeshAgent navigation;
+        /// <summary>
+        /// True se il behaviour è attivo, false altrimenti
+        /// </summary>
+        bool isEnable = false;
 
         /// <summary>
         /// Custom setup del behaviour
@@ -48,31 +56,29 @@ namespace Sangaku
         {
             navigation = GetComponent<NavMeshAgent>();
 
-            if (target == null)
+            if (autoFindTarget)
                 FindTarget();
 
-            ToggleNavigation(autoStart);
+            Enable(autoStart);
         }
 
         #region API
         /// <summary>
-        /// Funzione che si occupa di spegnere o accendere il movimento 
+        /// Funzione che si occupa di accendere o spegnere il behaviour
         /// </summary>
         /// <param name="_value"></param>
-        public void ToggleNavigation(bool _value)
+        public override void Enable(bool _value)
         {
-            if (!IsSetupped && canNavigate == _value)
-                return;
+            //Debug.Log(_value);
+            //if (!IsSetupped || isEnable == _value)
+            //    return;
 
-            canNavigate = _value;
+            isEnable = _value;
+            Debug.Log(isEnable);
+            //if (!navigation.isActiveAndEnabled)
+            //    return;
 
-            if (target == null && !navigation.isActiveAndEnabled)
-                return;
-
-            if (canNavigate)
-                navigation.isStopped = false;
-            else
-                navigation.isStopped = true;
+            navigation.enabled = isEnable;
         }
 
         /// <summary>
@@ -80,6 +86,9 @@ namespace Sangaku
         /// </summary>
         public void FindTarget()
         {
+            if (!IsSetupped)
+                return;
+
             SetTarget(FindObjectOfType<FollowerTarget>());
         }
 
@@ -89,6 +98,9 @@ namespace Sangaku
         /// <param name="_target"></param>
         public void SetTarget(FollowerTarget _target)
         {
+            if (!IsSetupped)
+                return;
+
             target = _target;
         }
 
@@ -97,9 +109,9 @@ namespace Sangaku
         /// </summary>
         public void SetTargetAsDestination()
         {
-            if (target != null)
+            if (IsSetupped && isEnable && target != null)
                 navigation.destination = target.TargetPosition;
-        } 
+        }
         #endregion
 
         /// <summary>
@@ -107,7 +119,7 @@ namespace Sangaku
         /// </summary>
         void CheckPath()
         {
-            if (!canNavigate)
+            if (!isEnable || target == null)
                 return;
 
             if (Vector3.Distance(navigation.destination, target.TargetPosition) > navigation.stoppingDistance)

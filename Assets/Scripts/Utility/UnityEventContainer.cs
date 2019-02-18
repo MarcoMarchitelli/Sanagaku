@@ -42,12 +42,6 @@ namespace Sangaku
     public class UnityDamageReceiverEvent : UnityEvent<DamageReceiverBehaviour> { }
 
     /// <summary>
-    /// Unity Event passing a SubObjectiveBehaviour
-    /// </summary>
-    [System.Serializable]
-    public class UnitySubObjectiveEvent : UnityEvent<SubObjectiveBehaviour> { }
-
-    /// <summary>
     /// Unity Event passing an OrbController
     /// </summary>
     [System.Serializable]

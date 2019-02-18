@@ -1,5 +1,4 @@
-﻿
-namespace Sangaku
+﻿namespace Sangaku
 {
     public class EnemyController : BaseEntity
     {
