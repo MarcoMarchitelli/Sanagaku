@@ -8,7 +8,7 @@ namespace Sangaku
     public class FollowerTarget : MonoBehaviour
     {
         /// <summary>
-        /// Posizione da dell'oggetto
+        /// Posizione dell'oggetto
         /// </summary>
         public Vector3 TargetPosition { get { return transform.position; } }
     } 
