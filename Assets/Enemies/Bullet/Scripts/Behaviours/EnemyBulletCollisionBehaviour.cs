@@ -26,16 +26,16 @@ namespace Sangaku
             if (!usesTrigger)
                 return;
 
+            foreach (MonoBehaviour mono in entitiesToIgnore)
+                if (other.GetComponent(mono.GetType()))
+                    return;
+
             DamageReceiverBehaviour _drb = other.GetComponent<DamageReceiverBehaviour>();
             if (_drb)
             {
                 OnDamageReceiverHit.Invoke(_drb);
                 return;
             }
-
-            foreach (MonoBehaviour mono in entitiesToIgnore)
-                if (other.GetComponent(mono.GetType()))
-                    return;
 
             OnGenericHit.Invoke();
         }
@@ -45,16 +45,16 @@ namespace Sangaku
             if (usesTrigger)
                 return;
 
+            foreach (MonoBehaviour mono in entitiesToIgnore)
+                if (collision.collider.GetComponent(mono.GetType()))
+                    return;
+
             DamageReceiverBehaviour _drb = collision.collider.GetComponent<DamageReceiverBehaviour>();
             if (_drb)
             {
                 OnDamageReceiverHit.Invoke(_drb);
                 return;
             }
-
-            foreach (MonoBehaviour mono in entitiesToIgnore)
-                if (collision.collider.GetComponent(mono.GetType()))
-                    return;
 
             OnGenericHit.Invoke();
 

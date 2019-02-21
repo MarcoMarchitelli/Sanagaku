@@ -29,8 +29,7 @@ namespace Sangaku
         /// Velocitò di dash
         /// </summary>
         [Tooltip("Measured in meters per second")]
-        [SerializeField]
-        float dashSpeed = 5f;
+        [SerializeField] float dashSpeed = 5f;
         /// <summary>
         /// Cooldawn del dash
         /// </summary>
@@ -53,9 +52,7 @@ namespace Sangaku
         public void Dash(Vector3 _dashDirection)
         {
             if (IsSetupped && _dashDirection != Vector3.zero)
-            {
                 StartDash(_dashDirection);
-            }
         }
 
         void StartDash(Vector3 _direction)
@@ -70,6 +67,5 @@ namespace Sangaku
             yield return new WaitForSeconds(_time);
             OnDashEnd.Invoke(dashCooldown);
         }
-
     }
 }

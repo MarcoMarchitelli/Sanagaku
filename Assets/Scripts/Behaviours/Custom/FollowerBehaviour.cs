@@ -29,11 +29,6 @@ namespace Sangaku
         /// </summary>
         [SerializeField] FollowerTarget target;
         /// <summary>
-        /// Se True il behviour partirà in automatico appena il setup viene eseguito.
-        /// Se false si deve chiamare la funzione di toggle.
-        /// </summary>
-        [SerializeField] bool autoStart = true;
-        /// <summary>
         /// Se True il behviour cercherà in automatico un target appena il setup viene eseguito.
         /// Se false si deve chiamare la funzione di SetTarget.
         /// </summary>
@@ -44,10 +39,6 @@ namespace Sangaku
         /// Riferimento al componente di unity che si occupa della navigazione
         /// </summary>
         NavMeshAgent navigation;
-        /// <summary>
-        /// True se il behaviour è attivo, false altrimenti
-        /// </summary>
-        bool isEnable = false;
 
         /// <summary>
         /// Custom setup del behaviour
@@ -57,51 +48,7 @@ namespace Sangaku
             navigation = GetComponent<NavMeshAgent>();
 
             if (autoFindTarget)
-                FindTarget();
-
-            Enable(autoStart);
-        }
-
-        #region API
-        /// <summary>
-        /// Funzione che si occupa di accendere o spegnere il behaviour
-        /// </summary>
-        /// <param name="_value"></param>
-        public override void Enable(bool _value)
-        {
-            //Debug.Log(_value);
-            //if (!IsSetupped || isEnable == _value)
-            //    return;
-
-            isEnable = _value;
-            Debug.Log(isEnable);
-            //if (!navigation.isActiveAndEnabled)
-            //    return;
-
-            navigation.enabled = isEnable;
-        }
-
-        /// <summary>
-        /// Funzion che si occupa di cercare un target in scena
-        /// </summary>
-        public void FindTarget()
-        {
-            if (!IsSetupped)
-                return;
-
-            SetTarget(FindObjectOfType<FollowerTarget>());
-        }
-
-        /// <summary>
-        /// Funzione che setta il target del behaviour
-        /// </summary>
-        /// <param name="_target"></param>
-        public void SetTarget(FollowerTarget _target)
-        {
-            if (!IsSetupped)
-                return;
-
-            target = _target;
+                target = FindObjectOfType<FollowerTarget>();
         }
 
         /// <summary>
@@ -109,17 +56,16 @@ namespace Sangaku
         /// </summary>
         public void SetTargetAsDestination()
         {
-            if (IsSetupped && isEnable && target != null)
+            if (IsSetupped && target != null)
                 navigation.destination = target.TargetPosition;
         }
-        #endregion
 
         /// <summary>
         /// Funzione che si occupa di controllare il completamento del path
         /// </summary>
         void CheckPath()
         {
-            if (!isEnable || target == null)
+            if (!IsSetupped || target == null)
                 return;
 
             if (Vector3.Distance(navigation.destination, target.TargetPosition) > navigation.stoppingDistance)
