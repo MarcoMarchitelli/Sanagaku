@@ -103,7 +103,8 @@ GameObject:
   - component: {fileID: 5249472288292498297}
   - component: {fileID: 8038433225795685462}
   - component: {fileID: 8038433225795685457}
-  - component: {fileID: 5249472288292498302}
+  - component: {fileID: 5515592778948555690}
+  - component: {fileID: 2537638974305735057}
   m_Layer: 9
   m_Name: Scanner Shooter
   m_TagString: Untagged
@@ -275,8 +276,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
---- !u!135 &5249472288292498302
-SphereCollider:
+--- !u!65 &5515592778948555690
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -286,8 +287,31 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.73
-  m_Center: {x: 0, y: 0.32, z: 0}
+  m_Size: {x: 1, y: 2.3902438, z: 0.9235892}
+  m_Center: {x: 0, y: 0.6951219, z: -0.038205385}
+--- !u!114 &2537638974305735057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5249472288292498295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5d2565761b2ba44b33209e13ed6926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 1
+  startMana: 0
+  startAtMax: 1
+  regeneration: 0
+  canExceedMax: 0
+  amountPerSecond: 0.1
+  OnManaChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &5249472288500432677
 GameObject:
   m_ObjectHideFlags: 0
