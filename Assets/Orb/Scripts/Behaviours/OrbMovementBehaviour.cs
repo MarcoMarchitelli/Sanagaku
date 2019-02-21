@@ -27,6 +27,9 @@ namespace Sangaku
 
         private void Update()
         {
+            if (Time.timeScale == 0)
+                return;
+
             if (countTime)
                 timer += Time.deltaTime;
             if (canMove)
