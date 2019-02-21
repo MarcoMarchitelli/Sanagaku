@@ -65,6 +65,5 @@ namespace Sangaku
             canMove = true;
             countTime = true;
         }
-
     }
 }
