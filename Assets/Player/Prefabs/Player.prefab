@@ -5108,7 +5108,7 @@ Transform:
   m_GameObject: {fileID: 79887467333557446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: -2.25}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 81030063627979317}
   - {fileID: 2108020691}
@@ -5422,9 +5422,9 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  dashDistance: 1.5
-  dashSpeed: 40
-  dashCooldown: 0.2
+  dashDistance: 5
+  dashSpeed: 80
+  dashCooldown: 3
 --- !u!114 &79887467333557451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5659,7 +5659,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 34f76830bdfb39b46bab667ff8aacfc9, type: 2}
+  - {fileID: 2100000, guid: dabe7480d5c8327488bab20479634983, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
