@@ -209,7 +209,8 @@ GameObject:
   - component: {fileID: 7780342293759636444}
   - component: {fileID: 5525577330001188083}
   - component: {fileID: 5525577330001188084}
-  - component: {fileID: 7780342293759636443}
+  - component: {fileID: 4117213152273781464}
+  - component: {fileID: 5009505699431742796}
   m_Layer: 9
   m_Name: Patrolling Scanner Shooter
   m_TagString: Untagged
@@ -419,8 +420,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
---- !u!135 &7780342293759636443
-SphereCollider:
+--- !u!65 &4117213152273781464
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -430,8 +431,31 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.73
-  m_Center: {x: 0, y: 0.32, z: 0}
+  m_Size: {x: 1, y: 1.6709423, z: 1}
+  m_Center: {x: 0, y: 0.33547115, z: 0}
+--- !u!114 &5009505699431742796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7780342293759636434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5d2565761b2ba44b33209e13ed6926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 1
+  startMana: 0
+  startAtMax: 1
+  regeneration: 0
+  canExceedMax: 0
+  amountPerSecond: 0.1
+  OnManaChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &7780342295022331776
 GameObject:
   m_ObjectHideFlags: 0

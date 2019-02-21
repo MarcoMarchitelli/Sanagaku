@@ -36,7 +36,7 @@ public class TemporaryGameManager : MonoBehaviour
 
     private void Update()
     {
-        if (canPause && Input.GetKeyDown(KeyCode.Escape))
+        if (canPause && Input.GetButton("Pause"))
         {
             GoToPauseMenu();
         }

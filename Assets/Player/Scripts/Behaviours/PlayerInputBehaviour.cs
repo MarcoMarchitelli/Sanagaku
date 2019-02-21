@@ -18,10 +18,6 @@ namespace Sangaku
         /// </summary>
         [SerializeField] UnityEvent OnShotPressed;
         /// <summary>
-        /// Evento lanciato alla pressione del bottone di parry
-        /// </summary>
-        [SerializeField] UnityEvent OnParryPressed;
-        /// <summary>
         /// Evento lanciato al cambio di direzione dell'asse di input
         /// </summary>
         [SerializeField] UnityVector3Event OnDirectionUpdate;
@@ -60,7 +56,6 @@ namespace Sangaku
         bool canShoot;
         bool canMove;
         bool canDash;
-        bool canParry;
 
         #region API
         public void ToggleShootInput(bool _value)
@@ -76,10 +71,6 @@ namespace Sangaku
         {
             canDash = _value;
         }
-        public void ToggleParryInput(bool _value)
-        {
-            canParry = _value;
-        } 
         #endregion
 
         /// <summary>
@@ -92,7 +83,6 @@ namespace Sangaku
             canShoot = true;
             canMove = true;
             canDash = true;
-            canParry = true;
         }
 
         /// <summary>
@@ -115,10 +105,6 @@ namespace Sangaku
         /// Tasto che corrisponde allo shot per il controlller
         /// </summary>
         [SerializeField] string controllerShotInput = "ShotController";
-        /// <summary>
-        /// Tasto che corrisponde al parry per il controlller
-        /// </summary>
-        [SerializeField] string controllerParryInput = "ParryController";
         /// <summary>
         /// Tasto che corrisponde al dash per il controlller
         /// </summary>
@@ -158,10 +144,6 @@ namespace Sangaku
                     cShotInputPrevValue = 0;            
             }
 
-            //ParryInput
-            if (canParry && Input.GetButtonDown(controllerParryInput))
-                OnParryPressed.Invoke();
-
             //DashInput
             if (canDash && Input.GetButtonDown(controllerDashInput))
                 OnDashPressed.Invoke(MoveDirection);
@@ -174,10 +156,6 @@ namespace Sangaku
         /// Tasto che corrisponde allo shot per la tastiera
         /// </summary>
         [SerializeField] string keyboardShotInput = "ShotKeyboard";
-        /// <summary>
-        /// Tasto che corrisponde al parry per la tastiera
-        /// </summary>
-        [SerializeField] string keyboardParryInput = "ParryKeyboard";
         /// <summary>
         /// Tasto che corrisponde al dash per la tastiera
         /// </summary>
@@ -203,10 +181,6 @@ namespace Sangaku
             //Shoot Input
             if (canShoot && Input.GetButtonDown(keyboardShotInput))
                 OnShotPressed.Invoke();
-
-            //ParryInput
-            if (canParry && Input.GetButtonDown(keyboardParryInput))
-                OnParryPressed.Invoke();
 
             //DashInput
             if (canDash && Input.GetButtonDown(keyboardDashInput))
