@@ -47,8 +47,17 @@ namespace Sangaku
         protected virtual void TriggerStay() { }
         protected virtual void TriggerExit() { }
 
+        /// <summary>
+        /// Funzione che controlla se ho colliso con un'entità da ignorare
+        /// </summary>
+        /// <param name="_entitiesToIgnore"></param>
+        /// <param name="_collider"></param>
+        /// <returns></returns>
         protected bool CheckEntitiesToIgnoreForTrigger(List<MonoBehaviour> _entitiesToIgnore, Collider _collider)
         {
+            if (_entitiesToIgnore == null)
+                return false;
+
             for (int i = 0; i < _entitiesToIgnore.Count; i++)
             {
                 if (_collider.GetComponent(_entitiesToIgnore[i].GetType()))
@@ -97,8 +106,17 @@ namespace Sangaku
         protected virtual void CollisionStay() { }
         protected virtual void CollisionExit() { }
 
+        /// <summary>
+        /// Funzione che controlla se ho colliso con un'entità da ignorare
+        /// </summary>
+        /// <param name="_entitiesToIgnore"></param>
+        /// <param name="_collision"></param>
+        /// <returns></returns>
         protected bool CheckEntitiesToIgnoreForCollider(List<MonoBehaviour> _entitiesToIgnore, Collision _collision)
         {
+            if (_entitiesToIgnore == null)
+                return false;
+
             for (int i = 0; i < _entitiesToIgnore.Count; i++)
             {
                 if (_collision.collider.GetComponent(_entitiesToIgnore[i].GetType()))
