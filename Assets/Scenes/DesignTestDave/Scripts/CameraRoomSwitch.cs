@@ -9,21 +9,22 @@ public class CameraRoomSwitch : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
-            if(cam1.activeSelf == true)
+            if(cam1.activeSelf == false)
             {
                 Debug.Log("shift");
-                cam1.SetActive(false);
-                cam2.SetActive(true);
+                cam1.SetActive(true);
+                cam2.SetActive(false);
                 
             }
 
-            if (cam2.activeSelf == true)
+            else
+            //if (cam1.activeSelf == true)
             {
                 Debug.Log("shift2");
-                cam2.SetActive(false);
-                cam1.SetActive(true);
+                cam2.SetActive(true);
+                cam1.SetActive(false);
                 
                
             }
