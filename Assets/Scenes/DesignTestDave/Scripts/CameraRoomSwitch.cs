@@ -7,6 +7,10 @@ public class CameraRoomSwitch : MonoBehaviour
     public GameObject cam1;
     public GameObject cam2;
 
+    //If the player collides with the trigger on the door, check if cam1 is active.
+    //if false, switch cam1 on and cam2 off
+    //if true, switch cam1 off and cam2 on
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -20,7 +24,7 @@ public class CameraRoomSwitch : MonoBehaviour
             }
 
             else
-            //if (cam1.activeSelf == true)
+           
             {
                 Debug.Log("shift2");
                 cam2.SetActive(true);
