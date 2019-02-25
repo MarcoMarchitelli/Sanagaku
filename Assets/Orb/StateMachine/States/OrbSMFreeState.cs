@@ -6,8 +6,8 @@ namespace Sangaku
     {
         public override void Enter()
         {
-            context.movementBehaviour.ResetMovement();
-            context.orbBounceBehaviour.Enable(true); 
+            context.MovementBehaviour.ResetMovement();
+            context.OrbBounceBehaviour.Enable(true); 
         }
     } 
 }

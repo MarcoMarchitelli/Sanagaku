@@ -9,7 +9,6 @@ namespace Sangaku
         public BaseEntity OrbEntity;
 
         #region SMBase Methods
-
         protected override void ContextSetup()
         {
             context = new OrbSMContext(OrbEntity, null);
@@ -19,6 +18,7 @@ namespace Sangaku
         {
 
         }
+        #endregion
 
         public void GoToCaughtState(Transform _catchPoint)
         {
@@ -30,33 +30,35 @@ namespace Sangaku
                     break;
                 }
             }
-            StateMachine.SetTrigger("GoToCaughtState");
+
+            if (!StateMachine.GetCurrentAnimatorStateInfo(0).IsName("Caught"))
+                StateMachine.SetTrigger("GoToCaughtState");
         }
 
         public void GoToFreeState()
         {
-            StateMachine.SetTrigger("GoToFreeState");
+            if (!StateMachine.GetCurrentAnimatorStateInfo(0).IsName("Free"))
+                StateMachine.SetTrigger("GoToFreeState");
         }
-
-        #endregion
     }
 
     public class OrbSMContext : IContext
     {
         public BaseEntity OrbEntity;
-        public OrbMovementBehaviour movementBehaviour;
-        public OrbBounceBehaviour orbBounceBehaviour;
         public Transform CatchPoint;
-        public ManaBehaviour orbManaBehaviour;
+        public OrbMovementBehaviour MovementBehaviour;
+        public OrbBounceBehaviour OrbBounceBehaviour;
+        public OrbAttractionBehaviour OrbAttractionBehaviour;
+        public ManaBehaviour OrbManaBehaviour;
 
         public OrbSMContext(IEntity _orbEntity, Transform _catchPoint)
         {
             OrbEntity = _orbEntity as BaseEntity;
             CatchPoint = _catchPoint;
-            movementBehaviour = OrbEntity.GetComponentInChildren<OrbMovementBehaviour>();
-            orbBounceBehaviour = OrbEntity.GetComponentInChildren<OrbBounceBehaviour>();
-            orbManaBehaviour = OrbEntity.GetComponentInChildren<ManaBehaviour>();
+            MovementBehaviour = OrbEntity.GetComponentInChildren<OrbMovementBehaviour>();
+            OrbBounceBehaviour = OrbEntity.GetComponentInChildren<OrbBounceBehaviour>();
+            OrbAttractionBehaviour = OrbEntity.GetComponentInChildren<OrbAttractionBehaviour>();
+            OrbManaBehaviour = OrbEntity.GetComponentInChildren<ManaBehaviour>();
         }
     }
-
 }
