@@ -11,27 +11,27 @@ public class CameraRoomSwitch : MonoBehaviour
     //if false, switch cam1 on and cam2 off
     //if true, switch cam1 off and cam2 on
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if(cam1.activeSelf == false)
+            //if (cam1.activeSelf == false)
             {
                 Debug.Log("shift");
-                cam1.SetActive(true);
-                cam2.SetActive(false);
+                cam1.SetActive(false);
+                cam2.SetActive(true);
                 
             }
 
-            else
-           
-            {
-                Debug.Log("shift2");
-                cam2.SetActive(true);
-                cam1.SetActive(false);
-                
-               
-            }
+            //else
+
+            //{
+            //    Debug.Log("shift2");
+            //    cam2.SetActive(true);
+            //    cam1.SetActive(false);
+
+
+            //}
         }
     }
 
