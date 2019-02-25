@@ -56,7 +56,6 @@ namespace Sangaku
         {
             time = _time;
             countTime = true;
-            print(name + " è iniziato");
         }
 
         public void StartTimer()

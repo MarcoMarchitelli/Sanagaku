@@ -1,38 +1,49 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Sangaku
 {
+    /// <summary>
+    /// Componente che definisce il comportamente di attrazione verso un punto dell'orb
+    /// </summary>
     public class OrbAttractionBehaviour : BaseBehaviour
     {
-        PlayerController playerCtrl;
-        PlayerInputBehaviour playerInput;
+        /// <summary>
+        /// Velocità con cui l'orb si muove verso il player
+        /// </summary>
+        [SerializeField] float velocity;
 
-        protected override void CustomSetup()
+        /// <summary>
+        /// Riferimento al PlayerAttractionBehaviour
+        /// </summary>
+        PlayerAttractionBehaviour playerAttractionBehaviour;
+
+        /// <summary>
+        /// Funzione che muove l'orb verso la posizione passata come parametro
+        /// </summary>
+        /// <param name="_position"></param>
+        public void MoveTowardsPosition(Vector3 _position)
         {
-            playerCtrl = FindObjectOfType<PlayerController>();
-            playerInput = playerCtrl.GetComponent<PlayerInputBehaviour>();
-            playerInput.OnAttractionPressed.AddListener(MoveTowardsPlayer);
+            if (IsSetupped)
+                Vector3.MoveTowards(transform.position, _position, velocity * Time.deltaTime);
+        }
+
+        /// <summary>
+        /// Funzion che setta il riferimento al PlayerAttractionBehaviour
+        /// </summary>
+        /// <param name="_attractionBehaviour"></param>
+        public void SetPlayerAttractionBehaviour(PlayerAttractionBehaviour _attractionBehaviour)
+        {
+            if (IsSetupped)
+                playerAttractionBehaviour = _attractionBehaviour;
         }
 
         public override void Enable(bool _value)
         {
             base.Enable(_value);
-            if (IsSetupped)
-                playerInput.OnAttractionPressed.AddListener(MoveTowardsPlayer);
-            else
-                playerInput.OnAttractionPressed.RemoveListener(MoveTowardsPlayer);
-        }
-
-        private void Update()
-        {
-
-        }     
-
-        void MoveTowardsPlayer()
-        {
-
+            if (!_value)
+            {
+                playerAttractionBehaviour.RemoveOrbFromAttraction(this);
+            }
         }
     }
 }

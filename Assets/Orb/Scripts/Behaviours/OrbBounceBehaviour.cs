@@ -74,12 +74,9 @@ namespace Sangaku
         public void CatchMana(float _manaAmount)
         {
             if (enemyHitCount <= 1)
-            {
                 mana.AddMana(_manaAmount);
-            }
             else
                 mana.AddMana(_manaAmount + (manaModifier * (enemyHitCount - 1)));
-            print(name + " caught " + mana.GetMana() + " mana!");
         }
 
         void CheckPlayerDistance(Vector3 _playerPosition)

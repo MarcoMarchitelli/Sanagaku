@@ -100,13 +100,11 @@ namespace Sangaku
             if (targetVisibleTimer >= timeToScan && !hasSpottedTargetOnce)
             {
                 OnTargetSpotted.Invoke(target);
-                print(name+" has found a target");
                 hasSpottedTargetOnce = true;
             }
             if (targetVisibleTimer < timeToScan && hasSpottedTargetOnce)
             {
                 OnTargetLost.Invoke(target);
-                print(name + " has lost his target");
                 hasSpottedTargetOnce = false;
             }
         }

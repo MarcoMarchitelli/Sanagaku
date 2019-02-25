@@ -5085,6 +5085,7 @@ GameObject:
   - component: {fileID: 79887467333557454}
   - component: {fileID: 79887467333557445}
   - component: {fileID: 6169693431136065898}
+  - component: {fileID: 3778750664566416969}
   - component: {fileID: 850753096191203397}
   - component: {fileID: 79887467333557451}
   - component: {fileID: 79887467333557450}
@@ -5142,6 +5143,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f711ee361ba08c149a6fda5e839b29a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InputDirection: 1
+  OnDirectionUpdate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 79887467333557455}
+        m_MethodName: SetMoveDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Sangaku.UnityVector3Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  controllerHorizontalInput: HorizontalLeftController
+  controllerVerticalInput: VerticalLeftController
+  keyboardHorizontalInput: HorizontalKeyboard
+  keyboardVerticalInput: VerticalKeyboard
+  OnShotPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 79887467333557445}
+        m_MethodName: Shoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  controllerShotInput: ShotController
+  keyboardShotInput: ShotKeyboard
+  OnDashPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 850753096191203397}
+        m_MethodName: Dash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Sangaku.UnityVector3Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  controllerDashInput: DashController
+  keyboardDashInput: DashKeyboard
   OnAttractionPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -5163,65 +5221,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  OnDashPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 850753096191203397}
-        m_MethodName: Dash
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Sangaku.UnityVector3Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnShotPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 79887467333557445}
-        m_MethodName: Shoot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnDirectionUpdate:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 79887467333557455}
-        m_MethodName: SetMoveDirection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Sangaku.UnityVector3Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  InputDirection: 1
   controllerAttractionInput: AttractionController
-  controllerShotInput: ShotController
-  controllerDashInput: DashController
-  controllerHorizontalInput: HorizontalLeftController
-  controllerVerticalInput: VerticalLeftController
   keyboardAttractionInput: AttractionKeyboard
-  keyboardShotInput: ShotKeyboard
-  keyboardDashInput: DashKeyboard
-  keyboardHorizontalInput: HorizontalKeyboard
-  keyboardVerticalInput: VerticalKeyboard
 --- !u!114 &79887467333557455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5329,6 +5330,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &3778750664566416969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79887467333557446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c5b010653c59d439a1c3528e85b46d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &850753096191203397
 MonoBehaviour:
   m_ObjectHideFlags: 0

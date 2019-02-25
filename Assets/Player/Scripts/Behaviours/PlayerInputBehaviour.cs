@@ -299,13 +299,13 @@ namespace Sangaku
         #region Attraction
         [Header("Attraction")]
         /// <summary>
-        /// Evento lanciato alla pressione del bottone di attraction
+        /// Evento lanciato al mantenimento della pressione del bottone di attraction
         /// </summary>
-        public UnityEvent OnAttractionPressed;
+        [SerializeField] UnityEvent OnAttractionHeld;
         /// <summary>
         /// Evento lanciato al rilascio del bottone di attraction
         /// </summary>
-        public UnityEvent OnAttractionReleased;
+        [SerializeField] UnityEvent OnAttractionReleased;
 
         /// <summary>
         /// Tasto che corrisponde all'attraction per il controlller
@@ -341,13 +341,17 @@ namespace Sangaku
 
             if (_isControllerConnected)
             {
-                if (Input.GetButtonDown(controllerAttractionInput))
-                    OnAttractionPressed.Invoke();
+                if (Input.GetButton(controllerAttractionInput))
+                    OnAttractionHeld.Invoke();
+                if (Input.GetButtonUp(controllerAttractionInput))
+                    OnAttractionReleased.Invoke();
             }
             else
             {
-                if (Input.GetButtonDown(keyboardAttractionInput))
-                    OnAttractionPressed.Invoke();
+                if (Input.GetButton(keyboardAttractionInput))
+                    OnAttractionHeld.Invoke();
+                if (Input.GetButtonUp(keyboardAttractionInput))
+                    OnAttractionReleased.Invoke();
             }
         }
         #endregion

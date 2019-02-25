@@ -31,7 +31,10 @@ namespace Sangaku
         #region IPoolable
         public void OnGetFromPool() { }
         public void OnPoolCreation() { }
-        public void OnPutInPool() { }
+        public void OnPutInPool()
+        {
+            Enable(false);
+        }
         #endregion
     }
 
