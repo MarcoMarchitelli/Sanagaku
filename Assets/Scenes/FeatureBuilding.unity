@@ -2472,45 +2472,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 79887467333557452, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
-        type: 3}
-      propertyPath: OnAttractionHeld.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 79887467333557452, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
-        type: 3}
-      propertyPath: OnAttractionHeld.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 79887467333557452, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
-        type: 3}
-      propertyPath: OnAttractionHeld.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 79887467333557452, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
-        type: 3}
-      propertyPath: OnAttractionHeld.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1009565329}
-    - target: {fileID: 79887467333557452, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
-        type: 3}
-      propertyPath: OnAttractionHeld.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleAttraction
-      objectReference: {fileID: 0}
-    - target: {fileID: 79887467333557452, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
-        type: 3}
-      propertyPath: OnAttractionHeld.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 79887467333557452, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
-        type: 3}
-      propertyPath: OnAttractionHeld.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 79887467333557446, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778750664566416969, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: manaCost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778750664566416969, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: maxAttractionTime
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 76452836599106812, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
@@ -2567,20 +2542,65 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 79887467333557452, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: OnAttractionHeld.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 79887467333557452, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: OnAttractionHeld.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 79887467333557452, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: OnAttractionHeld.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 79887467333557452, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: OnAttractionHeld.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1009565329}
+    - target: {fileID: 79887467333557452, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: OnAttractionHeld.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Attract
+      objectReference: {fileID: 0}
+    - target: {fileID: 79887467333557452, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: OnAttractionHeld.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 79887467333557452, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: OnAttractionHeld.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 79887467333557444, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
       propertyPath: OnDestruction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 791891777}
-    - target: {fileID: 3778750664566416969, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+    - target: {fileID: 6124619911678974412, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
-      propertyPath: manaCost
-      value: 0.5
+      propertyPath: OnTimerStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1009565329}
+    - target: {fileID: 6124619911678974412, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: OnTimerStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleAttraction
       objectReference: {fileID: 0}
-    - target: {fileID: 3778750664566416969, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+    - target: {fileID: 6124619911678974412, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
-      propertyPath: maxAttractionTime
-      value: -1
+      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1009565329}
+    - target: {fileID: 6124619911678974412, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleAttraction
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77b03d1e834a8b64182cabfcc5be6dcb, type: 3}
@@ -3415,6 +3435,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FollowerEnemy_B
+      objectReference: {fileID: 0}
+    - target: {fileID: 165933073815096524, guid: 0c19eacd06dd62747899c5952aa6c102,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2231112278996405690, guid: 0c19eacd06dd62747899c5952aa6c102,
         type: 3}

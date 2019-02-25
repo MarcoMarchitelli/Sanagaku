@@ -24,7 +24,7 @@ namespace Sangaku
         public void MoveTowardsPosition(Vector3 _position)
         {
             if (IsSetupped)
-                Vector3.MoveTowards(transform.position, _position, velocity * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, _position, velocity * Time.deltaTime);               
         }
 
         /// <summary>
@@ -40,9 +40,11 @@ namespace Sangaku
         public override void Enable(bool _value)
         {
             base.Enable(_value);
-            if (!_value)
+
+            if (!_value && playerAttractionBehaviour)
             {
                 playerAttractionBehaviour.RemoveOrbFromAttraction(this);
+                playerAttractionBehaviour = null;
             }
         }
     }

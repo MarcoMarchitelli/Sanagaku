@@ -19,6 +19,15 @@ namespace Sangaku
         public enum OhterAction { DoNothing, ConvertToMana }
 
         /// <summary>
+        /// Evento lanciato all'inizio dell'attrazione
+        /// </summary>
+        [SerializeField] UnityVoidEvent OnAttractionStart;
+        /// <summary>
+        /// Evento lanciato alla fine dell'attrazione
+        /// </summary>
+        [SerializeField] UnityVoidEvent OnAttractionEnd;
+
+        /// <summary>
         /// Tipo di scelta dell'orb da attrarre
         /// </summary>
         [Tooltip("How attract the orbs. The 'All' case ingores the second option")]
@@ -37,7 +46,7 @@ namespace Sangaku
         /// Tempo massimo, in secondi, per la durata dell'abilità.
         /// Se il valore è negativo la durata è infinita.
         /// </summary>
-        [Tooltip("In seconds. Negative number equals infinite time")]
+        [Tooltip("In seconds. Negative number equals to infinite time")]
         [SerializeField] float maxAttractionTime;
 
         /// <summary>
@@ -57,7 +66,14 @@ namespace Sangaku
         /// </summary>
         List<OrbAttractionBehaviour> orbsToAttract;
 
-        bool isAttracting;
+        /// <summary>
+        /// True se il behaviour può operare, false altrimenti
+        /// </summary>
+        bool canAttract;
+        /// <summary>
+        /// Contatore del tempo di attivita del behaviour
+        /// </summary>
+        float attractionTime;
 
         /// <summary>
         /// Custom setup del behaviour
@@ -71,7 +87,7 @@ namespace Sangaku
         }
 
         /// <summary>
-        /// Funzione che attiva o disattiva l'attrazione dell'orb in base al comportamento scelto
+        /// Funzione che attiva o disattiva l'attrazione
         /// </summary>
         /// <param name="_value"></param>
         public void ToggleAttraction(bool _value)
@@ -79,40 +95,26 @@ namespace Sangaku
             if (!IsSetupped)
                 return;
 
-            isAttracting = _value;
+            canAttract = _value;
 
-            if (isAttracting)
-            {
-                if (orbsInPlay.Count == 0)
-                {
-                    return;
-                }
-                else if (orbsInPlay.Count == 1)
-                {
-                    SetOrbAsAttractable(orbsInPlay[0]);
-                    return;
-                }
-
-                switch (orbAttractionType)
-                {
-                    case AttractionType.Closest:
-                        AttractClosest();
-                        break;
-                    case AttractionType.Farthest:
-                        AttractFarthest();
-                        break;
-                    case AttractionType.Random:
-                        AttractRandom();
-                        break;
-                    case AttractionType.All:
-                        AttractAll();
-                        break;
-                }
-            }
+            if (canAttract)
+                OnAttractionStart.Invoke();
             else
-            {
-                orbsToAttract.Clear();
-            }
+                OnAttractionEnd.Invoke();
+        }
+
+        /// <summary>
+        /// Funzione che attrae l'orb
+        /// </summary>
+        public void Attract()
+        {
+            if (!IsSetupped || !canAttract)
+                return;
+
+            //CountAttractionTime();
+            //DecrementMana();
+
+            AttractOrb();
         }
 
         /// <summary>
@@ -124,21 +126,82 @@ namespace Sangaku
             orbsToAttract.Remove(_orbAttractionBehaviour);
         }
 
-        void Update()
+        /// <summary>
+        /// Funzione che si occupa di contare il tempo di attivazione dell'attrazione
+        /// </summary>
+        void CountAttractionTime()
         {
-            if (IsSetupped && isAttracting)
-                AttractOrb();
+            if (maxAttractionTime <= 0)
+                return;
+
+            attractionTime += Time.deltaTime;
+            if (attractionTime >= maxAttractionTime)
+            {
+                attractionTime = 0;
+                ToggleAttraction(false);
+            }
         }
 
         /// <summary>
-        /// Funzione che effettua l'attrazione dell'orb
+        /// Funzione che si occupa di decrementare il mana
         /// </summary>
-        /// <param name="_orb"></param>
+        void DecrementMana()
+        {
+            if (manaCost <= 0)
+                return;
+
+            manaBehaviour.AddMana(-manaCost * Time.deltaTime);
+            if (manaBehaviour.GetMana() <= 0)
+            {
+                ToggleAttraction(false);
+            }
+        }
+
+        /// <summary>
+        /// Funzione che esegue l'attrazione dell'orb in base al comportamento scelto
+        /// </summary>
         void AttractOrb()
         {
-            for (int i = 0; i < orbsToAttract.Count; i++)
+            if (canAttract)
             {
-                orbsToAttract[i].MoveTowardsPosition(transform.position);
+                if (orbsInPlay.Count == 0)
+                {
+                    return;
+                }
+                else if (orbsInPlay.Count == 1)
+                {
+                    SetOrbAsAttractable(orbsInPlay[0]);
+                }
+                else
+                {
+                    switch (orbAttractionType)
+                    {
+                        case AttractionType.Closest:
+                            AttractClosest();
+                            break;
+                        case AttractionType.Farthest:
+                            AttractFarthest();
+                            break;
+                        case AttractionType.Random:
+                            AttractRandom();
+                            break;
+                        case AttractionType.All:
+                            AttractAll();
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                orbsToAttract.Clear();
+            }
+
+            if (orbsToAttract.Count > 0)
+            {
+                for (int i = 0; i < orbsToAttract.Count; i++)
+                {
+                    orbsToAttract[i].MoveTowardsPosition(transform.position);
+                }
             }
         }
 
@@ -149,8 +212,11 @@ namespace Sangaku
         void SetOrbAsAttractable(OrbController _orb)
         {
             OrbAttractionBehaviour orbAttractionBehaviour = _orb.GetComponent<OrbAttractionBehaviour>();
-            orbAttractionBehaviour.SetPlayerAttractionBehaviour(this);
-            orbsToAttract.Add(orbAttractionBehaviour);
+            if (!orbsToAttract.Contains(orbAttractionBehaviour))
+            {
+                orbAttractionBehaviour.SetPlayerAttractionBehaviour(this);
+                orbsToAttract.Add(orbAttractionBehaviour);
+            }
         }
 
         /// <summary>
@@ -173,7 +239,7 @@ namespace Sangaku
             }
 
             SetOrbAsAttractable(orbsInPlay[closestIndex]);
-            PerformActionOnOtherOrbs(orbsInPlay[closestIndex]);
+            PerformAttractionOnOtherOrbs(orbsInPlay[closestIndex]);
         }
 
         /// <summary>
@@ -196,7 +262,7 @@ namespace Sangaku
             }
 
             SetOrbAsAttractable(orbsInPlay[farthestIndex]);
-            PerformActionOnOtherOrbs(orbsInPlay[farthestIndex]);
+            PerformAttractionOnOtherOrbs(orbsInPlay[farthestIndex]);
         }
 
         /// <summary>
@@ -206,7 +272,7 @@ namespace Sangaku
         {
             int randomIndex = Random.Range(0, orbsInPlay.Count);
             SetOrbAsAttractable(orbsInPlay[randomIndex]);
-            PerformActionOnOtherOrbs(orbsInPlay[randomIndex]);
+            PerformAttractionOnOtherOrbs(orbsInPlay[randomIndex]);
         }
 
         /// <summary>
@@ -234,7 +300,7 @@ namespace Sangaku
         /// Funzione che esegue l'azione scelta per gli orb non in attrazione
         /// </summary>
         /// <param name="_attractedOrb"></param>
-        void PerformActionOnOtherOrbs(OrbController _attractedOrb)
+        void PerformAttractionOnOtherOrbs(OrbController _attractedOrb)
         {
             switch (otherOrbAction)
             {
