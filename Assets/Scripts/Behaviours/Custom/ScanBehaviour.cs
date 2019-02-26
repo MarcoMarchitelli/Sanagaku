@@ -5,7 +5,6 @@ namespace Sangaku
     public class ScanBehaviour : BaseBehaviour
     {
         #region Inspector Variables
-
         public enum ScanType { fieldOfView, circularArea };
 
         [SerializeField] ScanType scanType;
@@ -24,18 +23,15 @@ namespace Sangaku
         [SerializeField] float scanAreaRadius = 5f;
 
         [SerializeField] UnityTransformEvent OnTargetSpotted, OnTargetLost;
-
         #endregion
 
         #region Private Variables
-
         Transform target;
         Light spotLight;
         SphereCollider sphereCollider;
         float spotlightRangeDifference = 3f;
         float targetVisibleTimer;
         bool hasSpottedTargetOnce = false;
-
         #endregion
 
         protected override void CustomSetup()
@@ -71,17 +67,7 @@ namespace Sangaku
         }
 
         #region MonoBehaviour methods
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            if (scanType == ScanType.fieldOfView)
-                Gizmos.DrawRay(transform.position, transform.forward * scanAreaLenght);
-            else
-                Gizmos.DrawWireSphere(transform.position, scanAreaRadius);
-        }
-
-        private void Update()
+        public override void OnUpdate()
         {
             if (CanSeeTarget())
             {
@@ -109,6 +95,15 @@ namespace Sangaku
             }
         }
 
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            if (scanType == ScanType.fieldOfView)
+                Gizmos.DrawRay(transform.position, transform.forward * scanAreaLenght);
+            else
+                Gizmos.DrawWireSphere(transform.position, scanAreaRadius);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.GetComponent(scanTarget.GetType()))
@@ -126,8 +121,6 @@ namespace Sangaku
         }
 
         #endregion
-
-        #region API
 
         bool CanSeeTarget()
         {
@@ -172,8 +165,5 @@ namespace Sangaku
             }
             return false;
         }
-
-        #endregion
-
     }
 }

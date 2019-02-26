@@ -25,7 +25,7 @@ namespace Sangaku
             countTime = true;
         }
 
-        private void Update()
+        public override void OnUpdate()
         {
             if (Time.timeScale == 0)
                 return;

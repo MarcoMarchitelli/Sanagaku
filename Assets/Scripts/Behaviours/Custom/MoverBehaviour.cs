@@ -7,7 +7,7 @@ namespace Sangaku
         [SerializeField] protected float speed;
         [SerializeField] protected Vector3 direction;
 
-        void Update()
+        public override void OnUpdate()
         {
             if (IsSetupped)
                 Move();

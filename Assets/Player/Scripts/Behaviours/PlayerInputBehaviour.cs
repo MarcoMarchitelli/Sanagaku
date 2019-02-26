@@ -63,10 +63,7 @@ namespace Sangaku
             }
         }
 
-        /// <summary>
-        /// Update
-        /// </summary>
-        void Update()
+        public override void OnUpdate()
         {
             if (IsSetupped)
             {

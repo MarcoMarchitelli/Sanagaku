@@ -79,6 +79,10 @@ namespace Sangaku
                 mana.AddMana(_manaAmount + (manaModifier * (enemyHitCount - 1)));
         }
 
+        float distanceFromPlayer;
+        float oldDistanceFromPlayer;
+        bool isDepartingFromPlayer = true;
+
         void CheckPlayerDistance(Vector3 _playerPosition)
         {
             distanceFromPlayer = Vector3.Distance(transform.position, _playerPosition);
@@ -130,12 +134,9 @@ namespace Sangaku
             }
         }
 
-        float distanceFromPlayer;
-        float oldDistanceFromPlayer;
-        bool isDepartingFromPlayer = true;
-        private void Update()
+        public override void OnUpdate()
         {
-            if(data.PlayerReference)
+            if (data.PlayerReference)
                 CheckPlayerDistance(data.PlayerReference.transform.position);
         }
 
@@ -146,6 +147,5 @@ namespace Sangaku
             oldDistanceFromPlayer = Vector3.Distance(transform.position, data.PlayerReference.transform.position);
             base.Enable(_value);
         }
-
     }
 }

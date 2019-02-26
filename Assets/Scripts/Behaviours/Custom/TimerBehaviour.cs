@@ -20,8 +20,7 @@ namespace Sangaku
         bool countTime = false;
         [HideInInspector] public float timer;
 
-        #region MonoBehaviour methods
-
+        #region MonoBehaviour Methods
         private void OnEnable()
         {
             if (repeat)
@@ -38,7 +37,7 @@ namespace Sangaku
                 OnTimerEnd.RemoveListener(StopTimer);
         }
 
-        void Update()
+        public override void OnUpdate()
         {
             if (countTime)
                 timer += Time.deltaTime;
@@ -47,11 +46,9 @@ namespace Sangaku
                 OnTimerEnd.Invoke();
             }
         }
-
         #endregion
 
         #region API
-
         public void StartTimer(float _time)
         {
             time = _time;
@@ -89,7 +86,6 @@ namespace Sangaku
         {
             Debug.Log(_msg);
         }
-
         #endregion
     }
 }
