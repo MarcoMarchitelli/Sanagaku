@@ -27,6 +27,13 @@ namespace Sangaku
         void SetUpEntity();
 
         /// <summary>
+        /// Funzione che ritorna il behaviour corrispondente al tipo passato
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        T GetBehaviour<T>() where T : IBehaviour;
+
+        /// <summary>
         /// Entity's custom update.
         /// </summary>
         void OnUpdate();
