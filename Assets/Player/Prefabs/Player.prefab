@@ -5173,11 +5173,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  OnParryPressed:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnDirectionUpdate:
     m_PersistentCalls:
       m_Calls:
@@ -5196,12 +5191,10 @@ MonoBehaviour:
       PublicKeyToken=null
   InputDirection: 1
   controllerShotInput: ShotController
-  controllerParryInput: ParryController
   controllerDashInput: DashController
   controllerHorizontalInput: HorizontalLeftController
   controllerVerticalInput: VerticalLeftController
   keyboardShotInput: ShotKeyboard
-  keyboardParryInput: ParryKeyboard
   keyboardDashInput: DashKeyboard
   keyboardHorizontalInput: HorizontalKeyboard
   keyboardVerticalInput: VerticalKeyboard
@@ -5717,21 +5710,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 76452836599106812}
     m_Modifications:
-    - target: {fileID: 7852103482168027707, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
-        type: 3}
-      propertyPath: m_Name
-      value: OrbInteraction
-      objectReference: {fileID: 0}
-    - target: {fileID: 7852103482168027686, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
-        type: 3}
-      propertyPath: orbCatchPoint
-      value: 
-      objectReference: {fileID: 2108020691}
-    - target: {fileID: 7852103482168027686, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
-        type: 3}
-      propertyPath: OnOrbCatch.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1991540773}
     - target: {fileID: 7852103482168027684, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5787,6 +5765,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7852103482168027707, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
+        type: 3}
+      propertyPath: m_Name
+      value: OrbInteraction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852103482168027686, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
+        type: 3}
+      propertyPath: orbCatchPoint
+      value: 
+      objectReference: {fileID: 2108020691}
+    - target: {fileID: 7852103482168027686, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
+        type: 3}
+      propertyPath: OnOrbCatch.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1991540773}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ee1bbad3aee4b54cbc8bfc83094783e, type: 3}
 --- !u!4 &1592190640 stripped
