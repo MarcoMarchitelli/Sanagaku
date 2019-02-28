@@ -86,6 +86,17 @@ namespace Sangaku
             orbsToAttract = new List<OrbAttractionBehaviour>();
         }
 
+        public override void OnUpdate()
+        {
+            if (!IsSetupped || !canAttract)
+                return;
+
+            //CountAttractionTime();
+            //DecrementMana();
+
+            AttractOrb();
+        }
+
         /// <summary>
         /// Funzione che attiva o disattiva l'attrazione
         /// </summary>
@@ -101,20 +112,6 @@ namespace Sangaku
                 OnAttractionStart.Invoke();
             else
                 OnAttractionEnd.Invoke();
-        }
-
-        /// <summary>
-        /// Funzione che attrae l'orb
-        /// </summary>
-        public void Attract()
-        {
-            if (!IsSetupped || !canAttract)
-                return;
-
-            //CountAttractionTime();
-            //DecrementMana();
-
-            AttractOrb();
         }
 
         /// <summary>

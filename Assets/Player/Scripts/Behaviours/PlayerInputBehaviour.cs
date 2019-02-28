@@ -298,7 +298,7 @@ namespace Sangaku
         /// <summary>
         /// Evento lanciato al mantenimento della pressione del bottone di attraction
         /// </summary>
-        [SerializeField] UnityEvent OnAttractionHeld;
+        [SerializeField] UnityEvent OnAttractionPressed;
         /// <summary>
         /// Evento lanciato al rilascio del bottone di attraction
         /// </summary>
@@ -338,15 +338,15 @@ namespace Sangaku
 
             if (_isControllerConnected)
             {
-                if (Input.GetButton(controllerAttractionInput))
-                    OnAttractionHeld.Invoke();
+                if (Input.GetButtonDown(controllerAttractionInput))
+                    OnAttractionPressed.Invoke();
                 if (Input.GetButtonUp(controllerAttractionInput))
                     OnAttractionReleased.Invoke();
             }
             else
             {
-                if (Input.GetButton(keyboardAttractionInput))
-                    OnAttractionHeld.Invoke();
+                if (Input.GetButtonDown(keyboardAttractionInput))
+                    OnAttractionPressed.Invoke();
                 if (Input.GetButtonUp(keyboardAttractionInput))
                     OnAttractionReleased.Invoke();
             }

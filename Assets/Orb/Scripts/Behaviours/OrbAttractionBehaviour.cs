@@ -5,6 +5,7 @@ namespace Sangaku
     /// <summary>
     /// Componente che definisce il comportamente di attrazione verso un punto dell'orb
     /// </summary>
+    [RequireComponent(typeof(OrbMovementBehaviour))]
     public class OrbAttractionBehaviour : BaseBehaviour
     {
         /// <summary>
@@ -16,6 +17,15 @@ namespace Sangaku
         /// Riferimento al PlayerAttractionBehaviour
         /// </summary>
         PlayerAttractionBehaviour playerAttractionBehaviour;
+        /// <summary>
+        /// Riferimento al OrbMovementBehaviour
+        /// </summary>
+        OrbMovementBehaviour movementBehaviour;
+
+        protected override void CustomSetup()
+        {
+            movementBehaviour = Entity.GetBehaviour<OrbMovementBehaviour>();
+        }
 
         /// <summary>
         /// Funzione che muove l'orb verso la posizione passata come parametro
@@ -24,7 +34,10 @@ namespace Sangaku
         public void MoveTowardsPosition(Vector3 _position)
         {
             if (IsSetupped)
-                transform.position = Vector3.MoveTowards(transform.position, _position, velocity * Time.deltaTime);               
+            {
+                Vector3 dir = (transform.position - _position).normalized * velocity;
+                movementBehaviour.SetOffsetDirection(dir);
+            }          
         }
 
         /// <summary>
