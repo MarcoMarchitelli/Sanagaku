@@ -384,26 +384,26 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  moveSpeed: 22
-  moveTime: 5
-  deathTime: 2
+  moveSpeed: 15
+  moveTime: 10
+  deathTime: 60
   speedOverLifeTimeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: -1
-      outSlope: -1
+      time: 0.0021629333
+      value: 0.9899292
+      inSlope: -0.000047818827
+      outSlope: -0.000047818827
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -1
-      outSlope: -1
+      time: 0.9955981
+      value: 0.9898817
+      inSlope: -0.000047818827
+      outSlope: -0.000047818827
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -580,7 +580,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!64 &8180793333761143363
 MeshCollider:
   m_ObjectHideFlags: 0
