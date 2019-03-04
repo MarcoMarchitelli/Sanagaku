@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace Sangaku
 {
@@ -8,10 +9,8 @@ namespace Sangaku
 
         public override void Enter()
         {
-            foreach (BaseBehaviour baseBehaviour in context.OrbEntity.Behaviours)
-            {
-                baseBehaviour.Enable(false);
-            }
+            ToggleBehaviours(context.OrbEntity.Behaviours, false);
+
             orbTransform = context.OrbEntity.transform;
             context.OrbManaBehaviour.ResetMana();
         }
@@ -24,12 +23,16 @@ namespace Sangaku
 
         public override void Exit()
         {
-            foreach (BaseBehaviour baseBehaviour in context.OrbEntity.Behaviours)
-            {
-                baseBehaviour.enabled = true;
-            }
+            ToggleBehaviours(context.OrbEntity.Behaviours, true);
             orbTransform = null;
         }
-    }
 
+        void ToggleBehaviours(List<IBehaviour> _baseBehaviours, bool _value)
+        {
+            for (int i = 0; i < _baseBehaviours.Count; i++)
+            {
+                _baseBehaviours[i].Enable(_value);
+            }
+        }
+    }
 }

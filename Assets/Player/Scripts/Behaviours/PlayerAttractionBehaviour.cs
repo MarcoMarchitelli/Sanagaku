@@ -190,15 +190,16 @@ namespace Sangaku
             }
             else
             {
+                for (int i = 0; i < orbsToAttract.Count; i++)
+                    orbsToAttract[i].SetPlayerAttractionBehaviour(null);
+
                 orbsToAttract.Clear();
             }
 
             if (orbsToAttract.Count > 0)
             {
                 for (int i = 0; i < orbsToAttract.Count; i++)
-                {
                     orbsToAttract[i].MoveTowardsPosition(transform.position);
-                }
             }
         }
 

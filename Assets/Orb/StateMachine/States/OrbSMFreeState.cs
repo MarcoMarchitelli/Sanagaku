@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-
+﻿
 namespace Sangaku
 {
     public class OrbSMFreeState : OrbSMStateBase

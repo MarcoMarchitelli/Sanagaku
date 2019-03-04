@@ -36,7 +36,6 @@ namespace Sangaku
             IsSetupped = _value;
         }
 
-
         /// <summary>
         /// Optional setup unique to every Behaviour that implements it.
         /// </summary>

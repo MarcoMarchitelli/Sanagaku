@@ -9,6 +9,15 @@ namespace Sangaku
     public class OrbAttractionBehaviour : BaseBehaviour
     {
         /// <summary>
+        /// Evento lanciato all'inizio dell'attrazione
+        /// </summary>
+        [SerializeField] UnityVoidEvent OnAttractionStart;
+        /// <summary>
+        /// Evento lanciato alla fine dell'attrazione
+        /// </summary>
+        [SerializeField] UnityVoidEvent OnAttractionEnd;
+
+        /// <summary>
         /// Velocità con cui l'orb si muove verso il player
         /// </summary>
         [SerializeField] float velocity;
@@ -22,6 +31,9 @@ namespace Sangaku
         /// </summary>
         OrbMovementBehaviour movementBehaviour;
 
+        /// <summary>
+        /// Custom setup del behaviour
+        /// </summary>
         protected override void CustomSetup()
         {
             movementBehaviour = Entity.GetBehaviour<OrbMovementBehaviour>();
@@ -34,10 +46,7 @@ namespace Sangaku
         public void MoveTowardsPosition(Vector3 _position)
         {
             if (IsSetupped)
-            {
-                Vector3 dir = (transform.position - _position).normalized * velocity;
-                movementBehaviour.SetOffsetDirection(dir);
-            }          
+                transform.position = Vector3.MoveTowards(transform.position, _position, velocity);
         }
 
         /// <summary>
@@ -46,8 +55,15 @@ namespace Sangaku
         /// <param name="_attractionBehaviour"></param>
         public void SetPlayerAttractionBehaviour(PlayerAttractionBehaviour _attractionBehaviour)
         {
-            if (IsSetupped)
-                playerAttractionBehaviour = _attractionBehaviour;
+            if (!IsSetupped)
+                return;
+
+            playerAttractionBehaviour = _attractionBehaviour;
+
+            if (playerAttractionBehaviour != null)
+                OnAttractionStart.Invoke();
+            else
+                OnAttractionEnd.Invoke();
         }
 
         public override void Enable(bool _value)
