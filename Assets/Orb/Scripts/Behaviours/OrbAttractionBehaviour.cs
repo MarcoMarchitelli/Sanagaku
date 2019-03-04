@@ -46,7 +46,7 @@ namespace Sangaku
         public void MoveTowardsPosition(Vector3 _position)
         {
             if (IsSetupped)
-                transform.position = Vector3.MoveTowards(transform.position, _position, velocity);
+                transform.position = Vector3.MoveTowards(transform.position, _position, velocity * Time.deltaTime);
         }
 
         /// <summary>

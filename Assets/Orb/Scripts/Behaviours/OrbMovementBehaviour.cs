@@ -27,28 +27,20 @@ namespace Sangaku
             offsetDirection = Vector3.zero;
         }
 
-        public override void OnUpdate()
-        {
-            if (Time.timeScale == 0)
-                return;
-
-            if (countTime)
-                timer += Time.deltaTime;
-            if (canMove)
-                Move();
-        }
-
         /// <summary>
         /// Orb movement. Handles slowdown effect as well.
         /// </summary>
         void Move()
         {
+            if (!IsSetupped)
+                return;
+
             Vector3 direction = CalculateForwardDirection();
 
-            if(offsetDirection != Vector3.zero)
+            if (offsetDirection != Vector3.zero)
             {
                 direction -= offsetDirection;
-            }              
+            }
 
             if (direction.sqrMagnitude <= 0)
             {
@@ -62,6 +54,18 @@ namespace Sangaku
         Vector3 CalculateForwardDirection()
         {
             return Vector3.forward * (speedOverLifeTimeCurve.Evaluate(timer / moveTime) * moveSpeed * Time.deltaTime);
+        }
+
+        #region API
+        public override void OnUpdate()
+        {
+            if (Time.timeScale == 0)
+                return;
+
+            if (countTime)
+                timer += Time.deltaTime;
+            if (canMove)
+                Move();
         }
 
         public void SetOffsetDirection(Vector3 _direction)
@@ -85,6 +89,7 @@ namespace Sangaku
             timer = 0.01f;
             canMove = true;
             countTime = true;
-        }
+        } 
+        #endregion
     }
 }
