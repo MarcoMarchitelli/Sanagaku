@@ -16,21 +16,15 @@ namespace Sangaku
         bool canMove = true;
         bool countTime = true;
         float timer;
-        float distanceToTravel;
+
+        Vector3 offsetDirection;
 
         protected override void CustomSetup()
         {
             timer = 0.01f;
             canMove = true;
             countTime = true;
-        }
-
-        private void Update()
-        {
-            if (countTime)
-                timer += Time.deltaTime;
-            if (canMove)
-                Move();
+            offsetDirection = Vector3.zero;
         }
 
         /// <summary>
@@ -38,14 +32,45 @@ namespace Sangaku
         /// </summary>
         void Move()
         {
-            distanceToTravel = speedOverLifeTimeCurve.Evaluate(timer / moveTime) * moveSpeed * Time.deltaTime;
-            if (distanceToTravel <= 0)
+            if (!IsSetupped)
+                return;
+
+            Vector3 direction = CalculateForwardDirection();
+
+            if (offsetDirection != Vector3.zero)
+            {
+                direction -= offsetDirection;
+            }
+
+            if (direction.sqrMagnitude <= 0)
             {
                 OnLifeEnd.Invoke(deathTime);
                 canMove = false;
                 return;
             }
-            transform.Translate(Vector3.forward * distanceToTravel);
+            transform.Translate(direction);
+        }
+
+        Vector3 CalculateForwardDirection()
+        {
+            return Vector3.forward * (speedOverLifeTimeCurve.Evaluate(timer / moveTime) * moveSpeed * Time.deltaTime);
+        }
+
+        #region API
+        public override void OnUpdate()
+        {
+            if (Time.timeScale == 0)
+                return;
+
+            if (countTime)
+                timer += Time.deltaTime;
+            if (canMove)
+                Move();
+        }
+
+        public void SetOffsetDirection(Vector3 _direction)
+        {
+            offsetDirection = _direction;
         }
 
         public void SetEulerAngles(Vector3 _newDirection)
@@ -64,6 +89,7 @@ namespace Sangaku
             timer = 0.01f;
             canMove = true;
             countTime = true;
-        }
+        } 
+        #endregion
     }
 }

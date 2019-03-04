@@ -43,7 +43,6 @@ namespace Sangaku
             {
                 tempHealth = 0;
                 OnHealthDepleated.Invoke();
-                print(name + " fucking died.");
             }
             if (tempHealth > maxHealth)
                 tempHealth = maxHealth;

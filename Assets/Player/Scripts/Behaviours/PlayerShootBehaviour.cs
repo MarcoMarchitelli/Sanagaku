@@ -34,6 +34,15 @@ namespace Sangaku
         }
 
         /// <summary>
+        /// Funzione che ritorna la lista di orb in gioco
+        /// </summary>
+        /// <returns></returns>
+        public List<OrbController> GetOrbsInPlay()
+        {
+            return orbsInPlay;
+        }
+
+        /// <summary>
         /// Shoot logic.
         /// </summary>
         public void Shoot()
@@ -87,7 +96,6 @@ namespace Sangaku
             {
                 orbsInPlay.Add(_orb);
                 CheckOrbsInPlay();
-                print(name + " added " + _orb.name + " in play!");
             }
         }
 
@@ -101,7 +109,6 @@ namespace Sangaku
             {
                 orbsInPlay.Remove(_orb);
                 CheckOrbsInPlay();
-                print(name + " removed " + _orb.name + " from play!");
             }
         }
 
@@ -110,12 +117,10 @@ namespace Sangaku
             if (orbsInPlay.Count == 0 && playerMana.GetMana() < cost)
             {
                 playerMana.ToggleRegen(true);
-                print(playerMana.name + "'s mana regeneration activated!");
             }
             else
             {
                 playerMana.ToggleRegen(false);
-                print(playerMana.name + "'s mana regeneration deactivated!");
             }
         }
 

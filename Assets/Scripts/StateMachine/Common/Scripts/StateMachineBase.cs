@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Deirin.StateMachine {
-
+namespace Deirin.StateMachine
+{
     [RequireComponent(typeof(Animator))]
-    public abstract class StateMachineBase : MonoBehaviour {
-
+    public abstract class StateMachineBase : MonoBehaviour
+    {
         #region Variables
-
         /// <summary>
         /// The animator attached to this state machine.
         /// </summary>
@@ -24,20 +23,16 @@ namespace Deirin.StateMachine {
         }
         protected List<IState> states;
         protected IContext context;
-
         #endregion
 
         #region Properties
-
         /// <summary>
         /// List of all states.
         /// </summary>
         public List<IState> States { get { return states; } set { states = value; } }
-
         #endregion
 
         #region StateMachine methods
-
         /// <summary>
         /// Handles the logic behind the state change.
         /// </summary>
@@ -66,8 +61,6 @@ namespace Deirin.StateMachine {
                 state.OnStateEnd += OnStateChange;
             }
         }
-
         #endregion
-
     }
 }

@@ -2,6 +2,9 @@
 
 namespace Sangaku
 {
+    /// <summary>
+    /// Classe astratta che definisce un comportamento base
+    /// </summary>
     public abstract class BaseBehaviour : MonoBehaviour, IBehaviour
     {
         /// <summary>
@@ -12,11 +15,6 @@ namespace Sangaku
         /// True se il Behaviour è stato setuppato, false altrimenti
         /// </summary>
         public bool IsSetupped { get; private set; }
-
-        public virtual void Enable(bool _value)
-        {
-            IsSetupped = _value;
-        }
 
         /// <summary>
         /// Base obligatory setup for every Behaviour.
@@ -30,8 +28,32 @@ namespace Sangaku
         }
 
         /// <summary>
+        /// Toggles the activity of the behaviour.
+        /// </summary>
+        /// <param name="_value">if active or not.</param>
+        public virtual void Enable(bool _value)
+        {
+            IsSetupped = _value;
+        }
+
+        /// <summary>
         /// Optional setup unique to every Behaviour that implements it.
         /// </summary>
         protected virtual void CustomSetup() { }
+
+        /// <summary>
+        /// Behaviour's custom update.
+        /// </summary>
+        public virtual void OnFixedUpdate() { }
+
+        /// <summary>
+        /// Behaviour's custom fixed update.
+        /// </summary>
+        public virtual void OnLateUpdate() { }
+
+        /// <summary>
+        /// Behaviour's custom late update.
+        /// </summary>
+        public virtual void OnUpdate() { }
     }
 }

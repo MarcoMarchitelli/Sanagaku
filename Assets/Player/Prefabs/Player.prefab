@@ -180,6 +180,7 @@ Transform:
   - {fileID: 2023095831}
   - {fileID: 755840898}
   - {fileID: 1991540772}
+  - {fileID: 2386801153883862534}
   m_Father: {fileID: 76452836599106812}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5084,6 +5085,7 @@ GameObject:
   - component: {fileID: 79887467333557454}
   - component: {fileID: 79887467333557445}
   - component: {fileID: 6169693431136065898}
+  - component: {fileID: 3778750664566416969}
   - component: {fileID: 850753096191203397}
   - component: {fileID: 79887467333557451}
   - component: {fileID: 79887467333557450}
@@ -5141,38 +5143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f711ee361ba08c149a6fda5e839b29a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDashPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 850753096191203397}
-        m_MethodName: Dash
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Sangaku.UnityVector3Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnShotPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 79887467333557445}
-        m_MethodName: Shoot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  InputDirection: 1
   OnDirectionUpdate:
     m_PersistentCalls:
       m_Calls:
@@ -5189,15 +5160,69 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Sangaku.UnityVector3Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  InputDirection: 1
-  controllerShotInput: ShotController
-  controllerDashInput: DashController
   controllerHorizontalInput: HorizontalLeftController
   controllerVerticalInput: VerticalLeftController
-  keyboardShotInput: ShotKeyboard
-  keyboardDashInput: DashKeyboard
   keyboardHorizontalInput: HorizontalKeyboard
   keyboardVerticalInput: VerticalKeyboard
+  OnShotPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 79887467333557445}
+        m_MethodName: Shoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  controllerShotInput: ShotController
+  keyboardShotInput: ShotKeyboard
+  OnDashPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 850753096191203397}
+        m_MethodName: Dash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Sangaku.UnityVector3Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  controllerDashInput: DashController
+  keyboardDashInput: DashKeyboard
+  OnAttractionPressed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnAttractionReleased:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6124619911678974412}
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  controllerAttractionInput: AttractionController
+  keyboardAttractionInput: AttractionKeyboard
 --- !u!114 &79887467333557455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5305,6 +5330,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &3778750664566416969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79887467333557446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c5b010653c59d439a1c3528e85b46d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &850753096191203397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5703,6 +5740,86 @@ Transform:
   m_Father: {fileID: 81030063627979317}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8685277761786164913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2386801153883862534}
+  - component: {fileID: 6124619911678974412}
+  m_Layer: 0
+  m_Name: Timer_Attraction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2386801153883862534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685277761786164913}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1025301912}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6124619911678974412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8685277761786164913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258aa1563c6032246b37e316d4926e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Counts the duration of the Attraction cooldown
+  time: 0
+  startCountingOnAwake: 0
+  repeat: 0
+  OnTimerStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 79887467333557452}
+        m_MethodName: ToggleAttractInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnTimerEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 79887467333557452}
+        m_MethodName: ToggleAttractInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  timer: 0
 --- !u!1001 &7852103481272650900
 PrefabInstance:
   m_ObjectHideFlags: 0
