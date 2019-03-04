@@ -15,7 +15,7 @@ namespace Sangaku
         /// <summary>
         /// Evento lanciato alla fine dell'attrazione
         /// </summary>
-        [SerializeField] UnityVoidEvent OnAttractionEnd;
+        [SerializeField] UnityVector3Event OnAttractionEnd;
 
         /// <summary>
         /// Velocità con cui l'orb si muove verso il player
@@ -40,13 +40,21 @@ namespace Sangaku
         }
 
         /// <summary>
+        /// direzione dell'attrazione
+        /// </summary>
+        Vector3 attractionDrection;
+
+        /// <summary>
         /// Funzione che muove l'orb verso la posizione passata come parametro
         /// </summary>
         /// <param name="_position"></param>
         public void MoveTowardsPosition(Vector3 _position)
         {
             if (IsSetupped)
+            {
+                attractionDrection = (transform.position - _position).normalized;
                 transform.position = Vector3.MoveTowards(transform.position, _position, velocity * Time.deltaTime);
+            }
         }
 
         /// <summary>
@@ -63,7 +71,7 @@ namespace Sangaku
             if (playerAttractionBehaviour != null)
                 OnAttractionStart.Invoke();
             else
-                OnAttractionEnd.Invoke();
+                OnAttractionEnd.Invoke(attractionDrection);
         }
 
         public override void Enable(bool _value)

@@ -7,7 +7,7 @@ namespace Sangaku
     public class PlayerShootBehaviour : BaseBehaviour
     {
         #region Serialized Fields
-        [SerializeField] protected BaseEntity projectilePrefab;
+        [SerializeField] protected string projectilePool = "Orb";
         [SerializeField] protected Transform shootPoint;
         [Tooltip("How many seconds between each shot.")]
         [SerializeField] protected float secondsBetweenShots;
@@ -69,7 +69,7 @@ namespace Sangaku
                 //OrbController instantiatedOrb = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<OrbController>();
                 //instantiatedOrb.SetUpOrbEntity(Entity as PlayerController);
 
-                OrbController pooledOrb = ObjectPooler.Instance.GetPoolableFromPool("Orb", shootPoint.position, shootPoint.rotation) as OrbController;
+                OrbController pooledOrb = ObjectPooler.Instance.GetPoolableFromPool(projectilePool, shootPoint.position, shootPoint.rotation) as OrbController;
                 pooledOrb.SetUpOrbEntity(Entity as PlayerController);
                 AddOrbInPlay(pooledOrb);
 

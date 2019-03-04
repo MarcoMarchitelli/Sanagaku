@@ -91,8 +91,8 @@ namespace Sangaku
             if (!IsSetupped || !canAttract)
                 return;
 
-            //CountAttractionTime();
-            //DecrementMana();
+            CountAttractionTime();
+            DecrementMana();
 
             AttractOrb();
         }
