@@ -21,6 +21,8 @@ namespace Sangaku
         protected override void CustomSetup()
         {
             Particle = GetComponent<ParticleSystem>();
+            ParticleSystem.MainModule main = Particle.main;
+            main.stopAction = ParticleSystemStopAction.Callback; // Serve ad ottenere la chiamata "OnParticleSystemStopped"
         }
 
         /// <summary>
@@ -28,9 +30,12 @@ namespace Sangaku
         /// </summary>
         public void PlayParticle()
         {
-            OnParticleStart.Invoke();
-            Particle.Play();
-            isActive = true;
+            if (IsSetupped)
+            {
+                OnParticleStart.Invoke();
+                Particle.Play();
+                isActive = true;
+            }
         }
 
         /// <summary>
@@ -38,7 +43,7 @@ namespace Sangaku
         /// </summary>
         public void UpdateParticle()
         {
-            if (isActive)
+            if (isActive && IsSetupped)
             {
                 OnParticleStay.Invoke();
             }
@@ -49,9 +54,20 @@ namespace Sangaku
         /// </summary>
         public void StopParticle()
         {
-            isActive = false;
-            Particle.Stop();
-            OnParticleEnd.Invoke();
+            if (IsSetupped)
+            {
+                isActive = false;
+                Particle.Stop();
+                OnParticleEnd.Invoke();
+            }
+        }
+
+        /// <summary>
+        /// Evento chiamato alla fine del ciclo completo di vita di un particle system
+        /// </summary>
+        public void OnParticleSystemStopped()
+        {
+            StopParticle();
         }
     }
 }
