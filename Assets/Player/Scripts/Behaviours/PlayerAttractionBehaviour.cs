@@ -236,6 +236,7 @@ namespace Sangaku
                 }
             }
 
+            orbsToAttract.Clear();
             SetOrbAsAttractable(orbsInPlay[closestIndex]);
             PerformAttractionOnOtherOrbs(orbsInPlay[closestIndex]);
         }
@@ -259,6 +260,7 @@ namespace Sangaku
                 }
             }
 
+            orbsToAttract.Clear();
             SetOrbAsAttractable(orbsInPlay[farthestIndex]);
             PerformAttractionOnOtherOrbs(orbsInPlay[farthestIndex]);
         }
@@ -268,6 +270,7 @@ namespace Sangaku
         /// </summary>
         void AttractRandom()
         {
+            orbsToAttract.Clear();
             int randomIndex = Random.Range(0, orbsInPlay.Count);
             SetOrbAsAttractable(orbsInPlay[randomIndex]);
             PerformAttractionOnOtherOrbs(orbsInPlay[randomIndex]);
