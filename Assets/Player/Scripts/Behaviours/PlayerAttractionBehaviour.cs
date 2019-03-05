@@ -58,6 +58,10 @@ namespace Sangaku
         /// </summary>
         PlayerShootBehaviour shootBehaviour;
         /// <summary>
+        /// Punto in cui sparo l'orb
+        /// </summary>
+        Transform shootPoint;
+        /// <summary>
         /// Lista di orb in gioco
         /// </summary>
         List<OrbController> orbsInPlay;
@@ -83,16 +87,17 @@ namespace Sangaku
             shootBehaviour = GetComponent<PlayerShootBehaviour>();
             manaBehaviour = GetComponent<PlayerManaBehaviour>();
             orbsInPlay = shootBehaviour.GetOrbsInPlay();
+            shootPoint = shootBehaviour.GetShootPoint();
             orbsToAttract = new List<OrbAttractionBehaviour>();
         }
 
         public override void OnUpdate()
         {
-            if (!IsSetupped || !canAttract)
+            if (!IsSetupped)
                 return;
 
-            CountAttractionTime();
-            DecrementMana();
+            //CountAttractionTime();
+            //DecrementMana();
 
             AttractOrb();
         }
@@ -107,7 +112,7 @@ namespace Sangaku
                 return;
 
             canAttract = _value;
-
+            
             if (canAttract)
                 OnAttractionStart.Invoke();
             else
@@ -147,7 +152,7 @@ namespace Sangaku
             if (manaCost <= 0)
                 return;
 
-            manaBehaviour.AddMana(-manaCost * Time.deltaTime);
+            manaBehaviour.AddMana(-(manaCost * Time.deltaTime));
             if (manaBehaviour.GetMana() <= 0)
             {
                 ToggleAttraction(false);
@@ -161,11 +166,7 @@ namespace Sangaku
         {
             if (canAttract)
             {
-                if (orbsInPlay.Count == 0)
-                {
-                    return;
-                }
-                else if (orbsInPlay.Count == 1)
+                if (orbsInPlay.Count == 1)
                 {
                     SetOrbAsAttractable(orbsInPlay[0]);
                 }
@@ -199,7 +200,7 @@ namespace Sangaku
             if (orbsToAttract.Count > 0)
             {
                 for (int i = 0; i < orbsToAttract.Count; i++)
-                    orbsToAttract[i].MoveTowardsPosition(transform.position);
+                    orbsToAttract[i].MoveTowardsPosition(shootPoint.position);
             }
         }
 

@@ -45,7 +45,9 @@ namespace Sangaku
 
         Vector3 CalculateForwardDirection()
         {
-            return Vector3.forward * (speedOverLifeTimeCurve.Evaluate(timer / moveTime) * moveSpeed * Time.deltaTime);
+            float timeOfEvaluation = timer / moveTime;
+            //Debug.Log(timeOfEvaluation);
+            return Vector3.forward * (speedOverLifeTimeCurve.Evaluate(timeOfEvaluation) * moveSpeed * Time.deltaTime);
         }
 
         #region API

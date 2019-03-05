@@ -52,7 +52,10 @@ namespace Sangaku
         {
             if (IsSetupped)
             {
-                attractionDrection = (transform.position - _position).normalized;
+                attractionDrection = _position - transform.position;
+                float rot = 90 - Mathf.Atan2(attractionDrection.z, attractionDrection.x) * Mathf.Rad2Deg;
+                attractionDrection = new Vector3(0, rot, 0);
+
                 transform.position = Vector3.MoveTowards(transform.position, _position, velocity * Time.deltaTime);
             }
         }

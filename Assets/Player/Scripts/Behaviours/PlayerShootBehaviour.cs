@@ -33,6 +33,12 @@ namespace Sangaku
             orbsInPlay = new List<OrbController>();
         }
 
+        #region API
+        public Transform GetShootPoint()
+        {
+            return shootPoint;
+        }
+
         /// <summary>
         /// Funzione che ritorna la lista di orb in gioco
         /// </summary>
@@ -40,6 +46,28 @@ namespace Sangaku
         public List<OrbController> GetOrbsInPlay()
         {
             return orbsInPlay;
+        }
+
+        /// <summary>
+        /// Frees the caught orb.
+        /// </summary>
+        public void ShootCaughtOrb()
+        {
+            orbInteraction.FreeOrb();
+            OnOrbShoot.Invoke(secondsBetweenShots);
+        }
+
+        /// <summary>
+        /// Removes an OrbController to the list that tracks all the orbs currently in play.
+        /// </summary>
+        /// <param name="_orb"></param>
+        public void RemoveOrbFromPlay(OrbController _orb)
+        {
+            if (orbsInPlay.Contains(_orb))
+            {
+                orbsInPlay.Remove(_orb);
+                CheckOrbsInPlay();
+            }
         }
 
         /// <summary>
@@ -56,6 +84,7 @@ namespace Sangaku
                 ShootOrb();
             }
         }
+        #endregion
 
         /// <summary>
         /// Instantiates a new Orb.
@@ -78,15 +107,6 @@ namespace Sangaku
         }
 
         /// <summary>
-        /// Frees the caught orb.
-        /// </summary>
-        public void ShootCaughtOrb()
-        {
-            orbInteraction.FreeOrb();
-            OnOrbShoot.Invoke(secondsBetweenShots);
-        }
-
-        /// <summary>
         /// Adds an OrbController to the list that tracks all the orbs currently in play.
         /// </summary>
         /// <param name="_orb"></param>
@@ -95,19 +115,6 @@ namespace Sangaku
             if (!orbsInPlay.Contains(_orb))
             {
                 orbsInPlay.Add(_orb);
-                CheckOrbsInPlay();
-            }
-        }
-
-        /// <summary>
-        /// Removes an OrbController to the list that tracks all the orbs currently in play.
-        /// </summary>
-        /// <param name="_orb"></param>
-        public void RemoveOrbFromPlay(OrbController _orb)
-        {
-            if (orbsInPlay.Contains(_orb))
-            {
-                orbsInPlay.Remove(_orb);
                 CheckOrbsInPlay();
             }
         }
