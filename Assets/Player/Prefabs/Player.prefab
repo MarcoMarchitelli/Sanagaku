@@ -5202,15 +5202,26 @@ MonoBehaviour:
   keyboardDashInput: DashKeyboard
   OnAttractionPressed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3778750664566416969}
+        m_MethodName: ToggleAttraction
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnAttractionReleased:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6124619911678974412}
-        m_MethodName: StartTimer
-        m_Mode: 1
+      - m_Target: {fileID: 3778750664566416969}
+        m_MethodName: ToggleAttraction
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5275,8 +5286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39fa30b4509062a4081fb85d5903d047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 2835863131274270898, guid: 0ab3ad80c4daaec47ac7ac2971274002,
-    type: 3}
+  projectilePool: Orb
   shootPoint: {fileID: 2108020691}
   secondsBetweenShots: 1
   cost: 1
@@ -5342,6 +5352,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c5b010653c59d439a1c3528e85b46d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnAttractionStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnAttractionEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6124619911678974412}
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  orbAttractionType: 0
+  otherOrbAction: 0
+  manaCost: 0
+  maxAttractionTime: 0
 --- !u!114 &850753096191203397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5790,8 +5825,8 @@ MonoBehaviour:
   OnTimerStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 79887467333557452}
-        m_MethodName: ToggleAttractInput
+      - m_Target: {fileID: 3778750664566416969}
+        m_MethodName: Enable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5806,8 +5841,8 @@ MonoBehaviour:
   OnTimerEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 79887467333557452}
-        m_MethodName: ToggleAttractInput
+      - m_Target: {fileID: 3778750664566416969}
+        m_MethodName: Enable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5827,6 +5862,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 76452836599106812}
     m_Modifications:
+    - target: {fileID: 7852103482168027707, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
+        type: 3}
+      propertyPath: m_Name
+      value: OrbInteraction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852103482168027686, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
+        type: 3}
+      propertyPath: orbCatchPoint
+      value: 
+      objectReference: {fileID: 2108020691}
+    - target: {fileID: 7852103482168027686, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
+        type: 3}
+      propertyPath: OnOrbCatch.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1991540773}
     - target: {fileID: 7852103482168027684, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5882,21 +5932,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7852103482168027707, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
-        type: 3}
-      propertyPath: m_Name
-      value: OrbInteraction
-      objectReference: {fileID: 0}
-    - target: {fileID: 7852103482168027686, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
-        type: 3}
-      propertyPath: orbCatchPoint
-      value: 
-      objectReference: {fileID: 2108020691}
-    - target: {fileID: 7852103482168027686, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
-        type: 3}
-      propertyPath: OnOrbCatch.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1991540773}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ee1bbad3aee4b54cbc8bfc83094783e, type: 3}
 --- !u!4 &1592190640 stripped
