@@ -25,7 +25,6 @@ namespace Sangaku
         #endregion
 
         #region Properties
-
         bool isMoving;
 
         public bool IsMoving
@@ -40,7 +39,6 @@ namespace Sangaku
                 isMoving = value;
             }
         }
-
         #endregion
 
         protected override void CustomSetup()
@@ -55,7 +53,6 @@ namespace Sangaku
         }
 
         #region API
-
         public void StartPatrol()
         {
             StartCoroutine(FollowPath());
@@ -70,11 +67,9 @@ namespace Sangaku
         {
             rotatesToWaypoint = _value;
         }
-
         #endregion
 
-        #region Patrol mathods
-
+        #region Patrol Methods
         IEnumerator FollowPath()
         {
             Vector3[] wayPoints = new Vector3[path.childCount];
@@ -127,8 +122,6 @@ namespace Sangaku
                 yield return null;
             }
         }
-
         #endregion
-
     }
 }

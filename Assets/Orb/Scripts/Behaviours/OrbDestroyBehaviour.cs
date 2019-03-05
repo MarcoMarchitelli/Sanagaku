@@ -95,6 +95,5 @@ namespace Sangaku
         {
             OnDestruction.Invoke(Entity as OrbController);
         }
-
     }
 }

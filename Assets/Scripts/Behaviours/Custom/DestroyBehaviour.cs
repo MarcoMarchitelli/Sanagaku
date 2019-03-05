@@ -85,6 +85,5 @@ namespace Sangaku
             if(!usesObjectPooler)
                 OnDestruction.Invoke();
         }
-
     }
 }
