@@ -91,14 +91,25 @@ namespace Sangaku
             orbsToAttract = new List<OrbAttractionBehaviour>();
         }
 
+        public override void Enable(bool _value)
+        {
+            base.Enable(_value);
+
+            if(!_value)
+            {
+                canAttract = false;
+
+                DisableAttraction();
+            }
+        }
+
         public override void OnUpdate()
         {
             if (!IsSetupped)
                 return;
 
-            //CountAttractionTime();
-            //DecrementMana();
-
+            CountAttractionTime();
+            DecrementMana();
             AttractOrb();
         }
 
@@ -133,7 +144,7 @@ namespace Sangaku
         /// </summary>
         void CountAttractionTime()
         {
-            if (maxAttractionTime <= 0)
+            if (maxAttractionTime <= 0 || !canAttract)
                 return;
 
             attractionTime += Time.deltaTime;
@@ -191,10 +202,7 @@ namespace Sangaku
             }
             else
             {
-                for (int i = 0; i < orbsToAttract.Count; i++)
-                    orbsToAttract[i].SetPlayerAttractionBehaviour(null);
-
-                orbsToAttract.Clear();
+                DisableAttraction();
             }
 
             if (orbsToAttract.Count > 0)
@@ -320,6 +328,17 @@ namespace Sangaku
                     }
                     break;
             }
+        }
+
+        /// <summary>
+        /// Funzione che disabilità l'attrazione per gli orb
+        /// </summary>
+        void DisableAttraction()
+        {
+            for (int i = 0; i < orbsToAttract.Count; i++)
+                orbsToAttract[i].SetPlayerAttractionBehaviour(null);
+
+            orbsToAttract.Clear();
         }
     }
 }
