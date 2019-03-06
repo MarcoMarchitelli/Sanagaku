@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Sangaku
 {
@@ -9,12 +7,15 @@ namespace Sangaku
     /// </summary>
     public class ParticleBehaviour : BaseBehaviour
     {
+        [SerializeField] bool autoStart;
+        [SerializeField] bool setCallbackAsStopAction;
+
         ParticleSystem Particle;
         bool isActive;
 
         #region Events
         public UnityVoidEvent OnParticleStart;
-        public UnityVoidEvent OnParticleStay;
+        public UnityVoidEvent OnParticleUpdate;
         public UnityVoidEvent OnParticleEnd;
         #endregion
 
@@ -22,7 +23,17 @@ namespace Sangaku
         {
             Particle = GetComponent<ParticleSystem>();
             ParticleSystem.MainModule main = Particle.main;
-            main.stopAction = ParticleSystemStopAction.Callback; // Serve ad ottenere la chiamata "OnParticleSystemStopped"
+
+            if (autoStart)
+                PlayParticle();
+
+            if (setCallbackAsStopAction && main.stopAction != ParticleSystemStopAction.Callback)
+                main.stopAction = ParticleSystemStopAction.Callback; // Serve ad ottenere la chiamata "OnParticleSystemStopped"
+        }
+
+        public override void OnUpdate()
+        {
+            UpdateParticle();
         }
 
         /// <summary>
@@ -41,11 +52,11 @@ namespace Sangaku
         /// <summary>
         /// Funzione che esegue l'evento di Update della particle se è attivo
         /// </summary>
-        public void UpdateParticle()
+        void UpdateParticle()
         {
-            if (isActive && IsSetupped)
+            if (IsSetupped && isActive)
             {
-                OnParticleStay.Invoke();
+                OnParticleUpdate.Invoke();
             }
         }
 
