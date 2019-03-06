@@ -39,7 +39,7 @@ namespace Sangaku
             rBody = GetComponent<Rigidbody>();
         }
 
-        void Update()
+        public override void OnFixedUpdate()
         {
             if (IsSetupped)
             {
@@ -60,7 +60,7 @@ namespace Sangaku
 
             //HACK: va rivisto il calcolo per migliorare il feeling
             Vector3 lookDirection = new Vector3(Input.GetAxis(controllerHorizontalInput), 0f, Input.GetAxis(controllerVerticalInput)).normalized;
-            if(lookDirection != Vector3.zero)
+            if(lookDirection.sqrMagnitude > 0)
             {
                 Quaternion lookRotation = Quaternion.LookRotation(lookDirection, transform.up);
                 rBody.MoveRotation(lookRotation);

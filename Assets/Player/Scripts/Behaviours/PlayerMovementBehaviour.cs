@@ -62,7 +62,7 @@ namespace Sangaku
             rBody.MovePosition(rBody.position + moveDirection * moveSpeed * Time.fixedDeltaTime);         
         }
 
-        void FixedUpdate()
+        public override void OnFixedUpdate()
         {
             if (IsSetupped)
                 Move();

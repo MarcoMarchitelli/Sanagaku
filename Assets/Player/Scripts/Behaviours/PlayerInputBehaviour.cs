@@ -8,25 +8,6 @@ namespace Sangaku
     /// </summary>
     public class PlayerInputBehaviour : BaseBehaviour
     {
-        #region Events
-        /// <summary>
-        /// Evento lanciato alla pressione del bottone di dash
-        /// </summary>
-        [SerializeField] UnityVector3Event OnDashPressed;
-        /// <summary>
-        /// Evento lanciato alla pressione del bottone di shot
-        /// </summary>
-        [SerializeField] UnityEvent OnShotPressed;
-        /// <summary>
-        /// Evento lanciato alla pressione del bottone di parry
-        /// </summary>
-        [SerializeField] UnityEvent OnParryPressed;
-        /// <summary>
-        /// Evento lanciato al cambio di direzione dell'asse di input
-        /// </summary>
-        [SerializeField] UnityVector3Event OnDirectionUpdate;
-        #endregion
-
         /// <summary>
         /// Enumerativo che indica il tipo di movimento che si vuole
         /// </summary>
@@ -34,53 +15,9 @@ namespace Sangaku
         public DirectionType InputDirection;
 
         /// <summary>
-        /// Direzione in cui viene mosso l'asse di input della direzione
-        /// </summary>
-        Vector3 _moveDirection;
-        /// <summary>
-        /// Propery che lancia un evento al cambio di direzione dell'input
-        /// </summary>
-        Vector3 MoveDirection
-        {
-            get { return _moveDirection; }
-            set
-            {
-                if (_moveDirection != value)
-                {
-                    _moveDirection = value;
-                    OnDirectionUpdate.Invoke(_moveDirection); 
-                }
-            }
-        }
-        /// <summary>
         /// Riferimento alla camera
         /// </summary>
         Camera cam;
-
-        bool canShoot;
-        bool canMove;
-        bool canDash;
-        bool canParry;
-
-        #region API
-        public void ToggleShootInput(bool _value)
-        {
-            canShoot = _value;
-        }
-        public void ToggleMovementInput(bool _value)
-        {
-            canMove = _value;
-            MoveDirection = Vector3.zero;
-        }
-        public void ToggleDashInput(bool _value)
-        {
-            canDash = _value;
-        }
-        public void ToggleParryInput(bool _value)
-        {
-            canParry = _value;
-        } 
-        #endregion
 
         /// <summary>
         /// Custom setup del Behaviour
@@ -89,131 +26,18 @@ namespace Sangaku
         {
             cam = Camera.main;
 
+            canAttract = true;
             canShoot = true;
             canMove = true;
             canDash = true;
-            canParry = true;
+
+            isControllerConnected = CheckControllerConnection();
         }
 
         /// <summary>
-        /// Update
+        /// True se il controlller è connesso, false altrimenti
         /// </summary>
-        void Update()
-        {
-            if (IsSetupped)
-            {
-                if (CheckControllerConnection())
-                    ReadControllerInput();
-                else
-                    ReadKeyboardInput();
-            }
-        }
-
-        #region Controller Inputs
-        [Header("Controller")]
-        /// <summary>
-        /// Tasto che corrisponde allo shot per il controlller
-        /// </summary>
-        [SerializeField] string controllerShotInput = "ShotController";
-        /// <summary>
-        /// Tasto che corrisponde al parry per il controlller
-        /// </summary>
-        [SerializeField] string controllerParryInput = "ParryController";
-        /// <summary>
-        /// Tasto che corrisponde al dash per il controlller
-        /// </summary>
-        [SerializeField] string controllerDashInput = "DashController";
-        /// <summary>
-        ///  Asse che corrisponde al movimento orizzontale per il controller
-        /// </summary>
-        [SerializeField] string controllerHorizontalInput = "HorizontalLeftController";
-        /// <summary>
-        /// Asse che corrisponde al movimento verticale per il controller
-        /// </summary>
-        [SerializeField] string controllerVerticalInput = "VerticalLeftController";
-
-        /// <summary>
-        /// Variabile che salva il valore al frame precedente dell'asse di shot
-        /// </summary>
-        int cShotInputPrevValue;
-        /// <summary>
-        /// Funzione che si occupa di leggere l'input del controller
-        /// </summary>
-        void ReadControllerInput()
-        {
-            //Move Input
-            if (canMove)
-                CalculateMoveDirection(Input.GetAxis(controllerHorizontalInput), Input.GetAxis(controllerVerticalInput));
-
-            //Shoot Input
-            if (canShoot)
-            {
-                int shotAxis = (int)Input.GetAxis(controllerShotInput);
-                if (shotAxis == 1 && cShotInputPrevValue == 0)
-                {
-                    OnShotPressed.Invoke();
-                    cShotInputPrevValue = 1;
-                }
-                else if (shotAxis == 0 && cShotInputPrevValue == 1)
-                    cShotInputPrevValue = 0;            
-            }
-
-            //ParryInput
-            if (canParry && Input.GetButtonDown(controllerParryInput))
-                OnParryPressed.Invoke();
-
-            //DashInput
-            if (canDash && Input.GetButtonDown(controllerDashInput))
-                OnDashPressed.Invoke(MoveDirection);
-        }
-        #endregion
-
-        #region Keyboard Inputs
-        [Header("Keyboard")]
-        /// <summary>
-        /// Tasto che corrisponde allo shot per la tastiera
-        /// </summary>
-        [SerializeField] string keyboardShotInput = "ShotKeyboard";
-        /// <summary>
-        /// Tasto che corrisponde al parry per la tastiera
-        /// </summary>
-        [SerializeField] string keyboardParryInput = "ParryKeyboard";
-        /// <summary>
-        /// Tasto che corrisponde al dash per la tastiera
-        /// </summary>
-        [SerializeField] string keyboardDashInput = "DashKeyboard";
-        /// <summary>
-        /// Asse che corrisponde al movimento orizzontale per la tastiera
-        /// </summary>
-        [SerializeField] string keyboardHorizontalInput = "HorizontalKeyboard";
-        /// <summary>
-        /// Asse che corrisponde al movimento verticale per la tastiera
-        /// </summary>
-        [SerializeField] string keyboardVerticalInput = "VerticalKeyboard";
-
-        /// <summary>
-        /// Funzione che si occupa di leggere l'input della tastiera
-        /// </summary>
-        void ReadKeyboardInput()
-        {
-            //Move Input
-            if (canMove)
-                CalculateMoveDirection(Input.GetAxisRaw(keyboardHorizontalInput), Input.GetAxisRaw(keyboardVerticalInput));
-
-            //Shoot Input
-            if (canShoot && Input.GetButtonDown(keyboardShotInput))
-                OnShotPressed.Invoke();
-
-            //ParryInput
-            if (canParry && Input.GetButtonDown(keyboardParryInput))
-                OnParryPressed.Invoke();
-
-            //DashInput
-            if (canDash && Input.GetButtonDown(keyboardDashInput))
-                OnDashPressed.Invoke(MoveDirection);
-        }
-        #endregion
-
+        bool isControllerConnected;
         /// <summary>
         /// Funzione che controlla se è connesso un controller
         /// </summary>
@@ -239,6 +63,98 @@ namespace Sangaku
             }
         }
 
+        public override void OnUpdate()
+        {
+            if (IsSetupped)
+            {
+                isControllerConnected = CheckControllerConnection();
+
+                ReadMovement(isControllerConnected);
+                ReadShot(isControllerConnected);
+                ReadDash(isControllerConnected);
+                ReadAttraction(isControllerConnected);
+            }
+        }
+
+        #region Movement
+        [Header("Movement")]
+        /// <summary>
+        /// Evento lanciato al cambio di direzione dell'asse di input
+        /// </summary>
+        [SerializeField] UnityVector3Event OnDirectionUpdate;
+
+        /// <summary>
+        ///  Asse che corrisponde al movimento orizzontale per il controller
+        /// </summary>
+        [SerializeField] string controllerHorizontalInput = "HorizontalLeftController";
+        /// <summary>
+        /// Asse che corrisponde al movimento verticale per il controller
+        /// </summary>
+        [SerializeField] string controllerVerticalInput = "VerticalLeftController";
+
+        /// <summary>
+        /// Asse che corrisponde al movimento orizzontale per la tastiera
+        /// </summary>
+        [SerializeField] string keyboardHorizontalInput = "HorizontalKeyboard";
+        /// <summary>
+        /// Asse che corrisponde al movimento verticale per la tastiera
+        /// </summary>
+        [SerializeField] string keyboardVerticalInput = "VerticalKeyboard";
+
+        /// <summary>
+        /// Direzione in cui viene mosso l'asse di input della direzione
+        /// </summary>
+        Vector3 _moveDirection;
+        /// <summary>
+        /// Propery che lancia un evento al cambio di direzione dell'input
+        /// </summary>
+        Vector3 MoveDirection
+        {
+            get { return _moveDirection; }
+            set
+            {
+                if (_moveDirection != value)
+                {
+                    _moveDirection = value;
+                    OnDirectionUpdate.Invoke(_moveDirection);
+                }
+            }
+        }
+
+        /// <summary>
+        /// True se l'abilità di movimento è attiva, false altrimenti
+        /// </summary>
+        bool canMove;
+
+        /// <summary>
+        /// Funzione che attiva o disattiva l'abilità di movimento
+        /// </summary>
+        /// <param name="_value"></param>
+        public void ToggleMovementInput(bool _value)
+        {
+            canMove = _value;
+            MoveDirection = Vector3.zero;
+        }
+
+        /// <summary>
+        /// Funzione che legge l'input per il movimento
+        /// </summary>
+        /// <param name="_isControllerConnected"></param>
+        void ReadMovement(bool _isControllerConnected)
+        {
+            if (!canMove)
+                return;
+
+            if (_isControllerConnected)
+            {
+                CalculateMoveDirection(Input.GetAxis(controllerHorizontalInput), Input.GetAxis(controllerVerticalInput));
+            }
+            else
+            {
+                CalculateMoveDirection(Input.GetAxisRaw(keyboardHorizontalInput), Input.GetAxisRaw(keyboardVerticalInput));
+            }
+        }
+
         /// <summary>
         /// Variabile temporanea per il calcolo del movimento in base alla camera
         /// </summary>
@@ -259,5 +175,182 @@ namespace Sangaku
                 MoveDirection = new Vector3(cameraBasedDirection.x, MoveDirection.y, cameraBasedDirection.z).normalized;
             }
         }
+        #endregion
+
+        #region Shot
+        [Header("Shot")]
+        /// <summary>
+        /// Evento lanciato alla pressione del bottone di shot
+        /// </summary>
+        [SerializeField] UnityEvent OnShotPressed;
+
+        /// <summary>
+        /// Tasto che corrisponde allo shot per il controlller
+        /// </summary>
+        [SerializeField] string controllerShotInput = "ShotController";
+        /// <summary>
+        /// Tasto che corrisponde allo shot per la tastiera
+        /// </summary>
+        [SerializeField] string keyboardShotInput = "ShotKeyboard";
+
+        /// <summary>
+        /// True se l'abilità di sparo è attiva, false altrimenti
+        /// </summary>
+        bool canShoot;
+
+        /// <summary>
+        /// Funzione che attiva o disattiva l'abilità di sparare
+        /// </summary>
+        /// <param name="_value"></param>
+        public void ToggleShootInput(bool _value)
+        {
+            canShoot = _value;
+        }
+
+        /// <summary>
+        /// Variabile che salva il valore al frame precedente dell'asse di shot
+        /// </summary>
+        int shotInputPrevValue;
+        /// <summary>
+        /// Funzione che legge l'input per lo sparo
+        /// </summary>
+        /// <param name="_isControllerConnected"></param>
+        void ReadShot(bool _isControllerConnected)
+        {
+            if (!canShoot)
+                return;
+
+            if (_isControllerConnected)
+            {
+                int shotAxis = (int)Input.GetAxis(controllerShotInput);
+                if (shotAxis == 1 && shotInputPrevValue == 0)
+                {
+                    OnShotPressed.Invoke();
+                    shotInputPrevValue = 1;
+                }
+                else if (shotAxis == 0 && shotInputPrevValue == 1)
+                {
+                    shotInputPrevValue = 0;
+                }
+            }
+            else
+            {
+                if (Input.GetButtonDown(keyboardShotInput))
+                    OnShotPressed.Invoke();
+            }
+        }
+        #endregion
+
+        #region Dash
+        [Header("Dash")]
+        /// <summary>
+        /// Evento lanciato alla pressione del bottone di dash
+        /// </summary>
+        [SerializeField] UnityVector3Event OnDashPressed;
+
+        /// <summary>
+        /// Tasto che corrisponde al dash per il controlller
+        /// </summary>
+        [SerializeField] string controllerDashInput = "DashController";
+        /// <summary>
+        /// Tasto che corrisponde al dash per la tastiera
+        /// </summary>
+        [SerializeField] string keyboardDashInput = "DashKeyboard";
+
+        /// <summary>
+        /// True se l'abilità di dash è attiva, false altrimenti
+        /// </summary>
+        bool canDash;
+
+        /// <summary>
+        /// Funzione che attiva o disattiva l'abilità di dash
+        /// </summary>
+        /// <param name="_value"></param>
+        public void ToggleDashInput(bool _value)
+        {
+            canDash = _value;
+        }
+
+        /// <summary>
+        /// Funzione che legge l'input per il dash
+        /// </summary>
+        /// <param name="_isControllerConnected"></param>
+        void ReadDash(bool _isControllerConnected)
+        {
+            if (!canDash)
+                return;
+
+            if (_isControllerConnected)
+            {
+                if (Input.GetButtonDown(controllerDashInput))
+                    OnDashPressed.Invoke(MoveDirection);
+            }
+            else
+            {
+                if (Input.GetButtonDown(keyboardDashInput))
+                    OnDashPressed.Invoke(MoveDirection);
+            }
+        }
+        #endregion
+
+        #region Attraction
+        [Header("Attraction")]
+        /// <summary>
+        /// Evento lanciato al mantenimento della pressione del bottone di attraction
+        /// </summary>
+        [SerializeField] UnityEvent OnAttractionPressed;
+        /// <summary>
+        /// Evento lanciato al rilascio del bottone di attraction
+        /// </summary>
+        [SerializeField] UnityEvent OnAttractionReleased;
+
+        /// <summary>
+        /// Tasto che corrisponde all'attraction per il controlller
+        /// </summary>
+        [SerializeField] string controllerAttractionInput = "AttractionController";
+        /// <summary>
+        /// Tasto che corrisponde all'attraction per la tastiera
+        /// </summary>
+        [SerializeField] string keyboardAttractionInput = "AttractionKeyboard";
+
+        /// <summary>
+        /// True se l'abilità di attrazione è attiva, false altrimenti
+        /// </summary>
+        bool canAttract;
+
+        /// <summary>
+        /// Funzione che attiva o disattiva l'abilità di attrazione
+        /// </summary>
+        /// <param name="_value"></param>
+        public void ToggleAttractInput(bool _value)
+        {
+            canAttract = _value;
+        }
+
+        /// <summary>
+        /// Funzione che legge l'input per l'attrazione
+        /// </summary>
+        /// <param name="_isControllerConnected"></param>
+        void ReadAttraction(bool _isControllerConnected)
+        {
+            if (!canAttract)
+                return;
+
+            if (_isControllerConnected)
+            {
+                if (Input.GetButtonDown(controllerAttractionInput))
+                    OnAttractionPressed.Invoke();
+                if (Input.GetButtonUp(controllerAttractionInput))
+                    OnAttractionReleased.Invoke();
+            }
+            else
+            {
+                if (Input.GetButtonDown(keyboardAttractionInput))
+                    OnAttractionPressed.Invoke();
+                if (Input.GetButtonUp(keyboardAttractionInput))
+                    OnAttractionReleased.Invoke();
+            }
+        }
+        #endregion
     }
 }

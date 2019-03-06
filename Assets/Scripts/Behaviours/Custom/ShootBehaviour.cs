@@ -55,7 +55,7 @@ namespace Sangaku
                 canShoot = true;
         }
 
-        private void Update()
+        public override void OnUpdate()
         {
             if (targets.Count > 0 && targets[0] == null)
             {
@@ -123,7 +123,6 @@ namespace Sangaku
         }
 
         #region API
-
         /// <summary>
         /// Funzione che instanzia un proiettile
         /// </summary>
@@ -180,8 +179,6 @@ namespace Sangaku
                 targets.Add(st.transform);
             }
         }
-
         #endregion
-
     }
 }

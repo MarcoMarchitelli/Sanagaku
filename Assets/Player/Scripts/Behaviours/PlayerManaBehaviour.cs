@@ -101,7 +101,7 @@ namespace Sangaku
             regeneration = _value;
         }
 
-        private void Update()
+        public override void OnUpdate()
         {
             if (regeneration)
                 CurrentMana += amountPerSecond * Time.deltaTime;
