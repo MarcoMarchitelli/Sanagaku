@@ -4,19 +4,13 @@ using System.Linq;
 
 namespace Sangaku
 {
-    /// <summary>
-    /// Classe astratta che definisce un'entità base
-    /// </summary>
-    public abstract class BaseEntity : MonoBehaviour, IEntity
+    public abstract class BaseEntity : MonoBehaviour, IEntity  
     {
         /// <summary>
         /// List of IBehaviours that describe this Entity.
         /// </summary>
         public List<IBehaviour> Behaviours { get; private set; }
 
-        /// <summary>
-        /// Riferimento al dato generico dell'entità
-        /// </summary>
         public IEntityData Data { get; set; }
 
         /// <summary>
@@ -24,8 +18,8 @@ namespace Sangaku
         /// </summary>
         public void SetUpEntity()
         {
-            Behaviours = GetComponentsInChildren<IBehaviour>().ToList();
             CustomSetup();
+            Behaviours = GetComponentsInChildren<IBehaviour>().ToList();
             foreach (IBehaviour behaviour in Behaviours)
             {
                 behaviour.Setup(this);
@@ -47,72 +41,6 @@ namespace Sangaku
             {
                 behaviour.Enable(_value);
             }
-        }
-
-        /// <summary>
-        /// Funzione che ritorna il behaviour corrispondente al tipo passato
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public T GetBehaviour<T>() where T : IBehaviour
-        {
-            foreach (IBehaviour b in Behaviours)
-            {
-                if (b.GetType().IsAssignableFrom(typeof(T)))
-                {
-                    return (T)b;
-                }
-            }
-
-            return default(T);
-        }
-
-        /// <summary>
-        /// Behaviour's custom late update.
-        /// </summary>
-        public virtual void OnUpdate()
-        {
-            for (int i = 0; i < Behaviours.Count; i++)
-            {
-                Behaviours[i].OnUpdate();
-            }
-        }
-
-        /// <summary>
-        /// Behaviour's custom update.
-        /// </summary>
-        public virtual void OnFixedUpdate()
-        {
-            for (int i = 0; i < Behaviours.Count; i++)
-            {
-                Behaviours[i].OnFixedUpdate();
-            }
-        }
-
-        /// <summary>
-        /// Behaviour's custom fixed update.
-        /// </summary>
-        public virtual void OnLateUpdate()
-        {
-            for (int i = 0; i < Behaviours.Count; i++)
-            {
-                Behaviours[i].OnLateUpdate();
-            }
-        }
-
-        protected void Update()
-        {
-            OnUpdate();
-        }
-
-        protected void FixedUpdate()
-        {
-            OnFixedUpdate();
-        }
-
-        protected void LateUpdate()
-        {
-            OnLateUpdate();
         }
     } 
 }

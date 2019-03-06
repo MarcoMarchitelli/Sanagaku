@@ -16,15 +16,21 @@ namespace Sangaku
         bool canMove = true;
         bool countTime = true;
         float timer;
-
-        Vector3 offsetDirection;
+        float distanceToTravel;
 
         protected override void CustomSetup()
         {
             timer = 0.01f;
             canMove = true;
             countTime = true;
-            offsetDirection = Vector3.zero;
+        }
+
+        private void Update()
+        {
+            if (countTime)
+                timer += Time.deltaTime;
+            if (canMove)
+                Move();
         }
 
         /// <summary>
@@ -32,34 +38,14 @@ namespace Sangaku
         /// </summary>
         void Move()
         {
-            Vector3 direction = CalculateForwardDirection();
-
-            if (direction.sqrMagnitude <= 0)
+            distanceToTravel = speedOverLifeTimeCurve.Evaluate(timer / moveTime) * moveSpeed * Time.deltaTime;
+            if (distanceToTravel <= 0)
             {
                 OnLifeEnd.Invoke(deathTime);
                 canMove = false;
                 return;
             }
-            transform.Translate(direction);
-        }
-
-        Vector3 CalculateForwardDirection()
-        {
-            float timeOfEvaluation = timer / moveTime;
-            //Debug.Log(timeOfEvaluation);
-            return Vector3.forward * (speedOverLifeTimeCurve.Evaluate(timeOfEvaluation) * moveSpeed * Time.deltaTime);
-        }
-
-        #region API
-        public override void OnUpdate()
-        {
-            if (!IsSetupped || Time.timeScale == 0)
-                return;
-
-            if (countTime)
-                timer += Time.deltaTime;
-            if (canMove)
-                Move();
+            transform.Translate(Vector3.forward * distanceToTravel);
         }
 
         public void SetEulerAngles(Vector3 _newDirection)
@@ -79,6 +65,6 @@ namespace Sangaku
             canMove = true;
             countTime = true;
         }
-        #endregion
+
     }
 }

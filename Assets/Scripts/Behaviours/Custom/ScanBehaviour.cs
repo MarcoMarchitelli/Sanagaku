@@ -5,6 +5,7 @@ namespace Sangaku
     public class ScanBehaviour : BaseBehaviour
     {
         #region Inspector Variables
+
         public enum ScanType { fieldOfView, circularArea };
 
         [SerializeField] ScanType scanType;
@@ -23,15 +24,18 @@ namespace Sangaku
         [SerializeField] float scanAreaRadius = 5f;
 
         [SerializeField] UnityTransformEvent OnTargetSpotted, OnTargetLost;
+
         #endregion
 
         #region Private Variables
+
         Transform target;
         Light spotLight;
         SphereCollider sphereCollider;
         float spotlightRangeDifference = 3f;
         float targetVisibleTimer;
         bool hasSpottedTargetOnce = false;
+
         #endregion
 
         protected override void CustomSetup()
@@ -67,7 +71,17 @@ namespace Sangaku
         }
 
         #region MonoBehaviour methods
-        public override void OnUpdate()
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            if (scanType == ScanType.fieldOfView)
+                Gizmos.DrawRay(transform.position, transform.forward * scanAreaLenght);
+            else
+                Gizmos.DrawWireSphere(transform.position, scanAreaRadius);
+        }
+
+        private void Update()
         {
             if (CanSeeTarget())
             {
@@ -86,22 +100,15 @@ namespace Sangaku
             if (targetVisibleTimer >= timeToScan && !hasSpottedTargetOnce)
             {
                 OnTargetSpotted.Invoke(target);
+                print(name+" has found a target");
                 hasSpottedTargetOnce = true;
             }
             if (targetVisibleTimer < timeToScan && hasSpottedTargetOnce)
             {
                 OnTargetLost.Invoke(target);
+                print(name + " has lost his target");
                 hasSpottedTargetOnce = false;
             }
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            if (scanType == ScanType.fieldOfView)
-                Gizmos.DrawRay(transform.position, transform.forward * scanAreaLenght);
-            else
-                Gizmos.DrawWireSphere(transform.position, scanAreaRadius);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -121,6 +128,8 @@ namespace Sangaku
         }
 
         #endregion
+
+        #region API
 
         bool CanSeeTarget()
         {
@@ -165,5 +174,8 @@ namespace Sangaku
             }
             return false;
         }
+
+        #endregion
+
     }
 }

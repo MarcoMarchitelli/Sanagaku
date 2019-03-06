@@ -21,24 +21,9 @@
         void Setup(IEntity _entity);
 
         /// <summary>
-        /// Behaviour's custom update.
-        /// </summary>
-        void OnUpdate();
-
-        /// <summary>
-        /// Behaviour's custom fixed update.
-        /// </summary>
-        void OnFixedUpdate();
-
-        /// <summary>
-        /// Behaviour's custom late update.
-        /// </summary>
-        void OnLateUpdate();
-
-        /// <summary>
         /// Toggles the activity of the behaviour.
         /// </summary>
         /// <param name="_value">if active or not.</param>
         void Enable(bool _value);
-    }
+    } 
 }

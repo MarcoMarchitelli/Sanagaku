@@ -74,7 +74,7 @@ namespace Sangaku
                 OnTargetReached.Invoke();
         }
 
-        public override void OnUpdate()
+        void Update()
         {
             CheckPath();
         }

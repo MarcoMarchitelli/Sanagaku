@@ -74,14 +74,13 @@ namespace Sangaku
         public void CatchMana(float _manaAmount)
         {
             if (enemyHitCount <= 1)
+            {
                 mana.AddMana(_manaAmount);
+            }
             else
                 mana.AddMana(_manaAmount + (manaModifier * (enemyHitCount - 1)));
+            print(name + " caught " + mana.GetMana() + " mana!");
         }
-
-        float distanceFromPlayer;
-        float oldDistanceFromPlayer;
-        bool isDepartingFromPlayer = true;
 
         void CheckPlayerDistance(Vector3 _playerPosition)
         {
@@ -134,9 +133,12 @@ namespace Sangaku
             }
         }
 
-        public override void OnUpdate()
+        float distanceFromPlayer;
+        float oldDistanceFromPlayer;
+        bool isDepartingFromPlayer = true;
+        private void Update()
         {
-            if (data.PlayerReference)
+            if(data.PlayerReference)
                 CheckPlayerDistance(data.PlayerReference.transform.position);
         }
 
@@ -147,5 +149,6 @@ namespace Sangaku
             oldDistanceFromPlayer = Vector3.Distance(transform.position, data.PlayerReference.transform.position);
             base.Enable(_value);
         }
+
     }
 }

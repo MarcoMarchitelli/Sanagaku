@@ -38,6 +38,7 @@ namespace Sangaku
                 caughtOrb = _orb;
                 orbMana = caughtOrb.GetComponent<ManaBehaviour>();
                 playerMana.AddMana(orbMana.GetMana());
+                print(name + " received " + orbMana.GetMana() + " mana from " + caughtOrb.name +"!");
                 caughtOrb.SM.GoToCaughtState(orbCatchPoint);
                 OnOrbCatch.Invoke(catchDuration);
             }
