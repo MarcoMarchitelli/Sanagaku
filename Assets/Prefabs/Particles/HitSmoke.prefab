@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 198616287802157204}
   - component: {fileID: 199865703890649536}
   - component: {fileID: 5407029293476020486}
+  - component: {fileID: 7552895823760315945}
   - component: {fileID: 5577609640418190411}
   m_Layer: 0
   m_Name: HitSmoke
@@ -4788,6 +4789,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3136412f99cd38c42b61e9a6e6a947a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7552895823760315945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350466065396174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20303f673bc537b4a800172533b24c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnParticleStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnParticleUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnParticleEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5577609640418190411}
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &5577609640418190411
 MonoBehaviour:
   m_ObjectHideFlags: 0
