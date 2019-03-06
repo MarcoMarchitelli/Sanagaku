@@ -26,18 +26,6 @@ namespace Sangaku
         /// Riferimento al PlayerAttractionBehaviour
         /// </summary>
         PlayerAttractionBehaviour playerAttractionBehaviour;
-        /// <summary>
-        /// Riferimento al OrbMovementBehaviour
-        /// </summary>
-        OrbMovementBehaviour movementBehaviour;
-
-        /// <summary>
-        /// Custom setup del behaviour
-        /// </summary>
-        protected override void CustomSetup()
-        {
-            movementBehaviour = Entity.GetBehaviour<OrbMovementBehaviour>();
-        }
 
         /// <summary>
         /// direzione dell'attrazione
