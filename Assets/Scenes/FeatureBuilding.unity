@@ -463,7 +463,7 @@ RectTransform:
   - {fileID: 7052761870814663363}
   - {fileID: 1657632642}
   m_Father: {fileID: 1703164063}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -481,6 +481,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pillar Trap (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
+        type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
+        type: 3}
+      propertyPath: maxHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
+        type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
+        type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
+        type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 274799285}
+    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
+        type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Destroy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
+        type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
+        type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 274799286}
+    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
+        type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NotifyCompletion
       objectReference: {fileID: 0}
     - target: {fileID: 2834909684165211738, guid: 3cc9546a2f9902d47985bbda54e273f5,
         type: 3}
@@ -536,51 +581,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
-        type: 3}
-      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
-        type: 3}
-      propertyPath: maxHealth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
-        type: 3}
-      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
-        type: 3}
-      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
-        type: 3}
-      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 274799285}
-    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
-        type: 3}
-      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Destroy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
-        type: 3}
-      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
-        type: 3}
-      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 274799286}
-    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
-        type: 3}
-      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NotifyCompletion
       objectReference: {fileID: 0}
     - target: {fileID: 2834909684165211734, guid: 3cc9546a2f9902d47985bbda54e273f5,
         type: 3}
@@ -1501,6 +1501,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar Trap
       objectReference: {fileID: 0}
+    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
+        type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1004004173}
     - target: {fileID: 2834909684165211738, guid: 3cc9546a2f9902d47985bbda54e273f5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1556,11 +1561,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
-        type: 3}
-      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1004004173}
     - target: {fileID: 2834909684165211734, guid: 3cc9546a2f9902d47985bbda54e273f5,
         type: 3}
       propertyPath: dealsOnTrigger
@@ -2189,11 +2189,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 675439689}
-  - {fileID: 595632404}
   - {fileID: 5664924326629229387}
   - {fileID: 6731608094954081826}
   - {fileID: 883341388609112069}
   - {fileID: 883341390328856631}
+  - {fileID: 595632404}
   m_Father: {fileID: 230792482}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
