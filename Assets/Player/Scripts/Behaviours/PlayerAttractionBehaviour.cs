@@ -84,8 +84,8 @@ namespace Sangaku
         /// </summary>
         protected override void CustomSetup()
         {
-            shootBehaviour = GetComponent<PlayerShootBehaviour>();
-            manaBehaviour = GetComponent<PlayerManaBehaviour>();
+            shootBehaviour = Entity.GetBehaviour<PlayerShootBehaviour>();
+            manaBehaviour = Entity.GetBehaviour<PlayerManaBehaviour>();
             orbsInPlay = shootBehaviour.GetOrbsInPlay();
             shootPoint = shootBehaviour.GetShootPoint();
             orbsToAttract = new List<OrbAttractionBehaviour>();
@@ -218,7 +218,7 @@ namespace Sangaku
         /// <param name="_orb"></param>
         void SetOrbAsAttractable(OrbController _orb)
         {
-            OrbAttractionBehaviour orbAttractionBehaviour = _orb.GetComponent<OrbAttractionBehaviour>();
+            OrbAttractionBehaviour orbAttractionBehaviour = _orb.GetBehaviour<OrbAttractionBehaviour>();
             if (!orbsToAttract.Contains(orbAttractionBehaviour))
             {
                 orbAttractionBehaviour.SetPlayerAttractionBehaviour(this);

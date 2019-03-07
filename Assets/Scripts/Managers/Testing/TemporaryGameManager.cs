@@ -37,9 +37,7 @@ public class TemporaryGameManager : MonoBehaviour
     private void Update()
     {
         if (canPause && Input.GetButton("Pause"))
-        {
             GoToPauseMenu();
-        }
     }
 
     public void GoToMainMenu()

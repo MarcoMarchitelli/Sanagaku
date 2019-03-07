@@ -17,14 +17,11 @@ namespace Sangaku
         bool countTime = true;
         float timer;
 
-        Vector3 offsetDirection;
-
         protected override void CustomSetup()
         {
             timer = 0.01f;
             canMove = true;
             countTime = true;
-            offsetDirection = Vector3.zero;
         }
 
         /// <summary>
@@ -46,7 +43,6 @@ namespace Sangaku
         Vector3 CalculateForwardDirection()
         {
             float timeOfEvaluation = timer / moveTime;
-            //Debug.Log(timeOfEvaluation);
             return Vector3.forward * (speedOverLifeTimeCurve.Evaluate(timeOfEvaluation) * moveSpeed * Time.deltaTime);
         }
 
