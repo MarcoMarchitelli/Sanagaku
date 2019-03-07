@@ -37,9 +37,14 @@ namespace Sangaku
 
         protected override void CustomSetup()
         {
-            if (!projectilePrefab)
+            if (!projectilePrefab && !usesObjectPooler)
             {
                 Debug.LogError(name + " has no projectile referenced!");
+                return;
+            }
+            if (string.IsNullOrEmpty(projectilePoolTag))
+            {
+                Debug.LogError(name + " has no projectile pool referenced!");
                 return;
             }
             if (!shootPoint)
