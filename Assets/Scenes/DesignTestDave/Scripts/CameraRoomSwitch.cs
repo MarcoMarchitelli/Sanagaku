@@ -17,7 +17,6 @@ public class CameraRoomSwitch : MonoBehaviour
         {
             //if (cam1.activeSelf == false)
             {
-                Debug.Log("shift");
                 cam1.SetActive(false);
                 cam2.SetActive(true);
                 
