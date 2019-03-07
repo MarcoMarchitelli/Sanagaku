@@ -19,6 +19,7 @@ public class DamageReceiverUI : MonoBehaviour
         HorizontalLayoutGroup layoutGroup = GetComponent<HorizontalLayoutGroup>();
 
         StartCoroutine(LayoutSetup(layoutGroup));
+        print(name + "ui setup done!");
     }
 
     public void UpdateUI(int _newHealth)
