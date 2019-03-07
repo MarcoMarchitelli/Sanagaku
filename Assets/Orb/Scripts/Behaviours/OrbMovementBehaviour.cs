@@ -65,10 +65,7 @@ namespace Sangaku
         public override void OnUpdate()
         {
             if (Time.timeScale == 0)
-            {
-                Debug.Log(canMove + " - " + IsSetupped);
                 return;
-            }
 
             if (!IsSetupped)
                 return;
