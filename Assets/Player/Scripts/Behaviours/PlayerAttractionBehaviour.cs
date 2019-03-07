@@ -98,7 +98,6 @@ namespace Sangaku
             if(!_value)
             {
                 canAttract = false;
-
                 DisableAttraction();
             }
         }
