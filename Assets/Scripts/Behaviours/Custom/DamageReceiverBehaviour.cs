@@ -15,7 +15,7 @@ namespace Sangaku
         }
 
         [SerializeField] int maxHealth;
-        public int _currentHealth;
+        int _currentHealth;
         int CurrentHealth
         {
             get { return _currentHealth; }
