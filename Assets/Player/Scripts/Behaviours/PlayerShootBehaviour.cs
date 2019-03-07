@@ -64,10 +64,8 @@ namespace Sangaku
         /// <param name="_orb"></param>
         public void RemoveOrbFromPlay(OrbController _orb)
         {
-            Debug.Log("Removed");
-
-            orbsInPlay.Remove(_orb);
-            CheckOrbsInPlay();
+            if (orbsInPlay.Remove(_orb))
+                CheckOrbsInPlay();
         }
 
         /// <summary>
@@ -111,7 +109,6 @@ namespace Sangaku
         /// <param name="_orb"></param>
         void AddOrbInPlay(OrbController _orb)
         {
-            Debug.Log("Added");
             if (!orbsInPlay.Contains(_orb))
             {
                 orbsInPlay.Add(_orb);
