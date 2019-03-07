@@ -17,14 +17,9 @@ namespace Sangaku
         bool countTime = true;
         float timer;
 
-        Vector3 offsetDirection;
-
         protected override void CustomSetup()
         {
-            timer = 0.01f;
-            canMove = true;
-            countTime = true;
-            offsetDirection = Vector3.zero;
+            ResetMovement();
         }
 
         /// <summary>
