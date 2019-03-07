@@ -38,17 +38,39 @@ namespace Sangaku
             transform.Translate(direction);
         }
 
+        /// <summary>
+        /// Mi salvo il delta time del frame precedente da usare nel caso in cui il delta time corrente sia 0
+        /// </summary>
+        float prevDeltaTime;
         Vector3 CalculateForwardDirection()
         {
             float timeOfEvaluation = timer / moveTime;
-            //Debug.Log(timeOfEvaluation);
-            return Vector3.forward * (speedOverLifeTimeCurve.Evaluate(timeOfEvaluation) * moveSpeed * Time.deltaTime);
+            float evaluatedSpeed = speedOverLifeTimeCurve.Evaluate(timeOfEvaluation) * moveSpeed;
+
+            // se il delta time è zero anche solo per qualche frame la palla smette di muoversi
+            if (Time.deltaTime == 0)
+            {
+                evaluatedSpeed *= prevDeltaTime;
+            }
+            else
+            {
+                evaluatedSpeed *= Time.deltaTime;
+                prevDeltaTime = Time.deltaTime;
+            }
+
+            return Vector3.forward * evaluatedSpeed;
         }
 
         #region API
         public override void OnUpdate()
         {
-            if (!IsSetupped || Time.timeScale == 0)
+            if (Time.timeScale == 0)
+            {
+                Debug.Log(canMove + " - " + IsSetupped);
+                return;
+            }
+
+            if (!IsSetupped)
                 return;
 
             if (countTime)
