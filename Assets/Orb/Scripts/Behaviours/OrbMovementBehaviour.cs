@@ -19,9 +19,7 @@ namespace Sangaku
 
         protected override void CustomSetup()
         {
-            timer = 0.01f;
-            canMove = true;
-            countTime = true;
+            ResetMovement();
         }
 
         /// <summary>
@@ -43,6 +41,7 @@ namespace Sangaku
         Vector3 CalculateForwardDirection()
         {
             float timeOfEvaluation = timer / moveTime;
+            //Debug.Log(timeOfEvaluation);
             return Vector3.forward * (speedOverLifeTimeCurve.Evaluate(timeOfEvaluation) * moveSpeed * Time.deltaTime);
         }
 
