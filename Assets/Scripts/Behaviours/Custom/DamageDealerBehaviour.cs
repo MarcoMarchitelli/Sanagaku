@@ -28,7 +28,7 @@ namespace Sangaku
 
         protected virtual void OnTriggerEnter(Collider other)
         {
-            if (dealsOnTrigger)
+            if (IsSetupped && dealsOnTrigger)
             {
                 DamageReceiverBehaviour receiver = other.GetComponent<DamageReceiverBehaviour>();
                 if (receiver)
@@ -38,7 +38,7 @@ namespace Sangaku
 
         protected virtual void OnCollisionEnter(Collision collision)
         {
-            if (dealsOnCollision)
+            if (IsSetupped && dealsOnCollision)
             {
                 DamageReceiverBehaviour receiver = collision.collider.GetComponent<DamageReceiverBehaviour>();
                 if (receiver)
