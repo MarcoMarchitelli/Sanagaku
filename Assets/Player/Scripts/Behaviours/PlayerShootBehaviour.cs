@@ -8,6 +8,7 @@ namespace Sangaku
     {
         #region Serialized Fields
         [SerializeField] protected string projectilePool = "Orb";
+        [SerializeField] protected int maxOrbsInGame = 1;
         [SerializeField] protected Transform shootPoint;
         [Tooltip("How many seconds between each shot.")]
         [SerializeField] protected float secondsBetweenShots;
@@ -63,11 +64,8 @@ namespace Sangaku
         /// <param name="_orb"></param>
         public void RemoveOrbFromPlay(OrbController _orb)
         {
-            if (orbsInPlay.Contains(_orb))
-            {
-                orbsInPlay.Remove(_orb);
+            if (orbsInPlay.Remove(_orb))
                 CheckOrbsInPlay();
-            }
         }
 
         /// <summary>
@@ -91,16 +89,15 @@ namespace Sangaku
         /// </summary>
         void ShootOrb()
         {
-            if (playerMana.GetMana() >= cost)
+            if (orbsInPlay.Count < maxOrbsInGame && playerMana.GetMana() >= cost)
             {
-                playerMana.AddMana(-cost);
-
                 //OrbController instantiatedOrb = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<OrbController>();
                 //instantiatedOrb.SetUpOrbEntity(Entity as PlayerController);
 
+                playerMana.AddMana(-cost);
                 OrbController pooledOrb = ObjectPooler.Instance.GetPoolableFromPool(projectilePool, shootPoint.position, shootPoint.rotation) as OrbController;
-                pooledOrb.SetUpOrbEntity(Entity as PlayerController);
                 AddOrbInPlay(pooledOrb);
+                pooledOrb.SetUpOrbEntity(Entity as PlayerController);
 
                 OnOrbShoot.Invoke(secondsBetweenShots);
             }
