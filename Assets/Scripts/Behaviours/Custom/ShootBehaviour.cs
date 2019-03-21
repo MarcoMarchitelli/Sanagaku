@@ -37,9 +37,14 @@ namespace Sangaku
 
         protected override void CustomSetup()
         {
-            if (!projectilePrefab)
+            if (!projectilePrefab && !usesObjectPooler)
             {
                 Debug.LogError(name + " has no projectile referenced!");
+                return;
+            }
+            if (string.IsNullOrEmpty(projectilePoolTag))
+            {
+                Debug.LogError(name + " has no projectile pool referenced!");
                 return;
             }
             if (!shootPoint)
@@ -55,7 +60,7 @@ namespace Sangaku
                 canShoot = true;
         }
 
-        private void Update()
+        public override void OnUpdate()
         {
             if (targets.Count > 0 && targets[0] == null)
             {
@@ -123,7 +128,6 @@ namespace Sangaku
         }
 
         #region API
-
         /// <summary>
         /// Funzione che instanzia un proiettile
         /// </summary>
@@ -180,8 +184,6 @@ namespace Sangaku
                 targets.Add(st.transform);
             }
         }
-
         #endregion
-
     }
 }

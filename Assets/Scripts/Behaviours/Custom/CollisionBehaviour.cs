@@ -60,7 +60,7 @@ namespace Sangaku
 
             for (int i = 0; i < _entitiesToIgnore.Count; i++)
             {
-                if (_collider.GetComponent(_entitiesToIgnore[i].GetType()))
+                if (_entitiesToIgnore[i] != null && _collider.GetComponent(_entitiesToIgnore[i].GetType()))
                     return true;
             }
             return false;
@@ -119,7 +119,7 @@ namespace Sangaku
 
             for (int i = 0; i < _entitiesToIgnore.Count; i++)
             {
-                if (_collision.collider.GetComponent(_entitiesToIgnore[i].GetType()))
+                if (_entitiesToIgnore[i] != null && _collision.collider.GetComponent(_entitiesToIgnore[i].GetType()))
                     return true;
             }
             return false;

@@ -15,7 +15,7 @@ namespace Sangaku
         }
 
         [SerializeField] int maxHealth;
-        public int _currentHealth;
+        int _currentHealth;
         int CurrentHealth
         {
             get { return _currentHealth; }
@@ -43,7 +43,6 @@ namespace Sangaku
             {
                 tempHealth = 0;
                 OnHealthDepleated.Invoke();
-                print(name + " fucking died.");
             }
             if (tempHealth > maxHealth)
                 tempHealth = maxHealth;

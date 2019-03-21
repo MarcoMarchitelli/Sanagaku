@@ -9,9 +9,8 @@ namespace Sangaku
         public override void Enter()
         { 
             foreach (BaseBehaviour baseBehaviour in context.OrbEntity.Behaviours)
-            {
                 baseBehaviour.Enable(false);
-            }
+
             orbTransform = context.OrbEntity.transform;
             context.orbManaBehaviour.ResetMana();
         }
@@ -25,11 +24,9 @@ namespace Sangaku
         public override void Exit()
         {
             foreach (BaseBehaviour baseBehaviour in context.OrbEntity.Behaviours)
-            {
-                baseBehaviour.enabled = true;
-            }
+                baseBehaviour.Enable(true);
+
             orbTransform = null;
         }
     }
-
 }

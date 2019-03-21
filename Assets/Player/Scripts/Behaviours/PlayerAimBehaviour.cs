@@ -39,7 +39,7 @@ namespace Sangaku
             rBody = GetComponent<Rigidbody>();
         }
 
-        void FixedUpdate()
+        public override void OnFixedUpdate()
         {
             if (IsSetupped)
             {

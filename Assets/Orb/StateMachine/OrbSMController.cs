@@ -8,17 +8,12 @@ namespace Sangaku
         [Header("Context Data")]
         public BaseEntity OrbEntity;
 
-        #region SMBase Methods
-
         protected override void ContextSetup()
         {
             context = new OrbSMContext(OrbEntity, null);
         }
 
-        protected override void OnStateChange(IState _endedState)
-        {
-
-        }
+        protected override void OnStateChange(IState _endedState) { }
 
         public void GoToCaughtState(Transform _catchPoint)
         {
@@ -37,8 +32,6 @@ namespace Sangaku
         {
             StateMachine.SetTrigger("GoToFreeState");
         }
-
-        #endregion
     }
 
     public class OrbSMContext : IContext
@@ -58,5 +51,4 @@ namespace Sangaku
             orbManaBehaviour = OrbEntity.GetComponentInChildren<ManaBehaviour>();
         }
     }
-
 }

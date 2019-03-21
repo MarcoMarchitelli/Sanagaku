@@ -16,7 +16,6 @@ namespace Deirin.Utility
         [HideInInspector] public float timer;
 
         #region MonoBehaviour methods
-
         private void OnEnable()
         {
             if (repeat)
@@ -27,7 +26,7 @@ namespace Deirin.Utility
 
         private void OnDisable()
         {
-            if(repeat)
+            if (repeat)
                 OnTimerEnd.RemoveListener(ResetTimer);
             else
                 OnTimerEnd.RemoveListener(StopTimer);
@@ -48,15 +47,15 @@ namespace Deirin.Utility
                 OnTimerEnd.Invoke();
             }
         }
-
         #endregion
 
         #region API
-
         public void StartTimer(float _time)
         {
             time = _time;
+            timer = 0;
             countTime = true;
+            OnTimerStart.Invoke();
         }
 
         public void StartTimer()
@@ -68,13 +67,11 @@ namespace Deirin.Utility
 
         public void StopTimer()
         {
-            timer = 0;
             countTime = false;
         }
 
         public void EndTimer()
         {
-            timer = 0;
             countTime = false;
             OnTimerEnd.Invoke();
         }
@@ -82,6 +79,11 @@ namespace Deirin.Utility
         public void PauseTimer()
         {
             countTime = false;
+        }
+
+        public void ResumeTimer()
+        {
+            countTime = true;
         }
 
         public void ResetTimer()
@@ -97,8 +99,6 @@ namespace Deirin.Utility
         {
             Debug.Log(_msg);
         }
-
         #endregion
-
     }
 }
