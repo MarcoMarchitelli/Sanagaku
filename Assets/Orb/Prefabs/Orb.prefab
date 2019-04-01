@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 960375905}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Timers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1108234052}
   - component: {fileID: 1108234051}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Timer_Orb_Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 2669305038727761155}
   - component: {fileID: 7454922714828287361}
   - component: {fileID: 4078794250476120299}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: StateMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2832954048863047186}
   - component: {fileID: 2740674700296184602}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 1954205545}
   - component: {fileID: 8180793333761143363}
   - component: {fileID: 5503894381244897270}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Orb
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
@@ -424,9 +424,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e42919c70cdec429149c5d8f44a19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceLayer:
-    serializedVersion: 2
-    m_Bits: 512
   manaModifier: 2
   OnBounce:
     m_PersistentCalls:
@@ -460,22 +457,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Sangaku.UnityDamageReceiverEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  OnDestroyHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4422905089294622160}
-        m_MethodName: Destroy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   OnPlayerHit:
     m_PersistentCalls:
       m_Calls:
@@ -492,6 +473,22 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2835863131274270905}
         m_MethodName: StopMoveTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDestroyHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4422905089294622160}
+        m_MethodName: Destroy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -710,7 +707,7 @@ GameObject:
   - component: {fileID: 2837079376354197067}
   - component: {fileID: 2837079376354197069}
   - component: {fileID: 2837079376354197066}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
