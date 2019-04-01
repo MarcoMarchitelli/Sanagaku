@@ -1,4 +1,5 @@
-﻿
+﻿using UnityEngine;
+
 namespace Sangaku
 {
     public class OrbController : BaseEntity, IPoolable
@@ -8,6 +9,14 @@ namespace Sangaku
         /// </summary>
         public OrbSMController SM;
 
+        /// <summary>
+        /// Riferimento alla grafica dell'orb
+        /// </summary>
+        [SerializeField] MeshRenderer orbGraphic;
+
+        /// <summary>
+        /// Riferimento al player
+        /// </summary>
         PlayerController playerReference;
 
         /// <summary>

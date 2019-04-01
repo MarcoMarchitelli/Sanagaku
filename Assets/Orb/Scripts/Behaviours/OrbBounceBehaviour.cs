@@ -108,10 +108,23 @@ namespace Sangaku
                 mana.AddMana(_manaAmount + (manaModifier * (enemyHitCount - 1)));
         }
 
+        /// <summary>
+        /// Distanza dal player
+        /// </summary>
         float distanceFromPlayer;
+        /// <summary>
+        /// Distanza precedente dal player
+        /// </summary>
         float oldDistanceFromPlayer;
+        /// <summary>
+        /// True se l'orb sta partenod dal player, false altrimenti
+        /// </summary>
         bool isDepartingFromPlayer = true;
 
+        /// <summary>
+        /// Funzione che controlla la distanza dal player
+        /// </summary>
+        /// <param name="_playerPosition"></param>
         void CheckPlayerDistance(Vector3 _playerPosition)
         {
             distanceFromPlayer = Vector3.Distance(transform.position, _playerPosition);
