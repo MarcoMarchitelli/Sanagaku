@@ -8,9 +8,6 @@ namespace Sangaku
         /// </summary>
         public OrbSMController SM;
 
-        /// <summary>
-        /// Riferimento al player
-        /// </summary>
         PlayerController playerReference;
 
         /// <summary>
