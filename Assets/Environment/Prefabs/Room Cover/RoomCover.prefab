@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5592641131845488099}
   - component: {fileID: 8942843209299699487}
-  - component: {fileID: 1239391595895072485}
+  - component: {fileID: 1842627444403949341}
   m_Layer: 0
   m_Name: RoomCover Trigger
   m_TagString: Untagged
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3041790819973581707}
   m_LocalRotation: {x: -0, y: -0.70710635, z: -0, w: 0.7071072}
-  m_LocalPosition: {x: 15.97124, y: 1.6725006, z: 9.589877}
-  m_LocalScale: {x: 6.4379973, y: 2.9963, z: 0.31291983}
+  m_LocalPosition: {x: 15.97, y: 1.03, z: 9.94}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8451656073377833153}
   m_RootOrder: 0
@@ -43,9 +43,9 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2.55, y: 2.9963, z: 0.3129198}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1239391595895072485
+--- !u!114 &1842627444403949341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,10 +54,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 3041790819973581707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42f4ba2af46236c48b490a77fce50f5f, type: 3}
+  m_Script: {fileID: 11500000, guid: 967719ce4a3e79f45b62e4b459c845f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShaderController: {fileID: 8451656073910452359}
+  OnTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5167431007908959537}
+        m_MethodName: StartDissolveAnimation
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnTriggerStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  entitiesToIgnoreForTrigger: []
+  OnCollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  entitiesToIgnoreForCollision: []
 --- !u!1 &8451656073377833152
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,7 +109,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8451656073377833153}
-  m_Layer: 0
+  - component: {fileID: 5167431007908959537}
+  m_Layer: 12
   m_Name: RoomCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,6 +133,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5167431007908959537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451656073377833152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f4ba2af46236c48b490a77fce50f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShaderController: {fileID: 8451656073910452359}
 --- !u!1 &8451656073910452477
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,9 +158,8 @@ GameObject:
   - component: {fileID: 8451656073910452358}
   - component: {fileID: 8451656073910452353}
   - component: {fileID: 8451656073910452352}
-  - component: {fileID: 8451656073910452355}
   - component: {fileID: 8451656073910452359}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RoomCover_Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +174,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8451656073910452477}
   m_LocalRotation: {x: -0, y: -0.70710635, z: -0, w: 0.7071072}
-  m_LocalPosition: {x: -8.8, y: 6.5, z: -10.8}
+  m_LocalPosition: {x: -8.8, y: 8, z: -10.799999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8451656073377833153}
@@ -154,7 +209,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -200,7 +255,7 @@ MonoBehaviour:
     m_SubmeshIndex: 0
     m_ManualUV: 0
     elementGroup: -1
-    m_TextureGroup: -1
+    m_TextureGroup: 0
   m_SharedVertices:
   - m_Vertices: 00000000
   - m_Vertices: 01000000
@@ -238,20 +293,6 @@ MonoBehaviour:
   - a: 3
     b: 2
   m_SelectedVertices: 0300000002000000
---- !u!64 &8451656073910452355
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8451656073910452477}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
 --- !u!95 &8451656073910452359
 Animator:
   serializedVersion: 3

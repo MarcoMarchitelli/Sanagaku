@@ -10,14 +10,17 @@ namespace Sangaku
     public abstract class BaseEntity : MonoBehaviour, IEntity
     {
         /// <summary>
-        /// List of IBehaviours that describe this Entity.
-        /// </summary>
-        public List<IBehaviour> Behaviours { get; private set; }
-
-        /// <summary>
         /// Riferimento al dato generico dell'entità
         /// </summary>
         public IEntityData Data { get; set; }
+        /// <summary>
+        /// List of IBehaviours that describe this Entity.
+        /// </summary>
+        public List<IBehaviour> Behaviours { get; private set; }
+        /// <summary>
+        /// True se il Behaviour è stato setuppato, false altrimenti
+        /// </summary>
+        public bool IsSetupped { get; private set; }
 
         /// <summary>
         /// Basic Entity setup. Every Entity needs to implement this to function.
@@ -30,6 +33,8 @@ namespace Sangaku
             {
                 behaviour.Setup(this);
             }
+
+            IsSetupped = true;
         }
 
         /// <summary>
@@ -72,6 +77,9 @@ namespace Sangaku
         /// </summary>
         public virtual void OnUpdate()
         {
+            if (!IsSetupped)
+                return;
+
             for (int i = 0; i < Behaviours.Count; i++)
             {
                 Behaviours[i].OnUpdate();
@@ -83,6 +91,9 @@ namespace Sangaku
         /// </summary>
         public virtual void OnFixedUpdate()
         {
+            if (!IsSetupped)
+                return;
+
             for (int i = 0; i < Behaviours.Count; i++)
             {
                 Behaviours[i].OnFixedUpdate();
@@ -94,6 +105,9 @@ namespace Sangaku
         /// </summary>
         public virtual void OnLateUpdate()
         {
+            if (!IsSetupped)
+                return;
+
             for (int i = 0; i < Behaviours.Count; i++)
             {
                 Behaviours[i].OnLateUpdate();

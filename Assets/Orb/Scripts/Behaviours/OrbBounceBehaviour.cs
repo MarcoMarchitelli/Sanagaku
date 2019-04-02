@@ -3,23 +3,55 @@ using UnityEngine;
 
 namespace Sangaku
 {
+    /// <summary>
+    /// Behaviour che gestisce il rimablzo dell'orb
+    /// </summary>
     public class OrbBounceBehaviour : BaseBehaviour
     {
-        [SerializeField] LayerMask bounceLayer;
+        /// <summary>
+        /// Quantità di mana raccolta per nemico colpito
+        /// </summary>
         [SerializeField] float manaModifier = 2f;
 
         #region Events
+        /// <summary>
+        /// Evento lanciato al bounce della pallina
+        /// </summary>
         [SerializeField] UnityVector3Event OnBounce;
+        /// <summary>
+        /// Evento lanciato alla collisione con un DamageReceiver
+        /// </summary>
         [SerializeField] UnityDamageReceiverEvent OnDamageReceiverHit;
-        [SerializeField] UnityEvent OnDestroyHit, OnPlayerHit;
+        /// <summary>
+        /// Evento lanciato alla collisione con il player
+        /// </summary>
+        [SerializeField] UnityEvent OnPlayerHit;
+        /// <summary>
+        /// Evento lanciato alla collisione con un elemento che distrugge l'orb
+        /// </summary>
+        [SerializeField] UnityEvent OnDestroyHit;
         #endregion
 
+        /// <summary>
+        /// Dati dell'orb
+        /// </summary>
         OrbControllerData data;
-
+        /// <summary>
+        /// Numero di bounce dell'orb
+        /// </summary>
         int bounces;
+        /// <summary>
+        /// Contatore di hit ai nemici
+        /// </summary>
         int enemyHitCount;
+        /// <summary>
+        /// Riferimento al ManaBehaviour
+        /// </summary>
         ManaBehaviour mana;
 
+        /// <summary>
+        /// Setup custom del behaviour
+        /// </summary>
         protected override void CustomSetup()
         {
             enemyHitCount = 0;
@@ -49,19 +81,16 @@ namespace Sangaku
         /// </summary>
         /// <param name="_b">the BounceOnBehaviour hit.</param>
         /// <param name="_hitNormal">the normal of the contact point.</param>
-        void HandleBounceOnBehaviour(BounceOnBehaviour _b, Vector3 _hitNormal)
+        void HandleBounceOnBehaviour(BounceOn _b, Vector3 _hitNormal)
         {
             switch (_b.BehaviourType)
             {
-                case BounceOnBehaviour.Type.realistic:
+                case BounceOn.BounceType.Ignore:
+                    break;
+                case BounceOn.BounceType.Realistic:
                     Bounce(transform.forward, _hitNormal);
                     break;
-                case BounceOnBehaviour.Type.catchAndFire:
-                    //?????       
-                    break;
-                case BounceOnBehaviour.Type.goThrough:
-                    break;
-                case BounceOnBehaviour.Type.destroy:
+                case BounceOn.BounceType.Destroy:
                     OnDestroyHit.Invoke();
                     break;
             }
@@ -79,10 +108,23 @@ namespace Sangaku
                 mana.AddMana(_manaAmount + (manaModifier * (enemyHitCount - 1)));
         }
 
+        /// <summary>
+        /// Distanza dal player
+        /// </summary>
         float distanceFromPlayer;
+        /// <summary>
+        /// Distanza precedente dal player
+        /// </summary>
         float oldDistanceFromPlayer;
+        /// <summary>
+        /// True se l'orb sta partenod dal player, false altrimenti
+        /// </summary>
         bool isDepartingFromPlayer = true;
 
+        /// <summary>
+        /// Funzione che controlla la distanza dal player
+        /// </summary>
+        /// <param name="_playerPosition"></param>
         void CheckPlayerDistance(Vector3 _playerPosition)
         {
             distanceFromPlayer = Vector3.Distance(transform.position, _playerPosition);
@@ -97,13 +139,11 @@ namespace Sangaku
         {
             if (!IsSetupped)
                 return;
-            BounceOnBehaviour _b = collision.collider.GetComponent<BounceOnBehaviour>();
+            BounceOn _b = collision.collider.GetComponent<BounceOn>();
             if (_b)
                 HandleBounceOnBehaviour(_b, collision.contacts[0].normal);
             else
-            {
                 Bounce(transform.forward, collision.contacts[0].normal);
-            }
         }
 
         private void OnTriggerEnter(Collider other)

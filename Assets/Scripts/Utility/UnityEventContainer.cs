@@ -48,6 +48,18 @@ namespace Sangaku
     public class UnityOrbControllerEvent : UnityEvent<OrbController> { }
 
     /// <summary>
+    /// Unity Event passing a Collider
+    /// </summary>
+    [System.Serializable]
+    public class UnityColliderEvent : UnityEvent<Collider> { }
+
+    /// <summary>
+    /// Unity Event passing a Collision
+    /// </summary>
+    [System.Serializable]
+    public class UnityCollisionEvent : UnityEvent<Collision> { }
+
+    /// <summary>
     /// Evento di unity void
     /// </summary>
     [System.Serializable]
