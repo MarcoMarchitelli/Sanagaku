@@ -50,15 +50,6 @@ namespace Sangaku
         }
 
         /// <summary>
-        /// Frees the caught orb.
-        /// </summary>
-        public void ShootCaughtOrb()
-        {
-            orbInteraction.FreeOrb();
-            OnOrbShoot.Invoke(secondsBetweenShots);
-        }
-
-        /// <summary>
         /// Removes an OrbController to the list that tracks all the orbs currently in play.
         /// </summary>
         /// <param name="_orb"></param>
@@ -73,27 +64,8 @@ namespace Sangaku
         /// </summary>
         public void Shoot()
         {
-            if (orbInteraction.caughtOrb)
-            {
-                ShootCaughtOrb();
-            }
-            else
-            {
-                ShootOrb();
-            }
-        }
-        #endregion
-
-        /// <summary>
-        /// Instantiates a new Orb.
-        /// </summary>
-        void ShootOrb()
-        {
             if (orbsInPlay.Count < maxOrbsInGame && playerMana.GetMana() >= cost)
             {
-                //OrbController instantiatedOrb = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<OrbController>();
-                //instantiatedOrb.SetUpOrbEntity(Entity as PlayerController);
-
                 playerMana.AddMana(-cost);
                 OrbController pooledOrb = ObjectPooler.Instance.GetPoolableFromPool(projectilePool, shootPoint.position, shootPoint.rotation) as OrbController;
                 AddOrbInPlay(pooledOrb);
@@ -102,6 +74,7 @@ namespace Sangaku
                 OnOrbShoot.Invoke(secondsBetweenShots);
             }
         }
+        #endregion
 
         /// <summary>
         /// Adds an OrbController to the list that tracks all the orbs currently in play.
