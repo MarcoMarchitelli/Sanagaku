@@ -8,6 +8,10 @@ namespace Sangaku
     /// </summary>
     public class RecoverOrbsBehaviour : BaseBehaviour
     {
+        /// <summary>
+        /// Funzione che si occupa di distruggere tutti gli orb
+        /// </summary>
+        /// <param name="_other"></param>
         public void RecoverOrb(Collider _other)
         {
             PlayerController player = _other.GetComponent<PlayerController>();
