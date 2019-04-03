@@ -30,8 +30,8 @@ namespace Sangaku
         /// <param name="_currentHealth"></param>
         public void UpdateHealthUI(int _currentHealth)
         {
-            float healthPercentage = (_currentHealth / maxHealth) * 100f;
-            fillerImage.fillAmount = healthPercentage;
+            float healthPercentage = (_currentHealth * 100f) / maxHealth;
+            fillerImage.fillAmount = healthPercentage / 100f;
         }
     } 
 }
