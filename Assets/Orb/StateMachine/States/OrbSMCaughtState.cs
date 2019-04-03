@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace Sangaku
 {
     /// <summary>
-    /// Stato che definisce la fase di cattura dell'orb
+    /// Stato dell'orb che definisce la fase di cattura
     /// </summary>
     public class OrbSMCaughtState : OrbSMStateBase
     {
@@ -13,7 +12,7 @@ namespace Sangaku
         /// </summary>
         Transform orbTransform;
         /// <summary>
-        /// Riferimento all'entià dell'orb
+        /// Riferimento all'entità dell'orb
         /// </summary>
         OrbController orb;
 
@@ -22,12 +21,28 @@ namespace Sangaku
             orb = context.OrbEntity as OrbController;
             orbTransform = orb.transform;
 
-            foreach (BaseBehaviour baseBehaviour in context.OrbEntity.Behaviours)
+            foreach (BaseBehaviour baseBehaviour in orb.Behaviours)
                 baseBehaviour.Enable(false);
 
-            context.orbDestroyBehaviour.Destroy();
-
             context.orbManaBehaviour.ResetMana();
+
+            orb.Toggle(false);
+        }
+
+        public override void Tick()
+        {
+            orbTransform.position = context.CatchPoint.position;
+            orbTransform.rotation = context.CatchPoint.rotation;
+        }
+
+        public override void Exit()
+        {
+            orb.Toggle(true);
+
+            foreach (BaseBehaviour baseBehaviour in orb.Behaviours)
+                baseBehaviour.Enable(true);
+
+            orbTransform = null;
         }
     }
 }
