@@ -5323,29 +5323,7 @@ MonoBehaviour:
   cost: 1
   OnOrbShoot:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 755840897}
-        m_MethodName: StartTimer
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1991540773}
-        m_MethodName: StopTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &6169693431136065898
@@ -5405,7 +5383,6 @@ MonoBehaviour:
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   orbAttractionType: 0
-  otherOrbAction: 0
   manaCost: 0
   maxAttractionTime: 0
 --- !u!114 &850753096191203397
@@ -5919,10 +5896,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6327333987277507893}
     m_Modifications:
-    - target: {fileID: 123640, guid: 9242b15a276bc5a4babd09239e5fa709, type: 3}
-      propertyPath: m_Name
-      value: Hit_02
-      objectReference: {fileID: 0}
     - target: {fileID: 472200, guid: 9242b15a276bc5a4babd09239e5fa709, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.1
@@ -5972,12 +5945,16 @@ PrefabInstance:
       value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 472200, guid: 9242b15a276bc5a4babd09239e5fa709, type: 3}
-      propertyPath: m_LocalScale.z
+      propertyPath: m_LocalScale.y
       value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 472200, guid: 9242b15a276bc5a4babd09239e5fa709, type: 3}
-      propertyPath: m_LocalScale.y
+      propertyPath: m_LocalScale.z
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 123640, guid: 9242b15a276bc5a4babd09239e5fa709, type: 3}
+      propertyPath: m_Name
+      value: Hit_02
       objectReference: {fileID: 0}
     - target: {fileID: 19853668, guid: 9242b15a276bc5a4babd09239e5fa709, type: 3}
       propertyPath: looping
@@ -6028,11 +6005,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 76452836599106812}
     m_Modifications:
-    - target: {fileID: 7852103482168027707, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
-        type: 3}
-      propertyPath: m_Name
-      value: OrbInteraction
-      objectReference: {fileID: 0}
     - target: {fileID: 7852103482168027686, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
         type: 3}
       propertyPath: OnOrbCatch.m_PersistentCalls.m_Calls.Array.size
@@ -6043,6 +6015,16 @@ PrefabInstance:
       propertyPath: orbCatchPoint
       value: 
       objectReference: {fileID: 2108020691}
+    - target: {fileID: 7852103482168027686, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
+        type: 3}
+      propertyPath: catchDuration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852103482168027707, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
+        type: 3}
+      propertyPath: m_Name
+      value: OrbInteraction
+      objectReference: {fileID: 0}
     - target: {fileID: 7852103482168027684, guid: 6ee1bbad3aee4b54cbc8bfc83094783e,
         type: 3}
       propertyPath: m_LocalPosition.x
