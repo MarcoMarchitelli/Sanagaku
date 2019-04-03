@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 960375905}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Timers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1108234052}
   - component: {fileID: 1108234051}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Timer_Orb_Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 2669305038727761155}
   - component: {fileID: 7454922714828287361}
   - component: {fileID: 4078794250476120299}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: StateMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2832954048863047186}
   - component: {fileID: 2740674700296184602}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2837079376354197067}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &2740674700296184602
 TrailRenderer:
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 1954205545}
   - component: {fileID: 8180793333761143363}
   - component: {fileID: 5503894381244897270}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Orb
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
@@ -341,7 +341,6 @@ Transform:
   - {fileID: 2669305038727761155}
   - {fileID: 960375905}
   - {fileID: 2837079376354197067}
-  - {fileID: 2254847654236065295}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -708,7 +707,7 @@ GameObject:
   - component: {fileID: 2837079376354197067}
   - component: {fileID: 2837079376354197069}
   - component: {fileID: 2837079376354197066}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -726,6 +725,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2254847654236065295}
   - {fileID: 2832954048863047186}
   m_Father: {fileID: 2833276191514674724}
   m_RootOrder: 2
@@ -803,8 +803,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2833276191514674724}
-  m_RootOrder: 3
+  m_Father: {fileID: 2837079376354197067}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &3706096005901213507
 Light:
