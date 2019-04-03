@@ -43,7 +43,7 @@ public class DamageReceiverUI : MonoBehaviour
         _l.childControlHeight = true;
         _l.childForceExpandWidth = true;
         _l.childForceExpandHeight = true;
-        for (int i = 0; i < damageReceiver.GetHealth(); i++)
+        for (int i = 0; i < damageReceiver.GetMaxHealth(); i++)
         {
             Instantiate(healthChunkPrefab, transform);
         }
