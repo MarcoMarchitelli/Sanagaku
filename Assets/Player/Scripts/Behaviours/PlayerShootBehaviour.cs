@@ -54,7 +54,6 @@ namespace Sangaku
         /// </summary>
         public void ShootCaughtOrb()
         {
-            //orbInteraction.GetOrb().GetBehaviour<OrbMovementBehaviour>().SetEulerAngles(shootPoint.transform.forward);
             orbInteraction.FreeOrb();
             OnOrbShoot.Invoke(secondsBetweenShots);
         }

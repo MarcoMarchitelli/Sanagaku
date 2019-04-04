@@ -39,6 +39,8 @@ namespace Sangaku
         {
             orb.Toggle(true);
 
+            context.orbMovementBehaviour.SetEulerAngles(context.CatchPoint.eulerAngles);
+
             foreach (BaseBehaviour baseBehaviour in orb.Behaviours)
                 baseBehaviour.Enable(true);
 
