@@ -18,7 +18,8 @@ namespace Sangaku
         public override void CustomSetup()
         {
             DamageReceiverBehaviour damageReceiver = GetBehaviour<DamageReceiverBehaviour>();
-            healthUI.Setup(damageReceiver.GetMaxHealth());
+            if (healthUI != null)
+                healthUI.Setup(damageReceiver.GetMaxHealth());
         }
     }
 }
