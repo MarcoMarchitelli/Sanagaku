@@ -16,16 +16,11 @@ namespace Sangaku
         /// Lunghezza del raggio di preview
         /// </summary>
         [SerializeField] float rayLenght = 5f;
-        /// <summary>
-        /// Raggio della sfera castata
-        /// </summary>
-        [SerializeField] float spehreRadius = 1f;
 
         /// <summary>
         /// Riferimento al LineRenderer
         /// </summary>
         LineRenderer lineRenderer;
-
 
         protected override void CustomSetup()
         {
@@ -42,7 +37,7 @@ namespace Sangaku
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
 
-            if (Physics.SphereCast(ray, spehreRadius, out hit, rayLenght, bounceLayer))
+            if (Physics.Raycast(ray, out hit, rayLenght, bounceLayer))
                 endPoint = hit.point;
             else
                 endPoint = (ray.direction.normalized * rayLenght) + ray.origin;
