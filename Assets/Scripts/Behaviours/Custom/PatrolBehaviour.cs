@@ -18,7 +18,8 @@ namespace Sangaku
         [SerializeField] float speed = 5f;
         [SerializeField] float waitTime = 1f;
         [SerializeField] float rotationAnglePerSecond = 90f;
-        [SerializeField] float stoppingDistance = 0.1f;
+        [SerializeField] float movementStoppingDistance = 0.1f;
+        [SerializeField] float rotationStoppingDistance = 0.05f;
         #endregion
 
         #region Events
@@ -94,7 +95,7 @@ namespace Sangaku
             {
                 transform.position = Vector3.MoveTowards(transform.position, nextPoint, speed * Time.deltaTime);
                 IsMoving = true;
-                if (Vector3.Distance(transform.position,nextPoint) <= stoppingDistance)
+                if (Vector3.Distance(transform.position,nextPoint) <= movementStoppingDistance)
                 {
                     nextPointIndex = (nextPointIndex + 1) % wayPoints.Length;
                     nextPoint = wayPoints[nextPointIndex];
@@ -125,7 +126,7 @@ namespace Sangaku
             Vector3 directionToTarget = (_rotationTarget - transform.position).normalized;
             float targetAngle = 90 - Mathf.Atan2(directionToTarget.z, directionToTarget.x) * Mathf.Rad2Deg;
 
-            while (Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle) > 0.05f || Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle) < -0.05f)
+            while (Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle) > rotationStoppingDistance || Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle) < -rotationStoppingDistance)
             {
                 float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetAngle, Time.deltaTime * rotationAnglePerSecond);
                 transform.eulerAngles = Vector3.up * angle;
