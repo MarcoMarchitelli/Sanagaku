@@ -43,16 +43,5 @@ namespace Sangaku
         {
             SpawnEntity(_pool, _isPoolable, _transform.position, _transform.rotation);
         }
-
-        #region Debug
-        // REGION PER LE PROVE DI DEBUG NELLA SCENA MICHELETEST!!!
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                SpawnEntity("Explosion", true, FindObjectOfType<PlayerController>().transform);
-            }
-        }
-        #endregion
     }
 }
