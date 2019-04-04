@@ -20,7 +20,7 @@ namespace Sangaku
         {
             for (int i = 0; i < objectsToSpawn.Count; i++)
             {
-                ObjectSpawner.Instance.SpawnEntity(objectsToSpawn[i].poolTag, objectsToSpawn[i].isPoolable, objectsToSpawn[i].transform);
+                ObjectSpawner.Instance.Spawn(objectsToSpawn[i].poolTag, objectsToSpawn[i].isPoolable, objectsToSpawn[i].transform);
             }
         }
 
