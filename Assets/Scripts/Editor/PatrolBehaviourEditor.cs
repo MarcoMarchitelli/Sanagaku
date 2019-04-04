@@ -5,7 +5,7 @@ using Sangaku;
 [CanEditMultipleObjects]
 public class PatrolBehaviourEditor : Editor
 {
-    SerializedProperty path, speed, waitTime, rotationAnglePerSecond, rotatesToWaypoint, OnMovementStart, OnMovementEnd, OnWaypointReached, OnPathFinished, patrolOnStart;
+    SerializedProperty path, speed, waitTime, rotationAnglePerSecond, stoppingDistance, rotatesToWaypoint, OnMovementStart, OnMovementEnd, OnWaypointReached, OnPathFinished, patrolOnStart;
 
     bool showReferences = true, showBehaviours = true, showParameters = true, showEvents = true;
 
@@ -15,6 +15,7 @@ public class PatrolBehaviourEditor : Editor
         speed = serializedObject.FindProperty("speed");
         waitTime = serializedObject.FindProperty("waitTime");
         rotationAnglePerSecond = serializedObject.FindProperty("rotationAnglePerSecond");
+        stoppingDistance = serializedObject.FindProperty("stoppingDistance");
         rotatesToWaypoint = serializedObject.FindProperty("rotatesToWaypoint");
         OnMovementStart = serializedObject.FindProperty("OnMovementStart");
         OnMovementEnd = serializedObject.FindProperty("OnMovementEnd");
@@ -56,6 +57,8 @@ public class PatrolBehaviourEditor : Editor
                 EditorGUILayout.PropertyField(rotationAnglePerSecond);
             else
                 EditorGUILayout.PropertyField(waitTime);
+
+            EditorGUILayout.PropertyField(stoppingDistance);
         }
 
         EditorGUILayout.Space();

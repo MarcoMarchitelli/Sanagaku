@@ -18,6 +18,7 @@ namespace Sangaku
         [SerializeField] float speed = 5f;
         [SerializeField] float waitTime = 1f;
         [SerializeField] float rotationAnglePerSecond = 90f;
+        [SerializeField] float stoppingDistance = 0.1f;
         #endregion
 
         #region Events
@@ -26,7 +27,6 @@ namespace Sangaku
 
         #region Properties
         bool isMoving;
-
         public bool IsMoving
         {
             get { return isMoving; }
@@ -41,8 +41,13 @@ namespace Sangaku
         }
         #endregion
 
+        IEnumerator followRoutine;
+        IEnumerator rotateRoutine;
+
         protected override void CustomSetup()
         {
+            followRoutine = FollowPath();
+
             if (!path)
             {
                 Debug.LogWarning(name + " has no path referenced!");
@@ -55,12 +60,12 @@ namespace Sangaku
         #region API
         public void StartPatrol()
         {
-            StartCoroutine(FollowPath());
+            StartCoroutine(followRoutine);
         }
 
         public void StopPatrol()
         {
-            StopCoroutine(FollowPath());
+            StopCoroutine(followRoutine);
         }
 
         public void ToggleRotationToWaypoint(bool _value)
@@ -89,7 +94,7 @@ namespace Sangaku
             {
                 transform.position = Vector3.MoveTowards(transform.position, nextPoint, speed * Time.deltaTime);
                 IsMoving = true;
-                if (transform.position == nextPoint)
+                if (Vector3.Distance(transform.position,nextPoint) <= stoppingDistance)
                 {
                     nextPointIndex = (nextPointIndex + 1) % wayPoints.Length;
                     nextPoint = wayPoints[nextPointIndex];
@@ -102,9 +107,14 @@ namespace Sangaku
                         OnWaypointReached.Invoke();
 
                     if (rotatesToWaypoint)
-                        yield return StartCoroutine(RotateTo(nextPoint));
+                    {
+                        rotateRoutine = RotateTo(nextPoint);
+                        yield return StartCoroutine(rotateRoutine);
+                    }
                     else
+                    {
                         yield return new WaitForSeconds(waitTime);
+                    }
                 }
                 yield return null;
             }
