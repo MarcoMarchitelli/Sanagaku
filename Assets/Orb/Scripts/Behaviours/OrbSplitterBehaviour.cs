@@ -45,6 +45,7 @@ namespace Sangaku
             {
                 spawnedOrb = ObjectSpawner.Instance.SpawnEntity(poolTag, true, transform.position, Quaternion.Euler(directions[i]));
                 spawnedOrb.SetUpEntity();
+                spawnedOrb.GetBehaviour<OrbMovementBehaviour>().SetEulerAngles(directions[i]);
             }
         }
 
