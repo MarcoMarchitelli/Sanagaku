@@ -49,7 +49,7 @@ namespace Sangaku
             CurrentHealth = tempHealth;
         }
 
-        public float GetHealth()
+        public int GetMaxHealth()
         {
             return maxHealth;
         }

@@ -22,8 +22,8 @@ namespace Sangaku
         /// </summary>
         public enum BounceType
         {
-            Ignore,
             Realistic,
+            Ignore,
             Destroy
         }
     }

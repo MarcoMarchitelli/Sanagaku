@@ -10,9 +10,9 @@ namespace Sangaku
     {
         #region Trigger
         [Header("Trigger Events", order = 1)]
-        [SerializeField] UnityVoidEvent OnTriggerEnterEvent;
-        [SerializeField] UnityVoidEvent OnTriggerStayEvent;
-        [SerializeField] UnityVoidEvent OnTriggerExitEvent;
+        [SerializeField] UnityColliderEvent OnTriggerEnterEvent;
+        [SerializeField] UnityColliderEvent OnTriggerStayEvent;
+        [SerializeField] UnityColliderEvent OnTriggerExitEvent;
         [Header("Trigger Parameters", order = 2)]
         [SerializeField] List<MonoBehaviour> entitiesToIgnoreForTrigger;
 
@@ -20,8 +20,8 @@ namespace Sangaku
         {
             if (!CheckEntitiesToIgnoreForTrigger(entitiesToIgnoreForTrigger, other))
             {
-                OnTriggerEnterEvent.Invoke();
-                TriggerEnter(); 
+                OnTriggerEnterEvent.Invoke(other);
+                TriggerEnter(other); 
             }
         }
 
@@ -29,8 +29,8 @@ namespace Sangaku
         {
             if (!CheckEntitiesToIgnoreForTrigger(entitiesToIgnoreForTrigger, other))
             {
-                OnTriggerStayEvent.Invoke();
-                TriggerStay(); 
+                OnTriggerStayEvent.Invoke(other);
+                TriggerStay(other); 
             }
         }
 
@@ -38,14 +38,14 @@ namespace Sangaku
         {
             if (!CheckEntitiesToIgnoreForTrigger(entitiesToIgnoreForTrigger, other))
             {
-                OnTriggerExitEvent.Invoke();
-                TriggerExit();
+                OnTriggerExitEvent.Invoke(other);
+                TriggerExit(other);
             }
         } 
 
-        protected virtual void TriggerEnter() { }
-        protected virtual void TriggerStay() { }
-        protected virtual void TriggerExit() { }
+        protected virtual void TriggerEnter(Collider _other) { }
+        protected virtual void TriggerStay(Collider _other) { }
+        protected virtual void TriggerExit(Collider _other) { }
 
         /// <summary>
         /// Funzione che controlla se ho colliso con un'entità da ignorare
@@ -69,9 +69,9 @@ namespace Sangaku
 
         #region Collision
         [Header("Collision Events", order = 3)]
-        [SerializeField] UnityVoidEvent OnCollisionEnterEvent;
-        [SerializeField] UnityVoidEvent OnCollisionStayEvent;
-        [SerializeField] UnityVoidEvent OnCollisionExitEvent;
+        [SerializeField] UnityCollisionEvent OnCollisionEnterEvent;
+        [SerializeField] UnityCollisionEvent OnCollisionStayEvent;
+        [SerializeField] UnityCollisionEvent OnCollisionExitEvent;
         [Header("Collision Parameters", order = 4)]
         [SerializeField] List<MonoBehaviour> entitiesToIgnoreForCollision;
 
@@ -79,8 +79,8 @@ namespace Sangaku
         {
             if (!CheckEntitiesToIgnoreForCollider(entitiesToIgnoreForCollision, collision))
             {
-                OnCollisionEnterEvent.Invoke();
-                CollisionEnter(); 
+                OnCollisionEnterEvent.Invoke(collision);
+                CollisionEnter(collision); 
             }
         }
 
@@ -88,8 +88,8 @@ namespace Sangaku
         {
             if (!CheckEntitiesToIgnoreForCollider(entitiesToIgnoreForCollision, collision))
             {
-                OnCollisionStayEvent.Invoke();
-                CollisionStay(); 
+                OnCollisionStayEvent.Invoke(collision);
+                CollisionStay(collision); 
             }
         }
 
@@ -97,14 +97,14 @@ namespace Sangaku
         {
             if (!CheckEntitiesToIgnoreForCollider(entitiesToIgnoreForCollision, collision))
             {
-                OnCollisionExitEvent.Invoke();
-                CollisionExit(); 
+                OnCollisionExitEvent.Invoke(collision);
+                CollisionExit(collision); 
             }
         }
 
-        protected virtual void CollisionEnter() { }
-        protected virtual void CollisionStay() { }
-        protected virtual void CollisionExit() { }
+        protected virtual void CollisionEnter(Collision _collision) { }
+        protected virtual void CollisionStay(Collision _collision) { }
+        protected virtual void CollisionExit(Collision _collision) { }
 
         /// <summary>
         /// Funzione che controlla se ho colliso con un'entità da ignorare

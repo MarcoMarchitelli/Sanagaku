@@ -13,10 +13,6 @@ namespace Sangaku
         /// Tipo di attrazione dell'orb
         /// </summary>
         public enum AttractionType { Closest, Farthest, Random, All }
-        /// <summary>
-        /// Tipo di azione da eseguire per gli altri orb
-        /// </summary>
-        public enum OhterAction { DoNothing, ConvertToMana }
 
         /// <summary>
         /// Evento lanciato all'inizio dell'attrazione
@@ -32,11 +28,6 @@ namespace Sangaku
         /// </summary>
         [Tooltip("How attract the orbs. The 'All' case ingores the second option")]
         [SerializeField] AttractionType orbAttractionType;
-        /// <summary>
-        /// Azione da eseguire sugli altri orb
-        /// </summary>
-        [Tooltip("What does with other orbs.")]
-        [SerializeField] OhterAction otherOrbAction;
         /// <summary>
         /// Costo di mana, al secondo, per l'utilizzo dell'abilità
         /// </summary>
@@ -95,7 +86,7 @@ namespace Sangaku
         {
             base.Enable(_value);
 
-            if(!_value)
+            if (!_value)
             {
                 canAttract = false;
                 DisableAttraction();
@@ -122,7 +113,7 @@ namespace Sangaku
                 return;
 
             canAttract = _value;
-            
+
             if (canAttract)
                 OnAttractionStart.Invoke();
             else
@@ -202,6 +193,7 @@ namespace Sangaku
             else
             {
                 DisableAttraction();
+                return;
             }
 
             if (orbsToAttract.Count > 0)
@@ -245,8 +237,8 @@ namespace Sangaku
             }
 
             orbsToAttract.Clear();
-            SetOrbAsAttractable(orbsInPlay[closestIndex]);
-            PerformAttractionOnOtherOrbs(orbsInPlay[closestIndex]);
+            if (closestIndex < orbsInPlay.Count)
+                SetOrbAsAttractable(orbsInPlay[closestIndex]);
         }
 
         /// <summary>
@@ -270,7 +262,6 @@ namespace Sangaku
 
             orbsToAttract.Clear();
             SetOrbAsAttractable(orbsInPlay[farthestIndex]);
-            PerformAttractionOnOtherOrbs(orbsInPlay[farthestIndex]);
         }
 
         /// <summary>
@@ -281,7 +272,6 @@ namespace Sangaku
             orbsToAttract.Clear();
             int randomIndex = Random.Range(0, orbsInPlay.Count);
             SetOrbAsAttractable(orbsInPlay[randomIndex]);
-            PerformAttractionOnOtherOrbs(orbsInPlay[randomIndex]);
         }
 
         /// <summary>
@@ -291,8 +281,6 @@ namespace Sangaku
         {
             for (int i = 0; i < orbsInPlay.Count; i++)
                 SetOrbAsAttractable(orbsInPlay[i]);
-
-            // questo caso ignora la scelta sull'azione sugli orb non attratti
         }
 
         /// <summary>
@@ -303,30 +291,6 @@ namespace Sangaku
         float CalculateOrbDistance(OrbController _orb)
         {
             return Vector3.Distance(transform.position, _orb.transform.position);
-        }
-
-        /// <summary>
-        /// Funzione che esegue l'azione scelta per gli orb non in attrazione
-        /// </summary>
-        /// <param name="_attractedOrb"></param>
-        void PerformAttractionOnOtherOrbs(OrbController _attractedOrb)
-        {
-            switch (otherOrbAction)
-            {
-                case OhterAction.DoNothing:
-                    break;
-                case OhterAction.ConvertToMana:
-                    for (int i = 0; i < orbsInPlay.Count; i++)
-                    {
-                        if (orbsInPlay[i] == _attractedOrb)
-                            continue;
-                        else
-                        {
-                            // DO mana conversion of the orb
-                        }
-                    }
-                    break;
-            }
         }
 
         /// <summary>
