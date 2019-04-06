@@ -424,7 +424,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e42919c70cdec429149c5d8f44a19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manaModifier: 2
   OnBounce:
     m_PersistentCalls:
       m_Calls:
@@ -443,10 +442,15 @@ MonoBehaviour:
       PublicKeyToken=null
   OnDamageReceiverHit:
     m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityDamageReceiverEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDestroyHit:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: DealDamage
-        m_Mode: 0
+      - m_Target: {fileID: 4422905089294622160}
+        m_MethodName: Destroy
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -455,8 +459,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Sangaku.UnityDamageReceiverEvent, Assembly-CSharp, Version=0.0.0.0,
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  manaModifier: 2
   OnPlayerHit:
     m_PersistentCalls:
       m_Calls:
@@ -473,22 +478,6 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2835863131274270905}
         m_MethodName: StopMoveTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnDestroyHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4422905089294622160}
-        m_MethodName: Destroy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
