@@ -81,5 +81,4 @@ public class ScanBehaviourEditor : Editor
 
         serializedObject.ApplyModifiedProperties();
     }
-
 }

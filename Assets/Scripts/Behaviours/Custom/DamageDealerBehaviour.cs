@@ -31,7 +31,7 @@ namespace Sangaku
             if (IsSetupped && dealsOnTrigger)
             {
                 DamageReceiverBehaviour receiver = other.GetComponent<DamageReceiverBehaviour>();
-                if (receiver)
+                if (receiver && receiver.Entity.GetType() != Entity.GetType())
                     DealDamage(receiver);
             }
         }
@@ -41,7 +41,7 @@ namespace Sangaku
             if (IsSetupped && dealsOnCollision)
             {
                 DamageReceiverBehaviour receiver = collision.collider.GetComponent<DamageReceiverBehaviour>();
-                if (receiver)
+                if (receiver && receiver.Entity.GetType() != Entity.GetType())
                     DealDamage(receiver);
             }
         }
