@@ -7,7 +7,9 @@ public class TemporaryUIManager : MonoBehaviour
 
     public void SetupPlayerHUD()
     {
-        playerManaUI.SetUp();
-        playerHealthUI.SetUp();
+        if (playerManaUI)
+            playerManaUI.SetUp();
+        if (playerHealthUI)
+            playerHealthUI.SetUp();
     }
 }
