@@ -61,6 +61,7 @@ namespace Sangaku
         {
             if (!IsSetupped)
                 return;
+
             BounceOn _b = collision.collider.GetComponent<BounceOn>();
             if (_b)
                 HandleBounceOnBehaviour(_b, collision.contacts[0].normal);
