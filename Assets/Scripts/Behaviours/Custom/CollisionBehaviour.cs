@@ -7,36 +7,6 @@ namespace Sangaku
     /// </summary>
     public class CollisionBehaviour : BaseBehaviour
     {
-        #region Trigger
-        [Header("Trigger Events", order = 1)]
-        [SerializeField] UnityColliderEvent OnTriggerEnterEvent;
-        [SerializeField] UnityColliderEvent OnTriggerStayEvent;
-        [SerializeField] UnityColliderEvent OnTriggerExitEvent;
-
-        protected virtual void OnTriggerEnter(Collider other)
-        {
-            OnTriggerEnterEvent.Invoke(other);
-            TriggerEnter(other);
-        }
-
-        private void OnTriggerStay(Collider other)
-        {
-            OnTriggerStayEvent.Invoke(other);
-            TriggerStay(other);
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            OnTriggerExitEvent.Invoke(other);
-            TriggerExit(other);
-        }
-
-        protected virtual void TriggerEnter(Collider _other) { }
-        protected virtual void TriggerStay(Collider _other) { }
-        protected virtual void TriggerExit(Collider _other) { }
-        #endregion
-
-        #region Collision
         [Header("Collision Events", order = 2)]
         [SerializeField] UnityCollisionEvent OnCollisionEnterEvent;
         [SerializeField] UnityCollisionEvent OnCollisionStayEvent;
@@ -63,6 +33,5 @@ namespace Sangaku
         protected virtual void CollisionEnter(Collision _collision) { }
         protected virtual void CollisionStay(Collision _collision) { }
         protected virtual void CollisionExit(Collision _collision) { }
-        #endregion
     }
 }
