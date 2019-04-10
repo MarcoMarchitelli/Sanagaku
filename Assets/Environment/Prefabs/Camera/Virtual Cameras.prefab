@@ -1,62 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &939830497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5951313077010461295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 967719ce4a3e79f45b62e4b459c845f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnTriggerEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnTriggerStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnTriggerExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  entitiesToIgnoreForTrigger:
-  - {fileID: 6217467978684711021, guid: c7146b742f965a24f9491bbfcd29b922, type: 3}
-  - {fileID: 2835863131274270898, guid: 0ab3ad80c4daaec47ac7ac2971274002, type: 3}
-  OnCollisionEnterEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnCollisionStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnCollisionExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  entitiesToIgnoreForCollision: []
 --- !u!1 &503616769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1664,7 +1607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3353808502253724650
 Transform:
   m_ObjectHideFlags: 0
@@ -2118,46 +2061,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967719ce4a3e79f45b62e4b459c845f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnTriggerEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnTriggerStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnTriggerExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  entitiesToIgnoreForTrigger:
-  - {fileID: 6217467978684711021, guid: c7146b742f965a24f9491bbfcd29b922, type: 3}
-  - {fileID: 2835863131274270898, guid: 0ab3ad80c4daaec47ac7ac2971274002, type: 3}
   OnCollisionEnterEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2391,6 +2294,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &939830497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5951313077010461295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967719ce4a3e79f45b62e4b459c845f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnCollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  entitiesToIgnoreForCollision: []
 --- !u!114 &1558647840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2403,47 +2334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967719ce4a3e79f45b62e4b459c845f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnTriggerEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnTriggerStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnTriggerExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  entitiesToIgnoreForTrigger:
-  - {fileID: 2835863131274270898, guid: 0ab3ad80c4daaec47ac7ac2971274002, type: 3}
-  - {fileID: 6217467978684711021, guid: c7146b742f965a24f9491bbfcd29b922, type: 3}
-  - {fileID: 0}
   OnCollisionEnterEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2472,79 +2362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967719ce4a3e79f45b62e4b459c845f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnTriggerEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnTriggerStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnTriggerExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  entitiesToIgnoreForTrigger:
-  - {fileID: 2835863131274270898, guid: 0ab3ad80c4daaec47ac7ac2971274002, type: 3}
-  - {fileID: 6217467978684711021, guid: c7146b742f965a24f9491bbfcd29b922, type: 3}
   OnCollisionEnterEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2806,15 +2623,15 @@ PrefabInstance:
       objectReference: {fileID: 3353808501389376809}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 956c0f1b844216f4894c0232f91f4f2e, type: 3}
---- !u!1 &8943111635251271692 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5951313077013819161, guid: 956c0f1b844216f4894c0232f91f4f2e,
-    type: 3}
-  m_PrefabInstance: {fileID: 3353808501143713557}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2991422511481875487 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 506855055415106314, guid: 956c0f1b844216f4894c0232f91f4f2e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3353808501143713557}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8943111635251271692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5951313077013819161, guid: 956c0f1b844216f4894c0232f91f4f2e,
     type: 3}
   m_PrefabInstance: {fileID: 3353808501143713557}
   m_PrefabAsset: {fileID: 0}
@@ -2947,15 +2764,15 @@ PrefabInstance:
       objectReference: {fileID: 3353808502089320391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 956c0f1b844216f4894c0232f91f4f2e, type: 3}
---- !u!1 &8943111635240018036 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5951313077013819161, guid: 956c0f1b844216f4894c0232f91f4f2e,
-    type: 3}
-  m_PrefabInstance: {fileID: 3353808501149224813}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2991422511466386535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 506855055415106314, guid: 956c0f1b844216f4894c0232f91f4f2e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3353808501149224813}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8943111635240018036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5951313077013819161, guid: 956c0f1b844216f4894c0232f91f4f2e,
     type: 3}
   m_PrefabInstance: {fileID: 3353808501149224813}
   m_PrefabAsset: {fileID: 0}
@@ -3548,31 +3365,31 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.50477594
       objectReference: {fileID: 0}
-    - target: {fileID: 5951313077596832206, guid: 956c0f1b844216f4894c0232f91f4f2e,
-        type: 3}
-      propertyPath: cam1
-      value: 
-      objectReference: {fileID: 3353808502391041989}
-    - target: {fileID: 5951313077596832206, guid: 956c0f1b844216f4894c0232f91f4f2e,
-        type: 3}
-      propertyPath: cam2
-      value: 
-      objectReference: {fileID: 3353808501886804534}
-    - target: {fileID: 5951313077013819163, guid: 956c0f1b844216f4894c0232f91f4f2e,
-        type: 3}
-      propertyPath: cam1
-      value: 
-      objectReference: {fileID: 3353808501886804534}
-    - target: {fileID: 5951313077013819163, guid: 956c0f1b844216f4894c0232f91f4f2e,
-        type: 3}
-      propertyPath: cam2
-      value: 
-      objectReference: {fileID: 3353808502391041989}
     - target: {fileID: 5951313077596832204, guid: 956c0f1b844216f4894c0232f91f4f2e,
         type: 3}
       propertyPath: m_Name
       value: Vcam Trigger 2 + EnemyManager1
       objectReference: {fileID: 0}
+    - target: {fileID: 5951313077596832206, guid: 956c0f1b844216f4894c0232f91f4f2e,
+        type: 3}
+      propertyPath: cam1
+      value: 
+      objectReference: {fileID: 3353808502391041989}
+    - target: {fileID: 5951313077596832206, guid: 956c0f1b844216f4894c0232f91f4f2e,
+        type: 3}
+      propertyPath: cam2
+      value: 
+      objectReference: {fileID: 3353808501886804534}
+    - target: {fileID: 5951313077013819163, guid: 956c0f1b844216f4894c0232f91f4f2e,
+        type: 3}
+      propertyPath: cam1
+      value: 
+      objectReference: {fileID: 3353808501886804534}
+    - target: {fileID: 5951313077013819163, guid: 956c0f1b844216f4894c0232f91f4f2e,
+        type: 3}
+      propertyPath: cam2
+      value: 
+      objectReference: {fileID: 3353808502391041989}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 956c0f1b844216f4894c0232f91f4f2e, type: 3}
 --- !u!1 &3353808502697843877 stripped
