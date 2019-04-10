@@ -27,6 +27,9 @@ public class TemporaryGameManager : MonoBehaviour
         foreach (ObjectiveController objective in objectiveControllers)
             objective.SetUpEntity();
 
+        foreach (RoomController room in FindObjectsOfType<RoomController>())
+            room.SetUpEntity();
+
         enemyManager.SetUpEnemies();
         playerController.SetUpEntity();
         uiManager.SetupPlayerHUD();

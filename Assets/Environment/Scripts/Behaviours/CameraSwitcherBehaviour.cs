@@ -27,8 +27,11 @@ namespace Sangaku
         /// </summary>
         protected override void CustomSetup()
         {
-            activeVirtualCamera = virtualCamera1;
-            virtualCamera2.gameObject.SetActive(false);
+            if (virtualCamera1 && virtualCamera2)
+            {
+                activeVirtualCamera = virtualCamera1;
+                virtualCamera2.gameObject.SetActive(false); 
+            }
         }
 
         /// <summary>
@@ -36,6 +39,9 @@ namespace Sangaku
         /// </summary>
         public void ChangeVirtualCamera()
         {
+            if (!IsSetupped)
+                return;
+
             if (activeVirtualCamera == virtualCamera1)
             {
                 activeVirtualCamera.gameObject.SetActive(false);
