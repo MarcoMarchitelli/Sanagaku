@@ -327,11 +327,12 @@ MonoBehaviour:
   poolTag: SpawnedOrb
   randomize: 0
   orbsNumber: 2
-  angleOffset: 45
+  angleOffset: 30
   minOrbsNumber: 2
   maxOrbsNumber: 4
   minAngle: 25
   maxAngle: 160
+  forwardOffset: {x: 0, y: 0, z: 0.5}
 --- !u!4 &426441815
 Transform:
   m_ObjectHideFlags: 0
@@ -339,13 +340,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426441812}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.3663388, z: 0, w: 0.93048155}
   m_LocalPosition: {x: -2.543294, y: 0.5753547, z: -1.0012035}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -42.98, z: 0}
 --- !u!1 &587679034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,11 +1147,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar Trap
       objectReference: {fileID: 0}
-    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
-        type: 3}
-      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1004004173}
     - target: {fileID: 2834909684165211738, guid: 3cc9546a2f9902d47985bbda54e273f5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1211,6 +1207,11 @@ PrefabInstance:
       propertyPath: dealsOnTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2834909684165211733, guid: 3cc9546a2f9902d47985bbda54e273f5,
+        type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1004004173}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cc9546a2f9902d47985bbda54e273f5, type: 3}
 --- !u!1001 &1081138907
@@ -1932,11 +1933,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 79887467333557446, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 76452836599106812, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1991,6 +1987,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 79887467333557446, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 79887467333557444, guid: 77b03d1e834a8b64182cabfcc5be6dcb,
         type: 3}
@@ -2142,46 +2143,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1703164063}
     m_Modifications:
-    - target: {fileID: 6364163541174231927, guid: c7e716420dc93124985178ee56b9f33b,
-        type: 3}
-      propertyPath: m_Name
-      value: MainMenuPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364163541174231927, guid: c7e716420dc93124985178ee56b9f33b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3657537798199881900, guid: c7e716420dc93124985178ee56b9f33b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3657537798199881900, guid: c7e716420dc93124985178ee56b9f33b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3657537798199881900, guid: c7e716420dc93124985178ee56b9f33b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3657537798199881900, guid: c7e716420dc93124985178ee56b9f33b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 791891777}
-    - target: {fileID: 3657537798199881900, guid: c7e716420dc93124985178ee56b9f33b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GoToGameplay
-      objectReference: {fileID: 0}
-    - target: {fileID: 3657537798199881900, guid: c7e716420dc93124985178ee56b9f33b,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 6731608094954081826, guid: c7e716420dc93124985178ee56b9f33b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2287,6 +2248,46 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6364163541174231927, guid: c7e716420dc93124985178ee56b9f33b,
+        type: 3}
+      propertyPath: m_Name
+      value: MainMenuPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364163541174231927, guid: c7e716420dc93124985178ee56b9f33b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657537798199881900, guid: c7e716420dc93124985178ee56b9f33b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657537798199881900, guid: c7e716420dc93124985178ee56b9f33b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657537798199881900, guid: c7e716420dc93124985178ee56b9f33b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657537798199881900, guid: c7e716420dc93124985178ee56b9f33b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 791891777}
+    - target: {fileID: 3657537798199881900, guid: c7e716420dc93124985178ee56b9f33b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToGameplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 3657537798199881900, guid: c7e716420dc93124985178ee56b9f33b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7277297443646469228, guid: c7e716420dc93124985178ee56b9f33b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2332,21 +2333,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 595632404}
     m_Modifications:
-    - target: {fileID: 1727001519501713834, guid: c948f4642bc58a249b3f2c13d1aa64b3,
-        type: 3}
-      propertyPath: m_Name
-      value: Health-Mana_UI_Test
-      objectReference: {fileID: 0}
-    - target: {fileID: 1727001519587670554, guid: c948f4642bc58a249b3f2c13d1aa64b3,
-        type: 3}
-      propertyPath: manaBehaviour
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1727001519587670554, guid: c948f4642bc58a249b3f2c13d1aa64b3,
-        type: 3}
-      propertyPath: playerManaBehaviour
-      value: 
-      objectReference: {fileID: 1727975146}
     - target: {fileID: 1727001519501713837, guid: c948f4642bc58a249b3f2c13d1aa64b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2452,11 +2438,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1727001519501713834, guid: c948f4642bc58a249b3f2c13d1aa64b3,
+        type: 3}
+      propertyPath: m_Name
+      value: Health-Mana_UI_Test
+      objectReference: {fileID: 0}
     - target: {fileID: 1727001519403110224, guid: c948f4642bc58a249b3f2c13d1aa64b3,
         type: 3}
       propertyPath: damageReceiver
       value: 
       objectReference: {fileID: 150656815}
+    - target: {fileID: 1727001519587670554, guid: c948f4642bc58a249b3f2c13d1aa64b3,
+        type: 3}
+      propertyPath: manaBehaviour
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727001519587670554, guid: c948f4642bc58a249b3f2c13d1aa64b3,
+        type: 3}
+      propertyPath: playerManaBehaviour
+      value: 
+      objectReference: {fileID: 1727975146}
     - target: {fileID: 1727001518003192084, guid: c948f4642bc58a249b3f2c13d1aa64b3,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2764,16 +2765,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1703164063}
     m_Modifications:
-    - target: {fileID: 2332256226887503095, guid: c21fa46aa13412b459c62a14fc69577a,
-        type: 3}
-      propertyPath: m_Name
-      value: LossPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 2332256226887503095, guid: c21fa46aa13412b459c62a14fc69577a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 883341388609112069, guid: c21fa46aa13412b459c62a14fc69577a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2879,6 +2870,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2332256226887503095, guid: c21fa46aa13412b459c62a14fc69577a,
+        type: 3}
+      propertyPath: m_Name
+      value: LossPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332256226887503095, guid: c21fa46aa13412b459c62a14fc69577a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 289445919632133762, guid: c21fa46aa13412b459c62a14fc69577a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2954,11 +2955,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1703164063}
     m_Modifications:
-    - target: {fileID: 6786901909545180121, guid: caf95a724cc9a6942a4122deb917b345,
-        type: 3}
-      propertyPath: m_Name
-      value: WinPanel
-      objectReference: {fileID: 0}
     - target: {fileID: 8228216889080061739, guid: caf95a724cc9a6942a4122deb917b345,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3064,11 +3060,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8824359807198878124, guid: caf95a724cc9a6942a4122deb917b345,
+    - target: {fileID: 6786901909545180121, guid: caf95a724cc9a6942a4122deb917b345,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 791891777}
+      propertyPath: m_Name
+      value: WinPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 8098358019331431049, guid: caf95a724cc9a6942a4122deb917b345,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3084,6 +3080,11 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8824359807198878124, guid: caf95a724cc9a6942a4122deb917b345,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 791891777}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caf95a724cc9a6942a4122deb917b345, type: 3}
 --- !u!1001 &9222691872602686352
@@ -3093,16 +3094,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1703164063}
     m_Modifications:
-    - target: {fileID: 6476966981754416764, guid: d554449a06da9af48895c975de159af7,
-        type: 3}
-      propertyPath: m_Name
-      value: PauseMenuPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 6476966981754416764, guid: d554449a06da9af48895c975de159af7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5664924326629229387, guid: d554449a06da9af48895c975de159af7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3207,6 +3198,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6476966981754416764, guid: d554449a06da9af48895c975de159af7,
+        type: 3}
+      propertyPath: m_Name
+      value: PauseMenuPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6476966981754416764, guid: d554449a06da9af48895c975de159af7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6160772047073664605, guid: d554449a06da9af48895c975de159af7,
         type: 3}

@@ -15,6 +15,8 @@ namespace Sangaku
         [SerializeField] float minAngle = 25f;
         [SerializeField] float maxAngle = 160f;
 
+        [SerializeField] Vector3 forwardOffset = new Vector3(0f, 0f, 0.5f);
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.P))
@@ -32,7 +34,7 @@ namespace Sangaku
             }
             else
             {
-                float totalAngle = angleOffset * orbsNumber;
+                float totalAngle = angleOffset * orbsNumber - 1;
                 Spawn(orbsNumber, angleOffset, totalAngle);
             }
         }
@@ -40,12 +42,13 @@ namespace Sangaku
         void Spawn(int _number, float _offsetAngle, float _totalAngle)
         {
             Vector3[] directions = CalculateDirections(_number, _offsetAngle, _totalAngle);
+
             IEntity spawnedOrb;
             for (int i = 0; i < directions.Length; i++)
             {
-                spawnedOrb = ObjectSpawner.Instance.SpawnEntity(poolTag, true, transform.position, Quaternion.Euler(directions[i]));
+                spawnedOrb = ObjectSpawner.Instance.SpawnEntity(poolTag, true, transform.position + forwardOffset, transform.rotation);
                 spawnedOrb.SetUpEntity();
-                spawnedOrb.GetBehaviour<OrbMovementBehaviour>().SetEulerAngles(directions[i]);
+                spawnedOrb.gameObject.transform.Rotate(directions[i]);
             }
         }
 
@@ -53,15 +56,9 @@ namespace Sangaku
         {
             Vector3[] directions = new Vector3[_number];
 
-            float halfAngle = _totalAngle / 2;
-            Vector3 rotationVector = new Vector3(0f, halfAngle, 0f);
-            directions[0] = Quaternion.Euler(rotationVector) * transform.forward;
-
-            for (int i = 1; i < directions.Length; i++)
-            {
-                rotationVector = new Vector3(0f, -_offsetAngle, 0f);
-                directions[i] = Quaternion.Euler(rotationVector) * directions[i - 1];
-            }
+            float negativeLimit = _totalAngle / 2;
+            for (int i = 0; i < directions.Length; i++)
+                directions[i] = new Vector3(0f, -negativeLimit + (i * _offsetAngle), 0f);
 
             return directions;
         }
