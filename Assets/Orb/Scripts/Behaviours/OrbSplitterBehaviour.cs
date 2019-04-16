@@ -23,6 +23,26 @@ namespace Sangaku
                 SpawnOrbs();
         }
 
+        public void SpawnOrbs(Collision _collision)
+        {
+            Vector3 pointToLook = _collision.contacts[0].normal;
+            pointToLook.y = transform.position.y;
+            transform.LookAt(pointToLook, Vector3.up);
+
+            if (randomize)
+            {
+                int randomNumber = Random.Range(minOrbsNumber, maxOrbsNumber);
+                float randomAngle = Random.Range(minAngle, maxAngle);
+                float angleOffset = randomAngle / randomNumber;
+                Spawn(randomNumber, angleOffset, randomAngle);
+            }
+            else
+            {
+                float totalAngle = angleOffset * orbsNumber - 1;
+                Spawn(orbsNumber, angleOffset, totalAngle);
+            }
+        }
+
         public void SpawnOrbs()
         {
             if (randomize)
