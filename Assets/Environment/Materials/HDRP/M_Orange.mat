@@ -8,13 +8,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Orange
-  m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
-  m_ShaderKeywords: _NORMALMAP_TANGENT_SPACE
+  m_Shader: {fileID: 4800000, guid: 6422d582c2d054848a249d1e9540d218, type: 3}
+  m_ShaderKeywords: _AMBIENT_OCCLUSION_TRIPLANAR_ON _DIFFUSE_TRIPLANAR_ON _METALNESS_TRIPLANAR_ON
+    _NORMALMAP_TANGENT_SPACE _NORMAL_TRIPLANAR_ON _ROUGHNESS_TRIPLANAR_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
   disabledShaderPasses:
   - DistortionVectors
   - TransparentDepthPrepass
@@ -24,6 +26,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Ambient_Occlusion_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -48,11 +54,39 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Diffuse_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DistortionVectorMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveColorMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FWN_Grunge_1_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FWN_Grunge_2_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Grunge_1_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Grunge_1_SUB_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Grunge_2_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Grunge_2_SUB_Map:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -76,11 +110,23 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Metallic_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _NormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Roughness_Map:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -109,6 +155,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_A6806E68: 0
+    - Vector1_BD049034: 0
+    - Vector1_F642E870: 0
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -118,6 +167,7 @@ Material:
     - _AlphaCutoffPostpass: 0.5
     - _AlphaCutoffPrepass: 0.5
     - _AlphaCutoffShadow: 0.5
+    - _Ambient_Occlusion_Triplanar: 1
     - _Anisotropy: 0
     - _BlendMode: 0
     - _CoatMask: 0
@@ -128,6 +178,7 @@ Material:
     - _DetailAlbedoScale: 1
     - _DetailNormalScale: 1
     - _DetailSmoothnessScale: 1
+    - _Diffuse_Triplanar: 1
     - _DiffusionProfile: 0
     - _DisplacementLockObjectScale: 1
     - _DisplacementLockTilingScale: 1
@@ -158,6 +209,34 @@ Material:
     - _EnableSpecularOcclusion: 0
     - _EnableWind: 0
     - _EnergyConservingSpecularColor: 1
+    - _FWN_Grunge_1_Tile: 1
+    - _FWN_Grunge_2_Tile: 1
+    - _FWN_Grunge_Blend1: -2.56
+    - _FWN_Grunge_Blend2: 1.54
+    - _FWN_Grunge_Color_Opacity: 0
+    - _FWN_Grunge_Metal_Opacity: 0
+    - _FWN_Grunge_Metal_Value: 0
+    - _FWN_Grunge_Roughness_Opacity: 0
+    - _FWN_Grunge_Roughness_Value: 0
+    - _FWN_Yes_No: 0
+    - _Grunge_1_Diffuse_Opacity: 0
+    - _Grunge_1_Metallic_Opacity: 0
+    - _Grunge_1_Metallic_Value: 0
+    - _Grunge_1_Roughness_Opacity: 0
+    - _Grunge_1_Roughness_Value: 0.558
+    - _Grunge_1_SUB_Invert: 0
+    - _Grunge_1_SUB_Tile: 1
+    - _Grunge_1_Tile: 1
+    - _Grunge_1_Yes_No: 0
+    - _Grunge_2_Diffuse_Opacity: 0
+    - _Grunge_2_Metallic_Opacity: 0
+    - _Grunge_2_Metallic_Value: 0
+    - _Grunge_2_Roughness_Opacity: 0
+    - _Grunge_2_Roughness_Value: 0
+    - _Grunge_2_SUB_Invert: 0
+    - _Grunge_2_SUB_Tile: 0
+    - _Grunge_2_Tile: 1
+    - _Grunge_2_Yes_No: 0
     - _HdrpVersion: 2
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
@@ -176,8 +255,11 @@ Material:
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
     - _Metallic: 0.205
+    - _Metallic_Value: 0
+    - _Metalness_Triplanar: 1
     - _NormalMapSpace: 0
     - _NormalScale: 1
+    - _Normal_Triplanar: 1
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
     - _PPDMinSamples: 5
@@ -186,6 +268,8 @@ Material:
     - _PreRefractionPass: 0
     - _ReceivesSSR: 1
     - _RefractionModel: 0
+    - _Roughness_Triplanar: 1
+    - _Roughness_Value: 0
     - _SSRefractionProjectionModel: 0
     - _ShiverDirectionality: 0.5
     - _ShiverDrag: 0.2
@@ -205,6 +289,7 @@ Material:
     - _SurfaceType: 0
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
+    - _Texture_Map_Tile: 1
     - _Thickness: 1
     - _ThicknessMultiplier: 1
     - _TransmissionEnable: 1
@@ -224,9 +309,13 @@ Material:
     - _BaseColor: {r: 0.90588236, g: 0.24705882, b: 0, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.90588236, g: 0.24705878, b: 0, a: 1}
+    - _Diffuse_Color: {r: 1, g: 0.17665696, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FWN_Grunge_Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Grunge_1_Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Grunge_2_Color: {r: 1, g: 1, b: 1, a: 0}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
