@@ -15,7 +15,7 @@ namespace Sangaku
         /// Se true la classe usa dei valori random nei range specificati.
         /// Altrimenti usa i valori specifici settati
         /// </summary>
-        [SerializeField] bool randomize = true;
+        [SerializeField] bool randomize;
 
         /// <summary>
         /// Numero specifico di orb
