@@ -161,7 +161,7 @@ namespace Sangaku
             /// <summary>
             /// True se il contatore è completo
             /// </summary>
-            [HideInInspector]
+            //[HideInInspector]
             public bool isComplete;
         }
     }
