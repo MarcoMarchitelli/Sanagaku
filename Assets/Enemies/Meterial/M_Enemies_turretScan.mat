@@ -8,13 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Enemies_turretScan
-  m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
+  m_Shader: {fileID: 4800000, guid: 1bc0c18373b7fc645a75c75dec53f59d, type: 3}
   m_ShaderKeywords: _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
   disabledShaderPasses:
   - DistortionVectors
   - TransparentDepthPrepass
@@ -24,6 +25,30 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_1596A9C5:
+        m_Texture: {fileID: 2800000, guid: 1ec9d1570b366e34a96d5ce86cbe1520, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_23C400C6:
+        m_Texture: {fileID: 2800000, guid: 0228ffeec562b8a45bd44ca6015e7feb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_2CA8346D:
+        m_Texture: {fileID: 2800000, guid: f3720671aed6bb84ebd2b5fedea34eac, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_6B69C1DD:
+        m_Texture: {fileID: 2800000, guid: 341856580afc6a946a646ab078fca8dd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_B47F884A:
+        m_Texture: {fileID: 2800000, guid: 5b374b587baf73e4f8829d77f72a74cb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_CECB7206:
+        m_Texture: {fileID: 2800000, guid: 867b3ebe74a89164687a84763e26692c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -141,6 +166,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_976A75E6: 3
+    - Vector1_D17C6D32: 15
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
