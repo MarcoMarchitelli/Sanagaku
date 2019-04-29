@@ -9,8 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Orange
   m_Shader: {fileID: 4800000, guid: 6422d582c2d054848a249d1e9540d218, type: 3}
-  m_ShaderKeywords: _AMBIENT_OCCLUSION_TRIPLANAR_ON _DIFFUSE_TRIPLANAR_ON _METALNESS_TRIPLANAR_ON
-    _NORMALMAP_TANGENT_SPACE _NORMAL_TRIPLANAR_ON _ROUGHNESS_TRIPLANAR_ON
+  m_ShaderKeywords: _AMBIENT_OCCLUSION_TRIPLANAR_ON _DIFFUSE_TRIPLANAR_ON _GRUNGE_1_YES_NO_ON
+    _METALNESS_TRIPLANAR_ON _NORMALMAP_TANGENT_SPACE _NORMAL_TRIPLANAR_ON _ROUGHNESS_TRIPLANAR_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -75,11 +75,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Grunge_1_Map:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: b5ee4b0d436b80a4dbcddab77a809a50, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Grunge_1_SUB_Map:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: de0c8bdc60f3c2e4899b9ccef5b02534, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Grunge_2_Map:
@@ -220,14 +220,14 @@ Material:
     - _FWN_Grunge_Roughness_Value: 0
     - _FWN_Yes_No: 0
     - _Grunge_1_Diffuse_Opacity: 0
-    - _Grunge_1_Metallic_Opacity: 0
+    - _Grunge_1_Metallic_Opacity: 1
     - _Grunge_1_Metallic_Value: 0
-    - _Grunge_1_Roughness_Opacity: 0
-    - _Grunge_1_Roughness_Value: 0.558
+    - _Grunge_1_Roughness_Opacity: 1
+    - _Grunge_1_Roughness_Value: 0.617
     - _Grunge_1_SUB_Invert: 0
-    - _Grunge_1_SUB_Tile: 1
-    - _Grunge_1_Tile: 1
-    - _Grunge_1_Yes_No: 0
+    - _Grunge_1_SUB_Tile: -0.11
+    - _Grunge_1_Tile: 0.12
+    - _Grunge_1_Yes_No: 1
     - _Grunge_2_Diffuse_Opacity: 0
     - _Grunge_2_Metallic_Opacity: 0
     - _Grunge_2_Metallic_Value: 0
@@ -269,7 +269,7 @@ Material:
     - _ReceivesSSR: 1
     - _RefractionModel: 0
     - _Roughness_Triplanar: 1
-    - _Roughness_Value: 0
+    - _Roughness_Value: 0.32
     - _SSRefractionProjectionModel: 0
     - _ShiverDirectionality: 0.5
     - _ShiverDrag: 0.2
@@ -314,7 +314,7 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _FWN_Grunge_Color: {r: 1, g: 1, b: 1, a: 0}
-    - _Grunge_1_Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Grunge_1_Color: {r: 0, g: 0, b: 0, a: 1}
     - _Grunge_2_Color: {r: 1, g: 1, b: 1, a: 0}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
