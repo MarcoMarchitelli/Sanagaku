@@ -10,6 +10,5 @@ namespace Sangaku
         {
             context = _context as OrbSMContext;
         }
-
     } 
 }

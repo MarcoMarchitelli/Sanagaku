@@ -2,17 +2,31 @@
 
 namespace Sangaku
 {
+    /// <summary>
+    /// Stato dell'orb che definisce la fase di cattura
+    /// </summary>
     public class OrbSMCaughtState : OrbSMStateBase
     {
+        /// <summary>
+        /// Riferimento alla tranform dell'orb
+        /// </summary>
         Transform orbTransform;
+        /// <summary>
+        /// Riferimento all'entità dell'orb
+        /// </summary>
+        OrbController orb;
 
         public override void Enter()
-        { 
-            foreach (BaseBehaviour baseBehaviour in context.OrbEntity.Behaviours)
+        {
+            orb = context.OrbEntity as OrbController;
+            orbTransform = orb.transform;
+
+            foreach (BaseBehaviour baseBehaviour in orb.Behaviours)
                 baseBehaviour.Enable(false);
 
-            orbTransform = context.OrbEntity.transform;
             context.orbManaBehaviour.ResetMana();
+
+            orb.Toggle(false);
         }
 
         public override void Tick()
@@ -23,7 +37,11 @@ namespace Sangaku
 
         public override void Exit()
         {
-            foreach (BaseBehaviour baseBehaviour in context.OrbEntity.Behaviours)
+            orb.Toggle(true);
+
+            context.orbMovementBehaviour.SetEulerAngles(context.CatchPoint.eulerAngles);
+
+            foreach (BaseBehaviour baseBehaviour in orb.Behaviours)
                 baseBehaviour.Enable(true);
 
             orbTransform = null;

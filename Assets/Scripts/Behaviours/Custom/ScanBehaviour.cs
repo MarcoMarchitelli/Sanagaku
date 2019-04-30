@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Deirin.AI;
 
 namespace Sangaku
 {
@@ -9,10 +10,10 @@ namespace Sangaku
 
         [SerializeField] ScanType scanType;
         [SerializeField] bool canSeeThroughObstacles;
-        [Tooltip ("If in Fov scan mode, use a spotlight to visualize scan.")]
+        [Tooltip("If in Fov scan mode, use a spotlight to visualize scan.")]
         [SerializeField] bool previewWithSpotlight;
 
-        [SerializeField] MonoBehaviour scanTarget;
+        [SerializeField] ScanTarget scanTarget;
         [SerializeField] float timeToScan = 0f;
         [SerializeField] LayerMask obstacleLayer;
         [SerializeField] float scanAreaLenght = 5f;
@@ -36,6 +37,15 @@ namespace Sangaku
 
         protected override void CustomSetup()
         {
+            if (scanTarget == null)
+                scanTarget = FindObjectOfType<ScanTarget>();
+
+            if (scanTarget == null)
+            {
+                Debug.LogError("Missing scan target");
+                return;
+            }
+
             timeToScan = Mathf.Abs(timeToScan);
             if (timeToScan == 0) timeToScan = 0.001f;
 

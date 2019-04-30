@@ -37,7 +37,7 @@ namespace Sangaku
     public class OrbSMContext : IContext
     {
         public BaseEntity OrbEntity;
-        public OrbMovementBehaviour movementBehaviour;
+        public OrbMovementBehaviour orbMovementBehaviour;
         public OrbBounceBehaviour orbBounceBehaviour;
         public Transform CatchPoint;
         public ManaBehaviour orbManaBehaviour;
@@ -46,7 +46,7 @@ namespace Sangaku
         {
             OrbEntity = _orbEntity as BaseEntity;
             CatchPoint = _catchPoint;
-            movementBehaviour = OrbEntity.GetComponentInChildren<OrbMovementBehaviour>();
+            orbMovementBehaviour = OrbEntity.GetComponentInChildren<OrbMovementBehaviour>();
             orbBounceBehaviour = OrbEntity.GetComponentInChildren<OrbBounceBehaviour>();
             orbManaBehaviour = OrbEntity.GetComponentInChildren<ManaBehaviour>();
         }

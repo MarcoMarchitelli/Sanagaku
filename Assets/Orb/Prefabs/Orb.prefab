@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 960375905}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Timers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1108234052}
   - component: {fileID: 1108234051}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Timer_Orb_Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 2669305038727761155}
   - component: {fileID: 7454922714828287361}
   - component: {fileID: 4078794250476120299}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: StateMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2832954048863047186}
   - component: {fileID: 2740674700296184602}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2837079376354197067}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &2740674700296184602
 TrailRenderer:
@@ -315,12 +315,12 @@ GameObject:
   - component: {fileID: 2835863131274270902}
   - component: {fileID: 4125367577278993755}
   - component: {fileID: 4422905089294622160}
-  - component: {fileID: 6044092798920371552}
+  - component: {fileID: 4945687381187910658}
   - component: {fileID: 2835863131274270903}
   - component: {fileID: 1954205545}
   - component: {fileID: 8180793333761143363}
   - component: {fileID: 5503894381244897270}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Orb
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
@@ -394,17 +394,35 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -1
-      outSlope: -1
+      inSlope: -0.38326827
+      outSlope: -0.38326827
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
+      time: 0.495327
+      value: 0.8101569
+      inSlope: -0.40589446
+      outSlope: -0.40589446
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.83349115
+      value: 0.42423233
+      inSlope: -1.9416962
+      outSlope: -1.9416962
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.053848192
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -1
-      outSlope: -1
+      inSlope: -2.5478065
+      outSlope: -2.5478065
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -424,10 +442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e42919c70cdec429149c5d8f44a19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  manaModifier: 2
   OnBounce:
     m_PersistentCalls:
       m_Calls:
@@ -446,18 +460,7 @@ MonoBehaviour:
       PublicKeyToken=null
   OnDamageReceiverHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6044092798920371552}
-        m_MethodName: DealDamage
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: Sangaku.UnityDamageReceiverEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnDestroyHit:
@@ -503,6 +506,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  manaModifier: 2
 --- !u!114 &4125367577278993755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,7 +616,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Sangaku.UnityOrbControllerEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &6044092798920371552
+--- !u!114 &4945687381187910658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -621,7 +625,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2835863131274270896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c4d9bf08c9e6a6418f16f23a6f83fd7, type: 3}
+  m_Script: {fileID: 11500000, guid: e90e030ea6785534d81cd141ed558bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnDamageDealt:
@@ -710,7 +714,7 @@ GameObject:
   - component: {fileID: 2837079376354197067}
   - component: {fileID: 2837079376354197069}
   - component: {fileID: 2837079376354197066}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -728,6 +732,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2254847654236065295}
   - {fileID: 2832954048863047186}
   m_Father: {fileID: 2833276191514674724}
   m_RootOrder: 2
@@ -777,3 +782,72 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &5300343661150137207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2254847654236065295}
+  - component: {fileID: 3706096005901213507}
+  m_Layer: 0
+  m_Name: Point Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2254847654236065295
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300343661150137207}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2837079376354197067}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &3706096005901213507
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300343661150137207}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 0.8232467, g: 0.9059349, b: 0.9433962, a: 1}
+  m_Intensity: 0.8
+  m_Range: 16.06
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 1
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0

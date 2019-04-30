@@ -73,6 +73,5 @@ namespace Sangaku
         {
             isEnabled = _value;
         }
-
     } 
 }

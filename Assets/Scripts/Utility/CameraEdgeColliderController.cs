@@ -9,10 +9,10 @@ public class CameraEdgeColliderController : MonoBehaviour {
     public Transform Player;
 
     [Header("Wall Behaviours")]
-    public BounceOnBehaviour.Type LeftWallBehaviour;
-    public BounceOnBehaviour.Type RightWallBehaviour;
-    public BounceOnBehaviour.Type BotWallBehaviour;
-    public BounceOnBehaviour.Type TopWallBehaviour;
+    public BounceOn.BounceType LeftWallBehaviour;
+    public BounceOn.BounceType RightWallBehaviour;
+    public BounceOn.BounceType BotWallBehaviour;
+    public BounceOn.BounceType TopWallBehaviour;
     #endregion
 
     #region Variables
@@ -66,10 +66,10 @@ public class CameraEdgeColliderController : MonoBehaviour {
         InstantiatedBotWall.localScale = new Vector3(xScreenSize, InstantiatedBotWall.localScale.y, InstantiatedBotWall.localScale.z);
 
         //get bounce behaviour components
-        BounceOnBehaviour leftBehaviour = InstantiatedLeftWall.GetComponent<BounceOnBehaviour>();
-        BounceOnBehaviour rightBehaviour = InstantiatedRightWall.GetComponent<BounceOnBehaviour>();
-        BounceOnBehaviour topBehaviour = InstantiatedTopWall.GetComponent<BounceOnBehaviour>();
-        BounceOnBehaviour botBehaviour = InstantiatedBotWall.GetComponent<BounceOnBehaviour>();
+        BounceOn leftBehaviour = InstantiatedLeftWall.GetComponent<BounceOn>();
+        BounceOn rightBehaviour = InstantiatedRightWall.GetComponent<BounceOn>();
+        BounceOn topBehaviour = InstantiatedTopWall.GetComponent<BounceOn>();
+        BounceOn botBehaviour = InstantiatedBotWall.GetComponent<BounceOn>();
 
         //sets the behaviour
         leftBehaviour.BehaviourType = LeftWallBehaviour;

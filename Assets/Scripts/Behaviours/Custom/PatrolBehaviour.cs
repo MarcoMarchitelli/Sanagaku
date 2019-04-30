@@ -18,6 +18,8 @@ namespace Sangaku
         [SerializeField] float speed = 5f;
         [SerializeField] float waitTime = 1f;
         [SerializeField] float rotationAnglePerSecond = 90f;
+        [SerializeField] float movementStoppingDistance = 0.1f;
+        [SerializeField] float rotationStoppingDistance = 0.05f;
         #endregion
 
         #region Events
@@ -26,7 +28,6 @@ namespace Sangaku
 
         #region Properties
         bool isMoving;
-
         public bool IsMoving
         {
             get { return isMoving; }
@@ -41,8 +42,13 @@ namespace Sangaku
         }
         #endregion
 
+        IEnumerator followRoutine;
+        IEnumerator rotateRoutine;
+
         protected override void CustomSetup()
         {
+            followRoutine = FollowPath();
+
             if (!path)
             {
                 Debug.LogWarning(name + " has no path referenced!");
@@ -55,12 +61,12 @@ namespace Sangaku
         #region API
         public void StartPatrol()
         {
-            StartCoroutine(FollowPath());
+            StartCoroutine(followRoutine);
         }
 
         public void StopPatrol()
         {
-            StopCoroutine(FollowPath());
+            StopCoroutine(followRoutine);
         }
 
         public void ToggleRotationToWaypoint(bool _value)
@@ -89,7 +95,7 @@ namespace Sangaku
             {
                 transform.position = Vector3.MoveTowards(transform.position, nextPoint, speed * Time.deltaTime);
                 IsMoving = true;
-                if (transform.position == nextPoint)
+                if (Vector3.Distance(transform.position,nextPoint) <= movementStoppingDistance)
                 {
                     nextPointIndex = (nextPointIndex + 1) % wayPoints.Length;
                     nextPoint = wayPoints[nextPointIndex];
@@ -102,9 +108,14 @@ namespace Sangaku
                         OnWaypointReached.Invoke();
 
                     if (rotatesToWaypoint)
-                        yield return StartCoroutine(RotateTo(nextPoint));
+                    {
+                        rotateRoutine = RotateTo(nextPoint);
+                        yield return StartCoroutine(rotateRoutine);
+                    }
                     else
+                    {
                         yield return new WaitForSeconds(waitTime);
+                    }
                 }
                 yield return null;
             }
@@ -115,7 +126,7 @@ namespace Sangaku
             Vector3 directionToTarget = (_rotationTarget - transform.position).normalized;
             float targetAngle = 90 - Mathf.Atan2(directionToTarget.z, directionToTarget.x) * Mathf.Rad2Deg;
 
-            while (Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle) > 0.05f || Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle) < -0.05f)
+            while (Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle) > rotationStoppingDistance || Mathf.DeltaAngle(transform.eulerAngles.y, targetAngle) < -rotationStoppingDistance)
             {
                 float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.y, targetAngle, Time.deltaTime * rotationAnglePerSecond);
                 transform.eulerAngles = Vector3.up * angle;

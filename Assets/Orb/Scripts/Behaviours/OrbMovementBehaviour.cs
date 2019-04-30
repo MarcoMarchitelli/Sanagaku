@@ -78,7 +78,7 @@ namespace Sangaku
 
         public void SetEulerAngles(Vector3 _newDirection)
         {
-            transform.eulerAngles = _newDirection;
+            transform.rotation = Quaternion.Euler(_newDirection);
         }
 
         public void StopMoveTimer()
