@@ -20,12 +20,15 @@ namespace Sangaku
 
         protected override void CustomSetup()
         {
-            data = Entity.Data as OrbControllerData;
 
             if (usesObjectPooler)
                 objPooler = ObjectPooler.Instance;
 
-            OnDestruction.AddListener(data.PlayerShootBehaviour.RemoveOrbFromPlay);
+            if (Entity.GetType() == typeof(OrbController))
+            {
+                data = Entity.Data as OrbControllerData;
+                OnDestruction.AddListener(data.PlayerShootBehaviour.RemoveOrbFromPlay);
+            }
         }
 
         /// <summary>

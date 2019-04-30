@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Sangaku
 {
@@ -8,122 +7,31 @@ namespace Sangaku
     /// </summary>
     public class CollisionBehaviour : BaseBehaviour
     {
-        #region Trigger
-        [Header("Trigger Events", order = 1)]
-        [SerializeField] UnityVoidEvent OnTriggerEnterEvent;
-        [SerializeField] UnityVoidEvent OnTriggerStayEvent;
-        [SerializeField] UnityVoidEvent OnTriggerExitEvent;
-        [Header("Trigger Parameters", order = 2)]
-        [SerializeField] List<MonoBehaviour> entitiesToIgnoreForTrigger;
-
-        protected virtual void OnTriggerEnter(Collider other)
-        {
-            if (!CheckEntitiesToIgnoreForTrigger(entitiesToIgnoreForTrigger, other))
-            {
-                OnTriggerEnterEvent.Invoke();
-                TriggerEnter(); 
-            }
-        }
-
-        private void OnTriggerStay(Collider other)
-        {
-            if (!CheckEntitiesToIgnoreForTrigger(entitiesToIgnoreForTrigger, other))
-            {
-                OnTriggerStayEvent.Invoke();
-                TriggerStay(); 
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (!CheckEntitiesToIgnoreForTrigger(entitiesToIgnoreForTrigger, other))
-            {
-                OnTriggerExitEvent.Invoke();
-                TriggerExit();
-            }
-        } 
-
-        protected virtual void TriggerEnter() { }
-        protected virtual void TriggerStay() { }
-        protected virtual void TriggerExit() { }
-
-        /// <summary>
-        /// Funzione che controlla se ho colliso con un'entità da ignorare
-        /// </summary>
-        /// <param name="_entitiesToIgnore"></param>
-        /// <param name="_collider"></param>
-        /// <returns></returns>
-        protected bool CheckEntitiesToIgnoreForTrigger(List<MonoBehaviour> _entitiesToIgnore, Collider _collider)
-        {
-            if (_entitiesToIgnore == null)
-                return false;
-
-            for (int i = 0; i < _entitiesToIgnore.Count; i++)
-            {
-                if (_entitiesToIgnore[i] != null && _collider.GetComponent(_entitiesToIgnore[i].GetType()))
-                    return true;
-            }
-            return false;
-        }
-        #endregion
-
-        #region Collision
-        [Header("Collision Events", order = 3)]
-        [SerializeField] UnityVoidEvent OnCollisionEnterEvent;
-        [SerializeField] UnityVoidEvent OnCollisionStayEvent;
-        [SerializeField] UnityVoidEvent OnCollisionExitEvent;
-        [Header("Collision Parameters", order = 4)]
-        [SerializeField] List<MonoBehaviour> entitiesToIgnoreForCollision;
+        [Header("Collision Events", order = 2)]
+        [SerializeField] UnityCollisionEvent OnCollisionEnterEvent;
+        [SerializeField] UnityCollisionEvent OnCollisionStayEvent;
+        [SerializeField] UnityCollisionEvent OnCollisionExitEvent;
 
         protected virtual void OnCollisionEnter(Collision collision)
         {
-            if (!CheckEntitiesToIgnoreForCollider(entitiesToIgnoreForCollision, collision))
-            {
-                OnCollisionEnterEvent.Invoke();
-                CollisionEnter(); 
-            }
+            OnCollisionEnterEvent.Invoke(collision);
+            CollisionEnter(collision);
         }
 
         private void OnCollisionStay(Collision collision)
         {
-            if (!CheckEntitiesToIgnoreForCollider(entitiesToIgnoreForCollision, collision))
-            {
-                OnCollisionStayEvent.Invoke();
-                CollisionStay(); 
-            }
+            OnCollisionStayEvent.Invoke(collision);
+            CollisionStay(collision);
         }
 
         private void OnCollisionExit(Collision collision)
         {
-            if (!CheckEntitiesToIgnoreForCollider(entitiesToIgnoreForCollision, collision))
-            {
-                OnCollisionExitEvent.Invoke();
-                CollisionExit(); 
-            }
+            OnCollisionExitEvent.Invoke(collision);
+            CollisionExit(collision);
         }
 
-        protected virtual void CollisionEnter() { }
-        protected virtual void CollisionStay() { }
-        protected virtual void CollisionExit() { }
-
-        /// <summary>
-        /// Funzione che controlla se ho colliso con un'entità da ignorare
-        /// </summary>
-        /// <param name="_entitiesToIgnore"></param>
-        /// <param name="_collision"></param>
-        /// <returns></returns>
-        protected bool CheckEntitiesToIgnoreForCollider(List<MonoBehaviour> _entitiesToIgnore, Collision _collision)
-        {
-            if (_entitiesToIgnore == null)
-                return false;
-
-            for (int i = 0; i < _entitiesToIgnore.Count; i++)
-            {
-                if (_entitiesToIgnore[i] != null && _collision.collider.GetComponent(_entitiesToIgnore[i].GetType()))
-                    return true;
-            }
-            return false;
-        }
-        #endregion
-    } 
+        protected virtual void CollisionEnter(Collision _collision) { }
+        protected virtual void CollisionStay(Collision _collision) { }
+        protected virtual void CollisionExit(Collision _collision) { }
+    }
 }

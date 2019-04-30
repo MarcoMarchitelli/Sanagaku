@@ -94,10 +94,10 @@ namespace Sangaku
                 //OrbController instantiatedOrb = Instantiate(projectilePrefab.gameObject, shootPoint.position, shootPoint.rotation).GetComponent<OrbController>();
                 //instantiatedOrb.SetUpOrbEntity(Entity as PlayerController);
 
-                playerMana.AddMana(-cost);
                 OrbController pooledOrb = ObjectPooler.Instance.GetPoolableFromPool(projectilePool, shootPoint.position, shootPoint.rotation) as OrbController;
-                AddOrbInPlay(pooledOrb);
                 pooledOrb.SetUpOrbEntity(Entity as PlayerController);
+                AddOrbInPlay(pooledOrb);
+                playerMana.AddMana(-cost);
 
                 OnOrbShoot.Invoke(secondsBetweenShots);
             }
