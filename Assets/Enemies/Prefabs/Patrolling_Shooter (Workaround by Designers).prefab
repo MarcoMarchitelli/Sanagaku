@@ -1,5 +1,82 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &873749640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 873749641}
+  - component: {fileID: 873749644}
+  - component: {fileID: 873749643}
+  m_Layer: 0
+  m_Name: Shield sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &873749641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873749640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.003, y: 0.645, z: 0.017}
+  m_LocalScale: {x: 2.0992653, y: 2.0992653, z: 2.0992653}
+  m_Children: []
+  m_Father: {fileID: 466064257}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &873749644
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873749640}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &873749643
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873749640}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 21793801542522698, guid: 6ba56d92488ed9e4c8ce4baec10c3e1b, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &2849904882770121354
 GameObject:
   m_ObjectHideFlags: 0
@@ -9520,12 +9597,10 @@ GameObject:
   - component: {fileID: 466064257}
   - component: {fileID: 8012783547636257797}
   - component: {fileID: 8512764734544320104}
-  - component: {fileID: 2069678122425815783}
   - component: {fileID: 795980804391595148}
   - component: {fileID: 6801473157475606348}
   - component: {fileID: 6362825366577738364}
   - component: {fileID: 5578615926035383614}
-  - component: {fileID: 8290542099733599762}
   - component: {fileID: 5095897517251705558}
   m_Layer: 0
   m_Name: Patrolling_Shooter (Workaround by Designers)
@@ -9541,13 +9616,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6507374536575986017}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -41.76937, y: 16.21875, z: -8.60112}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8320408176549543956}
   - {fileID: 173181863336425871}
   - {fileID: 5249472287849245045}
+  - {fileID: 873749641}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9608,62 +9684,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &2069678122425815783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6507374536575986017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6088b3595686c2046be9c846628f4898, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8209790580901888412}
-        m_MethodName: StopTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8209790580901888412}
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Sangaku.UnityIntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnHealthDepleated:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 795980804391595148}
-        m_MethodName: Destroy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  maxHealth: 1
 --- !u!114 &795980804391595148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9737,29 +9757,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.6709423, z: 1}
   m_Center: {x: 0, y: 0.33547115, z: 0}
---- !u!114 &8290542099733599762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6507374536575986017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b5d2565761b2ba44b33209e13ed6926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxMana: 1
-  startMana: 0
-  startAtMax: 1
-  regeneration: 0
-  canExceedMax: 0
-  amountPerSecond: 0.1
-  OnManaChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!114 &5095897517251705558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19493,8 +19490,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3665133471741181860, guid: 84eebb238e30ced4a92829a6e18c2a05,
         type: 3}
-      propertyPath: scanTarget
-      value: 
+      propertyPath: canSeeThroughObstacles
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665133471741181860, guid: 84eebb238e30ced4a92829a6e18c2a05,
+        type: 3}
+      propertyPath: previewWithSpotlight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665133471741181860, guid: 84eebb238e30ced4a92829a6e18c2a05,
+        type: 3}
+      propertyPath: obstacleLayer.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665133471741181860, guid: 84eebb238e30ced4a92829a6e18c2a05,
+        type: 3}
+      propertyPath: fovAngle
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665133471741181860, guid: 84eebb238e30ced4a92829a6e18c2a05,
+        type: 3}
+      propertyPath: spotLightColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665133471741181860, guid: 84eebb238e30ced4a92829a6e18c2a05,
+        type: 3}
+      propertyPath: spotLightColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665133471741181860, guid: 84eebb238e30ced4a92829a6e18c2a05,
+        type: 3}
+      propertyPath: spotLightColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665133471741181860, guid: 84eebb238e30ced4a92829a6e18c2a05,
+        type: 3}
+      propertyPath: detectedSpotlightColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665133471741181860, guid: 84eebb238e30ced4a92829a6e18c2a05,
+        type: 3}
+      propertyPath: detectedSpotlightColor.g
+      value: 0.07075471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3665133471741181860, guid: 84eebb238e30ced4a92829a6e18c2a05,
+        type: 3}
+      propertyPath: detectedSpotlightColor.b
+      value: 0.07075471
       objectReference: {fileID: 0}
     - target: {fileID: 3665133471741181860, guid: 84eebb238e30ced4a92829a6e18c2a05,
         type: 3}
@@ -19558,13 +19600,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5249472288292498250, guid: 84eebb238e30ced4a92829a6e18c2a05,
         type: 3}
-      propertyPath: projectilePoolTag
-      value: EnemyBullet
+      propertyPath: secondsBetweenShots
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5249472288292498250, guid: 84eebb238e30ced4a92829a6e18c2a05,
         type: 3}
-      propertyPath: secondsBetweenShots
-      value: 0.4
+      propertyPath: projectilePoolTag
+      value: EnemyBullet
       objectReference: {fileID: 0}
     - target: {fileID: 2382269709496560215, guid: 84eebb238e30ced4a92829a6e18c2a05,
         type: 3}
@@ -19576,15 +19618,30 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.03
       objectReference: {fileID: 0}
+    - target: {fileID: 8038433225795685457, guid: 84eebb238e30ced4a92829a6e18c2a05,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 5249472288500432683, guid: 84eebb238e30ced4a92829a6e18c2a05,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6e1d36c4bbd37d54f9ea183e4f5fd656, type: 2}
-    - target: {fileID: 8038433225795685457, guid: 84eebb238e30ced4a92829a6e18c2a05,
+    - target: {fileID: 5249472288292498299, guid: 84eebb238e30ced4a92829a6e18c2a05,
         type: 3}
-      propertyPath: m_Constraints
-      value: 126
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 795980804391595148}
+    - target: {fileID: 5249472288292498299, guid: 84eebb238e30ced4a92829a6e18c2a05,
+        type: 3}
+      propertyPath: maxHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249472288292498299, guid: 84eebb238e30ced4a92829a6e18c2a05,
+        type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Destroy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84eebb238e30ced4a92829a6e18c2a05, type: 3}
