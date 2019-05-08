@@ -18,18 +18,9 @@ namespace Sangaku
         /// </summary>
         [Multiline] [SerializeField] public string description;
         /// <summary>
-        /// True se il counter si resetta da solo dopo il completamente, false altrimenti
-        /// </summary>
-        [SerializeField] bool autoReset;
-        /// <summary>
         /// Lista di confronti da eseguire
         /// </summary>
         [SerializeField] List<CounterGroup> counters = new List<CounterGroup>();
-
-        /// <summary>
-        /// Contatore
-        /// </summary>
-        int counter;
 
         /// <summary>
         /// Funzione che aggiunge al contatore il numero passato
@@ -37,7 +28,12 @@ namespace Sangaku
         /// <param name="_number"></param>
         public void Add(int _number)
         {
-            counter += _number;
+            for (int i = 0; i < counters.Count; i++)
+            {
+                counters[i].Counter += _number;
+                DebugCounter(counters[i]);
+            }
+
             CheckAll();
         }
 
@@ -47,7 +43,12 @@ namespace Sangaku
         /// <param name="_number"></param>
         public void Subtract(int _number)
         {
-            counter -= _number;
+            for (int i = 0; i < counters.Count; i++)
+            {
+                counters[i].Counter -= _number;
+                DebugCounter(counters[i]);
+            }
+
             CheckAll();
         }
 
@@ -56,7 +57,12 @@ namespace Sangaku
         /// </summary>
         public void Increase()
         {
-            counter++;
+            for (int i = 0; i < counters.Count; i++)
+            {
+                counters[i].Counter++;
+                DebugCounter(counters[i]);
+            }
+
             CheckAll();
         }
 
@@ -65,13 +71,28 @@ namespace Sangaku
         /// </summary>
         public void Decrease()
         {
-            counter--;
+            for (int i = 0; i < counters.Count; i++)
+            {
+                counters[i].Counter--;
+                DebugCounter(counters[i]);
+            }
+
             CheckAll();
         }
 
+        /// <summary>
+        /// Funzione che si occupa di resettare i counter completi con auto restart a true
+        /// </summary>
         public void ResetCounter()
         {
-            counter = 0;
+            for (int i = 0; i < counters.Count; i++)
+            {
+                if (counters[i].IsComplete && counters[i].AutoRestart)
+                {
+                    counters[i].IsComplete = false;
+                    counters[i].Counter = 0;
+                }
+            }
         }
 
         /// <summary>
@@ -81,18 +102,11 @@ namespace Sangaku
         {
             for (int i = 0; i < counters.Count; i++)
             {
-                if (!counters[i].isComplete)
+                if (!counters[i].IsComplete)
                     CheckCounter(counters[i]);
             }
 
-            for (int i = 0; i < counters.Count; i++)
-            {
-                if (!counters[i].isComplete)
-                    return;
-            }
-
-            if (autoReset)
-                ResetCounter();
+            ResetCounter();
         }
 
         /// <summary>
@@ -100,44 +114,54 @@ namespace Sangaku
         /// </summary>
         void CheckCounter(CounterGroup _counter)
         {
-            switch (_counter.comparison)
+            switch (_counter.Comparison)
             {
                 case ComparisonType.Equals:
-                    if (counter == _counter.comparisonNumber)
+                    if (_counter.Counter == _counter.ComparisonNumber)
                     {
-                        _counter.onComparisonSucceded.Invoke();
-                        _counter.isComplete = true;
+                        _counter.OnComparisonSucceded.Invoke();
+                        _counter.IsComplete = true;
                     }
                     break;
                 case ComparisonType.Greater:
-                    if (counter > _counter.comparisonNumber)
+                    if (_counter.Counter > _counter.ComparisonNumber)
                     {
-                        _counter.onComparisonSucceded.Invoke();
-                        _counter.isComplete = true;
+                        _counter.OnComparisonSucceded.Invoke();
+                        _counter.IsComplete = true;
                     }
                     break;
                 case ComparisonType.Lesser:
-                    if (counter < _counter.comparisonNumber)
+                    if (_counter.Counter < _counter.ComparisonNumber)
                     {
-                        _counter.onComparisonSucceded.Invoke();
-                        _counter.isComplete = true;
+                        _counter.OnComparisonSucceded.Invoke();
+                        _counter.IsComplete = true;
                     }
                     break;
                 case ComparisonType.GreaterEquals:
-                    if (counter >= _counter.comparisonNumber)
+                    if (_counter.Counter >= _counter.ComparisonNumber)
                     {
-                        _counter.onComparisonSucceded.Invoke();
-                        _counter.isComplete = true;
+                        _counter.OnComparisonSucceded.Invoke();
+                        _counter.IsComplete = true;
                     }
                     break;
                 case ComparisonType.LesserEquals:
-                    if (counter <= _counter.comparisonNumber)
+                    if (_counter.Counter <= _counter.ComparisonNumber)
                     {
-                        _counter.onComparisonSucceded.Invoke();
-                        _counter.isComplete = true;
+                        _counter.OnComparisonSucceded.Invoke();
+                        _counter.IsComplete = true;
                     }
                     break;
             }
+        }
+
+        /// <summary>
+        /// Funzione che scrive il debug di un counter
+        /// </summary>
+        /// <param name="_counter"></param>
+        void DebugCounter(CounterGroup _counter)
+        {
+            if (_counter.DebugMode)
+                Debug.LogFormat("Object {0}, ID {1} Count : {2}/{2}", gameObject.name, _counter.ID, _counter.Counter, _counter.ComparisonNumber);
         }
 
         /// <summary>
@@ -149,20 +173,38 @@ namespace Sangaku
             /// <summary>
             /// Evento lanciato al successo del confronto scelto
             /// </summary>
-            public UnityVoidEvent onComparisonSucceded;
+            public UnityVoidEvent OnComparisonSucceded;
+            /// <summary>
+            /// True se il counter si resetta da solo dopo il completamente, false altrimenti
+            /// </summary>
+            public bool AutoRestart;
+            /// <summary>
+            /// Id del counter
+            /// </summary>
+            public string ID;
             /// <summary>
             /// Tipo di confronto scelto
             /// </summary>
-            public ComparisonType comparison;
+            public ComparisonType Comparison;
             /// <summary>
             /// Numero di confrnto
             /// </summary>
-            public int comparisonNumber;
+            public int ComparisonNumber;
+            /// <summary>
+            /// True se si deve debuggare il numero del counter, false altrimenti
+            /// </summary>
+            public bool DebugMode;
+
             /// <summary>
             /// True se il contatore è completo
             /// </summary>
-            //[HideInInspector]
-            public bool isComplete;
+            [HideInInspector]
+            public bool IsComplete;
+            /// <summary>
+            /// Contatore
+            /// </summary>
+            [HideInInspector]
+            public int Counter;
         }
     }
 }
