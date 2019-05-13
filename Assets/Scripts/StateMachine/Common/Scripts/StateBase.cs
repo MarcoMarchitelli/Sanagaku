@@ -31,7 +31,7 @@ namespace Deirin.StateMachine {
 
         public abstract void SetUp(IContext _context);
 
-        public virtual void Enter() {
+        public virtual void Enter(Animator animator) {
             
         }
 
@@ -50,7 +50,7 @@ namespace Deirin.StateMachine {
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnStateEnter(animator, stateInfo, layerIndex);
-            Enter();
+            Enter(animator);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

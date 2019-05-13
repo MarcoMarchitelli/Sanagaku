@@ -181,7 +181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277293635}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: -14.588234, y: 18.798565, z: -16.511372}
+  m_LocalPosition: {x: -14.58884, y: 18.798565, z: -16.511372}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2143677624}
@@ -195,11 +195,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1329333724}
     m_Modifications:
-    - target: {fileID: 1727001519501713834, guid: c948f4642bc58a249b3f2c13d1aa64b3,
-        type: 3}
-      propertyPath: m_Name
-      value: Health-Mana_UI_Test
-      objectReference: {fileID: 0}
     - target: {fileID: 1727001519501713837, guid: c948f4642bc58a249b3f2c13d1aa64b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -304,6 +299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727001519501713834, guid: c948f4642bc58a249b3f2c13d1aa64b3,
+        type: 3}
+      propertyPath: m_Name
+      value: Health-Mana_UI_Test
       objectReference: {fileID: 0}
     - target: {fileID: 1727001519587670554, guid: c948f4642bc58a249b3f2c13d1aa64b3,
         type: 3}
@@ -2005,6 +2005,14 @@ PrefabInstance:
       propertyPath: OnDestruction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1767771213}
+    - target: {fileID: 1340109532, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1286207990, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 7fdfef02a668b6d4ab65cc2bce67456b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
 --- !u!114 &1147327567 stripped
@@ -2404,6 +2412,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 737601215591501501, guid: 50057987b26e21144a25c42b1556ece3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 737601216246022996, guid: 50057987b26e21144a25c42b1556ece3,
+        type: 3}
+      propertyPath: playerManaUI
+      value: 
+      objectReference: {fileID: 280856622}
+    - target: {fileID: 737601216246022996, guid: 50057987b26e21144a25c42b1556ece3,
+        type: 3}
+      propertyPath: playerHealthUI
+      value: 
+      objectReference: {fileID: 280856621}
     - target: {fileID: 737601216246022998, guid: 50057987b26e21144a25c42b1556ece3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2484,21 +2507,6 @@ PrefabInstance:
       propertyPath: LossMenu
       value: 
       objectReference: {fileID: 284115980}
-    - target: {fileID: 737601216246022996, guid: 50057987b26e21144a25c42b1556ece3,
-        type: 3}
-      propertyPath: playerManaUI
-      value: 
-      objectReference: {fileID: 280856622}
-    - target: {fileID: 737601216246022996, guid: 50057987b26e21144a25c42b1556ece3,
-        type: 3}
-      propertyPath: playerHealthUI
-      value: 
-      objectReference: {fileID: 280856621}
-    - target: {fileID: 737601215591501501, guid: 50057987b26e21144a25c42b1556ece3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50057987b26e21144a25c42b1556ece3, type: 3}
 --- !u!1001 &1599831060
