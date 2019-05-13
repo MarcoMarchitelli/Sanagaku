@@ -98,11 +98,12 @@ namespace Sangaku
                 {
                     _oib.CatchOrb(Entity as OrbController);
                     OnPlayerHit.Invoke();
+                    return;
                 }
             }
 
             DamageReceiverBehaviour _drb = other.GetComponent<DamageReceiverBehaviour>();
-            if (_drb && !_drb.Entity.GetType().IsAssignableFrom(typeof(PlayerController))) // controllo che non sia un player
+            if (_drb && _drb.Entity.GetType() != typeof(PlayerController)) // controllo che non sia un player
             {
                 OnDamageReceiverHit.Invoke(_drb);
             }
