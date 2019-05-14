@@ -16,10 +16,10 @@ namespace Sangaku
 
         [SerializeField] int maxHealth;
         int _currentHealth;
-        int CurrentHealth
+        public int CurrentHealth
         {
             get { return _currentHealth; }
-            set
+            private set
             {
                 if (_currentHealth != value)
                 {
@@ -44,8 +44,9 @@ namespace Sangaku
                 tempHealth = 0;
                 OnHealthDepleated.Invoke();
             }
-            if (tempHealth > maxHealth)
+            else if (tempHealth > maxHealth)
                 tempHealth = maxHealth;
+
             CurrentHealth = tempHealth;
         }
 
