@@ -23,6 +23,9 @@ namespace Sangaku
             {
                 DamageReceiverBehaviour receiver = collision.collider.GetComponent<DamageReceiverBehaviour>();
 
+                if (Entity == null || receiver.Entity == null)
+                    return;
+
                 ///Controlla se l'owner è l'orb e il ricevente è il player, in tal caso non applica danno e ritorna
                 if (Entity.GetType() == typeof(OrbController) && receiver.Entity.GetType() == typeof(PlayerController))
                     return;
