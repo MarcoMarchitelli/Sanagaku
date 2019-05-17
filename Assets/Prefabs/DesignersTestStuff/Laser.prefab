@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 1458666620892882760}
   - component: {fileID: 1458666620892882761}
   - component: {fileID: 1458666620892882762}
-  - component: {fileID: 5674642881687168386}
+  - component: {fileID: 5179570152078527725}
   m_Layer: 0
   m_Name: graphics+collider
   m_TagString: Untagged
@@ -98,7 +98,7 @@ Transform:
   m_GameObject: {fileID: 1458666620892882756}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 9.27}
+  m_LocalScale: {x: 0.3, y: 1.97, z: 9.27}
   m_Children: []
   m_Father: {fileID: 6378774846249929290}
   m_RootOrder: 0
@@ -128,7 +128,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 03c5cfd21e573f64f96213bc28fbd2d8, type: 2}
+  - {fileID: 2100000, guid: d992e90512afc8744b839fc8074634d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -156,12 +156,12 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458666620892882756}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5674642881687168386
+--- !u!114 &5179570152078527725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,25 +170,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1458666620892882756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62c244b969e8772428c7ccc23e1f2814, type: 3}
+  m_Script: {fileID: 11500000, guid: ee024a8379cfcdc45b242d79f98183ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnTriggerEnterEvent:
+  OnCollisionEnterEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  OnTriggerStayEvent:
+  OnCollisionStayEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  OnTriggerExitEvent:
+  OnCollisionExitEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  entitiesToDetectForTrigger:
+  entitiesToDetectForCollision:
   - {fileID: 0}
 --- !u!1 &5509074548649195865
 GameObject:
@@ -408,7 +408,7 @@ Transform:
   m_GameObject: {fileID: 8892897501227032714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1.83}
+  m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_Children:
   - {fileID: 1458666620892882763}
   - {fileID: 4447513106474269553}
