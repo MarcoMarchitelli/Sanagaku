@@ -8,16 +8,18 @@ namespace Sangaku
     public class PlayerController : BaseEntity
     {
         /// <summary>
+        /// Riferimento al controller della UI della vita
+        /// </summary>
+        [SerializeField] PlayerHealthUI healthUI;
+
+        /// <summary>
         /// Setup custom della classe
         /// </summary>
         public override void CustomSetup()
         {
             DamageReceiverBehaviour damageReceiver = GetBehaviour<DamageReceiverBehaviour>();
-            UI_HealthBehaviour uI_Health = GetBehaviour<UI_HealthBehaviour>();
-            if (uI_Health != null)
-                uI_Health.CustomSetup(damageReceiver);
-            else
-                Debug.LogError("****Missing UI_HealthBehaviour****");
+            if (healthUI != null)
+                healthUI.Setup(damageReceiver.GetMaxHealth());
         }
     }
 }

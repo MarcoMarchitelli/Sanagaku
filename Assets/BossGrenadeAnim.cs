@@ -17,7 +17,6 @@ using UnityEngine;
         public void StartExpAnimation()
         {
             ExpAnimation.SetBool("PlayExp", true);
-            
         }
 
         public void ResetExpAnimation()

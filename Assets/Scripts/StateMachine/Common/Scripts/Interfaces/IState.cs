@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Deirin.StateMachine
+﻿namespace Deirin.StateMachine
 {  
     public interface IState
     {
@@ -22,7 +20,7 @@ namespace Deirin.StateMachine
         /// <summary>
         /// Called once on state enter.
         /// </summary>
-        void Enter(Animator animator);
+        void Enter();
 
         /// <summary>
         /// Called every application lifecycle (Update) if state is active.

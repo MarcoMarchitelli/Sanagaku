@@ -7,30 +7,22 @@ namespace Sangaku
     /// </summary>
     public class OrbDamageDealerBehaviour : DamageDealerBehaviour
     {
-        protected override void TriggerEnter(Collider other)
+        protected override void OnTriggerEnter(Collider other)
         {
             if (IsSetupped && dealsOnTrigger)
             {
                 DamageReceiverBehaviour receiver = other.GetComponent<DamageReceiverBehaviour>();
-                if (receiver != null && receiver.Entity.GetType() != typeof(PlayerController))
+                if (receiver != null && !receiver.Entity.GetType().IsAssignableFrom(typeof(PlayerController)))
                     DealDamage(receiver);
             }
         }
 
-        protected override void CollisionEnter(Collision collision)
+        protected override void OnCollisionEnter(Collision collision)
         {
             if (IsSetupped && dealsOnCollision)
             {
                 DamageReceiverBehaviour receiver = collision.collider.GetComponent<DamageReceiverBehaviour>();
-
-                if (Entity == null || receiver.Entity == null)
-                    return;
-
-                ///Controlla se l'owner è l'orb e il ricevente è il player, in tal caso non applica danno e ritorna
-                if (Entity.GetType() == typeof(OrbController) && receiver.Entity.GetType() == typeof(PlayerController))
-                    return;
-
-                if (receiver != null && receiver.Entity.GetType() != typeof(PlayerController))
+                if (receiver != null && !receiver.Entity.GetType().IsAssignableFrom(typeof(PlayerController)))
                     DealDamage(receiver);
             }
         }

@@ -26,7 +26,7 @@ namespace Sangaku
             OnDamageDealt.Invoke(damage);
         }
 
-        protected virtual void TriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             if (IsSetupped && dealsOnTrigger)
             {
@@ -36,26 +36,14 @@ namespace Sangaku
             }
         }
 
-        protected virtual void CollisionEnter(Collision collision)
+        protected virtual void OnCollisionEnter(Collision collision)
         {
             if (IsSetupped && dealsOnCollision)
             {
                 DamageReceiverBehaviour receiver = collision.collider.GetComponent<DamageReceiverBehaviour>();
-
                 if (receiver && receiver.Entity.GetType() != Entity.GetType())
                     DealDamage(receiver);
             }
-        }
-
-
-        void OnTriggerEnter(Collider other)
-        {
-            TriggerEnter(other);
-        }
-
-        void OnCollisionEnter(Collision collision)
-        {
-            CollisionEnter(collision);
         }
     }
 }
