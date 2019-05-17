@@ -29082,6 +29082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db900048548bd2749b36f65e28deabe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthUI: {fileID: 0}
 --- !u!114 &1724618696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29456,8 +29457,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: UpdateHealthUI
+      - m_Target: {fileID: 1051915665947461001}
+        m_MethodName: UpdateUI
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -34633,11 +34634,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1493207849}
     m_Modifications:
-    - target: {fileID: 2830627654674100300, guid: 595e750990e62004f9a0b5bb8bbb5dc4,
-        type: 3}
-      propertyPath: m_Name
-      value: UIWorld
-      objectReference: {fileID: 0}
     - target: {fileID: 1656936173037632651, guid: 595e750990e62004f9a0b5bb8bbb5dc4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34743,6 +34739,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2830627654674100300, guid: 595e750990e62004f9a0b5bb8bbb5dc4,
+        type: 3}
+      propertyPath: m_Name
+      value: UIWorld
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 595e750990e62004f9a0b5bb8bbb5dc4, type: 3}
 --- !u!224 &1656936173347487735 stripped
@@ -34751,3 +34752,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 314049404}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1051915665947461001 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1051915665651238645, guid: 595e750990e62004f9a0b5bb8bbb5dc4,
+    type: 3}
+  m_PrefabInstance: {fileID: 314049404}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee0f89663cf76841a92d71787c13232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
