@@ -16,7 +16,7 @@ namespace Sangaku
         /// </summary>
         OrbController orb;
 
-        public override void Enter(Animator animator)
+        public override void Enter()
         {
             orb = context.OrbEntity as OrbController;
             orbTransform = orb.transform;

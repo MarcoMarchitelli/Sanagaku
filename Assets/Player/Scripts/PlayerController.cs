@@ -17,7 +17,7 @@ namespace Sangaku
             if (uI_Health != null)
                 uI_Health.CustomSetup(damageReceiver);
             else
-                Debug.LogError("****Missing UI_HealthBehaviour****");
+                Debug.LogError("***Missing UI_HealthBehaviour***");
         }
     }
 }
