@@ -67,5 +67,11 @@ namespace Sangaku
             if (IsSetupped)
                 Move();
         }
+
+        public float GetmoveSpeed()
+        {
+            return moveSpeed;
+        }
+
     } 
 }

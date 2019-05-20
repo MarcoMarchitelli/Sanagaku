@@ -8,7 +8,7 @@ namespace Sangaku
     /// Behaviour che si occupa di eseguire il dash
     /// </summary>
     [RequireComponent(typeof(Rigidbody))]
-    public class DashBehaviour : BaseBehaviour
+    public class PlayerDashBehaviour : BaseBehaviour
     {
         #region Events
         /// <summary>
@@ -20,6 +20,16 @@ namespace Sangaku
         /// </summary>
         [SerializeField] UnityFloatEvent OnDashEnd;
         #endregion
+
+        /// <summary>
+        /// Velocità di movimento del player
+        /// </summary>
+        float playerVelocity;
+
+        /// <summary>
+        /// Se il player sta dashando
+        /// </summary>
+        bool dashing;
 
         /// <summary>
         /// Distanza di dash
@@ -44,6 +54,8 @@ namespace Sangaku
         protected override void CustomSetup()
         {
             rBody = GetComponent<Rigidbody>();
+            if(Entity.GetBehaviour<PlayerMovementBehaviour>() != null)
+                playerVelocity = Entity.GetBehaviour<PlayerMovementBehaviour>().GetmoveSpeed();
         }
 
         /// <summary>
@@ -59,13 +71,26 @@ namespace Sangaku
         {
             OnDashStart.Invoke();
             rBody.AddForce(_direction * dashSpeed, ForceMode.Impulse);
-            StartCoroutine(CountDashTime(dashDistance / dashSpeed));
+            //StartCoroutine(CountDashTime(dashDistance / dashSpeed));
+            dashing = true;
         }
 
         IEnumerator CountDashTime(float _time)
         {
             yield return new WaitForSeconds(_time);
             OnDashEnd.Invoke(dashCooldown);
+        }
+
+        private void FixedUpdate()
+        {
+            if (dashing)
+            {
+                if(rBody.velocity.magnitude <= playerVelocity)
+                {
+                    OnDashEnd.Invoke(dashCooldown);
+                    dashing = false;
+                }
+            }
         }
     }
 }
