@@ -10274,7 +10274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277293635}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: -14.068382, y: 18.742565, z: -16.23137}
+  m_LocalPosition: {x: -14.06806, y: 18.742565, z: -16.23137}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2143677624}
@@ -31979,8 +31979,52 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1724618696, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnDirectionUpdate.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724618696, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
       propertyPath: InputDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724618696, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnDirectionUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1426873811}
+    - target: {fileID: 1724618696, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnDirectionUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMoveDirection
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724618696, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnDirectionUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724618696, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnDirectionUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075314318, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1286207987, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455565436, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1891538080, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1891538083, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1891538083, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
@@ -38217,6 +38261,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1109980211}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1426873811 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1724618695, guid: 3cef6e761cb473e4988a3e4416edd8da,
+    type: 3}
+  m_PrefabInstance: {fileID: 1109980211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426873801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e3f96e83f4b614d939b2b710d9904b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1442802616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38229,6 +38285,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 7644188505989839703, guid: 1ba642d3175d7554d9c73064dacd8ab0,
+        type: 3}
+      propertyPath: objectiveController
+      value: 
+      objectReference: {fileID: 165763179}
     - target: {fileID: 4806474193177100126, guid: 1ba642d3175d7554d9c73064dacd8ab0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38644,11 +38705,6 @@ PrefabInstance:
       propertyPath: OnDestruction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 7644188505989839703, guid: 1ba642d3175d7554d9c73064dacd8ab0,
-        type: 3}
-      propertyPath: objectiveController
-      value: 
-      objectReference: {fileID: 165763179}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ba642d3175d7554d9c73064dacd8ab0, type: 3}
 --- !u!4 &1442802617 stripped
