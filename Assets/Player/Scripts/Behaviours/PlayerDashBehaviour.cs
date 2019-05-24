@@ -71,14 +71,7 @@ namespace Sangaku
         {
             OnDashStart.Invoke();
             rBody.AddForce(_direction * dashSpeed, ForceMode.Impulse);
-            //StartCoroutine(CountDashTime(dashDistance / dashSpeed));
             dashing = true;
-        }
-
-        IEnumerator CountDashTime(float _time)
-        {
-            yield return new WaitForSeconds(_time);
-            OnDashEnd.Invoke(dashCooldown);
         }
 
         private void FixedUpdate()
