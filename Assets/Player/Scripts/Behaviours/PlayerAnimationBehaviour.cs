@@ -27,6 +27,37 @@ namespace Sangaku
             anim = GetComponent<Animator>();
         }
 
+        #region Body
+
+        public void SetBodyMovementAnimation()
+        {
+            SetBodyAnimation(0);
+        }
+
+        public void SetBodyIdle()
+        {
+            SetBodyAnimation(Random.Range(1, 3));
+        }
+
+        public void SetDeathAnimation()
+        {
+            SetBodyAnimation(Random.Range(3, 5));
+        }
+
+        void SetBodyAnimation(int _param)
+        {
+            /// Se il parametro è 0 il character è in moviment.
+            /// 1 o 2 sono le due animazioni di idle
+            if(anim != null)
+            {
+                anim.SetInteger("BodyStatus", _param);
+            }
+        }
+        
+        #endregion
+
+        #region Movement
+
         /// <summary>
         /// Funzione che setta la direzione del movimento
         /// </summary>
@@ -41,6 +72,9 @@ namespace Sangaku
         /// </summary>
         void SetMovingAnimation()
         {
+            if (anim == null)
+                return;
+
             anim.SetFloat("XMov", direction.x);
             anim.SetFloat("YMov", direction.z);
         }
@@ -52,5 +86,6 @@ namespace Sangaku
         {
             SetMovingAnimation();
         }
+        #endregion
     }
 }
