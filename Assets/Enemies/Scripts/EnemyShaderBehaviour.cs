@@ -7,14 +7,18 @@ namespace Sangaku
     [RequireComponent(typeof(Renderer))]
     public class EnemyShaderBehaviour : BaseBehaviour
     {
-        Renderer rend;
+
+        [Header("Damage")]
         [SerializeField]
         string shaderDamageParameter;
         [SerializeField]
         float DamageValue;
         [SerializeField]
-        float damagetime;
+        float damageTime;
+        [SerializeField]
+        float DamageShowTime;
 
+        [Header("Death")]
         [SerializeField]
         string shaderDeathParameter;
         [SerializeField]
@@ -22,6 +26,7 @@ namespace Sangaku
         [SerializeField]
         float deathtime;
 
+        Renderer rend;
         IEnumerator deathCoroutine;
 
         protected override void CustomSetup()
@@ -32,7 +37,7 @@ namespace Sangaku
 
         public void SetDamageValue()
         {
-            rend.material.SetFloat(shaderDamageParameter, DamageValue);
+            //rend.material.SetFloat(shaderDamageParameter, DamageValue);
         }
 
         public void SetDeathValue()
@@ -42,26 +47,39 @@ namespace Sangaku
 
         IEnumerator ChangeDamageColor()
         {
-            WaitForEndOfFrame wait = new WaitForEndOfFrame();
-            float paramValue = rend.material.GetFloat(shaderDamageParameter);
-            while (paramValue < DamageValue)
+            float counter = damageTime;
+            float multiplier = DamageValue / damageTime;
+            WaitForEndOfFrame yieldInstruction = new WaitForEndOfFrame();
+
+            while (counter > 0)
             {
-                paramValue += Time.deltaTime;
-                rend.material.SetFloat(shaderDeathParameter, paramValue);
-                yield return wait;
+                rend.material.SetFloat(shaderDamageParameter, DamageValue * multiplier);
+                counter -= Time.deltaTime;
+                yield return yieldInstruction;
+            }
+
+            yield return new WaitForSeconds(2);
+
+            while (counter < damageTime)
+            {
+                rend.material.SetFloat(shaderDamageParameter, DamageValue * multiplier);
+                counter += Time.deltaTime;
+                yield return yieldInstruction;
             }
         }
 
 
         IEnumerator ChangeDeathShaderValue()
         {
-            WaitForEndOfFrame wait = new WaitForEndOfFrame();
-            float paramValue = rend.material.GetFloat(shaderDeathParameter);
-            while ( paramValue != DeathValue)
+            float counter = deathtime;
+            float multiplier = DeathValue / deathtime;
+            WaitForEndOfFrame yieldInstruction = new WaitForEndOfFrame();
+
+            while (counter > 0)
             {
-                paramValue += Time.deltaTime;
-                rend.material.SetFloat(shaderDeathParameter, paramValue);
-                yield return wait;
+                rend.material.SetFloat(shaderDamageParameter, DeathValue * multiplier);
+                counter -= Time.deltaTime;
+                yield return yieldInstruction;
             }
         }
 
