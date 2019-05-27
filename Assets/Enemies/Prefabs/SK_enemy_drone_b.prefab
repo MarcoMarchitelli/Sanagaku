@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7121606348905083833}
   - component: {fileID: 6871293551401572941}
+  - component: {fileID: 1434052734901471021}
   m_Layer: 0
   m_Name: down_panel
   m_TagString: Untagged
@@ -86,6 +87,25 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00019192696, y: -0.5985451, z: -0.05967748}
     m_Extent: {x: 0.34211105, y: 0.27788055, z: 0.76755214}
   m_DirtyAABB: 0
+--- !u!114 &1434052734901471021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92833170386855805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderDamageParameter: _BulletDamage
+  DamageValue: 50
+  damageTime: 3
+  DamageShowTime: 0.7
+  shaderDeathParameter: _TaglioMesh
+  DeathValue: 10
+  deathtime: 3
 --- !u!1 &194774838801406568
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +130,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194774838801406568}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000058114523}
+  m_LocalRotation: {x: 0, y: 1, z: -0, w: -0.0000001872535}
   m_LocalPosition: {x: -12.518, y: 0.474, z: 81.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -129,7 +149,7 @@ Animator:
   m_GameObject: {fileID: 194774838801406568}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 195e11c1a9bde724197d28bbfb3a9adb, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f330b2dccc28e84ba8b0da5b3975971, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -148,6 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3296391087636233906}
   - component: {fileID: 6337662104495502638}
+  - component: {fileID: 1375198263118931895}
   m_Layer: 0
   m_Name: l_panel
   m_TagString: Untagged
@@ -224,6 +245,25 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.62087125, y: 0.10160166, z: 0.10205865}
     m_Extent: {x: 0.27898002, y: 0.58922815, z: 0.73760104}
   m_DirtyAABB: 0
+--- !u!114 &1375198263118931895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296965253794531794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderDamageParameter: _BulletDamage
+  DamageValue: 50
+  damageTime: 3
+  DamageShowTime: 0.7
+  shaderDeathParameter: _TaglioMesh
+  DeathValue: 10
+  deathtime: 3
 --- !u!1 &418126742278329989
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7487157469562561903}
   - component: {fileID: 4148436319175226577}
+  - component: {fileID: 3120876495959149262}
   m_Layer: 0
   m_Name: r_top_panel
   m_TagString: Untagged
@@ -339,6 +380,25 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.35159478, y: 0.58197916, z: 0.039114714}
     m_Extent: {x: 0.2405999, y: 0.22434062, z: 0.69601345}
   m_DirtyAABB: 0
+--- !u!114 &3120876495959149262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738217016434811160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderDamageParameter: _BulletDamage
+  DamageValue: 50
+  damageTime: 3
+  DamageShowTime: 0.7
+  shaderDeathParameter: _TaglioMesh
+  DeathValue: 10
+  deathtime: 3
 --- !u!1 &1251085880474822541
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2322504196581324986}
   - component: {fileID: 4161728339381403701}
+  - component: {fileID: 2593943554385622241}
   m_Layer: 0
   m_Name: base
   m_TagString: Untagged
@@ -455,6 +516,25 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00014317036, y: 0.052942514, z: -0.000028848648}
     m_Extent: {x: 0.85765547, y: 0.8381631, z: 0.88989484}
   m_DirtyAABB: 0
+--- !u!114 &2593943554385622241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583804349314392953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderDamageParameter: _BulletDamage
+  DamageValue: 50
+  damageTime: 3
+  DamageShowTime: 0.7
+  shaderDeathParameter: _TaglioMesh
+  DeathValue: 10
+  deathtime: 3
 --- !u!1 &3555535100950159387
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 237265749517142377}
   - component: {fileID: 4317096152355824938}
+  - component: {fileID: 4685772713938874237}
   m_Layer: 0
   m_Name: r_panel
   m_TagString: Untagged
@@ -576,6 +657,25 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.6221335, y: 0.10160166, z: 0.10205865}
     m_Extent: {x: 0.27898002, y: 0.58922815, z: 0.73760104}
   m_DirtyAABB: 0
+--- !u!114 &4685772713938874237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4252987520018227469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderDamageParameter: _BulletDamage
+  DamageValue: 50
+  damageTime: 3
+  DamageShowTime: 0.7
+  shaderDeathParameter: _TaglioMesh
+  DeathValue: 10
+  deathtime: 3
 --- !u!1 &5637439888857863519
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,6 +716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3027574610989980346}
   - component: {fileID: 3211760947611040805}
+  - component: {fileID: 7316604314901851368}
   m_Layer: 0
   m_Name: l_top_panel
   m_TagString: Untagged
@@ -691,6 +792,25 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.3513083, y: 0.58197916, z: 0.039114714}
     m_Extent: {x: 0.24059992, y: 0.22434062, z: 0.69601345}
   m_DirtyAABB: 0
+--- !u!114 &7316604314901851368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6382419240708733557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderDamageParameter: _BulletDamage
+  DamageValue: 50
+  damageTime: 3
+  DamageShowTime: 0.7
+  shaderDeathParameter: _TaglioMesh
+  DeathValue: 10
+  deathtime: 3
 --- !u!1 &7127986556114760615
 GameObject:
   m_ObjectHideFlags: 0
