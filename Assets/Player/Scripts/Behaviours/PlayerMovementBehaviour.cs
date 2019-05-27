@@ -59,7 +59,7 @@ namespace Sangaku
         /// <param name="_moveDirection"></param>
         void Move()
         {
-            rBody.MovePosition(rBody.position + moveDirection * moveSpeed * Time.fixedDeltaTime);         
+            rBody.MovePosition(rBody.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
         }
 
         public override void OnFixedUpdate()
@@ -72,6 +72,5 @@ namespace Sangaku
         {
             return moveSpeed;
         }
-
-    } 
+    }
 }
