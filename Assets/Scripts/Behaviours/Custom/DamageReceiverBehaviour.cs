@@ -25,9 +25,16 @@ namespace Sangaku
                 {
                     _currentHealth = value;
                     OnHealthChanged.Invoke(_currentHealth);
+                    HealthChanged();
                 }
             }
         }
+
+        /// <summary>
+        /// Funzione chiamata al momento del cambio della vita
+        /// </summary>
+        protected virtual void HealthChanged() { }
+
 
         /// <summary>
         /// Funzione che aggiunge o sottrae salute

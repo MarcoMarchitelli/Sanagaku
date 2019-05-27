@@ -11,7 +11,7 @@ namespace Sangaku
 
         protected override void CustomSetup()
         {
-            anim = GetComponent<Animator>();
+            anim = GetComponentInChildren<Animator>();
         }
 
         public void SetDamageAnimation()
