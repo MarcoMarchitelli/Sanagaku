@@ -33,15 +33,10 @@ namespace Sangaku
         /// Direzione del movimento
         /// </summary>
         Vector3 moveDirection;
-        /// <summary>
-        /// Script responsabile del settaggio dell'animazione
-        /// </summary>
-        PlayerAnimController animController;
 
         protected override void CustomSetup()
         {
             rBody = GetComponent<Rigidbody>();
-            animController = Entity.GetBehaviour<PlayerAnimController>();
         }
 
         /// <summary>
@@ -67,24 +62,15 @@ namespace Sangaku
             rBody.MovePosition(rBody.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
         }
 
-        void SetAnimationDirection()
-        {
-            animController.SetDirection(moveDirection);
-        }
-
         public override void OnFixedUpdate()
         {
             if (IsSetupped)
-            {
                 Move();
-                SetAnimationDirection();
-            }
         }
 
         public float GetmoveSpeed()
         {
             return moveSpeed;
         }
-
-    } 
+    }
 }
