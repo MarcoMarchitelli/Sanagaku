@@ -16,8 +16,6 @@ namespace Sangaku
         float DamageValue;
         [SerializeField]
         float damageTime;
-        [SerializeField]
-        float DamageShowTime;
 
         [Header("Death")]
         [SerializeField]
