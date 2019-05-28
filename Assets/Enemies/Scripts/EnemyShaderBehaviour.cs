@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Sangaku
 {
@@ -15,8 +16,6 @@ namespace Sangaku
         float DamageValue;
         [SerializeField]
         float damageTime;
-        [SerializeField]
-        float DamageShowTime;
 
         [Header("Death")]
         [SerializeField]
@@ -27,61 +26,34 @@ namespace Sangaku
         float deathtime;
 
         Renderer rend;
-        IEnumerator deathCoroutine;
 
         protected override void CustomSetup()
         {
             rend = GetComponent<Renderer>();
-            deathCoroutine = ChangeDeathShaderValue();
         }
 
+        /// <summary>
+        /// Cambia il colore del nemico in un lasso di tempo e ritorna al colore originale
+        /// </summary>
         public void SetDamageValue()
         {
-            //rend.material.SetFloat(shaderDamageParameter, DamageValue);
+            if (rend != null)
+            {
+                float startV = rend.material.GetFloat(shaderDamageParameter);
+                rend.material.DOFloat(DamageValue, shaderDamageParameter, damageTime).OnComplete(() =>
+                {
+                    if (rend != null)
+                        rend.material.DOFloat(startV, shaderDamageParameter, damageTime);
+                });
+            }
         }
 
+        /// <summary>
+        /// Cambia la proprietà shaderdeathparameter fino al valore indicato in DeathValue
+        /// </summary>
         public void SetDeathValue()
         {
-            StartCoroutine(deathCoroutine);
+            rend.material.DOFloat(DeathValue, shaderDeathParameter, deathtime);
         }
-
-        IEnumerator ChangeDamageColor()
-        {
-            float counter = damageTime;
-            float multiplier = DamageValue / damageTime;
-            WaitForEndOfFrame yieldInstruction = new WaitForEndOfFrame();
-
-            while (counter > 0)
-            {
-                rend.material.SetFloat(shaderDamageParameter, DamageValue * multiplier);
-                counter -= Time.deltaTime;
-                yield return yieldInstruction;
-            }
-
-            yield return new WaitForSeconds(2);
-
-            while (counter < damageTime)
-            {
-                rend.material.SetFloat(shaderDamageParameter, DamageValue * multiplier);
-                counter += Time.deltaTime;
-                yield return yieldInstruction;
-            }
-        }
-
-
-        IEnumerator ChangeDeathShaderValue()
-        {
-            float counter = deathtime;
-            float multiplier = DeathValue / deathtime;
-            WaitForEndOfFrame yieldInstruction = new WaitForEndOfFrame();
-
-            while (counter > 0)
-            {
-                rend.material.SetFloat(shaderDamageParameter, DeathValue * multiplier);
-                counter -= Time.deltaTime;
-                yield return yieldInstruction;
-            }
-        }
-
     } 
 }
