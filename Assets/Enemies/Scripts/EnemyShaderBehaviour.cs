@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Sangaku
 {
@@ -37,37 +38,21 @@ namespace Sangaku
 
         public void SetDamageValue()
         {
-            //rend.material.SetFloat(shaderDamageParameter, DamageValue);
+            if (rend != null)
+            {
+                float startV = rend.material.GetFloat(shaderDamageParameter);
+                rend.material.DOFloat(DamageValue, shaderDamageParameter, damageTime).OnComplete(() =>
+                {
+                    if (rend != null)
+                        rend.material.DOFloat(startV, shaderDamageParameter, damageTime);
+                });
+            }
         }
 
         public void SetDeathValue()
         {
             StartCoroutine(deathCoroutine);
         }
-
-        IEnumerator ChangeDamageColor()
-        {
-            float counter = damageTime;
-            float multiplier = DamageValue / damageTime;
-            WaitForEndOfFrame yieldInstruction = new WaitForEndOfFrame();
-
-            while (counter > 0)
-            {
-                rend.material.SetFloat(shaderDamageParameter, DamageValue * multiplier);
-                counter -= Time.deltaTime;
-                yield return yieldInstruction;
-            }
-
-            yield return new WaitForSeconds(2);
-
-            while (counter < damageTime)
-            {
-                rend.material.SetFloat(shaderDamageParameter, DamageValue * multiplier);
-                counter += Time.deltaTime;
-                yield return yieldInstruction;
-            }
-        }
-
 
         IEnumerator ChangeDeathShaderValue()
         {
