@@ -28,14 +28,15 @@ namespace Sangaku
         float deathtime;
 
         Renderer rend;
-        IEnumerator deathCoroutine;
 
         protected override void CustomSetup()
         {
             rend = GetComponent<Renderer>();
-            deathCoroutine = ChangeDeathShaderValue();
         }
 
+        /// <summary>
+        /// Cambia il colore del nemico in un lasso di tempo e ritorna al colore originale
+        /// </summary>
         public void SetDamageValue()
         {
             if (rend != null)
@@ -49,24 +50,12 @@ namespace Sangaku
             }
         }
 
+        /// <summary>
+        /// Cambia la proprietà shaderdeathparameter fino al valore indicato in DeathValue
+        /// </summary>
         public void SetDeathValue()
         {
-            StartCoroutine(deathCoroutine);
+            rend.material.DOFloat(DeathValue, shaderDeathParameter, deathtime);
         }
-
-        IEnumerator ChangeDeathShaderValue()
-        {
-            float counter = deathtime;
-            float multiplier = DeathValue / deathtime;
-            WaitForEndOfFrame yieldInstruction = new WaitForEndOfFrame();
-
-            while (counter > 0)
-            {
-                rend.material.SetFloat(shaderDamageParameter, DeathValue * multiplier);
-                counter -= Time.deltaTime;
-                yield return yieldInstruction;
-            }
-        }
-
     } 
 }
