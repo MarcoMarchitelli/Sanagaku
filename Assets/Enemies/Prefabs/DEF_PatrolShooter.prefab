@@ -180,7 +180,18 @@ MonoBehaviour:
   projectilePoolTag: EnemyBullet
   OnShoot:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8401363321302128547}
+        m_MethodName: SetShotAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!1 &6508355651483807617
@@ -199,6 +210,7 @@ GameObject:
   - component: {fileID: 6364096065173746844}
   - component: {fileID: 5582139112078214110}
   - component: {fileID: 5294511711275832821}
+  - component: {fileID: 8401363321302128547}
   m_Layer: 0
   m_Name: DEF_PatrolShooter
   m_TagString: Untagged
@@ -295,18 +307,7 @@ MonoBehaviour:
   isIPoolable: 0
   OnDestruction:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: NotifyCompletion
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &6809209126244161964
@@ -365,14 +366,168 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnHealthChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8401363321302128547}
+        m_MethodName: SetDamageAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5896208028097599138}
+        m_MethodName: SetDamageValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3711678714388607495}
+        m_MethodName: SetDamageValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6220408662141713814}
+        m_MethodName: SetDamageValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4601664146902268447}
+        m_MethodName: SetDamageValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 9221364653546084527}
+        m_MethodName: SetDamageValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: Sangaku.UnityIntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   OnHealthDepleated:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 799213019150936684}
-        m_MethodName: Destroy
+        m_MethodName: DestroyAfter
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 3
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8520790973375910024}
+        m_MethodName: StopPatrol
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5582139112078214110}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5243697848479084436}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5896208028097599138}
+        m_MethodName: SetDeathValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3711678714388607495}
+        m_MethodName: SetDeathValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6220408662141713814}
+        m_MethodName: SetDeathValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4601664146902268447}
+        m_MethodName: SetDeathValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 9221364653546084527}
+        m_MethodName: SetDeathValue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -385,6 +540,18 @@ MonoBehaviour:
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   maxHealth: 2
+--- !u!114 &8401363321302128547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6508355651483807617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773be2bfaf959374197e697ef992ea07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6594123681021008522
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,6 +686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8501498890462738140}
   - component: {fileID: 8501498890462738139}
+  - component: {fileID: 5896208028097599138}
   m_Layer: 0
   m_Name: eye
   m_TagString: Untagged
@@ -594,6 +762,24 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.055950105, z: 0.12182772}
     m_Extent: {x: 1.0091604, y: 0.9424797, z: 0.76833117}
   m_DirtyAABB: 0
+--- !u!114 &5896208028097599138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8501498890462738141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderDamageParameter: _DamageBullet
+  DamageValue: 0
+  damageTime: 0.3
+  shaderDeathParameter: _TaglioMesh
+  DeathValue: -2
+  deathtime: 3
 --- !u!1 &8501498890479737801
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8501498890667022626}
   - component: {fileID: 8501498890667022625}
+  - component: {fileID: 6220408662141713814}
   m_Layer: 0
   m_Name: l_panel_top1
   m_TagString: Untagged
@@ -709,6 +896,24 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.54335517, y: 0.4607036, z: 0.1046471}
     m_Extent: {x: 0.24587792, y: 0.24349056, z: 0.5466149}
   m_DirtyAABB: 0
+--- !u!114 &6220408662141713814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8501498890667022627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderDamageParameter: _DamageBullet
+  DamageValue: 0
+  damageTime: 0.3
+  shaderDeathParameter: _TaglioMesh
+  DeathValue: -2
+  deathtime: 3
 --- !u!1 &8501498890822656288
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,6 +924,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8501498890822656319}
   - component: {fileID: 8501498890822656318}
+  - component: {fileID: 3711678714388607495}
   m_Layer: 0
   m_Name: l_panel_down1
   m_TagString: Untagged
@@ -794,6 +1000,24 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.63042736, y: -0.3905372, z: 0.15553021}
     m_Extent: {x: 0.30521023, y: 0.40283757, z: 0.7613199}
   m_DirtyAABB: 0
+--- !u!114 &3711678714388607495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8501498890822656288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderDamageParameter: _DamageBullet
+  DamageValue: 0
+  damageTime: 0.3
+  shaderDeathParameter: _TaglioMesh
+  DeathValue: -2
+  deathtime: 3
 --- !u!1 &8501498891317596928
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,6 +1063,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8501498891405033860}
   - component: {fileID: 8501498891405033859}
+  - component: {fileID: 9221364653546084527}
   m_Layer: 0
   m_Name: r_panel_top
   m_TagString: Untagged
@@ -914,6 +1139,24 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.54335517, y: 0.4607036, z: 0.1046471}
     m_Extent: {x: 0.24587792, y: 0.24349056, z: 0.5466149}
   m_DirtyAABB: 0
+--- !u!114 &9221364653546084527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8501498891405033861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderDamageParameter: _DamageBullet
+  DamageValue: 0
+  damageTime: 0.3
+  shaderDeathParameter: _TaglioMesh
+  DeathValue: -2
+  deathtime: 3
 --- !u!1 &8501498891533526681
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,6 +1197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8501498891701633229}
   - component: {fileID: 8501498891701633228}
+  - component: {fileID: 4601664146902268447}
   m_Layer: 0
   m_Name: r_panel_down
   m_TagString: Untagged
@@ -1029,6 +1273,24 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.63042736, y: -0.39053726, z: 0.15553021}
     m_Extent: {x: 0.30521023, y: 0.40283757, z: 0.7613199}
   m_DirtyAABB: 0
+--- !u!114 &4601664146902268447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8501498891701633230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderDamageParameter: _DamageBullet
+  DamageValue: 0
+  damageTime: 0.3
+  shaderDeathParameter: _TaglioMesh
+  DeathValue: -2
+  deathtime: 3
 --- !u!1 &8501498891749183205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,7 +1334,7 @@ Animator:
   m_GameObject: {fileID: 8501498891749183205}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 234a7a15d41150440922231591906602, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0085674f7b83f614b8096027c98394f2, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
