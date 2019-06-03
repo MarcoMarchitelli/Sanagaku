@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 805803557706922628}
   - component: {fileID: 543023105938762820}
   - component: {fileID: 2954053966456191892}
-  - component: {fileID: 5076887792007009824}
   m_Layer: 9
   m_Name: DEF_FollowerElite
   m_TagString: Untagged
@@ -131,17 +130,6 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6150454464101611904}
-        m_MethodName: StartTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2954053966456191892}
         m_MethodName: SetDamageAnimation
         m_Mode: 1
@@ -153,12 +141,67 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2294653308663302240}
-        m_MethodName: 
+      - m_Target: {fileID: 6242582154456548811}
+        m_MethodName: SetDamageValue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7402604777373709831}
+        m_MethodName: SetDamageValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7370207888518862493}
+        m_MethodName: SetDamageValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1212697921868422594}
+        m_MethodName: SetDamageValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3772512335622151767}
+        m_MethodName: SetDamageValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6778487179933924324}
+        m_MethodName: SetDamageValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -170,7 +213,117 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5956350012060570636}
-        m_MethodName: Destroy
+        m_MethodName: DestroyAfter
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 3
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5153844464498806840}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 805803557706922628}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6113790640105485637}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2584003529970775051}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6242582154456548811}
+        m_MethodName: SetDeathValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7402604777373709831}
+        m_MethodName: SetDeathValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7370207888518862493}
+        m_MethodName: SetDeathValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1212697921868422594}
+        m_MethodName: SetDeathValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3772512335622151767}
+        m_MethodName: SetDeathValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6778487179933924324}
+        m_MethodName: SetDeathValue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -259,25 +412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 773be2bfaf959374197e697ef992ea07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &5076887792007009824
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2294653308663302240}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6f330b2dccc28e84ba8b0da5b3975971, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2584003529629828064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,6 +1306,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3525b396923ea2c47a8f14816b6939f9, type: 3}
+--- !u!114 &6113790640105485637 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6237922447320057978, guid: 3525b396923ea2c47a8f14816b6939f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 164664354387197247}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4d9bf08c9e6a6418f16f23a6f83fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3664835832498560804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3500736851308306971, guid: 3525b396923ea2c47a8f14816b6939f9,
@@ -1185,11 +1331,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8387507144194463670}
     m_Modifications:
-    - target: {fileID: 194774838801406568, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: m_Name
-      value: SK_enemy_drone_b
-      objectReference: {fileID: 0}
     - target: {fileID: 2116413576829631484, guid: ee7adf2f27911404380e8bf87ff868c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1245,11 +1386,208 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 194774838801406568, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: m_Name
+      value: SK_enemy_drone_b
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434052734901471021, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: shaderDamageParameter
+      value: _DamageBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434052734901471021, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DamageValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434052734901471021, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: damageTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434052734901471021, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DeathValue
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375198263118931895, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: shaderDamageParameter
+      value: _DamageBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375198263118931895, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DamageValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375198263118931895, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: damageTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375198263118931895, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DeathValue
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120876495959149262, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: shaderDamageParameter
+      value: _DamageBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120876495959149262, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DamageValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120876495959149262, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: damageTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120876495959149262, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DeathValue
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593943554385622241, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: shaderDamageParameter
+      value: _DamageBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593943554385622241, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DamageValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593943554385622241, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: damageTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593943554385622241, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DeathValue
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685772713938874237, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: shaderDamageParameter
+      value: _DamageBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685772713938874237, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DamageValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685772713938874237, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: damageTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685772713938874237, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DeathValue
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316604314901851368, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: shaderDamageParameter
+      value: _DamageBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316604314901851368, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DamageValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316604314901851368, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: damageTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7316604314901851368, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DeathValue
+      value: -2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee7adf2f27911404380e8bf87ff868c3, type: 3}
+--- !u!114 &7402604777373709831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1434052734901471021, guid: ee7adf2f27911404380e8bf87ff868c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8457076815113154858}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7370207888518862493 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1375198263118931895, guid: ee7adf2f27911404380e8bf87ff868c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8457076815113154858}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1212697921868422594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7316604314901851368, guid: ee7adf2f27911404380e8bf87ff868c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8457076815113154858}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3772512335622151767 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4685772713938874237, guid: ee7adf2f27911404380e8bf87ff868c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8457076815113154858}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6778487179933924324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3120876495959149262, guid: ee7adf2f27911404380e8bf87ff868c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8457076815113154858}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7494711476716604118 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2116413576829631484, guid: ee7adf2f27911404380e8bf87ff868c3,
     type: 3}
   m_PrefabInstance: {fileID: 8457076815113154858}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6242582154456548811 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2593943554385622241, guid: ee7adf2f27911404380e8bf87ff868c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8457076815113154858}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
