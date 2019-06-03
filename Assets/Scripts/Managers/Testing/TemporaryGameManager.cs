@@ -17,7 +17,7 @@ public class TemporaryGameManager : MonoBehaviour
     public TemporaryUIManager uiManager;
 
     List<ObjectiveController> objectiveControllers;
-    bool canPause = false;
+    bool canPause = false;    
 
     public void Start()
     {
@@ -29,7 +29,6 @@ public class TemporaryGameManager : MonoBehaviour
 
         foreach (RoomController room in FindObjectsOfType<RoomController>())
             room.SetUpEntity();
-
 
         foreach (GenericController generic in FindObjectsOfType<GenericController>())
             generic.SetUpEntity();
@@ -110,5 +109,10 @@ public class TemporaryGameManager : MonoBehaviour
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadScene(string _sceneName)
+    {
+        SceneManager.LoadScene(_sceneName);
     }
 }
