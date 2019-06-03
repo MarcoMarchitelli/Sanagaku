@@ -8,14 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Player_Face
-  m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
+  m_Shader: {fileID: 4800000, guid: bb52e918882b22643aa451f7fd1aeee2, type: 3}
   m_ShaderKeywords: _DOUBLESIDED_ON _NORMALMAP _NORMALMAP_TANGENT_SPACE _NORMALMAP_TANGENT_SPACE0
     _NORMALMAP_TANGENT_SPACE1 _NORMALMAP_TANGENT_SPACE2 _NORMALMAP_TANGENT_SPACE3
     _USECOLORMAP_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -28,7 +28,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 714301f29c235cc41ad46cf493e3b593, type: 3}
+        m_Texture: {fileID: 2800000, guid: 23c46412a531f584eb938445e4adb2be, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AmbientOcclusion:
@@ -132,7 +132,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: 951552ddbcee1c9468c0b6fb45014917, type: 3}
+        m_Texture: {fileID: 2800000, guid: 23c46412a531f584eb938445e4adb2be, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -204,7 +204,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metallic:
-        m_Texture: {fileID: 2800000, guid: a9b4fb11b4c00d3458fcc644594c1c22, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5219759b0ea60474e9902ca8e9240e13, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -212,7 +212,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: d5ff8aea3ee2c0a4fb1cbf3332dd5d6d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 960823bbbf146cf43b39d6e30cabd8f6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
@@ -255,12 +255,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Occlusion:
+        m_Texture: {fileID: 2800000, guid: 2de289392aade9245a1087859ec6a2c7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Roughness:
-        m_Texture: {fileID: 2800000, guid: 57421d6276b868f48a7cc59f3e8dbab4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0e001c6e18e21374aafafa2ee52cba10, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -344,9 +348,11 @@ Material:
     - _Anisotropy: 0
     - _BlendMode: 0
     - _CoatMask: 0
+    - _ColorEmissiveONOFF: 0
     - _CullMode: 0
     - _CullModeForward: 0
     - _Cutoff: 0.5
+    - _DamageBullet: 50
     - _Damagebullet: 0
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
@@ -457,6 +463,7 @@ Material:
     - _InheritBaseNormal3: 0
     - _InitialBend: 1
     - _IntensityEmissive: 0
+    - _IntesityEmissive: 5
     - _InvTilingScale: 1
     - _InvTilingScale0: 1
     - _InvTilingScale1: 1
@@ -488,6 +495,7 @@ Material:
     - _NormalScale2: 1
     - _NormalScale3: 1
     - _ObjectScaleAffectTile: 0
+    - _OffsetFresnel: 1
     - _OpacityAsDensity0: 0
     - _OpacityAsDensity1: 0
     - _OpacityAsDensity2: 0
@@ -501,6 +509,7 @@ Material:
     - _ReceivesSSR: 1
     - _RefractionModel: 0
     - _SSRefractionProjectionModel: 0
+    - _SfumaturaTaglio: 0
     - _Sfumaturataglio: 0.04426093
     - _ShiverDirectionality: 0.5
     - _ShiverDrag: 0.2
@@ -535,7 +544,7 @@ Material:
     - _SubsurfaceMask3: 1
     - _SupportDecals: 1
     - _SurfaceType: 0
-    - _TaglioMesh: 0.04
+    - _TaglioMesh: 10
     - _TessellationBackFaceCullEpsilon: -0.25
     - _TessellationFactor: 4
     - _TessellationFactorMaxDistance: 50
@@ -597,6 +606,8 @@ Material:
     - _BaseColorMap0_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorDamage: {r: 1, g: 1, b: 1, a: 0.9294118}
+    - _ColorEmissive: {r: 0.003921568, g: 0.55163, b: 0.945098, a: 0}
     - _Colordamage: {r: 1, g: 0, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
