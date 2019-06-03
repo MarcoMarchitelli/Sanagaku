@@ -113,6 +113,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 0a3c0b29bf8701e48873c7e255c4d2ad, type: 2}
+--- !u!1 &92527815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5077277955280741693, guid: ec872ae0c09d3024d99909f7d16b2949,
+    type: 3}
+  m_PrefabInstance: {fileID: 5077277955121219903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &119029025 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 1cf819f98ade40e43bf6ddbfa6826f1d,
@@ -2971,26 +2977,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TemporaryManagers
       objectReference: {fileID: 0}
-    - target: {fileID: 737601216246022953, guid: 50057987b26e21144a25c42b1556ece3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 737601215591501501, guid: 50057987b26e21144a25c42b1556ece3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 737601216246022996, guid: 50057987b26e21144a25c42b1556ece3,
-        type: 3}
-      propertyPath: playerManaUI
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 737601216246022996, guid: 50057987b26e21144a25c42b1556ece3,
-        type: 3}
-      propertyPath: playerHealthUI
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 737601216246022998, guid: 50057987b26e21144a25c42b1556ece3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3048,11 +3034,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 737601216246022999, guid: 50057987b26e21144a25c42b1556ece3,
         type: 3}
-      propertyPath: playerController
-      value: 
-      objectReference: {fileID: 1493207864}
-    - target: {fileID: 737601216246022999, guid: 50057987b26e21144a25c42b1556ece3,
-        type: 3}
       propertyPath: MainMenu
       value: 
       objectReference: {fileID: 707093866}
@@ -3071,6 +3052,16 @@ PrefabInstance:
       propertyPath: LossMenu
       value: 
       objectReference: {fileID: 284115980}
+    - target: {fileID: 737601216246022999, guid: 50057987b26e21144a25c42b1556ece3,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1493207864}
+    - target: {fileID: 737601216246022999, guid: 50057987b26e21144a25c42b1556ece3,
+        type: 3}
+      propertyPath: LoadingPanel
+      value: 
+      objectReference: {fileID: 92527815}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50057987b26e21144a25c42b1556ece3, type: 3}
 --- !u!1001 &1599831060
