@@ -1,161 +1,167 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using Sangaku;
-using System.Collections.Generic;
-using System.Linq;
-using System;
+
 using System.Collections;
 
-public class TemporaryGameManager : MonoBehaviour
+namespace Sangaku
 {
-    public GameObject MainMenu;
-    public GameObject PauseMenu;
-    public GameObject WinMenu;
-    public GameObject LossMenu;
-    public GameObject LoadingPanel;
-
-    [Header("Controllers")]
-    public TemporaryEnemyManager enemyManager;
-    public PlayerController playerController;
-
-    bool canPause = false;    
-
-    public void Start()
+    public class TemporaryGameManager : MonoBehaviour
     {
-        Time.timeScale = 0;
+        public GameObject MainMenu;
+        public GameObject PauseMenu;
+        public GameObject WinMenu;
+        public GameObject LossMenu;
+        public GameObject LoadingPanel;
 
-        SetupEntities();
+        [Header("Controllers")]
+        public TemporaryEnemyManager enemyManager;
+        public PlayerController playerController;
 
-        playerController.SetUpEntity();
-        
-        GoToMainMenu();
-    }
+        bool canPause = false;
 
-    void SetupEntities()
-    {
-        foreach (ObjectiveController objective in FindObjectsOfType<ObjectiveController>())
-            objective.SetUpEntity();
+        public void Start()
+        {
+            Time.timeScale = 0;
 
-        foreach (RoomController room in FindObjectsOfType<RoomController>())
-            room.SetUpEntity();
+            SetupEntities();
 
-        foreach (GenericController generic in FindObjectsOfType<GenericController>())
-            generic.SetUpEntity();
+            playerController.SetUpEntity();
 
-        enemyManager.SetUpEnemies();
-    }
+            GoToMainMenu();
+        }
 
-    private void Update()
-    {
-        if (canPause && Input.GetButton("Pause"))
-            GoToPauseMenu();
-    }
+        void SetupEntities()
+        {
+            foreach (ObjectiveController objective in FindObjectsOfType<ObjectiveController>())
+                objective.SetUpEntity();
 
-    public void GoToMainMenu()
-    {
-        playerController.Enable(false);
-        Time.timeScale = 0;
-        PauseMenu.SetActive(false);
-        WinMenu.SetActive(false);
-        LossMenu.SetActive(false);
-        MainMenu.SetActive(true);
-        LoadingPanel.SetActive(false);
-        canPause = false;
-    }
+            foreach (RoomController room in FindObjectsOfType<RoomController>())
+                room.SetUpEntity();
 
-    public void GoToPauseMenu()
-    {
-        playerController.Enable(false);
-        Time.timeScale = 0;
-        WinMenu.SetActive(false);
-        MainMenu.SetActive(false);
-        LossMenu.SetActive(false);
-        PauseMenu.SetActive(true);
-        LoadingPanel.SetActive(false);
-        canPause = false;
-    }
+            foreach (GenericController generic in FindObjectsOfType<GenericController>())
+                generic.SetUpEntity();
 
-    public void GoToGameplay()
-    {
-        WinMenu.SetActive(false);
-        MainMenu.SetActive(false);
-        PauseMenu.SetActive(false);
-        LossMenu.SetActive(false);
-        LoadingPanel.SetActive(false);
-        Time.timeScale = 1;
-        playerController.Enable(true);
-        canPause = true;
-    }
+            enemyManager.SetUpEnemies();
+        }
 
-    public void GoToWinMenu()
-    {
-        playerController.Enable(false);
-        Time.timeScale = 0;
-        MainMenu.SetActive(false);
-        PauseMenu.SetActive(false);
-        LossMenu.SetActive(false);
-        LoadingPanel.SetActive(false);
-        WinMenu.SetActive(true);
-        canPause = false;
-    }
+        private void Update()
+        {
+            if (canPause && Input.GetButton("Pause"))
+                GoToPauseMenu();
+        }
 
-    public void GoToLossMenu()
-    {
-        playerController.Enable(false);
-        Time.timeScale = 0;
-        MainMenu.SetActive(false);
-        PauseMenu.SetActive(false);
-        WinMenu.SetActive(false);
-        LoadingPanel.SetActive(false);
-        LossMenu.SetActive(true);
-        canPause = false;
-    }
+        public void GoToMainMenu()
+        {
+            playerController.Enable(false);
+            Time.timeScale = 0;
+            PauseMenu.SetActive(false);
+            WinMenu.SetActive(false);
+            LossMenu.SetActive(false);
+            MainMenu.SetActive(true);
+            LoadingPanel.SetActive(false);
+            canPause = false;
+        }
 
-    public void GoToLoadingPanel()
-    {
-        playerController.Enable(false);
-        Time.timeScale = 0;
-        MainMenu.SetActive(false);
-        PauseMenu.SetActive(false);
-        WinMenu.SetActive(false);
-        LossMenu.SetActive(false);
-        LoadingPanel.SetActive(true);
-        canPause = false;
-    }
+        public void GoToPauseMenu()
+        {
+            playerController.Enable(false);
+            Time.timeScale = 0;
+            WinMenu.SetActive(false);
+            MainMenu.SetActive(false);
+            LossMenu.SetActive(false);
+            PauseMenu.SetActive(true);
+            LoadingPanel.SetActive(false);
+            canPause = false;
+        }
 
-    public void CloseApplication()
-    {
-        Application.Quit();
-    }
+        public void GoToGameplay()
+        {
+            WinMenu.SetActive(false);
+            MainMenu.SetActive(false);
+            PauseMenu.SetActive(false);
+            LossMenu.SetActive(false);
+            LoadingPanel.SetActive(false);
+            Time.timeScale = 1;
+            playerController.Enable(true);
+            canPause = true;
+        }
 
-    public void ReloadScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+        public void GoToWinMenu()
+        {
+            playerController.Enable(false);
+            Time.timeScale = 0;
+            MainMenu.SetActive(false);
+            PauseMenu.SetActive(false);
+            LossMenu.SetActive(false);
+            LoadingPanel.SetActive(false);
+            WinMenu.SetActive(true);
+            canPause = false;
+        }
 
-    public void LoadScene(string _sceneName)
-    {
-        StartCoroutine(LoadAsyncScene(_sceneName));
-    }
+        public void GoToLossMenu()
+        {
+            playerController.Enable(false);
+            Time.timeScale = 0;
+            MainMenu.SetActive(false);
+            PauseMenu.SetActive(false);
+            WinMenu.SetActive(false);
+            LoadingPanel.SetActive(false);
+            LossMenu.SetActive(true);
+            canPause = false;
+        }
 
-    IEnumerator LoadAsyncScene(string _sceneName)
-    {
-        Scene newLevel = SceneManager.GetSceneByName(_sceneName);
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_sceneName, LoadSceneMode.Additive);
+        public void GoToLoadingPanel()
+        {
+            playerController.Enable(false);
+            MainMenu.SetActive(false);
+            PauseMenu.SetActive(false);
+            WinMenu.SetActive(false);
+            LossMenu.SetActive(false);
+            LoadingPanel.SetActive(true);
+            canPause = false;
+        }
 
-        WaitForEndOfFrame wfef = new WaitForEndOfFrame();
+        public void CloseApplication()
+        {
+            Application.Quit();
+        }
 
-        GoToLoadingPanel();
+        public void ReloadScene()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 
-        // Wait until the asynchronous scene fully loads
-        while (!asyncLoad.isDone)
-            yield return wfef;
+        public void LoadScene(string _sceneName)
+        {
+            StartCoroutine(LoadAsyncScene(_sceneName));
+        }
 
-        SetupEntities();
+        IEnumerator LoadAsyncScene(string _sceneName)
+        {
 
-        Transform spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
-        playerController.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
+            playerController.GetBehaviour<PlayerInputBehaviour>().ToggleAllInputs(false);
 
-        GoToGameplay();
+            Scene newLevel = SceneManager.GetSceneByName(_sceneName);
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_sceneName, LoadSceneMode.Additive);
+
+            WaitForEndOfFrame wfef = new WaitForEndOfFrame();
+
+            GoToLoadingPanel();
+
+            // Wait until the asynchronous scene fully loads
+            while (!asyncLoad.isDone)
+                yield return wfef;
+
+            SetupEntities();
+
+            Transform spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
+            playerController.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
+
+            GameObject.FindGameObjectWithTag("StartingVCam").SetActive(true);
+
+            GoToGameplay();
+
+            playerController.GetBehaviour<PlayerInputBehaviour>().ToggleAllInputs(true);
+        }
     }
 }

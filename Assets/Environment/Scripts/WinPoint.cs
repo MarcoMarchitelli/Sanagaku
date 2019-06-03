@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WinPoint : MonoBehaviour
+namespace Sangaku
 {
-    [SerializeField] string sceneToLoad;
-
-    public void LoadNextScene()
+    public class WinPoint : MonoBehaviour
     {
-        FindObjectOfType<TemporaryGameManager>().LoadScene(sceneToLoad);
-    }
+        [SerializeField] string sceneToLoad;
+
+        public void LoadNextScene()
+        {
+            FindObjectOfType<TemporaryGameManager>().LoadScene(sceneToLoad);
+        }
+    } 
 }
