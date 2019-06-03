@@ -6,7 +6,7 @@ using DG.Tweening;
 namespace Sangaku
 {
     [RequireComponent(typeof(Renderer))]
-    public class EnemyShaderBehaviour : BaseBehaviour
+    public class ShaderModifierBehaviour : BaseBehaviour
     {
 
         [Header("Damage")]
@@ -40,11 +40,15 @@ namespace Sangaku
             if (rend != null)
             {
                 float startV = rend.material.GetFloat(shaderDamageParameter);
-                rend.material.DOFloat(DamageValue, shaderDamageParameter, damageTime).OnComplete(() =>
+
+                foreach (Material mat in rend.materials)
                 {
-                    if (rend != null)
-                        rend.material.DOFloat(startV, shaderDamageParameter, damageTime);
-                });
+                    mat.DOFloat(DamageValue, shaderDamageParameter, damageTime).OnComplete(() =>
+                    {
+                        if (rend != null)
+                            mat.DOFloat(startV, shaderDamageParameter, damageTime);
+                    });
+                }
             }
         }
 
