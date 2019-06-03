@@ -7,7 +7,6 @@ namespace Sangaku
     /// <summary>
     /// Behaviour del player che gestice le animazioni
     /// </summary>
-    [RequireComponent(typeof(Animator))]
     public class PlayerAnimationBehaviour : BaseBehaviour
     {
         /// <summary>
@@ -24,7 +23,10 @@ namespace Sangaku
         /// </summary>
         protected override void CustomSetup()
         {
-            anim = GetComponent<Animator>();
+            anim = GetComponentInChildren<Animator>();
+
+            if (anim == null)
+                Debug.LogError("Animator non trovato");
         }
 
         #region Body
@@ -53,10 +55,32 @@ namespace Sangaku
                 anim.SetInteger("BodyStatus", _param);
             }
         }
-        
+
         #endregion
 
         #region Movement
+        float turnAmmount;
+        float forwardAmmount;
+
+
+        /// <summary>
+        /// Converte MoveInput da global a local e salva i valori di X e Z in due variabili float
+        /// </summary>
+        void ConvertMoveInput()
+        {
+            Vector3 localMove = transform.InverseTransformDirection(direction);
+
+            if (localMove.z < -.6f && localMove.x != 0)
+            {
+                turnAmmount = -localMove.x;
+                forwardAmmount = localMove.z;
+            }
+            else
+            {
+                turnAmmount = localMove.x;
+                forwardAmmount = localMove.z;
+            }
+        }
 
         /// <summary>
         /// Funzione che setta la direzione del movimento
@@ -75,8 +99,9 @@ namespace Sangaku
             if (anim == null)
                 return;
 
-            anim.SetFloat("XMov", direction.x);
-            anim.SetFloat("YMov", direction.z);
+            ConvertMoveInput();
+            anim.SetFloat("XMov", turnAmmount);
+            anim.SetFloat("YMov", forwardAmmount);
         }
 
         /// <summary>
