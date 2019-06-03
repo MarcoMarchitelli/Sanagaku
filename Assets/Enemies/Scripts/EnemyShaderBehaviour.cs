@@ -53,7 +53,8 @@ namespace Sangaku
         /// </summary>
         public void SetDeathValue()
         {
-            rend.material.DOFloat(DeathValue, shaderDeathParameter, deathtime);
+            if(rend != null)
+                rend.material.DOFloat(DeathValue, shaderDeathParameter, deathtime);
         }
     } 
 }

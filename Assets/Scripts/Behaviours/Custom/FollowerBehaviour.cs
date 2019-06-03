@@ -57,7 +57,8 @@ namespace Sangaku
         public void SetTargetAsDestination()
         {
             if (IsSetupped && target != null)
-                navigation.destination = target.TargetPosition;
+                if (navigation.isActiveAndEnabled)
+                    navigation.destination = target.TargetPosition; 
         }
 
         /// <summary>
