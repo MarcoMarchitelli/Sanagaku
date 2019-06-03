@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Cinemachine;
 using System.Collections;
 
 namespace Sangaku
@@ -156,6 +156,9 @@ namespace Sangaku
 
             Transform spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
             playerController.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
+
+            foreach (CinemachineVirtualCamera vcam in FindObjectsOfType<CinemachineVirtualCamera>())
+                vcam.gameObject.SetActive(false);
 
             GameObject.FindGameObjectWithTag("StartingVCam").SetActive(true);
 
