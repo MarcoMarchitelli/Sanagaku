@@ -18,15 +18,22 @@ public class TemporaryGameManager : MonoBehaviour
     public TemporaryEnemyManager enemyManager;
     public PlayerController playerController;
 
-    List<ObjectiveController> objectiveControllers;
     bool canPause = false;    
 
     public void Start()
     {
         Time.timeScale = 0;
-        objectiveControllers = FindObjectsOfType<ObjectiveController>().ToList();
 
-        foreach (ObjectiveController objective in objectiveControllers)
+        SetupEntities();
+
+        playerController.SetUpEntity();
+        
+        GoToMainMenu();
+    }
+
+    void SetupEntities()
+    {
+        foreach (ObjectiveController objective in FindObjectsOfType<ObjectiveController>())
             objective.SetUpEntity();
 
         foreach (RoomController room in FindObjectsOfType<RoomController>())
@@ -36,9 +43,6 @@ public class TemporaryGameManager : MonoBehaviour
             generic.SetUpEntity();
 
         enemyManager.SetUpEnemies();
-        playerController.SetUpEntity();
-        
-        GoToMainMenu();
     }
 
     private void Update()
@@ -146,6 +150,8 @@ public class TemporaryGameManager : MonoBehaviour
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
             yield return wfef;
+
+        SetupEntities();
 
         Transform spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
         playerController.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
