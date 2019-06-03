@@ -7,7 +7,6 @@ namespace Sangaku
     /// <summary>
     /// Behaviour del player che gestice le animazioni
     /// </summary>
-    [RequireComponent(typeof(Animator))]
     public class PlayerAnimationBehaviour : BaseBehaviour
     {
         /// <summary>
@@ -24,7 +23,10 @@ namespace Sangaku
         /// </summary>
         protected override void CustomSetup()
         {
-            anim = GetComponent<Animator>();
+            anim = GetComponentInChildren<Animator>();
+
+            if (anim == null)
+                Debug.LogError("Animator non trovato");
         }
 
         #region Body
