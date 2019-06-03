@@ -7,10 +7,13 @@ using UnityEngine.EventSystems;
 namespace Sangaku
 {
     [RequireComponent(typeof(Button))]
-    public class ButtonHandler : MonoBehaviour, ISelectHandler, IDeselectHandler
+    public class ButtonHandler : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] UnityVoidEvent OnButtonSelected;
         [SerializeField] UnityVoidEvent OnButtonDeselect;
+
+        [SerializeField] UnityVoidEvent OnMouseEnter;
+        [SerializeField] UnityVoidEvent OnMouseExit;
 
         Button button;
 
@@ -27,6 +30,16 @@ namespace Sangaku
         void Start()
         {
             button = GetComponent<Button>();
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            OnMouseEnter.Invoke();
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            OnMouseExit.Invoke();
         }
     }
 }
