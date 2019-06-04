@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using System.Collections;
+using Cinemachine;
 
 namespace Sangaku
 {
@@ -153,7 +154,6 @@ namespace Sangaku
 
         IEnumerator LoadAsyncScene(string _sceneName)
         {
-
             playerController.GetBehaviour<PlayerInputBehaviour>().ToggleAllInputs(false);
 
             Scene newLevel = SceneManager.GetSceneByName(_sceneName);
@@ -162,6 +162,9 @@ namespace Sangaku
             WaitForEndOfFrame wfef = new WaitForEndOfFrame();
 
             GoToLoadingPanel();
+
+            foreach (CinemachineVirtualCamera cam in FindObjectsOfType<CinemachineVirtualCamera>())
+                cam.gameObject.SetActive(false);
 
             // Wait until the asynchronous scene fully loads
             while (!asyncLoad.isDone)
@@ -172,10 +175,10 @@ namespace Sangaku
             Transform spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
             playerController.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
 
-            foreach (CinemachineVirtualCamera vcam in FindObjectsOfType<CinemachineVirtualCamera>())
-                vcam.gameObject.SetActive(false);
-
-            GameObject.FindGameObjectWithTag("StartingVCam").SetActive(true);
+            GameObject vcamObj = GameObject.FindGameObjectWithTag("StartingVCam");
+            vcamObj.SetActive(true);
+            CinemachineVirtualCamera vcam = vcamObj.GetComponent<CinemachineVirtualCamera>();
+            vcam.Follow = playerController.transform;
 
             GoToGameplay();
 
