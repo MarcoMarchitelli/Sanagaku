@@ -7,6 +7,8 @@ namespace Sangaku
 {
     public class TemporaryGameManager : MonoBehaviour
     {
+        public TemporaryGameManager Singleton { get; private set; }
+
         public GameObject MainMenu;
         public GameObject PauseMenu;
         public GameObject WinMenu;
@@ -18,6 +20,19 @@ namespace Sangaku
         public PlayerController playerController;
 
         bool canPause = false;
+
+        private void Awake()
+        {
+            if (Singleton == null)
+            {
+                Singleton = this;
+                DontDestroyOnLoad(Singleton.gameObject);
+            }
+            else
+            {
+                DestroyImmediate(gameObject);
+            }
+        }
 
         public void Start()
         {
