@@ -8,10 +8,10 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Player_Body
-  m_Shader: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
-  m_ShaderKeywords: _DOUBLESIDED_ON _EMISSIVE_COLOR_MAP _NORMALMAP _NORMALMAP_TANGENT_SPACE
-    _NORMALMAP_TANGENT_SPACE0 _NORMALMAP_TANGENT_SPACE1 _NORMALMAP_TANGENT_SPACE2
-    _NORMALMAP_TANGENT_SPACE3 _USECOLORMAP_ON
+  m_Shader: {fileID: 4800000, guid: bb52e918882b22643aa451f7fd1aeee2, type: 3}
+  m_ShaderKeywords: _DOUBLESIDED_ON _EMISSIVE_COLOR_MAP _NORMALMAP_TANGENT_SPACE _NORMALMAP_TANGENT_SPACE0
+    _NORMALMAP_TANGENT_SPACE1 _NORMALMAP_TANGENT_SPACE2 _NORMALMAP_TANGENT_SPACE3
+    _USECOLORMAP_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
@@ -27,6 +27,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_D8C58EE3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Albedo:
         m_Texture: {fileID: 2800000, guid: 714301f29c235cc41ad46cf493e3b593, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -107,6 +111,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DetailMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -127,6 +135,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Diffuse_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DistortionVectorMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -141,6 +161,22 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissiveColorMap:
         m_Texture: {fileID: 2800000, guid: 951552ddbcee1c9468c0b6fb45014917, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Grunge_1_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Grunge_1_SUB_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Grunge_2_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Grunge_2_SUB_Map:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
@@ -211,6 +247,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Metallic_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Normal:
         m_Texture: {fileID: 2800000, guid: d5ff8aea3ee2c0a4fb1cbf3332dd5d6d, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -255,6 +295,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Normal_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Occlusion:
         m_Texture: {fileID: 2800000, guid: be6aaef4bebc97340bdaa9d82527e861, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -263,8 +307,24 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Roughness:
         m_Texture: {fileID: 2800000, guid: 57421d6276b868f48a7cc59f3e8dbab4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Roughness_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_38BDE6D8_Texture:
+        m_Texture: {fileID: 2800000, guid: 621ffc10dba5714439d2a89f079a650f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_49EF49DB_Texture:
+        m_Texture: {fileID: 2800000, guid: 0112d5534d6c4dd4e858a389e85f1ea1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -328,6 +388,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_703EA72A: 0
+    - Vector1_84B73394: 0
     - _AORemapMax: 1
     - _AORemapMax0: 1
     - _AORemapMax1: 1
@@ -347,6 +409,7 @@ Material:
     - _AlphaCutoffShadow: 0.5
     - _Anisotropy: 0
     - _BlendMode: 0
+    - _BumpScale: 1
     - _CoatMask: 0
     - _ColorEmissiveONOFF: 0
     - _CullMode: 0
@@ -360,6 +423,7 @@ Material:
     - _DetailAlbedoScale1: 1
     - _DetailAlbedoScale2: 1
     - _DetailAlbedoScale3: 1
+    - _DetailNormalMapScale: 1
     - _DetailNormalScale: 1
     - _DetailNormalScale0: 1
     - _DetailNormalScale1: 1
@@ -370,6 +434,7 @@ Material:
     - _DetailSmoothnessScale1: 1
     - _DetailSmoothnessScale2: 1
     - _DetailSmoothnessScale3: 1
+    - _Diffuse_Triplanar: 0
     - _DiffusionProfile: 0
     - _DiffusionProfile0: 0
     - _DiffusionProfile1: 0
@@ -404,7 +469,27 @@ Material:
     - _EnableSpecularOcclusion: 0
     - _EnableWind: 0
     - _EnergyConservingSpecularColor: 1
+    - _GlossMapScale: 1
     - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Grunge_1_Diffuse_Opacity: 0
+    - _Grunge_1_Metallic_Opacity: 0
+    - _Grunge_1_Metallic_Value: 0
+    - _Grunge_1_Roughness_Opacity: 0
+    - _Grunge_1_Roughness_Value: 0
+    - _Grunge_1_SUB_Invert: 0
+    - _Grunge_1_SUB_Tile: 1
+    - _Grunge_1_Tile: 1
+    - _Grunge_1_Yes_No: 0
+    - _Grunge_2_Diffuse_Opacity: 0
+    - _Grunge_2_Metallic_Opacity: 0
+    - _Grunge_2_Metallic_Value: 0
+    - _Grunge_2_Roughness_Opacity: 0
+    - _Grunge_2_Roughness_Value: 0
+    - _Grunge_2_SUB_Invert: 0
+    - _Grunge_2_SUB_Tile: 0
+    - _Grunge_2_Tile: 1
+    - _Grunge_2_Yes_No: 0
     - _HdrpVersion: 2
     - _HeightAmplitude: 0.02
     - _HeightAmplitude0: 0.02
@@ -484,6 +569,9 @@ Material:
     - _Metallic1: 0
     - _Metallic2: 0
     - _Metallic3: 0
+    - _Metallic_Value: 0
+    - _Metalness_Triplanar: 0
+    - _Mode: 0
     - _NormalMapSpace: 0
     - _NormalMapSpace0: 0
     - _NormalMapSpace1: 0
@@ -494,7 +582,9 @@ Material:
     - _NormalScale1: 1
     - _NormalScale2: 1
     - _NormalScale3: 1
+    - _Normal_Triplanar: 0
     - _ObjectScaleAffectTile: 0
+    - _OcclusionStrength: 1
     - _OffsetFresnel: 1
     - _OpacityAsDensity0: 0
     - _OpacityAsDensity1: 0
@@ -505,9 +595,12 @@ Material:
     - _PPDMinSamples: 5
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
+    - _Parallax: 0.02
     - _PreRefractionPass: 0
     - _ReceivesSSR: 1
     - _RefractionModel: 0
+    - _Roughness_Triplanar: 0
+    - _Roughness_Value: 0
     - _SSRefractionProjectionModel: 0
     - _SfumaturaTaglio: 0.044
     - _Sfumaturataglio: 0.04426093
@@ -528,8 +621,10 @@ Material:
     - _SmoothnessRemapMin1: 0
     - _SmoothnessRemapMin2: 0
     - _SmoothnessRemapMin3: 0
+    - _SmoothnessTextureChannel: 0
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
+    - _SpecularHighlights: 1
     - _SpeedEmissive: 0
     - _SrcBlend: 1
     - _StencilRef: 2
@@ -559,6 +654,7 @@ Material:
     - _TexWorldScale3: 1
     - _TexWorldScaleBlendMask: 1
     - _TexWorldScaleEmissive: 1
+    - _Texture_Map_Tile: 1
     - _Thickness: 1
     - _Thickness0: 1
     - _Thickness1: 1
@@ -582,6 +678,7 @@ Material:
     - _UVDetail2: 0
     - _UVDetail3: 0
     - _UVEmissive: 0
+    - _UVSec: 0
     - _UseAoMap: 0
     - _UseColorMap: 1
     - _UseDensityMode: 0
@@ -609,9 +706,12 @@ Material:
     - _ColorDamage: {r: 1, g: 1, b: 1, a: 0.9294118}
     - _ColorEmissive: {r: 0.003921568, g: 0.55163, b: 0.945098, a: 0}
     - _Colordamage: {r: 1, g: 0, b: 0, a: 1}
+    - _Diffuse_Color: {r: 1, g: 1, b: 1, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 8, g: 8, b: 8, a: 1}
+    - _Grunge_1_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Grunge_2_Color: {r: 0, g: 0, b: 0, a: 0}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
