@@ -2,13 +2,12 @@
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using System.Collections;
-using Cinemachine;
 
 namespace Sangaku
 {
     public class TemporaryGameManager : MonoBehaviour
     {
-        public TemporaryGameManager Singleton { get; private set; }
+        public static TemporaryGameManager Singleton { get; private set; }
 
         public GameObject MainMenu;
         public GameObject PauseMenu;
