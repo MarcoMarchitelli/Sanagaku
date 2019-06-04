@@ -76,6 +76,14 @@ namespace Sangaku
             }
         }
 
+        public void ToggleAllInputs(bool _value)
+        {
+            canAttract = _value;
+            canShoot = _value;
+            canMove = _value;
+            canDash = _value;
+        }
+
         #region Movement
         [Header("Movement")]
         /// <summary>

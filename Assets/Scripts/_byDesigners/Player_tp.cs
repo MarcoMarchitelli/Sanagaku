@@ -28,10 +28,9 @@ public class Player_tp : MonoBehaviour
     }
 
     //cambio la position del player con quella del trasform scelto
-    public void Teleport()
-    {
-        player.GetComponent<Transform>().position = destinationPosition.position;
-        debugCam.SetActive(true);
-    }
-
+    //public void Teleport()
+    //{
+    //    player.GetComponent<Transform>().position = destinationPosition.position;
+    //    debugCam.SetActive(true);
+    //}
 }
