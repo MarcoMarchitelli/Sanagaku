@@ -33,7 +33,7 @@ namespace Sangaku
 
         private void LateUpdate()
         {
-            if(transform.position != Target.position - Offset)
+            if(transform != null && transform.position != Target.position - Offset)
                 Move(GetTargetDirection());
         }
 
