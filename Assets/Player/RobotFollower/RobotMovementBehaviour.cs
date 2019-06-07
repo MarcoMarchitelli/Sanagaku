@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Sangaku
 {
-    public class RobotMovementBehaviour : MonoBehaviour
+    public class RobotMovementBehaviour : BaseBehaviour
     {
         Vector3 direction;
         Rigidbody rBody;
@@ -20,20 +18,15 @@ namespace Sangaku
         public float DistanceFromTarget;
         public Vector3 Offset;
 
-        private void Start()
-        {
-            Init();
-        }
-
-        public void Init()
+        protected override void CustomSetup()
         {
             moveSpeed = 12;
             rBody = GetComponent<Rigidbody>();
         }
 
-        private void LateUpdate()
+        public override void OnLateUpdate()
         {
-            if(transform != null && transform.position != Target.position - Offset)
+            if (transform != null && transform.position != Target.position - Offset)
                 Move(GetTargetDirection());
         }
 
@@ -49,6 +42,5 @@ namespace Sangaku
             else
                 transform.position = Vector3.Lerp(transform.position, Target.position - Offset, LerpTime);
         }
-
     }
 }

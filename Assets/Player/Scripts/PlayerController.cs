@@ -7,9 +7,6 @@ namespace Sangaku
     /// </summary>
     public class PlayerController : BaseEntity
     {
-
-        public RobotMovementBehaviour robotMoveCtrl;
-
         /// <summary>
         /// Setup custom della classe
         /// </summary>
@@ -21,9 +18,6 @@ namespace Sangaku
                 uI_Health.CustomSetup(damageReceiver);
             else
                 Debug.LogError("***Missing UI_HealthBehaviour***");
-
-            if (robotMoveCtrl != null)
-                robotMoveCtrl.Init(); 
         }
     }
 }
