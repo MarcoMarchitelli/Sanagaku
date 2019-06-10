@@ -19,6 +19,8 @@ namespace Sangaku
         public TemporaryEnemyManager enemyManager;
         public PlayerController playerController;
 
+        public AudioListener menuAudioListener;
+
         bool canPause = false;
 
         private void Awake()
@@ -71,24 +73,36 @@ namespace Sangaku
         public void GoToMainMenu()
         {
             playerController.Enable(false);
+
+            playerController.GetAudioListener().enabled = false;
+            menuAudioListener.enabled = true;
+
             Time.timeScale = 0;
+
             PauseMenu.SetActive(false);
             WinMenu.SetActive(false);
             LossMenu.SetActive(false);
             MainMenu.SetActive(true);
             LoadingPanel.SetActive(false);
+
             canPause = false;
         }
 
         public void GoToPauseMenu()
         {
             playerController.Enable(false);
+
+            playerController.GetAudioListener().enabled = false;
+            menuAudioListener.enabled = true;
+
             Time.timeScale = 0;
+
             WinMenu.SetActive(false);
             MainMenu.SetActive(false);
             LossMenu.SetActive(false);
             PauseMenu.SetActive(true);
             LoadingPanel.SetActive(false);
+
             canPause = false;
         }
 
@@ -99,27 +113,44 @@ namespace Sangaku
             PauseMenu.SetActive(false);
             LossMenu.SetActive(false);
             LoadingPanel.SetActive(false);
+
             Time.timeScale = 1;
+
+            menuAudioListener.enabled = false;
+            playerController.GetAudioListener().enabled = true;
+
             playerController.Enable(true);
+
             canPause = true;
         }
 
         public void GoToWinMenu()
         {
             playerController.Enable(false);
+
+            playerController.GetAudioListener().enabled = false;
+            menuAudioListener.enabled = true;
+
             Time.timeScale = 0;
+
             MainMenu.SetActive(false);
             PauseMenu.SetActive(false);
             LossMenu.SetActive(false);
             LoadingPanel.SetActive(false);
             WinMenu.SetActive(true);
+
             canPause = false;
         }
 
         public void GoToLossMenu()
         {
             playerController.Enable(false);
+
+            playerController.GetAudioListener().enabled = false;
+            menuAudioListener.enabled = true;
+
             Time.timeScale = 0;
+
             MainMenu.SetActive(false);
             PauseMenu.SetActive(false);
             WinMenu.SetActive(false);
