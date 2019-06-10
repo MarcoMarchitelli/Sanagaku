@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace Sangaku
@@ -74,11 +73,11 @@ namespace Sangaku
             dashing = true;
         }
 
-        private void FixedUpdate()
+        public override void OnFixedUpdate()
         {
             if (dashing)
             {
-                if(rBody.velocity.magnitude <= playerVelocity)
+                if (rBody.velocity.magnitude <= playerVelocity)
                 {
                     OnDashEnd.Invoke(dashCooldown);
                     dashing = false;

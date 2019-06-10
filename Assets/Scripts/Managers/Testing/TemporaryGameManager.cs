@@ -56,6 +56,9 @@ namespace Sangaku
             foreach (GenericController generic in FindObjectsOfType<GenericController>())
                 generic.SetUpEntity();
 
+            foreach (RobotController generic in FindObjectsOfType<RobotController>())
+                generic.SetUpEntity();
+
             enemyManager.SetUpEnemies();
         }
 

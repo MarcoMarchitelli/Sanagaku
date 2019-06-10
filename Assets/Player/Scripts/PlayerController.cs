@@ -7,8 +7,7 @@ namespace Sangaku
     /// </summary>
     public class PlayerController : BaseEntity
     {
-
-        public RobotMovementBehaviour robotMoveCtrl;
+        AudioListener audioListener;
 
         /// <summary>
         /// Setup custom della classe
@@ -17,13 +16,16 @@ namespace Sangaku
         {
             DamageReceiverBehaviour damageReceiver = GetBehaviour<DamageReceiverBehaviour>();
             UI_HealthBehaviour uI_Health = GetBehaviour<UI_HealthBehaviour>();
+
             if (uI_Health != null)
                 uI_Health.CustomSetup(damageReceiver);
             else
                 Debug.LogError("***Missing UI_HealthBehaviour***");
+        }
 
-            if (robotMoveCtrl != null)
-                robotMoveCtrl.Init(); 
+        public AudioListener GetAudioListener()
+        {
+            return audioListener;
         }
     }
 }
