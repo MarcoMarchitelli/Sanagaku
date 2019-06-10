@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using System.Collections;
+using System;
 
 namespace Sangaku
 {
@@ -177,7 +178,22 @@ namespace Sangaku
 
         public void ReloadScene()
         {
+            SceneManager.sceneLoaded += HandleReloadSceneDone;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        private void HandleReloadSceneDone(Scene arg0, LoadSceneMode arg1)
+        {
+            SceneManager.sceneLoaded -= HandleReloadSceneDone;
+
+            Time.timeScale = 0;
+
+            SetupEntities();
+
+            playerController = FindObjectOfType<PlayerController>();
+            playerController.SetUpEntity();
+
+            GoToMainMenu();
         }
 
         public void LoadScene(string _sceneName)
