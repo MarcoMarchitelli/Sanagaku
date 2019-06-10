@@ -31,8 +31,11 @@ namespace Sangaku
 
         public override void Tick()
         {
-            orbTransform.position = context.CatchPoint.position;
-            orbTransform.rotation = context.CatchPoint.rotation;
+            if(orbTransform != null && context != null && context.CatchPoint != null)
+            {
+                orbTransform.position = context.CatchPoint.position;
+                orbTransform.rotation = context.CatchPoint.rotation;
+            }
         }
 
         public override void Exit()
