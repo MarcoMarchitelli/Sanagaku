@@ -17,13 +17,14 @@ namespace Sangaku
         [SerializeField]
         float damageTime;
 
-        [Header("Death")]
+        [Header("Death and Spawn")]
         [SerializeField]
-        string shaderDeathParameter;
+        string TaglioMesh;
         [SerializeField]
         float DeathValue;
         [SerializeField]
         float deathtime;
+
 
         Renderer rend;
 
@@ -58,7 +59,13 @@ namespace Sangaku
         public void SetDeathValue()
         {
             if(rend != null)
-                rend.material.DOFloat(DeathValue, shaderDeathParameter, deathtime);
+                rend.material.DOFloat(DeathValue, TaglioMesh, deathtime);
+        }
+
+        public void SetSpawnValue()
+        {
+            if (rend != null)
+                rend.material.DOFloat(-DeathValue, TaglioMesh, deathtime);
         }
     } 
 }
