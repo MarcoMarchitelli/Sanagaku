@@ -8,12 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: OrbMaterial
-  m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
+  m_Shader: {fileID: 4800000, guid: d0585fbbc536cdc4b9347978daf9db5f, type: 3}
   m_ShaderKeywords: _AXF_BRDF_TYPE_SVBRDF _EMISSION _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -25,8 +25,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_2BFE8410:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_7644F707:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_801B85A:
+        m_Texture: {fileID: 2800000, guid: 7bae9f3d8fb74334ba3889f53fe7eea0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
@@ -216,6 +224,10 @@ Material:
     m_Floats:
     - Vector1_382CB5C5: 0.9
     - Vector1_61FFDED6: 1
+    - Vector1_6C46FA59: 4.14
+    - Vector1_723B5567: 0.1
+    - Vector1_882D0AFA: 1.18
+    - Vector1_8A191A91: 3.75
     - Vector1_CCEACFFF: 0
     - _AORemapMax: 1
     - _AORemapMin: 0
@@ -287,6 +299,7 @@ Material:
     - _EnableWind: 0
     - _EnergyConservingSpecularColor: 1
     - _Flags: 0
+    - _Glitcheffect: 0.219
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -376,7 +389,10 @@ Material:
     - _ZWrite: 1
     - _time: 0
     m_Colors:
+    - Color_4CF9E6ED: {r: 0, g: 0.76176244, b: 0.7830189, a: 0}
     - Color_8BB99CEA: {r: 0.6037736, g: 0.27625486, b: 0.27625486, a: 0}
+    - Color_A5AE3529: {r: 1.981132, g: 0.715697, b: 0, a: 0}
+    - Vector2_BFB78082: {r: 1, g: 3, b: 0, a: 0}
     - _BaseColor: {r: 0.68235296, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _CarPaint2_BRDFColorMapUVScale: {r: 1, g: 1, b: 0, a: 0}

@@ -25,6 +25,8 @@ namespace Sangaku
 
         public AudioListener GetAudioListener()
         {
+            if(audioListener == null)
+                audioListener = GetComponent<AudioListener>();
             return audioListener;
         }
     }

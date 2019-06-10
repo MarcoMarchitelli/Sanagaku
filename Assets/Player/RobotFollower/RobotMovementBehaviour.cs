@@ -26,7 +26,7 @@ namespace Sangaku
 
         public override void OnLateUpdate()
         {
-            if (transform != null && transform.position != Target.position - Offset)
+            if (transform != null && Target != null && transform.position != Target.position - Offset)
                 Move(GetTargetDirection());
         }
 
