@@ -10,6 +10,7 @@ namespace Sangaku
     {
         PostProcessVolume postProcess;
         ChromaticAberration aberration;
+        public float AberrationTime;
 
         protected override void CustomSetup()
         {
@@ -35,7 +36,7 @@ namespace Sangaku
                 yield return endOfFrame;
             }
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(AberrationTime);
 
             while (aberration.intensity.value > 0)
             {
