@@ -335,7 +335,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  maxHealth: 2
+  maxHealth: 1
 --- !u!195 &5153844464498806840
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1074,32 +1074,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8387507144194463670}
     m_Modifications:
-    - target: {fileID: 6563525911769603465, guid: 3525b396923ea2c47a8f14816b6939f9,
-        type: 3}
-      propertyPath: m_Name
-      value: AreaDamage
-      objectReference: {fileID: 0}
-    - target: {fileID: 6563525911769603465, guid: 3525b396923ea2c47a8f14816b6939f9,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6237922447320057978, guid: 3525b396923ea2c47a8f14816b6939f9,
-        type: 3}
-      propertyPath: OnDamageDealt.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2140244604720386974, guid: a9d227d1dc06d964980a248fa68e7f93,
-        type: 3}
-    - target: {fileID: 6237922447320057978, guid: 3525b396923ea2c47a8f14816b6939f9,
-        type: 3}
-      propertyPath: OnDamageDealt.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartTimer
-      objectReference: {fileID: 0}
-    - target: {fileID: 6237922447320057978, guid: 3525b396923ea2c47a8f14816b6939f9,
-        type: 3}
-      propertyPath: OnDamageDealt.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3500736851308306971, guid: 3525b396923ea2c47a8f14816b6939f9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1153,6 +1127,16 @@ PrefabInstance:
     - target: {fileID: 3500736851308306971, guid: 3525b396923ea2c47a8f14816b6939f9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6563525911769603465, guid: 3525b396923ea2c47a8f14816b6939f9,
+        type: 3}
+      propertyPath: m_Name
+      value: AreaDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 6563525911769603465, guid: 3525b396923ea2c47a8f14816b6939f9,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2588231582161791170, guid: 3525b396923ea2c47a8f14816b6939f9,
@@ -1294,6 +1278,22 @@ PrefabInstance:
       propertyPath: OnTimerEnd.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6237922447320057978, guid: 3525b396923ea2c47a8f14816b6939f9,
+        type: 3}
+      propertyPath: OnDamageDealt.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2140244604720386974, guid: a9d227d1dc06d964980a248fa68e7f93,
+        type: 3}
+    - target: {fileID: 6237922447320057978, guid: 3525b396923ea2c47a8f14816b6939f9,
+        type: 3}
+      propertyPath: OnDamageDealt.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237922447320057978, guid: 3525b396923ea2c47a8f14816b6939f9,
+        type: 3}
+      propertyPath: OnDamageDealt.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5570762202491035573, guid: 3525b396923ea2c47a8f14816b6939f9,
         type: 3}
       propertyPath: m_IsTrigger
@@ -1331,6 +1331,86 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8387507144194463670}
     m_Modifications:
+    - target: {fileID: 2593943554385622241, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: shaderDamageParameter
+      value: _DamageBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593943554385622241, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DamageValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593943554385622241, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: damageTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2593943554385622241, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DeathValue
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120876495959149262, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: shaderDamageParameter
+      value: _DamageBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120876495959149262, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DamageValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120876495959149262, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: damageTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120876495959149262, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DeathValue
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375198263118931895, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: shaderDamageParameter
+      value: _DamageBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375198263118931895, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DamageValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375198263118931895, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: damageTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375198263118931895, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DeathValue
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434052734901471021, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: shaderDamageParameter
+      value: _DamageBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434052734901471021, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DamageValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434052734901471021, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: damageTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434052734901471021, guid: ee7adf2f27911404380e8bf87ff868c3,
+        type: 3}
+      propertyPath: DeathValue
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 2116413576829631484, guid: ee7adf2f27911404380e8bf87ff868c3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1391,82 +1471,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: SK_enemy_drone_b
       objectReference: {fileID: 0}
-    - target: {fileID: 1434052734901471021, guid: ee7adf2f27911404380e8bf87ff868c3,
+    - target: {fileID: 7316604314901851368, guid: ee7adf2f27911404380e8bf87ff868c3,
         type: 3}
       propertyPath: shaderDamageParameter
       value: _DamageBullet
       objectReference: {fileID: 0}
-    - target: {fileID: 1434052734901471021, guid: ee7adf2f27911404380e8bf87ff868c3,
+    - target: {fileID: 7316604314901851368, guid: ee7adf2f27911404380e8bf87ff868c3,
         type: 3}
       propertyPath: DamageValue
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1434052734901471021, guid: ee7adf2f27911404380e8bf87ff868c3,
+    - target: {fileID: 7316604314901851368, guid: ee7adf2f27911404380e8bf87ff868c3,
         type: 3}
       propertyPath: damageTime
       value: 0.3
       objectReference: {fileID: 0}
-    - target: {fileID: 1434052734901471021, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: DeathValue
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375198263118931895, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: shaderDamageParameter
-      value: _DamageBullet
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375198263118931895, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: DamageValue
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375198263118931895, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: damageTime
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375198263118931895, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: DeathValue
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3120876495959149262, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: shaderDamageParameter
-      value: _DamageBullet
-      objectReference: {fileID: 0}
-    - target: {fileID: 3120876495959149262, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: DamageValue
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3120876495959149262, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: damageTime
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3120876495959149262, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: DeathValue
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2593943554385622241, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: shaderDamageParameter
-      value: _DamageBullet
-      objectReference: {fileID: 0}
-    - target: {fileID: 2593943554385622241, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: DamageValue
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2593943554385622241, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: damageTime
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2593943554385622241, guid: ee7adf2f27911404380e8bf87ff868c3,
+    - target: {fileID: 7316604314901851368, guid: ee7adf2f27911404380e8bf87ff868c3,
         type: 3}
       propertyPath: DeathValue
       value: -2
@@ -1487,26 +1507,6 @@ PrefabInstance:
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4685772713938874237, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: DeathValue
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316604314901851368, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: shaderDamageParameter
-      value: _DamageBullet
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316604314901851368, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: DamageValue
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316604314901851368, guid: ee7adf2f27911404380e8bf87ff868c3,
-        type: 3}
-      propertyPath: damageTime
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7316604314901851368, guid: ee7adf2f27911404380e8bf87ff868c3,
         type: 3}
       propertyPath: DeathValue
       value: -2
