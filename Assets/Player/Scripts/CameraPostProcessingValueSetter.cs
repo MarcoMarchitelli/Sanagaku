@@ -34,7 +34,6 @@ namespace Sangaku
                 aberration.intensity.value += Time.deltaTime *2;
                 yield return endOfFrame;
             }
-            Debug.Log("Max value " + aberration.intensity.value);
 
             yield return new WaitForSeconds(1);
 
@@ -43,7 +42,6 @@ namespace Sangaku
                 aberration.intensity.value -= Time.deltaTime *2;
                 yield return endOfFrame;
             }
-            Debug.Log("Min value " + aberration.intensity.value);
 
         }
     }
