@@ -10,6 +10,7 @@ namespace Sangaku
     {
         PostProcessVolume postProcess;
         ChromaticAberration aberration;
+        public float AberrationTime;
 
         protected override void CustomSetup()
         {
@@ -34,16 +35,14 @@ namespace Sangaku
                 aberration.intensity.value += Time.deltaTime *2;
                 yield return endOfFrame;
             }
-            Debug.Log("Max value " + aberration.intensity.value);
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(AberrationTime);
 
             while (aberration.intensity.value > 0)
             {
                 aberration.intensity.value -= Time.deltaTime *2;
                 yield return endOfFrame;
             }
-            Debug.Log("Min value " + aberration.intensity.value);
 
         }
     }
