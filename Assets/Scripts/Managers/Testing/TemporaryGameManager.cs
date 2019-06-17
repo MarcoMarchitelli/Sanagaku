@@ -205,7 +205,6 @@ namespace Sangaku
         {
             playerController.GetBehaviour<PlayerInputBehaviour>().ToggleAllInputs(false);
 
-            Scene newLevel = SceneManager.GetSceneByName(_sceneName);
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_sceneName, LoadSceneMode.Additive);
 
             WaitForEndOfFrame wfef = new WaitForEndOfFrame();
@@ -221,8 +220,15 @@ namespace Sangaku
 
             SetupEntities();
 
-            Transform spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
+            Transform spawnPoint = null;
+            if (GameObject.FindGameObjectWithTag("PlayerSpawn") != null)
+                spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
+            else
+                Debug.LogError("**** Player Spawn non trovato ****");
+
+
             playerController.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
+            Destroy(spawnPoint.gameObject);
 
             GameObject vcamObj = GameObject.FindGameObjectWithTag("StartingVCam");
             vcamObj.SetActive(true);
