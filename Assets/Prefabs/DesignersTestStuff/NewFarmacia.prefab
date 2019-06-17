@@ -580,7 +580,6 @@ GameObject:
   - component: {fileID: 5634957643114383019}
   - component: {fileID: 5634957643114383020}
   - component: {fileID: 5634957643114383021}
-  - component: {fileID: 5634957643114383022}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -660,46 +659,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5634957643114383022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5634957643114383024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62c244b969e8772428c7ccc23e1f2814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnTriggerEnterEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
-        m_MethodName: SetHealth
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnTriggerStayEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnTriggerExitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  entitiesToDetectForTrigger:
-  - {fileID: 1493207864, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
 --- !u!1 &5634957643446103015
 GameObject:
   m_ObjectHideFlags: 0

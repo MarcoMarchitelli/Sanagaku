@@ -31146,6 +31146,138 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1742862788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1742862789}
+  - component: {fileID: 1742862793}
+  - component: {fileID: 1742862792}
+  - component: {fileID: 1742862791}
+  - component: {fileID: 1742862790}
+  m_Layer: 0
+  m_Name: trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1742862789
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742862788}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 38.62, y: 7.9, z: -15.339996}
+  m_LocalScale: {x: 1.7176, y: 1.5752, z: 1.8245}
+  m_Children: []
+  m_Father: {fileID: 5634957645086223107}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1742862790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742862788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62c244b969e8772428c7ccc23e1f2814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTriggerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+        m_MethodName: SetHealth
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnTriggerStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnTriggerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityColliderEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  entitiesToDetectForTrigger:
+  - {fileID: 2835863131274270898, guid: 63a2f4dac0eb39f47814a80f00a2ff8b, type: 3}
+--- !u!65 &1742862791
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742862788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4960971, y: 1.7167227, z: 1.2814711}
+  m_Center: {x: -0.14186017, y: 0.3583618, z: 0.103813164}
+--- !u!23 &1742862792
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742862788}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1742862793
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742862788}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1743752092
 GameObject:
   m_ObjectHideFlags: 0
@@ -31819,7 +31951,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789100672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.37, y: -0.27, z: 247.58652}
+  m_LocalPosition: {x: -12.37, y: 0.95, z: 247.58652}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -53747,6 +53879,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: entitiesToDetectForTrigger.Array.data[0]
+      value: 
+      objectReference: {fileID: 2835863131274270898, guid: 63a2f4dac0eb39f47814a80f00a2ff8b,
+        type: 3}
     - target: {fileID: 5634957644277845742, guid: c3e93e0ee218a794cb93c69d78e6d94a,
         type: 3}
       propertyPath: m_Name
@@ -53807,6 +53944,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5634957643114383024, guid: c3e93e0ee218a794cb93c69d78e6d94a,
+        type: 3}
+      propertyPath: m_Name
+      value: collider
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634957643114383021, guid: c3e93e0ee218a794cb93c69d78e6d94a,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634957643114383021, guid: c3e93e0ee218a794cb93c69d78e6d94a,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.95927
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634957643114383021, guid: c3e93e0ee218a794cb93c69d78e6d94a,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.7167227
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634957643114383021, guid: c3e93e0ee218a794cb93c69d78e6d94a,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.097234696
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634957643114383021, guid: c3e93e0ee218a794cb93c69d78e6d94a,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.8139974
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634957643114383021, guid: c3e93e0ee218a794cb93c69d78e6d94a,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.057045847
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634957643114383021, guid: c3e93e0ee218a794cb93c69d78e6d94a,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.3583618
+      objectReference: {fileID: 0}
     - target: {fileID: 1087976793, guid: c3e93e0ee218a794cb93c69d78e6d94a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -53825,6 +54002,71 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3e93e0ee218a794cb93c69d78e6d94a, type: 3}
+--- !u!1 &5634957645086223104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5634957643114383024, guid: c3e93e0ee218a794cb93c69d78e6d94a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5634957645086223103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5634957645086223105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634957645086223104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513fb21d796d32a4e95df27d28248d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviourType: 0
+--- !u!114 &5634957645086223106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634957645086223104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee024a8379cfcdc45b242d79f98183ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnCollisionEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+        m_MethodName: SetHealth
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnCollisionStayEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnCollisionExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Sangaku.UnityCollisionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  entitiesToDetectForCollision:
+  - {fileID: 2835863131274270898, guid: 63a2f4dac0eb39f47814a80f00a2ff8b, type: 3}
+--- !u!4 &5634957645086223107 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5634957644277845741, guid: c3e93e0ee218a794cb93c69d78e6d94a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5634957645086223103}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &5645118712294769689
 MeshRenderer:
   m_ObjectHideFlags: 0
