@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using System.Collections;
-using System;
+using System.Collections.Generic;
 
 namespace Sangaku
 {
@@ -24,6 +24,8 @@ namespace Sangaku
 
         bool canPause = false;
 
+        ObjectPooler pooler;
+
         private void Awake()
         {
             if (Singleton == null)
@@ -44,6 +46,8 @@ namespace Sangaku
             SetupEntities();
 
             playerController.SetUpEntity();
+
+            pooler = FindObjectOfType<ObjectPooler>();
 
             GoToMainMenu();
         }
@@ -203,10 +207,15 @@ namespace Sangaku
 
         IEnumerator LoadAsyncScene(string _sceneName)
         {
+            List<GameObject> objectsToMove = new List<GameObject>();
+            objectsToMove.Add(playerController.gameObject);
+            objectsToMove.Add(Camera.main.gameObject);
+            objectsToMove.Add(pooler.gameObject);
+            objectsToMove.Add(FindObjectOfType<RobotController>().gameObject);
+
             playerController.GetBehaviour<PlayerInputBehaviour>().ToggleAllInputs(false);
 
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_sceneName, LoadSceneMode.Additive);
-
             WaitForEndOfFrame wfef = new WaitForEndOfFrame();
 
             GoToLoadingPanel();
@@ -218,6 +227,15 @@ namespace Sangaku
             while (!asyncLoad.isDone)
                 yield return wfef;
 
+            Scene sceneToLoad = SceneManager.GetSceneByName(_sceneName);
+            for (int i = 0; i < objectsToMove.Count; i++)
+                SceneManager.MoveGameObjectToScene(objectsToMove[i], sceneToLoad);
+
+            AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+            // Wait until the asynchronous scene fully unloads
+            while (!asyncUnload.isDone)
+                yield return wfef;
+
             SetupEntities();
 
             Transform spawnPoint = null;
@@ -226,6 +244,8 @@ namespace Sangaku
             else
                 Debug.LogError("**** Player Spawn non trovato ****");
 
+            if (!playerController)
+                playerController = FindObjectOfType<PlayerController>();
 
             playerController.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
             Destroy(spawnPoint.gameObject);
