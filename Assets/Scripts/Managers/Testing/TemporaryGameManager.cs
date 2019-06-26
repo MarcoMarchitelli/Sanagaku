@@ -247,6 +247,9 @@ namespace Sangaku
             if (!playerController)
                 playerController = FindObjectOfType<PlayerController>();
 
+            if (pooler == null)
+                pooler = FindObjectOfType<ObjectPooler>();
+
             playerController.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
             Destroy(spawnPoint.gameObject);
 
