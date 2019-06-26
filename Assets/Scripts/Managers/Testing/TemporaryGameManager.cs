@@ -210,6 +210,8 @@ namespace Sangaku
             List<GameObject> objectsToMove = new List<GameObject>();
             objectsToMove.Add(playerController.gameObject);
             objectsToMove.Add(Camera.main.gameObject);
+            if (pooler == null)
+                pooler = FindObjectOfType<ObjectPooler>();
             objectsToMove.Add(pooler.gameObject);
             objectsToMove.Add(FindObjectOfType<RobotController>().gameObject);
 
