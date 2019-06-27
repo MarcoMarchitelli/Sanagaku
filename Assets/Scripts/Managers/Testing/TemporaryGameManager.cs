@@ -77,9 +77,12 @@ namespace Sangaku
 
         public void GoToMainMenu()
         {
-            playerController.Enable(false);
+            if (playerController)
+            {
+                playerController.Enable(false);
+                playerController.GetAudioListener().enabled = false; 
+            }
 
-            playerController.GetAudioListener().enabled = false;
             menuAudioListener.enabled = true;
 
             Time.timeScale = 0;
@@ -95,9 +98,12 @@ namespace Sangaku
 
         public void GoToPauseMenu()
         {
-            playerController.Enable(false);
+            if (playerController)
+            {
+                playerController.Enable(false);
+                playerController.GetAudioListener().enabled = false;
+            }
 
-            playerController.GetAudioListener().enabled = false;
             menuAudioListener.enabled = true;
 
             Time.timeScale = 0;
@@ -122,18 +128,24 @@ namespace Sangaku
             Time.timeScale = 1;
 
             menuAudioListener.enabled = false;
-            playerController.GetAudioListener().enabled = true;
 
-            playerController.Enable(true);
+            if (playerController)
+            {
+                playerController.GetAudioListener().enabled = true;
+                playerController.Enable(true);
+            }
 
             canPause = true;
         }
 
         public void GoToWinMenu()
         {
-            playerController.Enable(false);
+            if (playerController)
+            {
+                playerController.Enable(false);
+                playerController.GetAudioListener().enabled = false; 
+            }
 
-            playerController.GetAudioListener().enabled = false;
             menuAudioListener.enabled = true;
 
             Time.timeScale = 0;
@@ -149,9 +161,12 @@ namespace Sangaku
 
         public void GoToLossMenu()
         {
-            playerController.Enable(false);
+            if (playerController)
+            {
+                playerController.Enable(false);
+                playerController.GetAudioListener().enabled = false;
+            }
 
-            playerController.GetAudioListener().enabled = false;
             menuAudioListener.enabled = true;
 
             Time.timeScale = 0;
@@ -180,6 +195,12 @@ namespace Sangaku
             Application.Quit();
         }
 
+        public void LoadStartScene()
+        {
+            SceneManager.sceneLoaded += HandleReloadSceneDone;
+            SceneManager.LoadScene(0);
+        }
+
         public void ReloadScene()
         {
             SceneManager.sceneLoaded += HandleReloadSceneDone;
@@ -195,7 +216,8 @@ namespace Sangaku
             SetupEntities();
 
             playerController = FindObjectOfType<PlayerController>();
-            playerController.SetUpEntity();
+            if (playerController)
+                playerController.SetUpEntity();
 
             GoToMainMenu();
         }
@@ -208,10 +230,17 @@ namespace Sangaku
         IEnumerator LoadAsyncScene(string _sceneName)
         {
             List<GameObject> objectsToMove = new List<GameObject>();
-            objectsToMove.Add(playerController.gameObject);
-            objectsToMove.Add(Camera.main.gameObject);
+            if (playerController)
+                objectsToMove.Add(playerController.gameObject);
+            if (Camera.main)
+                objectsToMove.Add(Camera.main.gameObject);
+            if (pooler == null)
+                pooler = FindObjectOfType<ObjectPooler>();
             objectsToMove.Add(pooler.gameObject);
-            objectsToMove.Add(FindObjectOfType<RobotController>().gameObject);
+
+            RobotController robotController = FindObjectOfType<RobotController>();
+            if (robotController)
+                objectsToMove.Add(robotController.gameObject);
 
             playerController.GetBehaviour<PlayerInputBehaviour>().ToggleAllInputs(false);
 
@@ -246,6 +275,9 @@ namespace Sangaku
 
             if (!playerController)
                 playerController = FindObjectOfType<PlayerController>();
+
+            if (pooler == null)
+                pooler = FindObjectOfType<ObjectPooler>();
 
             playerController.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
             Destroy(spawnPoint.gameObject);
