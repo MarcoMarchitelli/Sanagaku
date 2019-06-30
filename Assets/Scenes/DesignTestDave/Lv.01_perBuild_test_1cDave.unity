@@ -618,7 +618,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277293635}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: -14.172771, y: 18.742565, z: -15.141373}
+  m_LocalPosition: {x: -14.137867, y: 18.742565, z: -15.141373}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2143677624}
@@ -820,7 +820,7 @@ PrefabInstance:
     - target: {fileID: 2985434072626352541, guid: 07e9c1d57d3b6f441be88dccbbf39c4b,
         type: 3}
       propertyPath: Pools.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2985434072626352541, guid: 07e9c1d57d3b6f441be88dccbbf39c4b,
         type: 3}
@@ -842,11 +842,32 @@ PrefabInstance:
     - target: {fileID: 2985434072626352541, guid: 07e9c1d57d3b6f441be88dccbbf39c4b,
         type: 3}
       propertyPath: Pools.Array.data[5].size
-      value: 50
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 2985434072626352541, guid: 07e9c1d57d3b6f441be88dccbbf39c4b,
         type: 3}
       propertyPath: Pools.Array.data[5].isIPoolable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985434072626352541, guid: 07e9c1d57d3b6f441be88dccbbf39c4b,
+        type: 3}
+      propertyPath: Pools.Array.data[6].tag
+      value: FT
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985434072626352541, guid: 07e9c1d57d3b6f441be88dccbbf39c4b,
+        type: 3}
+      propertyPath: Pools.Array.data[6].prefab
+      value: 
+      objectReference: {fileID: 2294653308663302240, guid: 516f0effe318e5544987234bdeb60aa3,
+        type: 3}
+    - target: {fileID: 2985434072626352541, guid: 07e9c1d57d3b6f441be88dccbbf39c4b,
+        type: 3}
+      propertyPath: Pools.Array.data[6].size
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985434072626352541, guid: 07e9c1d57d3b6f441be88dccbbf39c4b,
+        type: 3}
+      propertyPath: Pools.Array.data[6].isIPoolable
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1885,10 +1906,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1724618683, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
-      propertyPath: m_Name
-      value: Player_perBuild
-      objectReference: {fileID: 0}
     - target: {fileID: 1493207849, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.87
@@ -1933,6 +1950,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1724618683, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: m_Name
+      value: Player_perBuild
+      objectReference: {fileID: 0}
     - target: {fileID: 1724618689, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
       propertyPath: OnDestruction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1940,6 +1961,10 @@ PrefabInstance:
     - target: {fileID: 1724618689, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
       propertyPath: OnDestruction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToLossMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1891538083, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 684898336673134671, guid: 3cef6e761cb473e4988a3e4416edd8da,
         type: 3}
@@ -1985,10 +2010,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1891538083, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
@@ -2341,7 +2362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2050930363, guid: 50057987b26e21144a25c42b1556ece3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Lv.02_test_01
+      value: Lv02_Dave_1.0.0a
       objectReference: {fileID: 0}
     - target: {fileID: 602165085143036992, guid: 50057987b26e21144a25c42b1556ece3,
         type: 3}
