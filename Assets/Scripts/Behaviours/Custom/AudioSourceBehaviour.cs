@@ -20,6 +20,7 @@ namespace Sangaku
         {
             if (source != null)
             {
+                yield return new WaitUntil(() => source.isPlaying == true);
                 yield return new WaitWhile(() => source.isPlaying == true);
                 OnStopPlaying.Invoke();
             }
