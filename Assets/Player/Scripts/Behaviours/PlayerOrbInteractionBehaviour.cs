@@ -17,11 +17,13 @@ namespace Sangaku
         public OrbController caughtOrb;
 
         PlayerManaBehaviour playerMana;
+        PlayerShootBehaviour shootBehaviour;
 
         protected override void CustomSetup()
         {
             caughtOrb = null;
             playerMana = Entity.gameObject.GetComponent<PlayerManaBehaviour>();
+            shootBehaviour = Entity.gameObject.GetComponent<PlayerShootBehaviour>();
         }
 
         ManaBehaviour orbMana;
@@ -41,6 +43,20 @@ namespace Sangaku
                 caughtOrb.SM.GoToCaughtState(orbCatchPoint);
                 OnOrbCatch.Invoke(catchDuration);
             }
+        }
+
+        /// <summary>
+        /// Checks if there is no Orb already, and if not catches the given one. Called by the Orb class.
+        /// </summary>
+        public void CatchOrb()
+        {
+            if (shootBehaviour.GetOrbsInPlay().Count > 0)
+            {
+                OrbController orb = shootBehaviour.GetOrbsInPlay()[0];
+                if (orb != null)
+                    CatchOrb(orb);
+            }
+
         }
 
         /// <summary>
@@ -73,5 +89,5 @@ namespace Sangaku
         {
             isEnabled = _value;
         }
-    } 
+    }
 }
