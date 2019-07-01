@@ -983,7 +983,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277293635}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: -14.138801, y: 18.742565, z: -15.141373}
+  m_LocalPosition: {x: -14.298098, y: 18.742565, z: -15.141373}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2143677624}
@@ -1908,11 +1908,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1209490842}
     m_Modifications:
-    - target: {fileID: 8892897501227032714, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
-        type: 3}
-      propertyPath: m_Name
-      value: Laser (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 6378774846249929290, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1967,6 +1962,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892897501227032714, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
+        type: 3}
+      propertyPath: m_Name
+      value: Laser (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2eb0ebd68d468641a3b4bdef3a9fa95, type: 3}
@@ -2241,6 +2241,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6088b3595686c2046be9c846628f4898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &867614344 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1724618695, guid: 3cef6e761cb473e4988a3e4416edd8da,
+    type: 3}
+  m_PrefabInstance: {fileID: 1109980211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e3f96e83f4b614d939b2b710d9904b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &894546934 stripped
@@ -2665,14 +2677,70 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1891538083, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+    - target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DestroyAfter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
+      objectReference: {fileID: 1703470828}
+    - target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetDeathAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 867614344}
+    - target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: Enable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147327567, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1724618689, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
       propertyPath: OnDestruction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1767771213}
+    - target: {fileID: 1891538083, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1544076354, guid: 3cef6e761cb473e4988a3e4416edd8da, type: 3}
       propertyPath: time
       value: 0.5
@@ -2723,11 +2791,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1209490842}
     m_Modifications:
-    - target: {fileID: 8892897501227032714, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
-        type: 3}
-      propertyPath: m_Name
-      value: Laser (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 6378774846249929290, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2782,6 +2845,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892897501227032714, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
+        type: 3}
+      propertyPath: m_Name
+      value: Laser (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2eb0ebd68d468641a3b4bdef3a9fa95, type: 3}
@@ -3359,11 +3427,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1209490842}
     m_Modifications:
-    - target: {fileID: 8892897501227032714, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
-        type: 3}
-      propertyPath: m_Name
-      value: Laser (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 6378774846249929290, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3419,6 +3482,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8892897501227032714, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
+        type: 3}
+      propertyPath: m_Name
+      value: Laser (3)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2eb0ebd68d468641a3b4bdef3a9fa95, type: 3}
 --- !u!4 &1633312481 stripped
@@ -3427,6 +3495,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1567420621}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1703470828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 58528871136602515, guid: 3cef6e761cb473e4988a3e4416edd8da,
+    type: 3}
+  m_PrefabInstance: {fileID: 1109980211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111cf8c61a9f4754f9ee4ff798a7a5ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1711612418 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 201526776140038743, guid: 2c1a6ba1a5f7ca04ab1dffc0b318b65f,
@@ -3489,11 +3569,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1209490842}
     m_Modifications:
-    - target: {fileID: 8892897501227032714, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
-        type: 3}
-      propertyPath: m_Name
-      value: Laser
-      objectReference: {fileID: 0}
     - target: {fileID: 6378774846249929290, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3548,6 +3623,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892897501227032714, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
+        type: 3}
+      propertyPath: m_Name
+      value: Laser
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2eb0ebd68d468641a3b4bdef3a9fa95, type: 3}
@@ -3850,11 +3930,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1209490842}
     m_Modifications:
-    - target: {fileID: 8892897501227032714, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
-        type: 3}
-      propertyPath: m_Name
-      value: Laser (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 6378774846249929290, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3909,6 +3984,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892897501227032714, guid: e2eb0ebd68d468641a3b4bdef3a9fa95,
+        type: 3}
+      propertyPath: m_Name
+      value: Laser (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2eb0ebd68d468641a3b4bdef3a9fa95, type: 3}
