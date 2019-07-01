@@ -360,6 +360,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8603629239791014474}
   - component: {fileID: 8603629239791014475}
+  - component: {fileID: 1053141757250431574}
   m_Layer: 0
   m_Name: Battery_death
   m_TagString: Untagged
@@ -477,6 +478,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1053141757250431574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8603629239791014473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a0c438ade10244ea1b18a3f043a537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStopPlaying:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2744812329520216191}
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &8873820499083249002
 GameObject:
   m_ObjectHideFlags: 0
