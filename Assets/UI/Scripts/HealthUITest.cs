@@ -13,7 +13,8 @@ public class HealthUITest : MonoBehaviour
         if (!damageReceiver && _drb)
             damageReceiver = _drb;
 
-        damageReceiver.OnHealthChanged.AddListener(UpdateUI);
+        if (damageReceiver)
+            damageReceiver.OnHealthChanged.AddListener(UpdateUI);
     }
 
     public void UpdateUI(int _newHealth)

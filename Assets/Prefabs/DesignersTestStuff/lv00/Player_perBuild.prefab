@@ -9603,20 +9603,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4426767254442838156, guid: ed77577af7ed1fb43b1c2f61280cf91b,
-          type: 3}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4426767254442838156, guid: 237cf8b7ded392b479e44abe2b5bf290,
-          type: 3}
+      - m_Target: {fileID: 0}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -9626,26 +9613,24 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   OnCatchEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4426767254442838156, guid: ed77577af7ed1fb43b1c2f61280cf91b,
-          type: 3}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 4426767254442838156, guid: 237cf8b7ded392b479e44abe2b5bf290,
-          type: 3}
+      - m_Target: {fileID: 0}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -9655,6 +9640,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
@@ -24270,7 +24266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: "Timer che conta il tempo di pressione del \ntasto di catch. Allo scadere
     l'orb va in stato\ndi Catch."
-  time: 1
+  time: 0.5
   startCountingOnAwake: 0
   repeat: 0
   OnTimerStart:
@@ -29551,6 +29547,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &1147327570
@@ -29834,7 +29852,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1724618689}
-        m_MethodName: Destroy
+        m_MethodName: DestroyAfter
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8076754690011100704}
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29844,9 +29873,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8076754690011100704}
-        m_MethodName: Play
+      - m_Target: {fileID: 58528871136602515}
+        m_MethodName: SetDeathAnimation
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1724618695}
+        m_MethodName: Enable
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -36197,11 +36237,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1493207849}
     m_Modifications:
-    - target: {fileID: 2830627654674100300, guid: 595e750990e62004f9a0b5bb8bbb5dc4,
-        type: 3}
-      propertyPath: m_Name
-      value: UIWorld
-      objectReference: {fileID: 0}
     - target: {fileID: 1656936173037632651, guid: 595e750990e62004f9a0b5bb8bbb5dc4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36316,6 +36351,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830627654674100300, guid: 595e750990e62004f9a0b5bb8bbb5dc4,
+        type: 3}
+      propertyPath: m_Name
+      value: UIWorld
       objectReference: {fileID: 0}
     - target: {fileID: 3474415171905643910, guid: 595e750990e62004f9a0b5bb8bbb5dc4,
         type: 3}
@@ -36469,10 +36509,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1493207849}
     m_Modifications:
-    - target: {fileID: 100042, guid: f83305cc3f30ff647875c1d1edf91084, type: 3}
-      propertyPath: m_Name
-      value: SK_Player 1
-      objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: f83305cc3f30ff647875c1d1edf91084, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -36541,6 +36577,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 5.3690357
       objectReference: {fileID: 0}
+    - target: {fileID: 100042, guid: f83305cc3f30ff647875c1d1edf91084, type: 3}
+      propertyPath: m_Name
+      value: SK_Player 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: f83305cc3f30ff647875c1d1edf91084, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
@@ -36553,6 +36593,22 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 6a0268315bfecc344b30b2c58fd773cb, type: 2}
+    - target: {fileID: 13700000, guid: f83305cc3f30ff647875c1d1edf91084, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 910de16130d41a4419ac6d0aa39707e5, type: 2}
+    - target: {fileID: 13700000, guid: f83305cc3f30ff647875c1d1edf91084, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d69fe4d5f31060947b68d068695db299, type: 2}
+    - target: {fileID: 13700000, guid: f83305cc3f30ff647875c1d1edf91084, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: d08dc87c09dde444d81369541a75b41a, type: 2}
+    - target: {fileID: 13700000, guid: f83305cc3f30ff647875c1d1edf91084, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 48dd19e1db3c40344893c648bc36961c, type: 2}
     - target: {fileID: 400044, guid: f83305cc3f30ff647875c1d1edf91084, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -4.225046
@@ -36589,22 +36645,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -127.10794
       objectReference: {fileID: 0}
-    - target: {fileID: 13700000, guid: f83305cc3f30ff647875c1d1edf91084, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 910de16130d41a4419ac6d0aa39707e5, type: 2}
-    - target: {fileID: 13700000, guid: f83305cc3f30ff647875c1d1edf91084, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: d69fe4d5f31060947b68d068695db299, type: 2}
-    - target: {fileID: 13700000, guid: f83305cc3f30ff647875c1d1edf91084, type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: d08dc87c09dde444d81369541a75b41a, type: 2}
-    - target: {fileID: 13700000, guid: f83305cc3f30ff647875c1d1edf91084, type: 3}
-      propertyPath: m_Materials.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: 48dd19e1db3c40344893c648bc36961c, type: 2}
     - target: {fileID: 400046, guid: f83305cc3f30ff647875c1d1edf91084, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -5.0779004

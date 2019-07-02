@@ -56,7 +56,6 @@ namespace Sangaku
                 if (orb != null)
                     CatchOrb(orb);
             }
-
         }
 
         /// <summary>
