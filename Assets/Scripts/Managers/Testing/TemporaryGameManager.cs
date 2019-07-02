@@ -49,6 +49,15 @@ namespace Sangaku
 
             pooler = FindObjectOfType<ObjectPooler>();
 
+            CinemachineVirtualCamera[] vcams = FindObjectsOfType<CinemachineVirtualCamera>();
+
+            for (int i = 0; i < vcams.Length; i++)
+            {
+                vcams[i].Follow = playerController.transform;
+                if (vcams[i].gameObject.tag != "StartingVCam")
+                    vcams[i].gameObject.SetActive(false);
+            }
+
             GoToMainMenu();
         }
 
@@ -80,7 +89,7 @@ namespace Sangaku
             if (playerController)
             {
                 playerController.Enable(false);
-                playerController.GetAudioListener().enabled = false; 
+                playerController.GetAudioListener().enabled = false;
             }
 
             menuAudioListener.enabled = true;
@@ -143,7 +152,7 @@ namespace Sangaku
             if (playerController)
             {
                 playerController.Enable(false);
-                playerController.GetAudioListener().enabled = false; 
+                playerController.GetAudioListener().enabled = false;
             }
 
             menuAudioListener.enabled = true;
@@ -282,10 +291,14 @@ namespace Sangaku
             playerController.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
             Destroy(spawnPoint.gameObject);
 
-            GameObject vcamObj = GameObject.FindGameObjectWithTag("StartingVCam");
-            vcamObj.SetActive(true);
-            CinemachineVirtualCamera vcam = vcamObj.GetComponent<CinemachineVirtualCamera>();
-            vcam.Follow = playerController.transform;
+            CinemachineVirtualCamera[] vcams = FindObjectsOfType<CinemachineVirtualCamera>();
+
+            for (int i = 0; i < vcams.Length; i++)
+            {
+                vcams[i].Follow = playerController.transform;
+                if (vcams[i].gameObject.tag != "StartingVCam")
+                    vcams[i].gameObject.SetActive(false);
+            }
 
             GoToGameplay();
 
