@@ -526,6 +526,21 @@ PrefabInstance:
       propertyPath: OnObjectiveCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5054335499341383804, guid: 2c1a6ba1a5f7ca04ab1dffc0b318b65f,
+        type: 3}
+      propertyPath: OnObjectiveCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 321344342}
+    - target: {fileID: 5054335499341383804, guid: 2c1a6ba1a5f7ca04ab1dffc0b318b65f,
+        type: 3}
+      propertyPath: OnObjectiveCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054335499341383804, guid: 2c1a6ba1a5f7ca04ab1dffc0b318b65f,
+        type: 3}
+      propertyPath: OnObjectiveCompletion.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1900805758, guid: 2c1a6ba1a5f7ca04ab1dffc0b318b65f, type: 3}
       propertyPath: OnObjectiveCompletion.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -796,7 +811,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1802620296}
+      objectReference: {fileID: 1802620303}
     - target: {fileID: 7221363698721041143, guid: 2c1a6ba1a5f7ca04ab1dffc0b318b65f,
         type: 3}
       propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -826,7 +841,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1311069242}
+      objectReference: {fileID: 1311069249}
     - target: {fileID: 1894946087145032860, guid: 2c1a6ba1a5f7ca04ab1dffc0b318b65f,
         type: 3}
       propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -856,7 +871,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 238138033}
+      objectReference: {fileID: 238138040}
     - target: {fileID: 2634502972344138668, guid: 2c1a6ba1a5f7ca04ab1dffc0b318b65f,
         type: 3}
       propertyPath: OnHealthDepleated.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -1076,7 +1091,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 45409089}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &238138033
+--- !u!114 &238138040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2075,6 +2090,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3576447251867918195, guid: 37be949b0fd415c4a8de6ba1391b7ecc,
         type: 3}
+      propertyPath: OnTriggerEnterEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576447251867918195, guid: 37be949b0fd415c4a8de6ba1391b7ecc,
+        type: 3}
       propertyPath: entitiesToDetectForTrigger.Array.data[0]
       value: 
       objectReference: {fileID: 1493207864}
@@ -2082,11 +2102,36 @@ PrefabInstance:
         type: 3}
       propertyPath: OnTriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 321344342}
+      objectReference: {fileID: 636341465}
     - target: {fileID: 3576447251867918195, guid: 37be949b0fd415c4a8de6ba1391b7ecc,
         type: 3}
       propertyPath: OnTriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576447251867918195, guid: 37be949b0fd415c4a8de6ba1391b7ecc,
+        type: 3}
+      propertyPath: OnTriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 321344342}
+    - target: {fileID: 3576447251867918195, guid: 37be949b0fd415c4a8de6ba1391b7ecc,
+        type: 3}
+      propertyPath: OnTriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576447251867918195, guid: 37be949b0fd415c4a8de6ba1391b7ecc,
+        type: 3}
+      propertyPath: OnTriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576447251867918195, guid: 37be949b0fd415c4a8de6ba1391b7ecc,
+        type: 3}
+      propertyPath: OnTriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576447251867918195, guid: 37be949b0fd415c4a8de6ba1391b7ecc,
+        type: 3}
+      propertyPath: OnTriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3576447252633991402, guid: 37be949b0fd415c4a8de6ba1391b7ecc,
         type: 3}
@@ -2175,6 +2220,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2eb0ebd68d468641a3b4bdef3a9fa95, type: 3}
+--- !u!1 &636341465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3576447251867918197, guid: 37be949b0fd415c4a8de6ba1391b7ecc,
+    type: 3}
+  m_PrefabInstance: {fileID: 581948754}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &804762977
 GameObject:
   m_ObjectHideFlags: 0
@@ -3081,7 +3132,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 45409089}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1311069242
+--- !u!114 &1311069249
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3600,6 +3651,14 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1844042188, guid: 50057987b26e21144a25c42b1556ece3, type: 3}
+      propertyPath: m_Text
+      value: DESTROY all the BATTERIES to UNLOCK the DOOR
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963391724, guid: 50057987b26e21144a25c42b1556ece3, type: 3}
+      propertyPath: m_Text
+      value: DESTROY all the BATTERIES to UNLOCK the DOOR
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50057987b26e21144a25c42b1556ece3, type: 3}
 --- !u!1001 &1567420621
@@ -3726,7 +3785,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 45409089}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1802620296
+--- !u!114 &1802620303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
