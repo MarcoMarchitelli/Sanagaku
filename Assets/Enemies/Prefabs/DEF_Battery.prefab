@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3970271744146782957}
   - component: {fileID: 3970271744146012877}
   - component: {fileID: 3970271744144881677}
+  - component: {fileID: 6911888575510685227}
   m_Layer: 0
   m_Name: batteria 1
   m_TagString: Untagged
@@ -77,6 +78,24 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &6911888575510685227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3970271744146810573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5886b5392b6df49b33f73768a2aca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shaderDamageParameter: _DamageBullet
+  DamageValue: 0
+  damageTime: 0.1
+  TaglioMesh: _TaglioMesh
+  DeathValue: -1
+  deathtime: 1.2
 --- !u!1 &3970271744146810575
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +653,17 @@ MonoBehaviour:
       - m_Target: {fileID: 6521779945952755971}
         m_MethodName: set_enabled
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6911888575510685227}
+        m_MethodName: SetDeathValue
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
