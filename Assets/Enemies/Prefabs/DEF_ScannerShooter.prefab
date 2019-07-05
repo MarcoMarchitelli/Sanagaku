@@ -157,7 +157,7 @@ MonoBehaviour:
   fovAngle: 45
   spotLightColor: {r: 0, g: 0, b: 0, a: 0}
   detectedSpotlightColor: {r: 0, g: 0, b: 0, a: 0}
-  scanAreaRadius: 5.74
+  scanAreaRadius: 14
   OnTargetSpotted:
     m_PersistentCalls:
       m_Calls:
@@ -283,7 +283,7 @@ MonoBehaviour:
   shaderDamageParameter: _DamageBullet
   DamageValue: 0
   damageTime: 0.3
-  TaglioMesh: 
+  TaglioMesh: _TaglioMesh
   DeathValue: -2
   deathtime: 3
 --- !u!1 &5352442496583303097
@@ -362,9 +362,9 @@ MonoBehaviour:
   hasTargets: 1
   searchForTargetsOnAwake: 0
   startsShootingOnAwake: 0
-  secondsBetweenShots: 1
+  secondsBetweenShots: 1.5
   turnRateAnglesPerSecond: 90
-  projectilePoolTag: 
+  projectilePoolTag: EnemyBullet
   OnShoot:
     m_PersistentCalls:
       m_Calls: []
@@ -469,7 +469,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Sangaku.UnityVoidEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  maxHealth: 3
+  maxHealth: 1
 --- !u!114 &5352442496583303095
 MonoBehaviour:
   m_ObjectHideFlags: 0
