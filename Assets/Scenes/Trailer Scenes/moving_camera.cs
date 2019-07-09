@@ -4,26 +4,50 @@ using System.Collections;
 
 public class moving_camera : MonoBehaviour
 {
-    public float speed;
-    public float rSpeed;
+    //public float speed;
+    //public float rSpeed;
+
+    //float moveHorizontal = Input.GetAxis("Horizontal");
+    //float moveVertical = Input.GetAxis("Vertical");
+
+    public float rotateSxDx = 1.0f;
+    public float mVel = 0.08f;
+    public float maxVel = 0;
+
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        //Vector3 movement = new Vector3(moveHorizontal, moveUpD, moveVertical);
+        //GetComponent<Rigidbody>().velocity = movement * speed;
         float moveUpD = Input.GetAxis("Debug_UpDown");
 
-        float rotateSxDx = 1.0f;
-
-        Vector3 movement = new Vector3(moveHorizontal, moveUpD, moveVertical);
-        Quaternion rotation = new Quaternion(0.0f, rotateSxDx * rSpeed, 0.0f, 0.0f);
-
-
-        GetComponent<Rigidbody>().velocity = movement * speed;
-
-        if (Input.GetKeyDown("o"))
+        if (Input.GetKey("w"))
         {
-            GetComponent<Transform>().rotation = rotation;
+            GetComponent<Transform>().Translate(0, 0, mVel+maxVel);
+        }
+
+        if (Input.GetKey("s"))
+        {
+            GetComponent<Transform>().Translate(0, 0, -mVel-maxVel);
+        }
+
+        if (Input.GetKey("a"))
+        {
+            GetComponent<Transform>().Translate(mVel+maxVel, 0, 0);
+        }
+
+        if (Input.GetKey("d"))
+        {
+            GetComponent<Transform>().Translate(-mVel-maxVel, 0, 0);
+        }
+
+        if (Input.GetKey("e"))
+        {
+            GetComponent<Transform>().Rotate(0, rotateSxDx, 0);
+        }
+        if (Input.GetKey("q"))
+        {
+            GetComponent<Transform>().Rotate(0, -rotateSxDx, 0);
         }
     }
 }
