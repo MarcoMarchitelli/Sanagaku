@@ -230,6 +230,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5243697848479084437}
+  - {fileID: 9173858313579119389}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -433,6 +434,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5143616998774032080}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: Sangaku.UnityIntEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   OnHealthDepleated:
@@ -528,6 +540,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 9221364653546084527}
         m_MethodName: SetDeathValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6680836465628986404}
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -777,7 +800,7 @@ MonoBehaviour:
   shaderDamageParameter: _DamageBullet
   DamageValue: 0
   damageTime: 0.3
-  shaderDeathParameter: _TaglioMesh
+  TaglioMesh: 
   DeathValue: -2
   deathtime: 3
 --- !u!1 &8501498890479737801
@@ -911,7 +934,7 @@ MonoBehaviour:
   shaderDamageParameter: _DamageBullet
   DamageValue: 0
   damageTime: 0.3
-  shaderDeathParameter: _TaglioMesh
+  TaglioMesh: 
   DeathValue: -2
   deathtime: 3
 --- !u!1 &8501498890822656288
@@ -1015,7 +1038,7 @@ MonoBehaviour:
   shaderDamageParameter: _DamageBullet
   DamageValue: 0
   damageTime: 0.3
-  shaderDeathParameter: _TaglioMesh
+  TaglioMesh: 
   DeathValue: -2
   deathtime: 3
 --- !u!1 &8501498891317596928
@@ -1154,7 +1177,7 @@ MonoBehaviour:
   shaderDamageParameter: _DamageBullet
   DamageValue: 0
   damageTime: 0.3
-  shaderDeathParameter: _TaglioMesh
+  TaglioMesh: 
   DeathValue: -2
   deathtime: 3
 --- !u!1 &8501498891533526681
@@ -1288,7 +1311,7 @@ MonoBehaviour:
   shaderDamageParameter: _DamageBullet
   DamageValue: 0
   damageTime: 0.3
-  shaderDeathParameter: _TaglioMesh
+  TaglioMesh: 
   DeathValue: -2
   deathtime: 3
 --- !u!1 &8501498891749183205
@@ -1343,3 +1366,90 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1001 &4040674197256484517
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8026790095623521}
+    m_Modifications:
+    - target: {fileID: 7651903107330305253, guid: 2b2c1a0b564a3df49af512108206e192,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemySFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135031845748667832, guid: 2b2c1a0b564a3df49af512108206e192,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135031845748667832, guid: 2b2c1a0b564a3df49af512108206e192,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135031845748667832, guid: 2b2c1a0b564a3df49af512108206e192,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135031845748667832, guid: 2b2c1a0b564a3df49af512108206e192,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135031845748667832, guid: 2b2c1a0b564a3df49af512108206e192,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135031845748667832, guid: 2b2c1a0b564a3df49af512108206e192,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135031845748667832, guid: 2b2c1a0b564a3df49af512108206e192,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135031845748667832, guid: 2b2c1a0b564a3df49af512108206e192,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135031845748667832, guid: 2b2c1a0b564a3df49af512108206e192,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135031845748667832, guid: 2b2c1a0b564a3df49af512108206e192,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135031845748667832, guid: 2b2c1a0b564a3df49af512108206e192,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2b2c1a0b564a3df49af512108206e192, type: 3}
+--- !u!4 &9173858313579119389 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5135031845748667832, guid: 2b2c1a0b564a3df49af512108206e192,
+    type: 3}
+  m_PrefabInstance: {fileID: 4040674197256484517}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &5143616998774032080 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9183569366629314677, guid: 2b2c1a0b564a3df49af512108206e192,
+    type: 3}
+  m_PrefabInstance: {fileID: 4040674197256484517}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6680836465628986404 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7251994521998035585, guid: 2b2c1a0b564a3df49af512108206e192,
+    type: 3}
+  m_PrefabInstance: {fileID: 4040674197256484517}
+  m_PrefabAsset: {fileID: 0}
