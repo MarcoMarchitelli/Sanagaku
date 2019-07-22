@@ -18,6 +18,7 @@ namespace Sangaku
         public GameObject LoadingPanel;
 
         public Action OnLossMenuActive;
+        public Action OnWinMenuActive;
 
         [Header("Controllers")]
         public TemporaryEnemyManager enemyManager;
@@ -167,6 +168,8 @@ namespace Sangaku
             LossMenu.SetActive(false);
             LoadingPanel.SetActive(false);
             WinMenu.SetActive(true);
+
+            OnWinMenuActive?.Invoke();
 
             canPause = false;
         }

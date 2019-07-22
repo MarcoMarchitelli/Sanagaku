@@ -4,6 +4,8 @@ namespace Sangaku
 {
     public class LossListener : MonoBehaviour
     {
+        public UnityVoidEvent OnLossMenuActive;
+
         void Start()
         {
             TemporaryGameManager.Singleton.OnLossMenuActive += HandleOnLossMenuActive;
@@ -16,7 +18,7 @@ namespace Sangaku
 
         private void HandleOnLossMenuActive()
         {
-            gameObject.SetActive(false);
+            OnLossMenuActive.Invoke();
         }
     }
 }
