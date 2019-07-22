@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -15,6 +16,8 @@ namespace Sangaku
         public GameObject WinMenu;
         public GameObject LossMenu;
         public GameObject LoadingPanel;
+
+        public Action OnLossMenuActive;
 
         [Header("Controllers")]
         public TemporaryEnemyManager enemyManager;
@@ -185,6 +188,9 @@ namespace Sangaku
             WinMenu.SetActive(false);
             LoadingPanel.SetActive(false);
             LossMenu.SetActive(true);
+
+            OnLossMenuActive?.Invoke();
+
             canPause = false;
         }
 
