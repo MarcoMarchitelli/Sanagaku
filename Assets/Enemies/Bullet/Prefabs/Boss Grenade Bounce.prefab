@@ -616,7 +616,7 @@ MonoBehaviour:
       PublicKeyToken=null
   damage: 1
   dealsOnCollision: 0
-  dealsOnTrigger: 0
+  dealsOnTrigger: 1
 --- !u!114 &7051919381548121161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,6 +662,7 @@ MonoBehaviour:
   - {fileID: 2054555958643536973, guid: 904642399d5ddc24fb0d1c47cdeacd5c, type: 3}
   - {fileID: 6237922447320057978, guid: 3525b396923ea2c47a8f14816b6939f9, type: 3}
   - {fileID: 5688618195469052195}
+  - {fileID: 7476069783140462975, guid: 89a77afda47ee854a9fe8d7610ce499a, type: 3}
   usesTrigger: 1
   OnGenericHit:
     m_PersistentCalls:
@@ -822,7 +823,7 @@ MonoBehaviour:
   - {fileID: 2054555958643536973, guid: 904642399d5ddc24fb0d1c47cdeacd5c, type: 3}
   - {fileID: 6237922447320057978, guid: 3525b396923ea2c47a8f14816b6939f9, type: 3}
   - {fileID: 5688618195469052195}
-  - {fileID: 2927790705579119123, guid: 788aedc024369e34fb0a68bb8aaaf5aa, type: 3}
+  - {fileID: 7476069783140462975, guid: 89a77afda47ee854a9fe8d7610ce499a, type: 3}
   usesTrigger: 1
   OnGenericHit:
     m_PersistentCalls:
@@ -874,7 +875,7 @@ MonoBehaviour:
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   damage: 1
-  dealsOnCollision: 0
+  dealsOnCollision: 1
   dealsOnTrigger: 0
 --- !u!114 &6217467978684711019
 MonoBehaviour:
@@ -942,7 +943,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6217467978684711031}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.0000001
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -978,7 +979,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Sangaku.UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  moveSpeed: 11
+  moveSpeed: 12
   moveTime: 2.8
   deathTime: 0
   speedOverLifeTimeCurve:
